@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Apply Now | Nolan Institute of Global Business & Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0A1C3A;
+            --navy-light: #1A2D4D;
+            --navy-dark: #05122A;
+            --gold: #C5A028;
+            --gold-light: #D4B84A;
+            --gold-dark: #A07F1F;
+            --gold-10: rgba(197, 160, 40, 0.1);
+            --white: #FFFFFF;
+            --gray-light: #F5F5F5;
+            --gray-mid: #E0E0E0;
+            --gray-dark: #666666;
+            --gray-darker: #333333;
+            --success: #28A745;
+            --error: #DC3545;
+            --warning: #FFC107;
+            --info: #17A2B8;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-darker);
+            line-height: 1.6;
+            background-color: var(--gray-light);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        .application-header {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .application-header h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .application-header p { font-size: 16px; opacity: 0.9; }
+
+        .university-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy-dark);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 1.5px;
+        }
+
+        .header-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            color: var(--gold-light);
+            margin-top: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-mid);
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            cursor: pointer;
+            min-width: 70px;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .step.active .step-circle {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy-dark);
+        }
+
+        .step.completed .step-circle,
+        .step.payment-paid .step-circle {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .step-label { font-size: 11px; color: var(--gray-dark); }
+        .step.active .step-label { color: var(--navy); font-weight: 600; }
+
+        /* Form Sections */
+        .form-section {
+            display: none;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-section.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-subtitle {
+            color: var(--gray-dark);
+            font-size: 14px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group.full-width { grid-column: span 2; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+        }
+
+        .form-group label .required { color: var(--error); margin-left: 4px; }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--gray-mid);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-10);
+        }
+
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error { border-color: var(--error); }
+
+        .form-group input:disabled,
+        .form-group select:disabled,
+        .form-group textarea:disabled {
+            background: #f1f3f6;
+            cursor: not-allowed;
+        }
+
+        .helper-text { font-size: 12px; color: var(--gray-dark); margin-top: 4px; }
+
+        /* Payment Section */
+        .payment-card {
+            background: linear-gradient(135deg, var(--gray-light) 0%, var(--white) 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--gray-mid);
+        }
+
+        .fee-summary {
+            background: var(--gold-10);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .fee-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .fee-amount small { font-size: 14px; font-weight: normal; }
+
+        .resident-selector {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .resident-option {
+            flex: 1;
+            padding: 16px;
+            border: 2px solid var(--gray-mid);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .resident-option.selected {
+            border-color: var(--gold);
+            background: var(--gold-10);
+        }
+
+        .resident-option h4 { color: var(--navy); margin-bottom: 8px; font-size: 15px; }
+        .resident-option .price { font-size: 20px; font-weight: 700; color: var(--gold-dark); }
+        .resident-option small { display: block; margin-top: 6px; font-size: 11.5px; color: var(--gray-dark); }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .payment-method {
+            padding: 16px;
+            border: 2px solid var(--gray-mid);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method.selected {
+            border-color: var(--gold);
+            background: var(--gold-10);
+        }
+
+        .payment-method i {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .payment-method span { display: block; font-size: 14px; font-weight: 500; }
+        .payment-method small { display: block; font-size: 11px; color: var(--gray-dark); margin-top: 4px; }
+
+        .mobile-money-fields, .card-fields, .bank-fields {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--gray-light);
+            border-radius: 12px;
+        }
+
+        .mobile-money-fields.show, .card-fields.show, .bank-fields.show { display: block; }
+
+        .payment-status {
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .payment-status.pending { background: var(--warning); color: #856404; }
+        .payment-status.paid { background: var(--success); color: white; }
+
+        .pay-now-btn {
+            background: var(--gold);
+            color: var(--navy-dark);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 16px;
+            transition: var(--transition);
+        }
+
+        .pay-now-btn:hover { background: var(--gold-light); }
+        .pay-now-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-mid);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary { background-color: var(--navy); color: var(--white); }
+        .btn-primary:hover { background-color: var(--navy-light); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary { background-color: var(--gray-light); color: var(--gray-darker); border: 1px solid var(--gray-mid); }
+        .btn-secondary:hover { background-color: var(--gray-mid); }
+        .btn-gold { background-color: var(--gold); color: var(--navy-dark); }
+        .btn-gold:hover { background-color: var(--gold-light); }
+
+        /* Review Section */
+        .review-section {
+            background: var(--gray-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .review-section h3 {
+            color: var(--navy);
+            margin-bottom: 16px;
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-mid);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .review-item:last-child { border-bottom: none; }
+        .review-label { font-weight: 600; color: var(--gray-dark); }
+        .review-value { color: var(--gray-darker); }
+
+        /* Activities */
+        .activity-item {
+            background: var(--gray-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .activity-header h4 { color: var(--navy); font-size: 16px; }
+
+        .remove-activity {
+            background: none;
+            border: none;
+            color: var(--error);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .add-activity-btn {
+            background: var(--gold-10);
+            color: var(--gold-dark);
+            border: 1px dashed var(--gold);
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .add-activity-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Checkbox group */
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+        .checkbox-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13.5px;
+            color: var(--gray-darker);
+            font-weight: 400;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.3s ease;
+            max-width: 340px;
+        }
+
+        .toast.error { background: var(--error); }
+        .toast.show { display: block; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .auto-save-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--gray-dark);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .auto-save-indicator.show { display: block; }
+
+        .payment-locked { position: relative; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .progress-steps { overflow-x: auto; gap: 16px; padding-bottom: 8px; }
+            .step { min-width: 70px; }
+            .resident-selector { flex-direction: column; }
+            .application-header h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="application-header">
+    <div class="container">
+        <div class="university-badge">NOLAN INSTITUTE</div>
+        <h1>Central Application</h1>
+        <p>of Global Business &amp; Technology — Founding Cohort 2026</p>
+        <p class="header-tagline">Learn. Innovate. Lead.</p>
+    </div>
+</div>
+
+<div class="progress-container">
+    <div class="container">
+        <div class="progress-steps" id="progressSteps">
+            <div class="step" data-step="1"><div class="step-circle">1</div><div class="step-label">Basic Info</div></div>
+            <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">Payment</div></div>
+            <div class="step" data-step="3"><div class="step-circle">3</div><div class="step-label">Academic</div></div>
+            <div class="step" data-step="4"><div class="step-circle">4</div><div class="step-label">Test Scores</div></div>
+            <div class="step" data-step="5"><div class="step-circle">5</div><div class="step-label">Essays</div></div>
+            <div class="step" data-step="6"><div class="step-circle">6</div><div class="step-label">Activities</div></div>
+            <div class="step" data-step="7"><div class="step-circle">7</div><div class="step-label">Documents</div></div>
+            <div class="step" data-step="8"><div class="step-circle">8</div><div class="step-label">Review</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form id="applicationForm">
+
+        <!-- Section 1: Basic Personal Information -->
+        <div class="form-section" data-section="1">
+            <h2 class="section-title">Basic Information</h2>
+            <p class="section-subtitle">Please provide your basic details to begin your application</p>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>First Name <span class="required">*</span></label>
+                    <input type="text" name="firstName" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name <span class="required">*</span></label>
+                    <input type="text" name="lastName" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" id="phone" required>
+                </div>
+                <div class="form-group full-width">
+                    <label>Country of Residence <span class="required">*</span></label>
+                    <select name="country" id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="zambia">Zambia</option>
+                        <option value="zimbabwe">Zimbabwe</option>
+                        <option value="south africa">South Africa</option>
+                        <option value="nigeria">Nigeria</option>
+                        <option value="kenya">Kenya</option>
+                        <option value="ghana">Ghana</option>
+                        <option value="tanzania">Tanzania</option>
+                        <option value="uganda">Uganda</option>
+                        <option value="rwanda">Rwanda</option>
+                        <option value="botswana">Botswana</option>
+                        <option value="namibia">Namibia</option>
+                        <option value="mozambique">Mozambique</option>
+                        <option value="us">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="dubai">UAE / Dubai</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Programme Category <span class="required">*</span></label>
+                    <select name="programmeCategory" id="programmeCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Professional Education">Professional Education</option>
+                        <option value="Executive Education">Executive Education</option>
+                        <option value="Corporate Training">Corporate Training</option>
+                        <option value="Technology &amp; Digital Skills">Technology &amp; Digital Skills</option>
+                        <option value="Finance &amp; Investment">Finance &amp; Investment</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Programme Applying For <span class="required">*</span></label>
+                    <select name="programme" id="programme" required>
+                        <option value="">Select Programme</option>
+
+                        <optgroup label="Nolan School of Finance &amp; Investment">
+                            <option>Financial Literacy</option>
+                            <option>Accounting</option>
+                            <option>Corporate Finance</option>
+                            <option>Financial Analysis</option>
+                            <option>Financial Modelling</option>
+                            <option>Investment Analysis</option>
+                            <option>Portfolio Management</option>
+                            <option>Banking</option>
+                            <option>Risk Management</option>
+                            <option>FinTech</option>
+                            <option>Capital Markets</option>
+                        </optgroup>
+
+                        <optgroup label="School of Entrepreneurship &amp; Venture Creation">
+                            <option>Entrepreneurship</option>
+                            <option>Business Model Development</option>
+                            <option>Innovation Management</option>
+                            <option>Global Business Strategy</option>
+                        </optgroup>
+
+                        <optgroup label="School of Technology &amp; AI">
+                            <option>Digital Literacy</option>
+                            <option>Data Analytics</option>
+                            <option>Artificial Intelligence</option>
+                            <option>Programming</option>
+                            <option>Cybersecurity</option>
+                            <option>Cloud Computing</option>
+                            <option>Digital Product Development</option>
+                            <option>Business Intelligence</option>
+                            <option>Digital Transformation</option>
+                        </optgroup>
+
+                        <optgroup label="School of Global Business &amp; Leadership">
+                            <option>Business Management</option>
+                            <option>Project Management</option>
+                            <option>Leadership</option>
+                            <option>Strategic Management</option>
+                            <option>Business Strategy</option>
+                            <option>International Markets</option>
+                            <option>Global Business Systems</option>
+                        </optgroup>
+
+                        <optgroup label="Executive Education &amp; Professional Certificates">
+                            <option>Executive Finance</option>
+                            <option>AI for Business</option>
+                            <option>Innovation</option>
+                        </optgroup>
+
+                        <optgroup label="Corporate Training Programmes">
+                            <option>Data &amp; AI for Financial Services Academy</option>
+                            <option>Finance for Business Owners Programme</option>
+                            <option>Custom Workforce Development</option>
+                            <option>Capability Gap Audit</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Payment -->
+        <div class="form-section" data-section="2">
+            <h2 class="section-title">Application Fee Payment</h2>
+            <p class="section-subtitle">Pay your application fee to continue with your application</p>
+
+            <div class="payment-card">
+                <div class="fee-summary">
+                    <p>Application Fee Amount</p>
+                    <div class="fee-amount" id="feeAmount">ZK250</div>
+                    <small id="feeNote">(~$12.90 USD) for Zambian and African applicants</small>
+                </div>
+
+                <div class="resident-selector" id="residentSelector">
+                    <div class="resident-option" data-resident="local">
+                        <h4>🌍 Local / African Applicant</h4>
+                        <div class="price">ZK250</div>
+                        <small>Zambia, Zimbabwe, Nigeria, Kenya, South Africa &amp; other African countries</small>
+                    </div>
+                    <div class="resident-option" data-resident="international">
+                        <h4>🌎 International Applicant</h4>
+                        <div class="price">$25 USD</div>
+                        <small>UK, US, Canada, Australia, Dubai &amp; other countries</small>
+                    </div>
+                </div>
+
+                <div class="payment-methods" id="paymentMethods">
+                    <div class="payment-method" data-method="mobile_money">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Money</span>
+                        <small>(Zambia: Airtel, MTN, Zamtel)</small>
+                    </div>
+                    <div class="payment-method" data-method="card">
+                        <i class="fab fa-cc-visa"></i>
+                        <span>Credit / Debit Card</span>
+                        <small>Visa, Mastercard, Amex</small>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                        <i class="fab fa-paypal"></i>
+                        <span>PayPal</span>
+                    </div>
+                    <div class="payment-method" data-method="bank">
+                        <i class="fas fa-university"></i>
+                        <span>Bank Transfer</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Money -->
+                <div id="mobileMoneyFields" class="mobile-money-fields">
+                    <h4 style="margin-bottom: 16px; color: var(--navy);">Mobile Money Payment</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Select Provider <span class="required">*</span></label>
+                            <select id="mobileProvider">
+                                <option value="">Select</option>
+                                <option value="airtel">Airtel Money</option>
+                                <option value="mtn">MTN Money</option>
+                                <option value="zamtel">Zamtel Money</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number <span class="required">*</span></label>
+                            <input type="tel" id="mobileNumber" placeholder="097XXXXXXX">
+                        </div>
+                    </div>
+                    <div class="helper-text">You will receive a prompt on your phone to complete payment</div>
+                </div>
+
+                <!-- Card -->
+                <div id="cardFields" class="card-fields">
+                    <h4 style="margin-bottom: 16px; color: var(--navy);">Card Payment</h4>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="4242 4242 4242 4242">
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label>CVC</label>
+                            <input type="text" placeholder="123">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Cardholder Name</label>
+                            <input type="text" placeholder="Name on card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PayPal -->
+                <div id="paypalFields" class="card-fields">
+                    <h4 style="margin-bottom: 16px; color: var(--navy);">PayPal Payment</h4>
+                    <div class="form-group full-width">
+                        <label>PayPal Email</label>
+                        <input type="email" placeholder="your@email.com">
+                    </div>
+                    <div class="helper-text">You will be redirected to PayPal to complete payment</div>
+                </div>
+
+                <!-- Bank Transfer -->
+                <div id="bankFields" class="bank-fields">
+                    <h4 style="margin-bottom: 16px; color: var(--navy);">Bank Transfer Details</h4>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Bank Name</label>
+                            <input type="text" value="Nolan Institute — Programme Fees Account" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Account Name</label>
+                            <input type="text" value="Nolan Institute of Global Business &amp; Technology" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Account Number</label>
+                            <input type="text" value="1001234567" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Sort Code / Routing</label>
+                            <input type="text" value="01-02-03" readonly>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Reference</label>
+                            <input type="text" id="bankReference" placeholder="Your Full Name + Application ID">
+                        </div>
+                    </div>
+                    <div class="helper-text">Please use your full name as reference. Upload proof of payment in the Documents section.</div>
+                </div>
+
+                <button type="button" class="pay-now-btn" id="payNowBtn">Pay Application Fee</button>
+
+                <div id="paymentStatus" class="payment-status pending" style="display: none;">
+                    <i class="fas fa-clock"></i> Payment pending. Complete payment to continue.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Academic History (Locked) -->
+        <div class="form-section payment-locked" data-section="3">
+            <h2 class="section-title">Academic &amp; Professional Background</h2>
+            <p class="section-subtitle">Tell us about your educational and professional background</p>
+
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label>Current or Most Recent Institution / Employer <span class="required">*</span></label>
+                    <input type="text" name="currentSchool" id="currentSchool" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>Background Type</label>
+                    <select name="schoolType" id="schoolType" disabled>
+                        <option value="">Select</option>
+                        <option>University / Higher Education</option>
+                        <option>College / Polytechnic</option>
+                        <option>Professional Body</option>
+                        <option>Employer / Workplace</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Year Completed / Expected <span class="required">*</span></label>
+                    <input type="number" name="gradYear" id="gradYear" min="1990" max="2030" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>Academic Result / GPA (if applicable)</label>
+                    <input type="text" name="gpa" id="gpa" placeholder="e.g., 3.85/4.0 or Merit" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Years of Work Experience</label>
+                    <input type="text" name="classRank" id="classRank" placeholder="e.g., 5 years" disabled>
+                </div>
+                <div class="form-group full-width">
+                    <label>Relevant Coursework / Training</label>
+                    <textarea name="coursework" id="coursework" rows="3" placeholder="List any relevant courses, training, certifications, or programmes you have completed" disabled></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label>Awards, Honours &amp; Achievements</label>
+                    <textarea name="awards" id="awards" rows="3" placeholder="List any awards, honours, or professional achievements" disabled></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Test Scores -->
+        <div class="form-section payment-locked" data-section="4">
+            <h2 class="section-title">Standardised Test Scores</h2>
+            <p class="section-subtitle">Optional — provide any relevant test scores</p>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>SAT Total Score</label>
+                    <input type="text" name="sat" id="sat" placeholder="e.g., 1450" disabled>
+                </div>
+                <div class="form-group">
+                    <label>ACT Composite Score</label>
+                    <input type="text" name="act" id="act" placeholder="e.g., 32" disabled>
+                </div>
+                <div class="form-group">
+                    <label>GRE Verbal</label>
+                    <input type="text" name="greVerbal" id="greVerbal" placeholder="e.g., 160" disabled>
+                </div>
+                <div class="form-group">
+                    <label>GRE Quantitative</label>
+                    <input type="text" name="greQuant" id="greQuant" placeholder="e.g., 165" disabled>
+                </div>
+                <div class="form-group">
+                    <label>GMAT Total</label>
+                    <input type="text" name="gmat" id="gmat" placeholder="e.g., 700" disabled>
+                </div>
+                <div class="form-group">
+                    <label>TOEFL iBT (International Applicants)</label>
+                    <input type="text" name="toefl" id="toefl" placeholder="e.g., 100" disabled>
+                </div>
+                <div class="form-group">
+                    <label>IELTS (International Applicants)</label>
+                    <input type="text" name="ielts" id="ielts" placeholder="e.g., 7.5" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Test Optional Declaration</label>
+                    <select name="testOptional" id="testOptional" disabled>
+                        <option value="">Select</option>
+                        <option>Submitting test scores</option>
+                        <option>Not submitting test scores</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Essays -->
+        <div class="form-section payment-locked" data-section="5">
+            <h2 class="section-title">Personal Essays</h2>
+            <p class="section-subtitle">Help us get to know you better</p>
+
+            <div class="form-group full-width">
+                <label>Essay 1: Why Nolan Institute? <span class="required">*</span></label>
+                <textarea name="essay1" id="essay1" rows="6" placeholder="Please explain why you are interested in this programme at Nolan Institute of Global Business & Technology and how it aligns with your career or business goals. (300-500 words)" required disabled></textarea>
+                <div class="helper-text">300-500 words</div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Essay 2: Leadership, Initiative &amp; Impact <span class="required">*</span></label>
+                <textarea name="essay2" id="essay2" rows="6" placeholder="Describe a time you demonstrated leadership, took initiative, or solved a challenging problem in a professional or entrepreneurial context. (300-500 words)" required disabled></textarea>
+                <div class="helper-text">300-500 words</div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Essay 3 (Optional): Additional Information</label>
+                <textarea name="essay3" id="essay3" rows="4" placeholder="If there is anything else you would like us to know about your background, circumstances, or goals, please share here. (250 words max)" disabled></textarea>
+            </div>
+        </div>
+
+        <!-- Section 6: Activities -->
+        <div class="form-section payment-locked" data-section="6">
+            <h2 class="section-title">Professional &amp; Extracurricular Activities</h2>
+            <p class="section-subtitle">Tell us about your professional, community, or leadership involvement</p>
+
+            <div id="activitiesContainer">
+                <div class="activity-item" data-activity-id="0">
+                    <div class="activity-header">
+                        <h4>Activity 1</h4>
+                        <button type="button" class="remove-activity" onclick="removeActivity(this)" disabled><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Activity Name</label>
+                            <input type="text" name="activityName0" id="activityName0" placeholder="e.g., Board Role, Community Initiative, Professional Association, Venture" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Role / Position</label>
+                            <input type="text" name="activityRole0" id="activityRole0" placeholder="e.g., Founder, Member, Director" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Years Involved</label>
+                            <input type="text" name="activityYears0" id="activityYears0" placeholder="e.g., 2020–Present" disabled>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Description</label>
+                            <textarea name="activityDesc0" id="activityDesc0" rows="2" placeholder="Describe your involvement and impact (50 words max)" disabled></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="add-activity-btn" id="addActivityBtn" onclick="addActivity()" disabled>+ Add Another Activity</button>
+        </div>
+
+        <!-- Section 7: Documents -->
+        <div class="form-section payment-locked" data-section="7">
+            <h2 class="section-title">Supporting Documents</h2>
+            <p class="section-subtitle">Upload required materials</p>
+
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label>Resume / CV <span class="required">*</span></label>
+                    <input type="file" name="resume" id="resume" accept=".pdf,.doc,.docx" required disabled>
+                    <div class="helper-text">PDF or DOC format, max 5MB</div>
+                </div>
+                <div class="form-group full-width">
+                    <label>Academic Transcript / Certificate (Unofficial OK) <span class="required">*</span></label>
+                    <input type="file" name="transcript" id="transcript" accept=".pdf" required disabled>
+                    <div class="helper-text">PDF format, max 10MB</div>
+                </div>
+                <div class="form-group full-width">
+                    <label>Proof of Payment (If paid via Bank Transfer)</label>
+                    <input type="file" name="paymentProof" id="paymentProof" accept=".pdf,.jpg,.png" disabled>
+                    <div class="helper-text">Upload bank transfer receipt or mobile money confirmation</div>
+                </div>
+                <div class="form-group full-width">
+                    <label>Letter of Recommendation 1</label>
+                    <input type="file" name="rec1" id="rec1" accept=".pdf" disabled>
+                </div>
+                <div class="form-group full-width">
+                    <label>Letter of Recommendation 2</label>
+                    <input type="file" name="rec2" id="rec2" accept=".pdf" disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Recommender Information</label>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Recommender 1 Name</label>
+                        <input type="text" name="recName1" id="recName1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Recommender 1 Email</label>
+                        <input type="email" name="recEmail1" id="recEmail1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Recommender 2 Name</label>
+                        <input type="text" name="recName2" id="recName2" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Recommender 2 Email</label>
+                        <input type="email" name="recEmail2" id="recEmail2" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Review & Submit -->
+        <div class="form-section payment-locked" data-section="8">
+            <h2 class="section-title">Review Your Application</h2>
+            <p class="section-subtitle">Please review all information before submitting</p>
+
+            <div id="reviewContent"></div>
+
+            <div class="form-group full-width" style="margin-top: 24px;">
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="agreeTerms" disabled> I certify that all information provided is complete and accurate.
+                    </label>
+                    <label>
+                        <input type="checkbox" id="agreeSubmit" disabled> I understand that submitting false information may result in revocation of admission.
+                    </label>
+                    <label>
+                        <input type="checkbox" id="newsletter" disabled> I would like to receive updates about Nolan Institute news and events.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-navigation">
+            <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">← Previous</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+            <button type="submit" class="btn btn-gold" id="submitBtn" style="display: none;">Submit Application</button>
+        </div>
+    </form>
+</div>
+
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i> <span id="toastMessage"></span>
+</div>
+
+<div class="auto-save-indicator" id="autoSaveIndicator">
+    <i class="fas fa-save"></i> Draft saved
+</div>
+
+<script>
+    // ========================================
+    // Application State
+    // ========================================
+    let currentSection = 1;
+    const totalSections = 8;
+    let activityCount = 1;
+    let paymentCompleted = false;
+    let selectedResident = 'local';
+    let selectedPaymentMethod = 'mobile_money';
+    let autoSaveTimer = null;
+
+    // DOM Elements
+    const sections = document.querySelectorAll('.form-section');
+    const steps = document.querySelectorAll('.step');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('applicationForm');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const autoSaveIndicator = document.getElementById('autoSaveIndicator');
+
+    const residentOptions = document.querySelectorAll('.resident-option');
+    const paymentMethods = document.querySelectorAll('.payment-method');
+    const mobileMoneyFields = document.getElementById('mobileMoneyFields');
+    const cardFields = document.getElementById('cardFields');
+    const paypalFields = document.getElementById('paypalFields');
+    const bankFields = document.getElementById('bankFields');
+    const payNowBtn = document.getElementById('payNowBtn');
+    const paymentStatus = document.getElementById('paymentStatus');
+    const feeAmount = document.getElementById('feeAmount');
+    const feeNote = document.getElementById('feeNote');
+
+    // ========================================
+    // Utilities
+    // ========================================
+    function showToast(message, isError = false) {
+        toastMessage.textContent = message;
+        toast.className = 'toast show';
+        if (isError) toast.classList.add('error');
+        setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
+
+    function showAutoSave() {
+        autoSaveIndicator.classList.add('show');
+        setTimeout(() => { autoSaveIndicator.classList.remove('show'); }, 2000);
+    }
+
+    function updateFee() {
+        if (selectedResident === 'local') {
+            feeAmount.innerHTML = 'ZK250';
+            feeNote.innerHTML = '(~$12.90 USD) for Zambian and African applicants';
+        } else {
+            feeAmount.innerHTML = '$25 USD';
+            feeNote.innerHTML = '(or equivalent in local currency) for international applicants';
+        }
+    }
+
+    // ========================================
+    // Selection Handlers
+    // ========================================
+    residentOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            residentOptions.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            selectedResident = option.dataset.resident;
+            updateFee();
+            saveFormData();
+        });
+    });
+
+    paymentMethods.forEach(method => {
+        method.addEventListener('click', () => {
+            paymentMethods.forEach(m => m.classList.remove('selected'));
+            method.classList.add('selected');
+            selectedPaymentMethod = method.dataset.method;
+
+            mobileMoneyFields.classList.remove('show');
+            cardFields.classList.remove('show');
+            paypalFields.classList.remove('show');
+            bankFields.classList.remove('show');
+
+            if (selectedPaymentMethod === 'mobile_money') mobileMoneyFields.classList.add('show');
+            else if (selectedPaymentMethod === 'card') cardFields.classList.add('show');
+            else if (selectedPaymentMethod === 'paypal') paypalFields.classList.add('show');
+            else if (selectedPaymentMethod === 'bank') bankFields.classList.add('show');
+
+            saveFormData();
+        });
+    });
+
+    // ========================================
+    // Payment Processing
+    // ========================================
+    function processPayment() {
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const country = document.getElementById('country').value;
+
+        if (!firstName || !lastName || !email || !country) {
+            showToast('Please complete all required fields in Basic Information first', true);
+            return;
+        }
+
+        payNowBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        payNowBtn.disabled = true;
+
+        setTimeout(() => {
+            paymentCompleted = true;
+            paymentStatus.style.display = 'block';
+            paymentStatus.className = 'payment-status paid';
+            paymentStatus.innerHTML = '<i class="fas fa-check-circle"></i> Payment Successful! You can now continue with your application.';
+            payNowBtn.innerHTML = '✓ Payment Complete';
+            payNowBtn.disabled = true;
+
+            unlockSections();
+            showToast('Payment successful! You can now complete your application.');
+
+            setTimeout(() => {
+                currentSection = 3;
+                updateFormDisplay();
+            }, 1500);
+        }, 2000);
+    }
+
+    payNowBtn.addEventListener('click', processPayment);
+
+    function unlockSections() {
+        const lockedInputs = document.querySelectorAll('.payment-locked input, .payment-locked select, .payment-locked textarea, .payment-locked button');
+        lockedInputs.forEach(input => { input.disabled = false; });
+
+        document.getElementById('agreeTerms').disabled = false;
+        document.getElementById('agreeSubmit').disabled = false;
+        document.getElementById('newsletter').disabled = false;
+
+        const step2 = document.querySelector('.step[data-step="2"]');
+        if (step2) step2.classList.add('payment-paid');
+    }
+
+    // ========================================
+    // Form Navigation
+    // ========================================
+    function updateFormDisplay() {
+        sections.forEach((section, index) => {
+            section.classList.toggle('active', index + 1 === currentSection);
+        });
+
+        steps.forEach((step, index) => {
+            step.classList.toggle('active', index + 1 === currentSection);
+            if (index + 1 < currentSection) step.classList.add('completed');
+        });
+
+        prevBtn.style.display = currentSection === 1 ? 'none' : 'inline-block';
+
+        if (currentSection === totalSections) {
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'inline-block';
+            generateReview();
+        } else {
+            nextBtn.style.display = 'inline-block';
+            submitBtn.style.display = 'none';
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateSection(sectionNum) {
+        if (sectionNum === 2) {
+            if (!paymentCompleted) {
+                showToast('Please complete the payment to continue', true);
+                return false;
+            }
+            return true;
+        }
+
+        const section = document.querySelector(`.form-section[data-section="${sectionNum}"]`);
+        const requiredInputs = section.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredInputs.forEach(input => {
+            if (!input.value.trim() && !input.disabled) {
+                input.classList.add('error');
+                isValid = false;
+            } else {
+                input.classList.remove('error');
+            }
+        });
+
+        if (!isValid) showToast('Please fill in all required fields', true);
+        return isValid;
+    }
+
+    function generateReview() {
+        const reviewContent = document.getElementById('reviewContent');
+        const firstName = document.getElementById('firstName')?.value || '';
+        const lastName = document.getElementById('lastName')?.value || '';
+        const email = document.getElementById('email')?.value || '';
+        const phone = document.getElementById('phone')?.value || '';
+        const country = document.getElementById('country')?.options[document.getElementById('country')?.selectedIndex]?.text || '';
+        const programme = document.getElementById('programme')?.options[document.getElementById('programme')?.selectedIndex]?.text || '';
+        const category = document.getElementById('programmeCategory')?.value || '';
+        const currentSchool = document.getElementById('currentSchool')?.value || '';
+        const gradYear = document.getElementById('gradYear')?.value || '';
+        const gpa = document.getElementById('gpa')?.value || '';
+
+        reviewContent.innerHTML = `
+            <div class="review-section">
+                <h3>Personal Information</h3>
+                <div class="review-item"><span class="review-label">Name:</span><span class="review-value">${firstName} ${lastName}</span></div>
+                <div class="review-item"><span class="review-label">Email:</span><span class="review-value">${email}</span></div>
+                <div class="review-item"><span class="review-label">Phone:</span><span class="review-value">${phone}</span></div>
+                <div class="review-item"><span class="review-label">Country:</span><span class="review-value">${country}</span></div>
+                <div class="review-item"><span class="review-label">Category:</span><span class="review-value">${category}</span></div>
+                <div class="review-item"><span class="review-label">Programme:</span><span class="review-value">${programme}</span></div>
+            </div>
+            <div class="review-section">
+                <h3>Academic &amp; Professional Background</h3>
+                <div class="review-item"><span class="review-label">Institution / Employer:</span><span class="review-value">${currentSchool || 'Not provided'}</span></div>
+                <div class="review-item"><span class="review-label">Year Completed:</span><span class="review-value">${gradYear || 'Not provided'}</span></div>
+                <div class="review-item"><span class="review-label">Result / GPA:</span><span class="review-value">${gpa || 'Not provided'}</span></div>
+            </div>
+            <div class="review-section">
+                <h3>Payment Information</h3>
+                <div class="review-item"><span class="review-label">Application Fee:</span><span class="review-value">${selectedResident === 'local' ? 'ZK250' : '$25 USD'}</span></div>
+                <div class="review-item"><span class="review-label">Payment Status:</span><span class="review-value"><span style="color: var(--success);">✓ Paid</span></span></div>
+            </div>
+        `;
+    }
+
+    function nextSection() {
+        if (validateSection(currentSection)) {
+            if (currentSection < totalSections) {
+                currentSection++;
+                updateFormDisplay();
+                saveFormData();
+            }
+        }
+    }
+
+    function prevSection() {
+        if (currentSection > 1) {
+            currentSection--;
+            updateFormDisplay();
+            saveFormData();
+        }
+    }
+
+    function submitForm(e) {
+        e.preventDefault();
+        const agreeTerms = document.getElementById('agreeTerms');
+        const agreeSubmit = document.getElementById('agreeSubmit');
+
+        if (!agreeTerms.checked || !agreeSubmit.checked) {
+            showToast('Please agree to the terms and conditions', true);
+            return;
+        }
+
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            showToast('Application submitted successfully! You will receive a confirmation email.');
+            localStorage.removeItem('nolanInstituteApplication');
+            setTimeout(() => {
+                window.location.href = 'thank-you.html';
+            }, 2000);
+        }, 2000);
+    }
+
+    // ========================================
+    // Save & Load
+    // ========================================
+    function saveFormData() {
+        const formData = {};
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            if (input.name && !input.disabled) {
+                if (input.type === 'checkbox') formData[input.name] = input.checked;
+                else formData[input.name] = input.value;
+            }
+        });
+        formData.currentSection = currentSection;
+        formData.paymentCompleted = paymentCompleted;
+        formData.selectedResident = selectedResident;
+        formData.selectedPaymentMethod = selectedPaymentMethod;
+        localStorage.setItem('nolanInstituteApplication', JSON.stringify(formData));
+    }
+
+    function loadFormData() {
+        const saved = localStorage.getItem('nolanInstituteApplication');
+        if (!saved) return;
+        const formData = JSON.parse(saved);
+
+        if (formData.paymentCompleted) {
+            paymentCompleted = true;
+            unlockSections();
+            paymentStatus.style.display = 'block';
+            paymentStatus.className = 'payment-status paid';
+            paymentStatus.innerHTML = '<i class="fas fa-check-circle"></i> Payment Successful. You can now complete your application.';
+            payNowBtn.innerHTML = '✓ Payment Complete';
+            payNowBtn.disabled = true;
+        }
+
+        if (formData.selectedResident) {
+            selectedResident = formData.selectedResident;
+            residentOptions.forEach(opt => {
+                if (opt.dataset.resident === selectedResident) opt.classList.add('selected');
+            });
+            updateFee();
+        }
+
+        // Restore field values
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            if (input.name && formData[input.name] !== undefined && !input.disabled) {
+                if (input.type === 'checkbox') input.checked = formData[input.name];
+                else input.value = formData[input.name];
+            }
+        });
+
+        if (formData.currentSection) {
+            currentSection = formData.currentSection;
+            updateFormDisplay();
+        }
+    }
+
+    // ========================================
+    // Activities
+    // ========================================
+    function addActivity() {
+        if (!paymentCompleted) return;
+        const container = document.getElementById('activitiesContainer');
+        const newId = activityCount;
+        const activityHtml = `
+            <div class="activity-item" data-activity-id="${newId}">
+                <div class="activity-header">
+                    <h4>Activity ${activityCount + 1}</h4>
+                    <button type="button" class="remove-activity" onclick="removeActivity(this)"><i class="fas fa-trash-alt"></i></button>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Activity Name</label>
+                        <input type="text" name="activityName${newId}" placeholder="e.g., Board Role, Community Initiative, Professional Association, Venture">
+                    </div>
+                    <div class="form-group">
+                        <label>Role / Position</label>
+                        <input type="text" name="activityRole${newId}" placeholder="e.g., Founder, Member, Director">
+                    </div>
+                    <div class="form-group">
+                        <label>Years Involved</label>
+                        <input type="text" name="activityYears${newId}" placeholder="e.g., 2020–Present">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Description</label>
+                        <textarea name="activityDesc${newId}" rows="2" placeholder="Describe your involvement and impact (50 words max)"></textarea>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', activityHtml);
+        activityCount++;
+    }
+
+    window.removeActivity = function(btn) {
+        const activityItem = btn.closest('.activity-item');
+        if (document.querySelectorAll('.activity-item').length > 1) {
+            activityItem.remove();
+        } else {
+            showToast('You must have at least one activity entry', true);
+        }
+    };
+
+    // ========================================
+    // Auto Save
+    // ========================================
+    function setupAutoSave() {
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (autoSaveTimer) clearTimeout(autoSaveTimer);
+                autoSaveTimer = setTimeout(() => {
+                    saveFormData();
+                    showAutoSave();
+                }, 1000);
+            });
+            input.addEventListener('change', () => {
+                if (autoSaveTimer) clearTimeout(autoSaveTimer);
+                autoSaveTimer = setTimeout(() => {
+                    saveFormData();
+                    showAutoSave();
+                }, 500);
+            });
+        });
+    }
+
+    // ========================================
+    // Event Listeners & Init
+    // ========================================
+    nextBtn.addEventListener('click', nextSection);
+    prevBtn.addEventListener('click', prevSection);
+    form.addEventListener('submit', submitForm);
+
+    steps.forEach(step => {
+        step.addEventListener('click', () => {
+            const stepNum = parseInt(step.dataset.step);
+            if (stepNum === 2 && !paymentCompleted) {
+                showToast('Please complete payment first', true);
+                return;
+            }
+            if (stepNum < currentSection) {
+                currentSection = stepNum;
+                updateFormDisplay();
+            } else if (stepNum > currentSection && validateSection(currentSection)) {
+                currentSection = stepNum;
+                updateFormDisplay();
+            }
+        });
+    });
+
+    // Initialize
+    loadFormData();
+    setupAutoSave();
+    updateFormDisplay();
+
+    // Default selections
+    residentOptions[0].classList.add('selected');
+    paymentMethods[0].classList.add('selected');
+    mobileMoneyFields.classList.add('show');
+
+    console.log('Nolan Institute Central Application loaded — Founding Cohort 2026 · Learn. Innovate. Lead.');
+</script>
+</body>
+</html>
