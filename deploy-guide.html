@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Deployment Guide | Nolan Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #F5F5F5; color: #1A1A1A; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: #0A1C3A; margin-bottom: 1rem; }
+        h1 { font-size: 48px; }
+        .guide-card { background: white; border-radius: 16px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        code { background: #F5F5F5; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 14px; }
+        pre { background: #1A1A1A; color: #F5F5F5; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+        .step-number { display: inline-block; width: 32px; height: 32px; background: #C5A028; color: #0A1C3A; border-radius: 50%; text-align: center; line-height: 32px; font-weight: bold; margin-right: 12px; }
+        .btn { display: inline-block; background: #0A1C3A; color: white; padding: 12px 28px; border-radius: 4px; text-decoration: none; margin-top: 16px; }
+        .btn:hover { background: #1A2D4D; }
+        .warning { background: #FFF3CD; border-left: 4px solid #FFC107; padding: 16px; margin: 16px 0; }
+        a { color: #0A1C3A; }
+        a:hover { color: #C5A028; }
+        ol { margin-left: 20px; }
+        ul { margin-left: 32px; }
+        .tagline { color: #C5A028; font-family: 'Playfair Display', serif; font-size: 14px; letter-spacing: 1px; margin-bottom: 8px; }
+        .brand-line { color: #666666; font-size: 14px; margin-bottom: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="tagline">Learn. Innovate. Lead.</p>
+    <h1>🚀 GitHub Pages Deployment Guide</h1>
+    <p class="brand-line">Step-by-step instructions to deploy the Nolan Institute website using GitHub Pages.</p>
+
+    <div class="guide-card">
+        <h2><span class="step-number">1</span> Prerequisites</h2>
+        <ul>
+            <li>A <a href="https://github.com" target="_blank">GitHub account</a></li>
+            <li>Git installed on your computer (<a href="https://git-scm.com/downloads" target="_blank">download here</a>)</li>
+            <li>The Nolan Institute website files (index.html, assets folder, etc.)</li>
+        </ul>
+    </div>
+
+    <div class="guide-card">
+        <h2><span class="step-number">2</span> Create a GitHub Repository</h2>
+        <ol>
+            <li>Log in to GitHub and click the <strong>+</strong> icon → <strong>New repository</strong></li>
+            <li>Repository name: <code>nolaninstitute</code></li>
+            <li>Description: "Nolan Institute of Global Business &amp; Technology website"</li>
+            <li>Set to <strong>Public</strong> (or Private with GitHub Pages paid plan)</li>
+            <li>Click <strong>Create repository</strong></li>
+        </ol>
+    </div>
+
+    <div class="guide-card">
+        <h2><span class="step-number">3</span> Upload Files via Command Line</h2>
+        <pre># Clone the repository
+git clone https://github.com/yourusername/nolaninstitute.git
+
+# Navigate into the folder
+cd nolaninstitute
+
+# Copy all your website files into this folder
+
+# Add all files
+git add .
+
+# Commit the files
+git commit -m "Initial commit: Nolan Institute website"
+
+# Push to GitHub
+git push origin main</pre>
+    </div>
+
+    <div class="guide-card">
+        <h2><span class="step-number">4</span> Upload Files via GitHub Website (Alternative)</h2>
+        <ol>
+            <li>In your repository, click <strong>Add file</strong> → <strong>Upload files</strong></li>
+            <li>Drag and drop all your website files and folders</li>
+            <li>Add a commit message like "Initial website upload"</li>
+            <li>Click <strong>Commit changes</strong></li>
+        </ol>
+    </div>
+
+    <div class="guide-card">
+        <h2><span class="step-number">5</span> Enable GitHub Pages</h2>
+        <ol>
+            <li>Go to your repository on GitHub</li>
+            <li>Click <strong>Settings</strong> (tab)</li>
+            <li>In the left sidebar, click <strong>Pages</strong></li>
+            <li>Under "Branch", select <strong>main</strong> and <strong>/(root)</strong></li>
+            <li>Click <strong>Save</strong></li>
+        </ol>
+        <div class="warning">
+            <strong>⏳ Wait a moment:</strong> Your site will be published at <code>https://yourusername.github.io/nolaninstitute</code> within 1-2 minutes.
+        </div>
+    </div>
+
+    <div class="guide-card">
+        <h2><span class="step-number">6</span> Custom Domain (Optional)</h2>
+        <p>To use a custom domain like <code>nolaninstitute.org</code> or <code>institute.nolanuniversity.org</code>:</p>
+        <ol>
+            <li>In your repository, create a file named <code>CNAME</code> (no extension)</li>
+            <li>Inside the file, write your custom domain: <code>nolaninstitute.org</code></li>
+            <li>In your domain registrar's DNS settings, add a <strong>CNAME record</strong> pointing to <code>yourusername.github.io</code></li>
+            <li>Wait for DNS propagation (can take up to 48 hours)</li>
+        </ol>
+    </div>
+
+    <div class="guide-card">
+        <h2><span class="step-number">7</span> Troubleshooting</h2>
+        <ul>
+            <li><strong>404 Error:</strong> Make sure your main file is named <code>index.html</code> (not <code>Index.html</code> or other)</li>
+            <li><strong>Images not loading:</strong> Check that image paths are correct (use relative paths like <code>assets/images/</code>)</li>
+            <li><strong>CSS not applying:</strong> Verify the link to <code>style.css</code> is correct</li>
+            <li><strong>Site not updating:</strong> Clear your browser cache or wait a few minutes</li>
+        </ul>
+    </div>
+
+    <div class="guide-card">
+        <h2>📁 Recommended File Structure for GitHub</h2>
+        <pre>nolaninstitute/
+├── index.html
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── images/
+│       └── (your 5 images)
+├── schools/
+│   ├── finance-investment/
+│   ├── entrepreneurship/
+│   ├── technology-ai/
+│   ├── global-business-leadership/
+│   └── executive-education/
+├── programmes/
+├── admissions/
+│   ├── professional.html
+│   ├── executive.html
+│   ├── corporate.html
+│   └── apply.html
+├── faculty/
+├── contact/
+├── news-events/
+├── partners/
+├── analytics/
+├── github-pages/
+├── 404.html
+├── robots.txt
+├── sitemap.xml
+└── CNAME (optional)</pre>
+    </div>
+
+    <div class="guide-card">
+        <h2>🔗 Useful Links</h2>
+        <ul>
+            <li><a href="https://pages.github.com/" target="_blank">GitHub Pages Official Documentation</a></li>
+            <li><a href="https://docs.github.com/en/pages" target="_blank">GitHub Pages Help</a></li>
+            <li><a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-to-set-up-a-cname-record-for-github-pages/" target="_blank">Setting up CNAME for GitHub Pages</a></li>
+        </ul>
+    </div>
+
+    <a href="../index.html" class="btn">← Back to Website</a>
+</div>
+
+</body>
+</html>
