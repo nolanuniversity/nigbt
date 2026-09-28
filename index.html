@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Nolan Institute of Global Business & Technology — Professional education designed for today's careers.">
 <title>Nolan Institute | Build the Skills. Advance Your Career.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +13,6 @@
   --navy:#0A1C3A;--navy-light:#1A2D4D;--navy-dark:#05122A;
   --gold:#C5A028;--gold-light:#D4B84A;--gold-dark:#A07F1F;--gold-10:rgba(197,160,40,0.1);
   --white:#fff;--off-white:#FAFAF8;--gray-light:#F5F5F5;--gray-mid:#E0E0E0;--gray-dark:#666;--gray-darker:#333;
-  --success:#28A745;--error:#DC3545;--warning:#FFC107;
   --shadow-sm:0 2px 8px rgba(0,0,0,.05);--shadow-md:0 4px 12px rgba(0,0,0,.08);
   --shadow-lg:0 12px 32px rgba(0,0,0,.12);--shadow-xl:0 24px 48px rgba(10,28,58,.18);
   --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
@@ -28,7 +26,6 @@ ul{list-style:none}img{max-width:100%;height:auto}
 button{font-family:inherit;cursor:pointer}
 .container{max-width:1240px;margin:0 auto;padding:0 24px}
 
-/* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;font-weight:600;font-size:14.5px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:var(--transition);text-align:center;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--gold);color:var(--navy-dark);border-color:var(--gold)}
@@ -43,7 +40,6 @@ button{font-family:inherit;cursor:pointer}
 .btn-lg{padding:15px 34px;font-size:15.5px}
 .btn-block{display:flex;width:100%}
 
-/* TOP BAR */
 .top-bar{background:var(--navy-dark);color:#cbd5e1;font-size:12.5px;padding:8px 0}
 .top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .top-bar-left{display:flex;gap:24px;flex-wrap:wrap}
@@ -53,7 +49,6 @@ button{font-family:inherit;cursor:pointer}
 .top-bar-right a{color:#cbd5e1;display:inline-flex;align-items:center;gap:6px}
 .top-bar-right a:hover{color:var(--gold)}
 
-/* HEADER */
 .main-header{background:#fff;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:1000;transition:var(--transition)}
 .main-header.scrolled{box-shadow:var(--shadow-md)}
 .main-header .container{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;gap:20px}
@@ -69,7 +64,6 @@ button{font-family:inherit;cursor:pointer}
 .icon-btn{width:42px;height:42px;border-radius:10px;border:1px solid var(--gray-mid);background:#fff;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:15px;transition:var(--transition)}
 .icon-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);transform:translateY(-2px)}
 .mobile-menu-btn{display:none;background:none;border:none;font-size:22px;color:var(--navy);padding:6px}
-
 .mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-mid);max-height:0;overflow:hidden;transition:max-height .4s ease}
 .mobile-nav.show{max-height:500px}
 .mobile-nav ul{padding:20px 24px}
@@ -77,27 +71,25 @@ button{font-family:inherit;cursor:pointer}
 .mobile-nav ul li a{display:block;font-size:15px;font-weight:500;color:var(--navy)}
 .mobile-nav ul li a:hover{color:var(--gold)}
 
-/* HERO */
 .hero{position:relative;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-light) 100%);color:#fff;padding:90px 0 80px;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpattern id='p' x='0' y='0' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpolyline points='10,50 30,20 50,50' fill='none' stroke='%23C5A028' stroke-width='0.8' opacity='0.15'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%23C5A028' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");opacity:.6}
 .hero .container{position:relative;z-index:2}
-.hero-inner{max-width:850px}
+.hero-inner{max-width:900px}
 .hero-badge{display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);color:var(--gold-light);padding:8px 18px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:26px}
 .hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);color:#fff;margin-bottom:20px;letter-spacing:-.5px}
 .hero h1 .gold{color:var(--gold)}
-.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.85);margin-bottom:28px;max-width:640px;line-height:1.65}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.85);margin-bottom:28px;max-width:680px;line-height:1.65}
 .hero-formats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
 .format-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 18px;border-radius:50px;font-size:12.5px;color:rgba(255,255,255,.92);font-weight:600;cursor:pointer;transition:var(--transition)}
 .format-pill:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);transform:translateY(-2px)}
 .format-pill.active{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
 .hero-subjects{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;margin-bottom:32px}
 .hero-subjects-label{font-size:11.5px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
-.hero-subjects-list{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:rgba(255,255,255,.85)}
+.hero-subjects-list{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:rgba(255,255,255,.85)}
 .hero-subjects-list span{position:relative;padding-right:14px}
 .hero-subjects-list span:not(:last-child)::after{content:'|';position:absolute;right:0;color:rgba(197,160,40,.6)}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 
-/* SECTIONS */
 .section{padding:80px 0}
 .section-alt{background:var(--off-white)}
 .section-navy{background:var(--navy);color:#fff}
@@ -108,7 +100,6 @@ button{font-family:inherit;cursor:pointer}
 .section-head p{font-size:15.5px;color:var(--gray-dark);line-height:1.7}
 .section-navy .section-head p{color:rgba(255,255,255,.78)}
 
-/* PATH CARDS */
 .paths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .path-card{background:#fff;border:2px solid var(--gray-mid);border-radius:var(--radius);padding:28px 24px;cursor:pointer;text-align:left;transition:var(--transition);position:relative;overflow:hidden}
 .path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:var(--transition)}
@@ -120,18 +111,15 @@ button{font-family:inherit;cursor:pointer}
 .path-card p{font-size:13.5px;color:var(--gray-dark);line-height:1.6;margin-bottom:14px}
 .path-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--gold-dark);letter-spacing:.5px;text-transform:uppercase}
 
-/* SUBJECT CARDS */
-.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-.subject-card{background:#fff;border:1px solid var(--gray-mid);border-radius:var(--radius);padding:24px 22px;transition:var(--transition);display:flex;flex-direction:column;height:100%;cursor:pointer;text-align:left}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.subject-card{background:#fff;border:1px solid var(--gray-mid);border-radius:var(--radius);padding:22px 20px;transition:var(--transition);display:flex;flex-direction:column;height:100%;cursor:pointer;text-align:left}
 .subject-card:hover,.subject-card.active{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--gold);background:var(--off-white)}
-.subject-icon{width:42px;height:42px;background:var(--navy);color:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:16px;transition:var(--transition)}
+.subject-icon{width:40px;height:40px;background:var(--navy);color:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;transition:var(--transition)}
 .subject-card:hover .subject-icon,.subject-card.active .subject-icon{background:var(--gold);color:var(--navy-dark)}
-.subject-card h3{font-size:15.5px;font-family:'Inter',sans-serif;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.35}
-.subject-card p{font-size:13px;color:var(--gray-dark);line-height:1.55;flex:1;margin-bottom:14px}
-.subject-link{font-size:12.5px;font-weight:700;color:var(--gold-dark);display:inline-flex;align-items:center;gap:6px;letter-spacing:.3px}
-.subject-card:hover .subject-link{gap:11px}
+.subject-card h3{font-size:14.5px;font-family:'Inter',sans-serif;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.35}
+.subject-card p{font-size:12.5px;color:var(--gray-dark);line-height:1.55;flex:1;margin-bottom:12px}
+.subject-count{font-size:11px;font-weight:700;color:var(--gold-dark);letter-spacing:.5px;text-transform:uppercase}
 
-/* CATALOGUE */
 .catalogue-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold-10);border:1px solid rgba(197,160,40,.3);border-radius:12px;padding:14px 20px;margin-bottom:26px;flex-wrap:wrap;animation:slideDown .3s ease}
 @keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 .catalogue-bar-label{font-size:13.5px;color:var(--navy);font-weight:600}
@@ -139,12 +127,12 @@ button{font-family:inherit;cursor:pointer}
 .clear-filter{background:transparent;border:1px solid var(--navy);color:var(--navy);padding:7px 16px;border-radius:50px;font-size:12.5px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px}
 .clear-filter:hover{background:var(--navy);color:#fff}
 
-.featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
 .prog-card{background:#fff;border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;cursor:pointer;position:relative;text-align:left}
 .prog-card:hover,.prog-card:focus{transform:translateY(-6px);box-shadow:var(--shadow-xl);border-color:var(--gold);outline:none}
 .prog-top{padding:20px 22px 16px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff}
 .prog-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);padding:3px 11px;border-radius:50px;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
-.prog-top h3{font-size:18px;color:#fff;margin-bottom:8px;line-height:1.3}
+.prog-top h3{font-size:17px;color:#fff;margin-bottom:8px;line-height:1.3}
 .prog-meta{display:flex;gap:12px;font-size:12px;color:rgba(255,255,255,.78);flex-wrap:wrap}
 .prog-meta span{display:inline-flex;align-items:center;gap:5px}
 .prog-meta i{color:var(--gold)}
@@ -163,10 +151,8 @@ button{font-family:inherit;cursor:pointer}
 .empty-state i{font-size:36px;color:var(--gray-mid);margin-bottom:14px;display:block}
 .empty-state h4{font-family:'Inter',sans-serif;font-size:16px;color:var(--navy);margin-bottom:8px}
 .empty-state p{font-size:13.5px;color:var(--gray-dark)}
-
 .center-cta{text-align:center;margin-top:44px}
 
-/* FORMATS */
 .formats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
 .format-card{background:#fff;border-radius:var(--radius);padding:28px 22px;text-align:center;transition:var(--transition);border:1px solid var(--gray-mid);display:flex;flex-direction:column}
 .format-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
@@ -177,8 +163,8 @@ button{font-family:inherit;cursor:pointer}
 .format-award strong{color:var(--navy);display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
 .format-price{font-family:'Playfair Display',serif;font-size:21px;font-weight:800;color:var(--navy);margin-bottom:16px}
 .format-price small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:var(--gray-dark);text-transform:uppercase;letter-spacing:1px}
+.format-count{font-size:11px;color:var(--gray-dark);text-align:center;margin-bottom:10px;font-weight:600}
 
-/* WHY NOLAN */
 .why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
 .why-card{background:rgba(255,255,255,.05);border:1px solid rgba(197,160,40,.25);border-radius:var(--radius);padding:28px 24px;transition:var(--transition)}
 .why-card:hover{background:rgba(197,160,40,.08);border-color:var(--gold);transform:translateY(-4px)}
@@ -186,7 +172,6 @@ button{font-family:inherit;cursor:pointer}
 .why-card h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:.5px}
 .why-card p{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.65}
 
-/* WHAT YOU LEAVE WITH */
 .leave-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
 .leave-card{background:#fff;border-radius:var(--radius);padding:28px 22px;text-align:center;border:1px solid var(--gray-mid);transition:var(--transition);position:relative;overflow:hidden}
 .leave-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:36px;height:3px;background:var(--gold);border-radius:3px 3px 0 0;transition:var(--transition)}
@@ -196,7 +181,6 @@ button{font-family:inherit;cursor:pointer}
 .leave-card h3{font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
 .leave-card p{font-size:13px;color:var(--gray-dark);line-height:1.6}
 
-/* CAREER */
 .career-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-bottom:32px}
 .career-card{background:#fff;border-left:4px solid var(--gold);border-radius:var(--radius-sm);padding:24px 22px;box-shadow:var(--shadow-sm);transition:var(--transition)}
 .career-card:hover{transform:translateX(6px);box-shadow:var(--shadow-md)}
@@ -206,7 +190,6 @@ button{font-family:inherit;cursor:pointer}
 .career-disclaimer{background:var(--gray-light);border-radius:var(--radius-sm);padding:20px 24px;font-size:13px;color:var(--gray-dark);line-height:1.65;border-left:3px solid var(--navy)}
 .career-disclaimer strong{color:var(--navy)}
 
-/* FINDER */
 .finder-card{background:#fff;border-radius:var(--radius);padding:36px;box-shadow:var(--shadow-lg);border:1px solid var(--gray-mid)}
 .finder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-bottom:22px}
 .finder-field label{display:block;font-size:11.5px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
@@ -228,7 +211,6 @@ button{font-family:inherit;cursor:pointer}
 .finder-empty{text-align:center;padding:30px 20px;color:var(--gray-dark);font-size:13.5px;grid-column:1/-1}
 .finder-empty i{font-size:24px;color:var(--gray-mid);margin-bottom:10px;display:block}
 
-/* HOW TO APPLY */
 .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
 .step-card{background:#fff;border-radius:var(--radius);padding:34px 26px;text-align:center;border:1px solid var(--gray-mid);transition:var(--transition)}
 .step-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
@@ -236,7 +218,6 @@ button{font-family:inherit;cursor:pointer}
 .step-card h3{font-family:'Inter',sans-serif;font-size:15.5px;font-weight:800;color:var(--navy);margin-bottom:10px}
 .step-card p{font-size:13.5px;color:var(--gray-dark);line-height:1.6}
 
-/* PAYMENT */
 .payment-inner{background:#fff;border-radius:var(--radius);padding:40px 36px;box-shadow:var(--shadow-md);border:1px solid var(--gray-mid)}
 .payment-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-bottom:26px}
 .pay-option{background:var(--off-white);border-radius:var(--radius-sm);padding:24px 22px;border:1px solid var(--gray-mid)}
@@ -247,7 +228,6 @@ button{font-family:inherit;cursor:pointer}
 .pay-method{background:var(--gray-light);padding:8px 16px;border-radius:50px;font-size:12px;font-weight:600;color:var(--navy);display:inline-flex;align-items:center;gap:8px}
 .pay-method i{color:var(--gold-dark)}
 
-/* FINAL CTA */
 .final-cta{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,var(--navy-light) 100%);color:#fff;text-align:center;padding:90px 0;position:relative;overflow:hidden}
 .final-cta::before{content:'';position:absolute;top:-50%;left:-20%;width:700px;height:700px;background:radial-gradient(circle,rgba(197,160,40,.15) 0%,rgba(197,160,40,0) 70%);border-radius:50%}
 .final-cta .container{position:relative;z-index:2}
@@ -258,7 +238,6 @@ button{font-family:inherit;cursor:pointer}
 .final-tagline{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);letter-spacing:2px;margin-top:32px}
 .final-tagline small{display:block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.5);margin-top:6px}
 
-/* FOOTER */
 .footer{background:var(--navy-dark);color:#94a3b8;padding:60px 0 24px;font-size:13px}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:44px}
 .footer-brand .brand-name{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:700;margin-bottom:6px}
@@ -276,7 +255,6 @@ button{font-family:inherit;cursor:pointer}
 .footer-bottom a{color:#64748b}
 .footer-bottom a:hover{color:var(--gold)}
 
-/* MODALS */
 .modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px)}
 .modal-overlay.show{display:flex;animation:fadeIn .2s ease}
 .modal-card{background:#fff;border-radius:20px;max-width:720px;width:100%;padding:40px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl)}
@@ -285,7 +263,6 @@ button{font-family:inherit;cursor:pointer}
 .modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:var(--gray-light);color:var(--navy);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:2}
 .modal-close:hover{background:var(--gold);color:var(--navy-dark);transform:rotate(90deg)}
 
-/* Programme detail modal */
 .pm-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);padding:4px 14px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
 .pm-title{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:10px;line-height:1.25;padding-right:40px}
 .pm-subject{font-size:13px;color:var(--gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px}
@@ -306,7 +283,6 @@ button{font-family:inherit;cursor:pointer}
 .pm-award div .value{font-size:14.5px;font-weight:600}
 .pm-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 
-/* Search modal */
 .search-top{padding:22px 24px;border-bottom:1px solid var(--gray-mid);display:flex;align-items:center;gap:12px;background:var(--off-white)}
 .search-top i{color:var(--gold-dark);font-size:18px}
 .search-top input{flex:1;border:none;background:transparent;font-size:16px;outline:none;color:var(--navy);font-family:inherit;font-weight:500}
@@ -322,13 +298,14 @@ button{font-family:inherit;cursor:pointer}
 .search-result-arrow{color:var(--gold-dark);font-size:14px;flex-shrink:0}
 .search-empty{padding:40px 24px;text-align:center;color:var(--gray-dark);font-size:13.5px}
 .search-empty i{font-size:28px;color:var(--gray-mid);display:block;margin-bottom:12px}
+.search-tags{display:flex;flex-wrap:wrap;gap:6px;padding:12px 24px;background:var(--off-white);border-top:1px solid var(--gray-mid)}
+.search-tag{background:#fff;border:1px solid var(--gray-mid);padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;color:var(--navy);cursor:pointer;transition:var(--transition)}
+.search-tag:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
 
-/* TOAST */
 .toast{position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13.5px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:340px;box-shadow:var(--shadow-lg)}
 .toast.show{transform:translateY(0);opacity:1}
 .toast i{color:var(--gold);font-size:15px}
 
-/* RESPONSIVE */
 @media(max-width:992px){
   .main-nav{display:none}
   .mobile-menu-btn{display:block}
@@ -354,7 +331,6 @@ button{font-family:inherit;cursor:pointer}
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="top-bar">
   <div class="container">
     <div class="top-bar-left">
@@ -369,7 +345,6 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
-<!-- HEADER -->
 <header class="main-header" id="mainHeader">
   <div class="container">
     <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
@@ -425,10 +400,11 @@ button{font-family:inherit;cursor:pointer}
       <div class="hero-subjects">
         <span class="hero-subjects-label">Learn practical skills in</span>
         <div class="hero-subjects-list">
-          <span>Accounting &amp; Finance</span><span>Banking</span><span>Investment</span>
-          <span>Financial Modelling</span><span>Business</span><span>Projects</span>
-          <span>Data</span><span>AI</span><span>Digital Transformation</span>
-          <span>Entrepreneurship</span><span>Leadership</span>
+          <span>Accounting &amp; Finance</span><span>Banking &amp; Financial Services</span><span>Investment &amp; Capital Markets</span>
+          <span>Financial Modelling</span><span>Business Management</span><span>Project Management</span>
+          <span>Data Analytics</span><span>Artificial Intelligence</span><span>Digital Transformation</span>
+          <span>Entrepreneurship</span><span>Leadership</span><span>Corporate Finance</span>
+          <span>Business Intelligence</span><span>AI for Business</span><span>Risk Management</span>
         </div>
       </div>
 
@@ -488,81 +464,14 @@ button{font-family:inherit;cursor:pointer}
   <div class="container">
     <div class="section-head">
       <span class="section-tag">Explore by Subject</span>
-      <h2>Eleven Subjects. One Institution.</h2>
-      <p>Click a subject to filter the catalogue instantly.</p>
+      <h2>Fifteen Subjects. One Institution.</h2>
+      <p>Click any subject to instantly filter the catalogue and see all its programmes.</p>
     </div>
-    <div class="subjects-grid" id="subjectsGrid">
-      <button class="subject-card" data-subject="Accounting & Finance">
-        <div class="subject-icon"><i class="fas fa-calculator"></i></div>
-        <h3>Accounting &amp; Finance</h3>
-        <p>Build financial knowledge and decision-making capability.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Banking & Financial Services">
-        <div class="subject-icon"><i class="fas fa-building-columns"></i></div>
-        <h3>Banking &amp; Financial Services</h3>
-        <p>Understand modern banking, financial services and risk.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Investment & Capital Markets">
-        <div class="subject-icon"><i class="fas fa-chart-pie"></i></div>
-        <h3>Investment &amp; Capital Markets</h3>
-        <p>Develop investment and capital markets knowledge.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Financial Modelling">
-        <div class="subject-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-        <h3>Financial Modelling</h3>
-        <p>Build models that support financial analysis and decisions.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Business Management">
-        <div class="subject-icon"><i class="fas fa-briefcase"></i></div>
-        <h3>Business Management</h3>
-        <p>Develop the capability to manage and grow organisations.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Project Management">
-        <div class="subject-icon"><i class="fas fa-diagram-project"></i></div>
-        <h3>Project Management</h3>
-        <p>Learn to plan, manage and deliver projects.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Data Analytics">
-        <div class="subject-icon"><i class="fas fa-chart-bar"></i></div>
-        <h3>Data Analytics</h3>
-        <p>Turn data into meaningful business insight.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Artificial Intelligence">
-        <div class="subject-icon"><i class="fas fa-robot"></i></div>
-        <h3>Artificial Intelligence</h3>
-        <p>Develop practical AI skills for the modern workplace.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Digital Transformation">
-        <div class="subject-icon"><i class="fas fa-arrows-spin"></i></div>
-        <h3>Digital Transformation</h3>
-        <p>Understand technology-driven organisational change.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Entrepreneurship">
-        <div class="subject-icon"><i class="fas fa-rocket"></i></div>
-        <h3>Entrepreneurship</h3>
-        <p>Turn opportunities and ideas into viable ventures.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-      <button class="subject-card" data-subject="Leadership">
-        <div class="subject-icon"><i class="fas fa-users"></i></div>
-        <h3>Leadership</h3>
-        <p>Develop the capability to lead people and organisations.</p>
-        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
-      </button>
-    </div>
+    <div class="subjects-grid" id="subjectsGrid"></div>
   </div>
 </section>
 
-<!-- CATALOGUE (dynamic) -->
+<!-- CATALOGUE -->
 <section class="section" id="catalogue">
   <div class="container">
     <div class="section-head">
@@ -590,7 +499,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="section-head">
       <span class="section-tag">Choose How You Want to Learn</span>
       <h2>Five Learning Formats</h2>
-      <p>Click any format to instantly filter the catalogue.</p>
+      <p>Click any format to instantly show every programme offered in that format.</p>
     </div>
 
     <div class="formats-grid">
@@ -600,6 +509,7 @@ button{font-family:inherit;cursor:pointer}
         <p class="format-desc">Learn a focused practical skill you can apply right away.</p>
         <div class="format-award"><strong>Certificate</strong>Certificate of Completion</div>
         <div class="format-price">From K4,500<small>Investment</small></div>
+        <div class="format-count" id="count-short"></div>
         <button class="btn btn-outline btn-block" data-format="Short Course">Explore Short Courses <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="format-card">
@@ -608,6 +518,7 @@ button{font-family:inherit;cursor:pointer}
         <p class="format-desc">Build structured knowledge and demonstrate your professional development.</p>
         <div class="format-award"><strong>Award</strong>Professional Certificate</div>
         <div class="format-price">From K8,500<small>Investment</small></div>
+        <div class="format-count" id="count-cert"></div>
         <button class="btn btn-outline btn-block" data-format="Certificate">Explore Certificates <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="format-card">
@@ -616,6 +527,7 @@ button{font-family:inherit;cursor:pointer}
         <p class="format-desc">Develop deeper professional capability and substantial expertise.</p>
         <div class="format-award"><strong>Award</strong>Professional Programme Certificate</div>
         <div class="format-price">From K12,500<small>Investment</small></div>
+        <div class="format-count" id="count-prof"></div>
         <button class="btn btn-outline btn-block" data-format="Professional Programme">Explore Professional Programmes <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="format-card">
@@ -624,6 +536,7 @@ button{font-family:inherit;cursor:pointer}
         <p class="format-desc">Intensive. Practical. Application-focused. Learn by doing.</p>
         <div class="format-award"><strong>Award</strong>Bootcamp Certificate of Completion</div>
         <div class="format-price">From K5,500<small>Investment</small></div>
+        <div class="format-count" id="count-boot"></div>
         <button class="btn btn-outline btn-block" data-format="Bootcamp">Explore Bootcamps <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="format-card">
@@ -632,6 +545,7 @@ button{font-family:inherit;cursor:pointer}
         <p class="format-desc">Develop higher-level professional expertise and leadership capability.</p>
         <div class="format-award"><strong>Award</strong>Advanced Professional Certificate</div>
         <div class="format-price">From K22,500<small>Investment</small></div>
+        <div class="format-count" id="count-adv"></div>
         <button class="btn btn-outline btn-block" data-format="Advanced Programme">Explore Advanced Programmes <i class="fas fa-arrow-right"></i></button>
       </div>
     </div>
@@ -686,10 +600,10 @@ button{font-family:inherit;cursor:pointer}
     <div class="career-grid">
       <div class="career-card"><h3>Finance</h3><ul><li>Financial Analyst</li><li>Finance Officer</li><li>Financial Planning roles</li><li>Corporate Finance roles</li></ul></div>
       <div class="career-card"><h3>Investment</h3><ul><li>Investment Analyst</li><li>Research roles</li><li>Corporate Finance</li><li>Investment-related roles</li></ul></div>
-      <div class="career-card"><h3>Data</h3><ul><li>Data Analyst</li><li>Business Intelligence roles</li><li>Reporting &amp; Analytics roles</li></ul></div>
-      <div class="career-card"><h3>Technology</h3><ul><li>AI-enabled business roles</li><li>Digital Transformation roles</li><li>Technology-related business functions</li></ul></div>
+      <div class="career-card"><h3>Data &amp; BI</h3><ul><li>Data Analyst</li><li>Business Intelligence roles</li><li>Reporting &amp; Analytics roles</li></ul></div>
+      <div class="career-card"><h3>Technology &amp; AI</h3><ul><li>AI-enabled business roles</li><li>Digital Transformation roles</li><li>Technology-related business functions</li></ul></div>
       <div class="career-card"><h3>Business</h3><ul><li>Business Analyst</li><li>Operations roles</li><li>Management roles</li><li>Entrepreneurship</li></ul></div>
-      <div class="career-card"><h3>Leadership</h3><ul><li>Team leadership</li><li>Management</li><li>Business leadership</li><li>Organisational development</li></ul></div>
+      <div class="career-card"><h3>Risk &amp; Leadership</h3><ul><li>Risk management roles</li><li>Team leadership</li><li>Management</li><li>Organisational development</li></ul></div>
     </div>
     <div class="career-disclaimer"><strong>Important:</strong> Nolan Institute develops professional capabilities. Employment outcomes depend on individual qualifications, experience, performance and employer requirements.</div>
   </div>
@@ -710,17 +624,6 @@ button{font-family:inherit;cursor:pointer}
           <label>I'm interested in</label>
           <select id="finderSubject">
             <option value="">All Subjects</option>
-            <option>Accounting &amp; Finance</option>
-            <option>Banking &amp; Financial Services</option>
-            <option>Investment &amp; Capital Markets</option>
-            <option>Financial Modelling</option>
-            <option>Business Management</option>
-            <option>Project Management</option>
-            <option>Data Analytics</option>
-            <option>Artificial Intelligence</option>
-            <option>Digital Transformation</option>
-            <option>Entrepreneurship</option>
-            <option>Leadership</option>
           </select>
         </div>
         <div class="finder-field">
@@ -902,6 +805,7 @@ button{font-family:inherit;cursor:pointer}
     </div>
     <div class="search-hint" id="searchHint">Type to search — try <strong>"finance"</strong>, <strong>"AI"</strong>, or <strong>"bootcamp"</strong>.</div>
     <div class="search-results" id="searchResults"></div>
+    <div class="search-tags" id="searchTags"></div>
   </div>
 </div>
 
@@ -910,217 +814,419 @@ button{font-family:inherit;cursor:pointer}
 
 <script>
 /* =========================================================
-   PROGRAMME DATA — the single source of truth
+   15 SUBJECTS — each with programmes across all 5 formats
    ========================================================= */
-const PROGRAMMES = [
-  // ── Accounting & Finance ──
-  {id:'af1',name:'Corporate Finance Essentials',subject:'Accounting & Finance',format:'Short Course',weeks:10,price:4500,featured:true,
-   description:'Build working knowledge of corporate finance — valuation, capital structure and financial decision-making for real business contexts.',
-   learn:['Financial statement analysis','Time value of money','Capital budgeting basics','Cost of capital','Financing decisions'],
-   audience:'Professionals, managers and business owners who need a practical foundation in corporate finance.'},
-  {id:'af2',name:'Financial Literacy Programme',subject:'Accounting & Finance',format:'Short Course',weeks:8,price:4500,
-   description:'Build personal and business financial literacy — from reading statements to making informed financial decisions.',
-   learn:['Reading financial statements','Budgeting & cashflow','Understanding debt & credit','Basic investing concepts','Financial planning'],
-   audience:'Individuals and professionals seeking a solid foundation in personal and business finance.'},
-  {id:'af3',name:'Certificate in Accounting & Finance',subject:'Accounting & Finance',format:'Certificate',weeks:16,price:8500,featured:true,
-   description:'Structured professional certificate covering accounting principles, financial reporting and financial analysis.',
-   learn:['Financial accounting','Management accounting','Financial reporting','Ratio analysis','Financial planning & control'],
-   audience:'Aspiring accountants, finance officers and professionals moving into financial roles.'},
-  {id:'af4',name:'Advanced Accounting & Reporting',subject:'Accounting & Finance',format:'Advanced Programme',weeks:28,price:22500,
-   description:'Develop advanced capability in financial reporting, consolidation and strategic financial management.',
-   learn:['Advanced financial reporting','Group accounts & consolidation','IFRS frameworks','Strategic financial management','Audit & assurance'],
-   audience:'Senior finance professionals, controllers and managers pursuing advanced expertise.'},
-  {id:'af5',name:'Finance Fundamentals Bootcamp',subject:'Accounting & Finance',format:'Bootcamp',weeks:5,price:5500,
-   description:'Intensive, hands-on introduction to finance fundamentals — learn by doing in a short, focused sprint.',
-   learn:['Financial statement basics','Budgeting & forecasting','Cashflow modelling','Financial decision frameworks','Practical exercises'],
-   audience:'Career changers and professionals needing rapid, practical finance skills.'},
-
-  // ── Banking & Financial Services ──
-  {id:'bk1',name:'Banking Operations Short Course',subject:'Banking & Financial Services',format:'Short Course',weeks:10,price:4500,
-   description:'Understand modern banking operations — from retail and commercial banking to payments and compliance.',
-   learn:['Retail & commercial banking','Payments & settlement systems','Compliance basics','Customer operations','Banking products'],
-   audience:'Bank staff, operations professionals and those entering banking.'},
-  {id:'bk2',name:'Certificate in Banking & Financial Services',subject:'Banking & Financial Services',format:'Certificate',weeks:16,price:8500,
-   description:'Structured professional certificate covering banking, financial services, risk and regulation.',
-   learn:['Banking models & services','Financial services landscape','Credit & lending fundamentals','Risk in banking','Regulatory environment'],
-   audience:'Banking professionals and those seeking a career in financial services.'},
-  {id:'bk3',name:'Risk Management in Banking',subject:'Banking & Financial Services',format:'Professional Programme',weeks:24,price:12500,
-   description:'Develop professional capability in banking risk — credit, market, operational and regulatory risk.',
-   learn:['Credit risk assessment','Market risk fundamentals','Operational risk','Basel & regulatory frameworks','Risk governance'],
-   audience:'Banking professionals moving into risk, compliance or treasury roles.'},
-
-  // ── Investment & Capital Markets ──
-  {id:'iv1',name:'Investment & Capital Markets',subject:'Investment & Capital Markets',format:'Professional Programme',weeks:24,price:12500,featured:true,
-   description:'Develop deeper expertise in investment analysis, valuation, capital markets and financial decision-making.',
-   learn:['Investment analysis','Asset valuation','Equity & fixed income','Portfolio construction','Capital market structures','Investment decision-making'],
-   audience:'Finance professionals, analysts and investors seeking professional-level investment capability.'},
-  {id:'iv2',name:'Investment Analysis Certificate',subject:'Investment & Capital Markets',format:'Certificate',weeks:16,price:8500,
-   description:'Structured certificate covering investment analysis, valuation methods and market fundamentals.',
-   learn:['Fundamental analysis','Valuation techniques','Equity research basics','Fixed income basics','Investment reporting'],
-   audience:'Analysts, finance professionals and investors building structured investment knowledge.'},
-  {id:'iv3',name:'Portfolio Management Short Course',subject:'Investment & Capital Markets',format:'Short Course',weeks:10,price:4500,
-   description:'Learn the principles of portfolio construction, diversification and performance measurement.',
-   learn:['Portfolio theory basics','Diversification','Risk & return','Performance measurement','Asset allocation'],
-   audience:'Investors, analysts and finance professionals managing or advising on portfolios.'},
-  {id:'iv4',name:'Advanced Capital Markets Programme',subject:'Investment & Capital Markets',format:'Advanced Programme',weeks:30,price:22500,
-   description:'Advanced programme covering capital markets, structured products and institutional investment.',
-   learn:['Advanced capital markets','Structured products','Derivatives overview','Institutional investing','Trading & market microstructure'],
-   audience:'Senior investment professionals, treasurers and capital markets practitioners.'},
-
-  // ── Financial Modelling ──
-  {id:'fm1',name:'Financial Modelling Bootcamp',subject:'Financial Modelling',format:'Bootcamp',weeks:4,price:5500,featured:true,
-   description:'Learn by building practical financial models — from forecasting to valuation and decision support.',
-   learn:['Three-statement modelling','Forecasting techniques','Cashflow modelling','Scenario analysis','Valuation basics'],
-   audience:'Analysts, finance professionals and entrepreneurs needing hands-on modelling skill fast.'},
-  {id:'fm2',name:'Financial Modelling Certificate',subject:'Financial Modelling',format:'Certificate',weeks:16,price:8500,
-   description:'Structured certificate building mastery of financial modelling for analysis, forecasting and decision-making.',
-   learn:['Model design & structure','Forecasting & sensitivity','Integrated financial models','Valuation modelling','Model review & audit'],
-   audience:'Finance professionals, analysts and consultants building structured modelling capability.'},
-  {id:'fm3',name:'Financial Modelling Short Course',subject:'Financial Modelling',format:'Short Course',weeks:10,price:4500,
-   description:'A focused, practical introduction to financial modelling for analysis and decision-making.',
-   learn:['Model structure','Basic forecasting','Scenario analysis','Decision-support models','Spreadsheet discipline'],
-   audience:'Professionals who need a focused introduction to modelling.'},
-  {id:'fm4',name:'Advanced Financial Modelling',subject:'Financial Modelling',format:'Advanced Programme',weeks:30,price:22500,featured:true,
-   description:'Develop higher-level capability in integrated modelling, valuation and decision-support analysis.',
-   learn:['Integrated financial modelling','Advanced valuation','M&A modelling','Scenario & sensitivity analysis','Decision-support modelling','Model audit'],
-   audience:'Experienced analysts, corporate finance professionals and investment practitioners.'},
-
-  // ── Business Management ──
-  {id:'bm1',name:'Business Management',subject:'Business Management',format:'Certificate',weeks:16,price:8500,
-   description:'Build structured capability in business management — strategy, operations, people and performance.',
-   learn:['Business strategy basics','Operations management','People & performance','Financial management','Business planning'],
-   audience:'Managers, team leaders and professionals moving into management.'},
-  {id:'bm2',name:'Business Strategy Short Course',subject:'Business Management',format:'Short Course',weeks:10,price:4500,
-   description:'Learn practical business strategy — from analysis to competitive positioning and execution.',
-   learn:['Strategic analysis','Competitive positioning','Business models','Strategic execution','Performance measurement'],
-   audience:'Managers, entrepreneurs and professionals involved in strategic decisions.'},
-  {id:'bm3',name:'Business Management Professional Programme',subject:'Business Management',format:'Professional Programme',weeks:24,price:12500,
-   description:'Professional-level programme covering advanced business management and organisational performance.',
-   learn:['Advanced strategy','Organisational management','Financial performance','Change management','Leadership in business'],
-   audience:'Senior managers, business leaders and professionals pursuing deeper management capability.'},
-
-  // ── Project Management ──
-  {id:'pm1',name:'Project Management',subject:'Project Management',format:'Certificate',weeks:16,price:8500,
-   description:'Structured certificate covering project planning, delivery, control and stakeholder management.',
-   learn:['Project planning','Scheduling & budgeting','Risk management','Stakeholder management','Project delivery & control'],
-   audience:'Project managers, coordinators and professionals delivering projects.'},
-  {id:'pm2',name:'Project Delivery Bootcamp',subject:'Project Management',format:'Bootcamp',weeks:5,price:5500,
-   description:'Intensive, practical bootcamp focused on delivering projects end-to-end.',
-   learn:['Project setup','Work breakdown structure','Scheduling','Risk & issues','Delivery & closure'],
-   audience:'Professionals who need to deliver projects with confidence.'},
-  {id:'pm3',name:'Advanced Project Management',subject:'Project Management',format:'Advanced Programme',weeks:28,price:22500,
-   description:'Advanced programme for experienced project managers leading complex, strategic projects.',
-   learn:['Portfolio management','Programme management','Complex stakeholder environments','Advanced risk','Strategic project delivery'],
-   audience:'Senior project and programme managers leading strategic initiatives.'},
-
-  // ── Data Analytics ──
-  {id:'da1',name:'Certificate in Data Analytics',subject:'Data Analytics',format:'Certificate',weeks:16,price:8500,featured:true,
-   description:'Build practical capability in data analysis, visualisation and data-driven decision-making.',
-   learn:['Data fundamentals','Data analysis techniques','Data visualisation','Statistical basics','Business insight generation'],
-   audience:'Analysts, business professionals and anyone working with data.'},
-  {id:'da2',name:'Data Analytics Bootcamp',subject:'Data Analytics',format:'Bootcamp',weeks:5,price:5500,
-   description:'Intensive, hands-on bootcamp to build data analytics skill fast.',
-   learn:['Data preparation','Analysis with spreadsheets','Visualisation','Dashboarding basics','Presenting insight'],
-   audience:'Professionals needing rapid, practical data skills.'},
-  {id:'da3',name:'Business Intelligence Short Course',subject:'Data Analytics',format:'Short Course',weeks:10,price:4500,
-   description:'Learn to turn organisational data into business intelligence and reporting.',
-   learn:['BI concepts','Reporting & dashboards','Data storytelling','KPIs & metrics','BI tools overview'],
-   audience:'Analysts, managers and professionals responsible for reporting.'},
-  {id:'da4',name:'Advanced Data Analytics',subject:'Data Analytics',format:'Advanced Programme',weeks:30,price:22500,
-   description:'Advanced programme developing professional-level analytics and data strategy capability.',
-   learn:['Advanced analytics','Data modelling','Predictive analytics basics','Data strategy','Analytics leadership'],
-   audience:'Senior analysts and data professionals moving into advanced or leadership roles.'},
-
-  // ── Artificial Intelligence ──
-  {id:'ai1',name:'AI for Business',subject:'Artificial Intelligence',format:'Certificate',weeks:16,price:8500,featured:true,
-   description:'Identify, scope and apply AI opportunities inside real organisations — no coding background required.',
-   learn:['AI concepts for business','Identifying AI opportunities','AI project scoping','AI governance basics','Practical AI tools'],
-   audience:'Managers, professionals and business leaders who want to apply AI in their organisations.'},
-  {id:'ai2',name:'AI Foundations Short Course',subject:'Artificial Intelligence',format:'Short Course',weeks:10,price:4500,
-   description:'A focused, practical introduction to artificial intelligence for professionals.',
-   learn:['What AI is (and isn\'t)','Key AI capabilities','AI use cases','Practical AI tools','AI ethics & risks'],
-   audience:'Professionals new to AI who need practical, non-technical foundations.'},
-  {id:'ai3',name:'AI Innovation Management',subject:'Artificial Intelligence',format:'Professional Programme',weeks:24,price:12500,
-   description:'Develop professional capability to manage AI-driven innovation and transformation projects.',
-   learn:['AI strategy','Innovation management','AI project delivery','Organisational transformation','AI governance'],
-   audience:'Innovation leaders, managers and professionals driving AI adoption.'},
-  {id:'ai4',name:'Advanced AI Programme',subject:'Artificial Intelligence',format:'Advanced Programme',weeks:32,price:22500,
-   description:'Advanced programme developing higher-level capability in applied AI and AI leadership.',
-   learn:['Advanced AI applications','AI architecture basics','Applied machine learning','AI governance & risk','AI leadership'],
-   audience:'Senior professionals leading AI initiatives and strategy.'},
-
-  // ── Digital Transformation ──
-  {id:'dt1',name:'Digital Transformation',subject:'Digital Transformation',format:'Professional Programme',weeks:24,price:12500,
-   description:'Develop professional capability to lead technology-driven organisational change.',
-   learn:['Digital strategy','Change leadership','Technology foundations','Operating model design','Digital execution'],
-   audience:'Managers and leaders driving digital change in their organisations.'},
-  {id:'dt2',name:'Digital Transformation Short Course',subject:'Digital Transformation',format:'Short Course',weeks:10,price:4500,
-   description:'A focused introduction to digital transformation for professionals and managers.',
-   learn:['What digital transformation means','Digital trends','Change management basics','Digital operating models','Practical case studies'],
-   audience:'Professionals and managers new to digital transformation.'},
-  {id:'dt3',name:'Digital Transformation Bootcamp',subject:'Digital Transformation',format:'Bootcamp',weeks:6,price:5500,
-   description:'Intensive bootcamp building practical digital transformation capability.',
-   learn:['Digital diagnosis','Customer & process mapping','Digital solutions','Change planning','Measuring transformation'],
-   audience:'Managers and professionals leading digital initiatives.'},
-
-  // ── Entrepreneurship ──
-  {id:'en1',name:'Entrepreneurship Programme',subject:'Entrepreneurship',format:'Certificate',weeks:16,price:8500,
-   description:'Build structured entrepreneurial capability — from idea to viable venture.',
-   learn:['Opportunity identification','Business models','Customer discovery','Financial basics for founders','Go-to-market'],
-   audience:'Aspiring founders and professionals building ventures.'},
-  {id:'en2',name:'Startup Builder Bootcamp',subject:'Entrepreneurship',format:'Bootcamp',weeks:6,price:5500,
-   description:'Intensive bootcamp for founders — build, test and refine your venture idea.',
-   learn:['Problem & customer','MVP design','Business model','Pitch basics','Go-to-market'],
-   audience:'Founders and aspiring entrepreneurs ready to build fast.'},
-  {id:'en3',name:'Venture Creation Professional Programme',subject:'Entrepreneurship',format:'Professional Programme',weeks:24,price:12500,
-   description:'Professional-level programme for founders building scalable ventures.',
-   learn:['Venture strategy','Business model design','Startup finance','Growth & scaling','Investor readiness'],
-   audience:'Founders and entrepreneurs building scalable businesses.'},
-  {id:'en4',name:'Advanced Entrepreneurship Programme',subject:'Entrepreneurship',format:'Advanced Programme',weeks:28,price:22500,
-   description:'Advanced programme for experienced entrepreneurs and business builders.',
-   learn:['Advanced venture strategy','Funding & capital','Scaling operations','Leadership in growth','Enterprise building'],
-   audience:'Experienced founders and business builders scaling ventures.'},
-
-  // ── Leadership ──
-  {id:'ld1',name:'Leadership Development',subject:'Leadership',format:'Certificate',weeks:16,price:8500,
-   description:'Build structured leadership capability — leading self, teams and organisations.',
-   learn:['Leadership foundations','Leading teams','Communication & influence','Performance management','Leading change'],
-   audience:'New and emerging leaders, managers and professionals stepping into leadership.'},
-  {id:'ld2',name:'Executive Leadership Programme',subject:'Leadership',format:'Advanced Programme',weeks:28,price:22500,
-   description:'Advanced leadership programme for senior executives and organisational leaders.',
-   learn:['Executive leadership','Strategic leadership','Organisational development','Executive communication','Leading transformation'],
-   audience:'Senior executives and organisational leaders.'},
-  {id:'ld3',name:'Leadership Essentials Short Course',subject:'Leadership',format:'Short Course',weeks:8,price:4500,
-   description:'Focused introduction to leadership essentials for professionals.',
-   learn:['Leadership basics','Self-leadership','Team communication','Feedback & coaching','Leading small teams'],
-   audience:'Professionals new to leadership or seeking a refresher.'},
-  {id:'ld4',name:'Leadership Professional Programme',subject:'Leadership',format:'Professional Programme',weeks:24,price:12500,
-   description:'Professional programme developing substantial leadership capability for managers.',
-   learn:['Advanced leadership','Leading teams at scale','Strategic thinking','Change leadership','Leadership presence'],
-   audience:'Managers and professionals seeking professional-level leadership capability.'}
+const SUBJECTS = [
+  {name:'Accounting & Finance',     icon:'fa-calculator',           blurb:'Build financial knowledge and decision-making capability.'},
+  {name:'Banking & Financial Services', icon:'fa-building-columns',  blurb:'Understand modern banking, financial services and risk.'},
+  {name:'Investment & Capital Markets',  icon:'fa-chart-pie',       blurb:'Develop investment and capital markets knowledge.'},
+  {name:'Financial Modelling',      icon:'fa-file-invoice-dollar',  blurb:'Build models that support financial analysis and decisions.'},
+  {name:'Business Management',      icon:'fa-briefcase',            blurb:'Develop the capability to manage and grow organisations.'},
+  {name:'Project Management',       icon:'fa-diagram-project',      blurb:'Learn to plan, manage and deliver projects.'},
+  {name:'Data Analytics',           icon:'fa-chart-bar',            blurb:'Turn data into meaningful business insight.'},
+  {name:'Artificial Intelligence',  icon:'fa-robot',                blurb:'Develop practical AI skills for the modern workplace.'},
+  {name:'Digital Transformation',   icon:'fa-arrows-spin',          blurb:'Understand technology-driven organisational change.'},
+  {name:'Entrepreneurship',         icon:'fa-rocket',               blurb:'Turn opportunities and ideas into viable ventures.'},
+  {name:'Leadership',               icon:'fa-users',                blurb:'Develop the capability to lead people and organisations.'},
+  {name:'Corporate Finance',        icon:'fa-coins',                blurb:'Financial analysis, valuation and corporate decision-making.'},
+  {name:'Business Intelligence',    icon:'fa-database',             blurb:'Convert data into organisational intelligence and reporting.'},
+  {name:'AI for Business',          icon:'fa-brain',                blurb:'Apply AI to real business problems and opportunities.'},
+  {name:'Risk Management',          icon:'fa-shield-halved',        blurb:'Identify, assess and manage professional and financial risk.'}
 ];
 
 /* =========================================================
-   STATE & HELPERS
+   PROGRAMMES — 75 total (15 subjects × 5 formats)
+   ========================================================= */
+const PROGRAMMES = [
+  // ── 1. Accounting & Finance ──
+  {id:'af-sc',name:'Finance Fundamentals',subject:'Accounting & Finance',format:'Short Course',weeks:10,price:4500,
+    description:'A focused, practical introduction to finance — from reading financial statements to making better financial decisions.',
+    learn:['Reading financial statements','Budgeting and cashflow basics','Financial decision frameworks','Practical spreadsheet work'],
+    audience:'Professionals needing a solid, practical finance foundation.'},
+  {id:'af-c',name:'Certificate in Accounting & Finance',subject:'Accounting & Finance',format:'Certificate',weeks:16,price:8500,featured:true,
+    description:'Structured professional certificate covering accounting principles, financial reporting and financial analysis.',
+    learn:['Financial accounting','Management accounting','Financial reporting','Ratio analysis'],
+    audience:'Aspiring accountants, finance officers and professionals moving into finance.'},
+  {id:'af-pp',name:'Professional Programme in Accounting & Finance',subject:'Accounting & Finance',format:'Professional Programme',weeks:24,price:12500,
+    description:'Develop professional-level capability across accounting, finance and financial analysis.',
+    learn:['Advanced accounting','Financial analysis','Planning and control','Professional reporting'],
+    audience:'Finance professionals seeking deeper capability.'},
+  {id:'af-bc',name:'Accounting & Finance Bootcamp',subject:'Accounting & Finance',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, hands-on accounting and finance bootcamp — learn by doing in a short, focused sprint.',
+    learn:['Financial statement basics','Budgeting and forecasting','Cashflow','Practical exercises'],
+    audience:'Professionals who need rapid, practical accounting and finance skill.'},
+  {id:'af-adv',name:'Advanced Accounting & Reporting',subject:'Accounting & Finance',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced capability in financial reporting, consolidation and strategic financial management.',
+    learn:['Advanced financial reporting','Group accounts','IFRS frameworks','Strategic financial management'],
+    audience:'Senior finance professionals and controllers.'},
+
+  // ── 2. Banking & Financial Services ──
+  {id:'bk-sc',name:'Banking Operations Essentials',subject:'Banking & Financial Services',format:'Short Course',weeks:10,price:4500,
+    description:'Understand modern banking operations — from retail and commercial banking to payments and compliance.',
+    learn:['Retail and commercial banking','Payments and settlement','Compliance basics','Banking products'],
+    audience:'Bank staff and those entering banking.'},
+  {id:'bk-c',name:'Certificate in Banking & Financial Services',subject:'Banking & Financial Services',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering banking, financial services, credit and regulation.',
+    learn:['Banking models and services','Financial services landscape','Credit fundamentals','Regulatory environment'],
+    audience:'Banking professionals and those entering financial services.'},
+  {id:'bk-pp',name:'Professional Programme in Banking',subject:'Banking & Financial Services',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level programme developing banking, financial services and risk capability.',
+    learn:['Advanced banking','Credit and lending','Banking risk','Regulatory frameworks'],
+    audience:'Banking professionals moving into senior roles.'},
+  {id:'bk-bc',name:'Banking & Financial Services Bootcamp',subject:'Banking & Financial Services',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, practical banking bootcamp focused on real banking operations and decisions.',
+    learn:['Banking products','Customer operations','Credit basics','Compliance overview'],
+    audience:'Professionals needing rapid, practical banking skill.'},
+  {id:'bk-adv',name:'Advanced Banking & Financial Services',subject:'Banking & Financial Services',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme for senior banking professionals across strategy, risk and regulation.',
+    learn:['Banking strategy','Advanced credit','Banking regulation','Treasury and capital'],
+    audience:'Senior banking professionals and executives.'},
+
+  // ── 3. Investment & Capital Markets ──
+  {id:'iv-sc',name:'Capital Markets Essentials',subject:'Investment & Capital Markets',format:'Short Course',weeks:10,price:4500,
+    description:'Focused introduction to capital markets, instruments and how investment markets work.',
+    learn:['Capital market structure','Equities and bonds','Market participants','Investment basics'],
+    audience:'Professionals and investors new to capital markets.'},
+  {id:'iv-c',name:'Certificate in Investment Analysis',subject:'Investment & Capital Markets',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering investment analysis, valuation and market fundamentals.',
+    learn:['Fundamental analysis','Valuation techniques','Equity research basics','Investment reporting'],
+    audience:'Analysts and finance professionals building investment capability.'},
+  {id:'iv-pp',name:'Investment & Capital Markets',subject:'Investment & Capital Markets',format:'Professional Programme',weeks:24,price:12500,featured:true,
+    description:'Develop deeper expertise in investment analysis, valuation, capital markets and financial decision-making.',
+    learn:['Investment analysis','Asset valuation','Portfolio construction','Capital market structures'],
+    audience:'Finance professionals, analysts and investors.'},
+  {id:'iv-bc',name:'Investment Analysis Bootcamp',subject:'Investment & Capital Markets',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, practical bootcamp on investment analysis and valuation.',
+    learn:['Analysis frameworks','Valuation practice','Comparables','Investment memo writing'],
+    audience:'Analysts and professionals needing fast investment analysis skill.'},
+  {id:'iv-adv',name:'Advanced Capital Markets',subject:'Investment & Capital Markets',format:'Advanced Programme',weeks:30,price:22500,
+    description:'Advanced programme in capital markets, structured products and institutional investing.',
+    learn:['Advanced capital markets','Structured products','Derivatives overview','Institutional investing'],
+    audience:'Senior investment professionals and treasurers.'},
+
+  // ── 4. Financial Modelling ──
+  {id:'fm-sc',name:'Financial Modelling Essentials',subject:'Financial Modelling',format:'Short Course',weeks:10,price:4500,
+    description:'Focused, practical introduction to building financial models for analysis and decisions.',
+    learn:['Model structure','Basic forecasting','Scenario analysis','Spreadsheet discipline'],
+    audience:'Professionals who need a focused introduction to modelling.'},
+  {id:'fm-c',name:'Certificate in Financial Modelling',subject:'Financial Modelling',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate building mastery of financial modelling for analysis, forecasting and decision-making.',
+    learn:['Model design and structure','Forecasting and sensitivity','Integrated models','Valuation modelling'],
+    audience:'Finance professionals, analysts and consultants.'},
+  {id:'fm-pp',name:'Professional Programme in Financial Modelling',subject:'Financial Modelling',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level modelling programme covering forecasting, valuation and decision-support models.',
+    learn:['Advanced modelling','Valuation models','Scenario & sensitivity','Model audit'],
+    audience:'Analysts and finance professionals building deeper modelling capability.'},
+  {id:'fm-bc',name:'Financial Modelling Bootcamp',subject:'Financial Modelling',format:'Bootcamp',weeks:4,price:5500,featured:true,
+    description:'Learn by building practical financial models — from forecasting to valuation and decision support.',
+    learn:['Three-statement modelling','Forecasting techniques','Cashflow modelling','Valuation basics'],
+    audience:'Analysts, finance professionals and entrepreneurs needing hands-on modelling skill fast.'},
+  {id:'fm-adv',name:'Advanced Financial Modelling',subject:'Financial Modelling',format:'Advanced Programme',weeks:30,price:22500,featured:true,
+    description:'Develop higher-level capability in integrated modelling, valuation and decision-support analysis.',
+    learn:['Integrated financial modelling','Advanced valuation','M&A modelling','Decision-support modelling'],
+    audience:'Experienced analysts and corporate finance professionals.'},
+
+  // ── 5. Business Management ──
+  {id:'bm-sc',name:'Business Essentials',subject:'Business Management',format:'Short Course',weeks:10,price:4500,
+    description:'Focused introduction to business management covering strategy, operations and performance.',
+    learn:['Business strategy basics','Operations overview','People and performance','Business planning'],
+    audience:'Managers and professionals stepping into management.'},
+  {id:'bm-c',name:'Certificate in Business Management',subject:'Business Management',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate developing practical business management capability.',
+    learn:['Business strategy','Operations management','Financial management','Business planning'],
+    audience:'Managers and professionals building structured management capability.'},
+  {id:'bm-pp',name:'Professional Programme in Business Management',subject:'Business Management',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level management programme covering advanced strategy, operations and performance.',
+    learn:['Advanced strategy','Organisational management','Financial performance','Change management'],
+    audience:'Senior managers and business leaders.'},
+  {id:'bm-bc',name:'Business Management Bootcamp',subject:'Business Management',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, practical business management bootcamp for managers and team leads.',
+    learn:['Strategic thinking','Team management','Performance tracking','Business decisions'],
+    audience:'New managers and professionals needing rapid management skill.'},
+  {id:'bm-adv',name:'Advanced Business Management',subject:'Business Management',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme for senior managers and business leaders building enterprise capability.',
+    learn:['Enterprise strategy','Advanced operations','Leadership in business','Organisational performance'],
+    audience:'Senior managers and organisational leaders.'},
+
+  // ── 6. Project Management ──
+  {id:'pm-sc',name:'Project Essentials',subject:'Project Management',format:'Short Course',weeks:10,price:4500,
+    description:'Focused, practical introduction to project management principles and delivery.',
+    learn:['Project lifecycle','Scheduling basics','Risk basics','Stakeholder basics'],
+    audience:'Professionals starting to manage projects.'},
+  {id:'pm-c',name:'Certificate in Project Management',subject:'Project Management',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering planning, delivery, control and stakeholder management.',
+    learn:['Project planning','Scheduling and budgeting','Risk management','Stakeholder management'],
+    audience:'Project managers and coordinators.'},
+  {id:'pm-pp',name:'Professional Programme in Project Management',subject:'Project Management',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level programme developing project and programme management capability.',
+    learn:['Advanced planning','Programme management','Complex stakeholder environments','Project governance'],
+    audience:'Experienced project managers.'},
+  {id:'pm-bc',name:'Project Delivery Bootcamp',subject:'Project Management',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, practical bootcamp focused on delivering projects end-to-end.',
+    learn:['Project setup','Work breakdown','Scheduling','Delivery and closure'],
+    audience:'Professionals who need to deliver projects with confidence.'},
+  {id:'pm-adv',name:'Advanced Project & Programme Management',subject:'Project Management',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme for experienced project and programme managers leading strategic initiatives.',
+    learn:['Portfolio management','Programme management','Advanced risk','Strategic delivery'],
+    audience:'Senior project and programme managers.'},
+
+  // ── 7. Data Analytics ──
+  {id:'da-sc',name:'Data Analytics Essentials',subject:'Data Analytics',format:'Short Course',weeks:10,price:4500,
+    description:'Focused, practical introduction to data analysis and data-driven decision-making.',
+    learn:['Data fundamentals','Analysis basics','Visualisation basics','Reporting basics'],
+    audience:'Professionals working with data.'},
+  {id:'da-c',name:'Certificate in Data Analytics',subject:'Data Analytics',format:'Certificate',weeks:16,price:8500,featured:true,
+    description:'Build practical capability in data analysis, visualisation and data-driven decision-making.',
+    learn:['Data fundamentals','Analysis techniques','Data visualisation','Business insight'],
+    audience:'Analysts, business professionals and anyone working with data.'},
+  {id:'da-pp',name:'Professional Programme in Data Analytics',subject:'Data Analytics',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level analytics programme covering advanced analysis and data-driven strategy.',
+    learn:['Advanced analysis','Data modelling','Analytics strategy','Data storytelling'],
+    audience:'Analysts and professionals building professional analytics capability.'},
+  {id:'da-bc',name:'Data Analytics Bootcamp',subject:'Data Analytics',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, hands-on bootcamp to build data analytics skill fast.',
+    learn:['Data preparation','Analysis with spreadsheets','Visualisation','Dashboards'],
+    audience:'Professionals needing rapid, practical data skills.'},
+  {id:'da-adv',name:'Advanced Data Analytics',subject:'Data Analytics',format:'Advanced Programme',weeks:30,price:22500,
+    description:'Advanced programme developing professional-level analytics and data strategy capability.',
+    learn:['Advanced analytics','Predictive analytics basics','Data strategy','Analytics leadership'],
+    audience:'Senior analysts and data professionals.'},
+
+  // ── 8. Artificial Intelligence ──
+  {id:'ai-sc',name:'AI Foundations',subject:'Artificial Intelligence',format:'Short Course',weeks:10,price:4500,
+    description:'A focused, practical introduction to artificial intelligence for professionals.',
+    learn:['What AI is (and isn\'t)','Key AI capabilities','Practical AI tools','AI ethics and risks'],
+    audience:'Professionals new to AI who need practical foundations.'},
+  {id:'ai-c',name:'Certificate in Artificial Intelligence',subject:'Artificial Intelligence',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering artificial intelligence concepts, tools and applications.',
+    learn:['AI concepts','AI applications','AI tools','AI governance basics'],
+    audience:'Professionals building structured AI capability.'},
+  {id:'ai-pp',name:'AI Innovation Management',subject:'Artificial Intelligence',format:'Professional Programme',weeks:24,price:12500,
+    description:'Develop professional capability to manage AI-driven innovation and transformation projects.',
+    learn:['AI strategy','Innovation management','AI project delivery','AI governance'],
+    audience:'Innovation leaders and professionals driving AI adoption.'},
+  {id:'ai-bc',name:'AI Applications Bootcamp',subject:'Artificial Intelligence',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, practical bootcamp applying AI tools to real professional tasks.',
+    learn:['AI tools in practice','Prompting and workflows','AI use-case design','Practical AI projects'],
+    audience:'Professionals wanting fast, practical AI application skill.'},
+  {id:'ai-adv',name:'Advanced AI Programme',subject:'Artificial Intelligence',format:'Advanced Programme',weeks:32,price:22500,
+    description:'Advanced programme developing higher-level capability in applied AI and AI leadership.',
+    learn:['Advanced AI applications','Applied machine learning','AI governance & risk','AI leadership'],
+    audience:'Senior professionals leading AI initiatives.'},
+
+  // ── 9. Digital Transformation ──
+  {id:'dt-sc',name:'Digital Transformation Essentials',subject:'Digital Transformation',format:'Short Course',weeks:10,price:4500,
+    description:'A focused introduction to digital transformation for professionals and managers.',
+    learn:['What digital transformation means','Digital trends','Change management basics','Practical case studies'],
+    audience:'Professionals and managers new to digital transformation.'},
+  {id:'dt-c',name:'Certificate in Digital Transformation',subject:'Digital Transformation',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering digital strategy, change and technology foundations.',
+    learn:['Digital strategy','Technology foundations','Change management','Digital operating models'],
+    audience:'Managers and professionals leading digital initiatives.'},
+  {id:'dt-pp',name:'Digital Transformation',subject:'Digital Transformation',format:'Professional Programme',weeks:24,price:12500,
+    description:'Develop professional capability to lead technology-driven organisational change.',
+    learn:['Digital strategy','Change leadership','Operating model design','Digital execution'],
+    audience:'Managers and leaders driving digital change.'},
+  {id:'dt-bc',name:'Digital Transformation Bootcamp',subject:'Digital Transformation',format:'Bootcamp',weeks:6,price:5500,
+    description:'Intensive bootcamp building practical digital transformation capability.',
+    learn:['Digital diagnosis','Customer and process mapping','Digital solutions','Change planning'],
+    audience:'Managers and professionals leading digital initiatives.'},
+  {id:'dt-adv',name:'Advanced Digital Transformation',subject:'Digital Transformation',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme for leaders driving large-scale digital transformation.',
+    learn:['Enterprise digital strategy','Advanced change leadership','Digital ecosystems','Transformation governance'],
+    audience:'Senior leaders driving organisational transformation.'},
+
+  // ── 10. Entrepreneurship ──
+  {id:'en-sc',name:'Entrepreneurship Essentials',subject:'Entrepreneurship',format:'Short Course',weeks:10,price:4500,
+    description:'Focused, practical introduction to entrepreneurship and venture building.',
+    learn:['Opportunity identification','Business model basics','Customer discovery','Go-to-market basics'],
+    audience:'Aspiring founders and professionals exploring entrepreneurship.'},
+  {id:'en-c',name:'Certificate in Entrepreneurship',subject:'Entrepreneurship',format:'Certificate',weeks:16,price:8500,
+    description:'Build structured entrepreneurial capability — from idea to viable venture.',
+    learn:['Opportunity identification','Business models','Customer discovery','Financial basics for founders'],
+    audience:'Aspiring founders and professionals building ventures.'},
+  {id:'en-pp',name:'Venture Creation Professional Programme',subject:'Entrepreneurship',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level programme for founders building scalable ventures.',
+    learn:['Venture strategy','Business model design','Startup finance','Investor readiness'],
+    audience:'Founders and entrepreneurs building scalable businesses.'},
+  {id:'en-bc',name:'Startup Builder Bootcamp',subject:'Entrepreneurship',format:'Bootcamp',weeks:6,price:5500,featured:true,
+    description:'Intensive bootcamp for founders — build, test and refine your venture idea.',
+    learn:['Problem and customer','MVP design','Business model','Pitch basics'],
+    audience:'Founders and aspiring entrepreneurs ready to build fast.'},
+  {id:'en-adv',name:'Advanced Entrepreneurship',subject:'Entrepreneurship',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme for experienced entrepreneurs and business builders.',
+    learn:['Advanced venture strategy','Funding and capital','Scaling operations','Enterprise building'],
+    audience:'Experienced founders scaling ventures.'},
+
+  // ── 11. Leadership ──
+  {id:'ld-sc',name:'Leadership Essentials',subject:'Leadership',format:'Short Course',weeks:8,price:4500,
+    description:'Focused introduction to leadership essentials for professionals.',
+    learn:['Leadership basics','Self-leadership','Team communication','Feedback and coaching'],
+    audience:'Professionals new to leadership or seeking a refresher.'},
+  {id:'ld-c',name:'Certificate in Leadership Development',subject:'Leadership',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate developing practical leadership capability.',
+    learn:['Leadership foundations','Leading teams','Communication and influence','Leading change'],
+    audience:'Emerging leaders and professionals stepping into leadership.'},
+  {id:'ld-pp',name:'Professional Programme in Leadership',subject:'Leadership',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional programme developing substantial leadership capability for managers.',
+    learn:['Advanced leadership','Leading teams at scale','Strategic thinking','Leadership presence'],
+    audience:'Managers and professionals seeking professional-level leadership.'},
+  {id:'ld-bc',name:'Leadership Impact Bootcamp',subject:'Leadership',format:'Bootcamp',weeks:4,price:5500,
+    description:'Intensive leadership bootcamp focused on practical leadership impact.',
+    learn:['Leadership presence','Team motivation','Difficult conversations','Leading change'],
+    audience:'Managers and team leads needing rapid leadership impact.'},
+  {id:'ld-adv',name:'Executive Leadership Programme',subject:'Leadership',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced leadership programme for senior executives and organisational leaders.',
+    learn:['Executive leadership','Strategic leadership','Organisational development','Leading transformation'],
+    audience:'Senior executives and organisational leaders.'},
+
+  // ── 12. Corporate Finance ──
+  {id:'cf-sc',name:'Corporate Finance Essentials',subject:'Corporate Finance',format:'Short Course',weeks:10,price:4500,featured:true,
+    description:'Build working knowledge of corporate finance — valuation, capital structure and financial decisions.',
+    learn:['Financial statement analysis','Time value of money','Capital budgeting basics','Cost of capital'],
+    audience:'Professionals, managers and business owners needing corporate finance foundations.'},
+  {id:'cf-c',name:'Certificate in Corporate Finance',subject:'Corporate Finance',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering corporate finance, valuation and financial decision-making.',
+    learn:['Corporate finance frameworks','Valuation methods','Capital structure','Financial decision-making'],
+    audience:'Finance professionals and analysts building corporate finance capability.'},
+  {id:'cf-pp',name:'Professional Programme in Corporate Finance',subject:'Corporate Finance',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level programme developing corporate finance and financial strategy capability.',
+    learn:['Advanced corporate finance','Valuation and M&A','Capital raising','Financial strategy'],
+    audience:'Corporate finance professionals and finance leaders.'},
+  {id:'cf-bc',name:'Corporate Finance Bootcamp',subject:'Corporate Finance',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive, practical corporate finance bootcamp focused on real decisions.',
+    learn:['Valuation practice','Capital budgeting','Financing decisions','Practical analysis'],
+    audience:'Professionals needing rapid corporate finance skill.'},
+  {id:'cf-adv',name:'Advanced Corporate Finance',subject:'Corporate Finance',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme covering corporate finance, M&A and capital markets strategy.',
+    learn:['Advanced valuation','M&A and deal structuring','Capital markets','Corporate strategy'],
+    audience:'Senior finance professionals and corporate finance leaders.'},
+
+  // ── 13. Business Intelligence ──
+  {id:'bi-sc',name:'Business Intelligence Essentials',subject:'Business Intelligence',format:'Short Course',weeks:10,price:4500,
+    description:'Focused introduction to business intelligence, reporting and dashboards.',
+    learn:['BI concepts','Reporting basics','KPI and metrics','Dashboard basics'],
+    audience:'Analysts and professionals responsible for reporting.'},
+  {id:'bi-c',name:'Certificate in Business Intelligence',subject:'Business Intelligence',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering business intelligence, reporting and analytics.',
+    learn:['BI frameworks','Reporting and dashboards','Data storytelling','BI tools overview'],
+    audience:'Analysts and professionals building BI capability.'},
+  {id:'bi-pp',name:'Professional Programme in Business Intelligence',subject:'Business Intelligence',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level BI programme developing analytics and reporting capability at scale.',
+    learn:['Advanced BI','Data modelling for BI','Enterprise reporting','BI strategy'],
+    audience:'Senior analysts and BI professionals.'},
+  {id:'bi-bc',name:'BI & Dashboarding Bootcamp',subject:'Business Intelligence',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive bootcamp focused on building practical BI dashboards.',
+    learn:['Dashboard design','Data preparation','Interactive reporting','Business insight'],
+    audience:'Professionals needing fast, practical dashboard skills.'},
+  {id:'bi-adv',name:'Advanced Business Intelligence',subject:'Business Intelligence',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme covering enterprise BI, data governance and analytics strategy.',
+    learn:['Enterprise BI','Data governance','Advanced analytics','BI leadership'],
+    audience:'BI leaders and senior analytics professionals.'},
+
+  // ── 14. AI for Business ──
+  {id:'ab-sc',name:'AI for Business Essentials',subject:'AI for Business',format:'Short Course',weeks:10,price:4500,
+    description:'Focused, practical introduction to using AI in business settings.',
+    learn:['AI concepts for business','AI tools overview','Practical AI use cases','AI risk awareness'],
+    audience:'Business professionals exploring AI for their work.'},
+  {id:'ab-c',name:'AI for Business',subject:'AI for Business',format:'Certificate',weeks:16,price:8500,featured:true,
+    description:'Identify, scope and apply AI opportunities inside real organisations — no coding background required.',
+    learn:['AI concepts for business','Identifying AI opportunities','AI project scoping','Practical AI tools'],
+    audience:'Managers and professionals who want to apply AI in their organisations.'},
+  {id:'ab-pp',name:'Professional Programme in AI for Business',subject:'AI for Business',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level programme developing capability to lead AI adoption in organisations.',
+    learn:['AI strategy','AI project delivery','AI governance','Organisational AI adoption'],
+    audience:'Managers and professionals leading AI adoption.'},
+  {id:'ab-bc',name:'AI for Business Bootcamp',subject:'AI for Business',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive bootcamp applying AI tools directly to business workflows.',
+    learn:['Practical AI tools','AI in workflows','Use-case design','Rapid AI prototypes'],
+    audience:'Business professionals needing rapid AI application skills.'},
+  {id:'ab-adv',name:'Advanced AI for Business',subject:'AI for Business',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme developing senior capability in AI strategy and enterprise AI.',
+    learn:['Enterprise AI strategy','AI operating models','AI governance and risk','AI leadership'],
+    audience:'Senior leaders driving enterprise AI.'},
+
+  // ── 15. Risk Management ──
+  {id:'rm-sc',name:'Risk Management Essentials',subject:'Risk Management',format:'Short Course',weeks:10,price:4500,
+    description:'Focused introduction to risk management principles and frameworks.',
+    learn:['Risk concepts','Risk identification','Risk assessment basics','Risk frameworks'],
+    audience:'Professionals new to risk management.'},
+  {id:'rm-c',name:'Certificate in Risk Management',subject:'Risk Management',format:'Certificate',weeks:16,price:8500,
+    description:'Structured certificate covering risk identification, assessment and management.',
+    learn:['Risk frameworks','Risk assessment','Operational risk','Risk reporting'],
+    audience:'Professionals building structured risk capability.'},
+  {id:'rm-pp',name:'Professional Programme in Risk Management',subject:'Risk Management',format:'Professional Programme',weeks:24,price:12500,
+    description:'Professional-level programme developing advanced risk management capability.',
+    learn:['Advanced risk management','Credit and market risk','Risk governance','Risk strategy'],
+    audience:'Risk professionals and managers.'},
+  {id:'rm-bc',name:'Risk Management Bootcamp',subject:'Risk Management',format:'Bootcamp',weeks:5,price:5500,
+    description:'Intensive bootcamp applying risk management frameworks to real scenarios.',
+    learn:['Risk identification','Risk registers','Scenario analysis','Practical risk response'],
+    audience:'Professionals needing fast, practical risk skill.'},
+  {id:'rm-adv',name:'Advanced Risk Management',subject:'Risk Management',format:'Advanced Programme',weeks:28,price:22500,
+    description:'Advanced programme covering enterprise risk, governance and risk leadership.',
+    learn:['Enterprise risk management','Risk governance','Regulatory frameworks','Risk leadership'],
+    audience:'Senior risk professionals and executives.'}
+];
+
+/* =========================================================
+   STATE & UTILITIES
    ========================================================= */
 const state = { subject:null, format:null };
-
-const $ = sel => document.querySelector(sel);
-const $$ = sel => document.querySelectorAll(sel);
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
 
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function fmtPrice(n){return 'K'+n.toLocaleString()}
 
-/* Toast */
 let toastTimer;
 function showToast(msg){
   const t=$('#toast'); $('#toastMsg').textContent=msg;
   t.classList.add('show'); clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
 }
 
 /* =========================================================
-   CATALOGUE RENDERING
+   BUILD SUBJECT GRID (15 subjects)
+   ========================================================= */
+function buildSubjectsGrid(){
+  const grid = $('#subjectsGrid');
+  grid.innerHTML = SUBJECTS.map(s=>{
+    const count = PROGRAMMES.filter(p=>p.subject===s.name).length;
+    return `<button class="subject-card" data-subject="${esc(s.name)}">
+      <div class="subject-icon"><i class="fas ${s.icon}"></i></div>
+      <h3>${esc(s.name)}</h3>
+      <p>${esc(s.blurb)}</p>
+      <span class="subject-count">${count} programmes · 5 formats</span>
+    </button>`;
+  }).join('');
+
+  grid.querySelectorAll('.subject-card').forEach(c=>{
+    c.addEventListener('click',()=>applySubjectFilter(c.dataset.subject));
+  });
+}
+
+/* Build finder subject dropdown */
+function buildFinderSubjects(){
+  const sel = $('#finderSubject');
+  SUBJECTS.forEach(s=>{
+    const o=document.createElement('option');
+    o.value=s.name; o.textContent=s.name;
+    sel.appendChild(o);
+  });
+}
+
+/* Update format counts */
+function updateFormatCounts(){
+  $('#count-short').textContent = PROGRAMMES.filter(p=>p.format==='Short Course').length + ' programmes';
+  $('#count-cert').textContent  = PROGRAMMES.filter(p=>p.format==='Certificate').length + ' programmes';
+  $('#count-prof').textContent  = PROGRAMMES.filter(p=>p.format==='Professional Programme').length + ' programmes';
+  $('#count-boot').textContent  = PROGRAMMES.filter(p=>p.format==='Bootcamp').length + ' programmes';
+  $('#count-adv').textContent   = PROGRAMMES.filter(p=>p.format==='Advanced Programme').length + ' programmes';
+}
+
+/* =========================================================
+   CATALOGUE
    ========================================================= */
 function getFilteredProgrammes(){
   let list = PROGRAMMES.slice();
@@ -1128,10 +1234,7 @@ function getFilteredProgrammes(){
   if(state.format)  list = list.filter(p=>p.format===state.format);
   return list;
 }
-
-function getFeatured(){
-  return PROGRAMMES.filter(p=>p.featured);
-}
+function getFeatured(){ return PROGRAMMES.filter(p=>p.featured); }
 
 function progCardHTML(p){
   return `<button class="prog-card" data-id="${p.id}" aria-label="View ${esc(p.name)}">
@@ -1161,7 +1264,6 @@ function renderCatalogue(){
   const title = $('#catalogueTitle');
   const sub = $('#catalogueSub');
   const label = $('#catalogueBarLabel');
-
   const filtering = state.subject || state.format;
 
   if(filtering){
@@ -1169,7 +1271,7 @@ function renderCatalogue(){
     tag.textContent = 'Filtered Results';
     title.textContent = state.subject && state.format
       ? `${state.subject} · ${state.format}`
-      : (state.subject ? state.subject : state.format + 's');
+      : (state.subject ? state.subject : state.format + (state.format==='Certificate'?'s':state.format==='Short Course'?'s':state.format==='Bootcamp'?'s':'s'));
     sub.textContent = `${list.length} programme${list.length!==1?'s':''} match your selection. Click any card to see full details.`;
     bar.style.display='flex';
     let parts=[];
@@ -1178,7 +1280,7 @@ function renderCatalogue(){
     label.innerHTML = 'Showing ' + parts.join(' &nbsp;·&nbsp; ');
 
     if(list.length===0){
-      grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try selecting a different subject or format.</p></div>`;
+      grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try a different subject or format.</p></div>`;
     } else {
       grid.innerHTML = list.map(progCardHTML).join('');
     }
@@ -1186,17 +1288,15 @@ function renderCatalogue(){
     const list = getFeatured();
     tag.textContent = 'Featured Programmes';
     title.textContent = 'Popular Programmes Right Now';
-    sub.textContent = 'Each programme shows duration, price and outcome. Click any card to see full details.';
+    sub.textContent = 'A selection across subjects and formats. Click any card to see full details.';
     bar.style.display='none';
     grid.innerHTML = list.map(progCardHTML).join('');
   }
 
-  // Attach click handlers
   grid.querySelectorAll('.prog-card').forEach(card=>{
     card.addEventListener('click',()=>openProgramme(card.dataset.id));
   });
 
-  // Update active states on subject/format cards
   document.querySelectorAll('.subject-card').forEach(c=>{
     c.classList.toggle('active', c.dataset.subject===state.subject);
   });
@@ -1214,48 +1314,24 @@ function renderCatalogue(){
 function scrollToCatalogue(){
   document.getElementById('catalogue').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
 function applyFormatFilter(format){
   state.format = (state.format===format) ? null : format;
   renderCatalogue();
   scrollToCatalogue();
-  if(state.format) showToast(`Showing ${state.format}s`);
+  showToast(state.format ? `Showing ${state.format}s (${getFilteredProgrammes().length})` : 'Filter cleared');
 }
-
 function applySubjectFilter(subject){
   state.subject = (state.subject===subject) ? null : subject;
   renderCatalogue();
   scrollToCatalogue();
-  if(state.subject) showToast(`Showing programmes in ${subject}`);
+  showToast(state.subject ? `Showing ${subject} (${getFilteredProgrammes().length})` : 'Filter cleared');
 }
-
-function clearFilters(){
-  state.subject=null; state.format=null;
-  renderCatalogue();
-  showToast('Filters cleared');
-}
+function clearFilters(){ state.subject=null; state.format=null; renderCatalogue(); showToast('Filters cleared'); }
 
 $('#catalogueClear').addEventListener('click', clearFilters);
-
-/* Hero format pills */
-document.querySelectorAll('#heroFormats .format-pill').forEach(p=>{
-  p.addEventListener('click',()=>applyFormatFilter(p.dataset.format));
-});
-
-/* Path cards */
-document.querySelectorAll('#pathsGrid .path-card').forEach(p=>{
-  p.addEventListener('click',()=>applyFormatFilter(p.dataset.format));
-});
-
-/* Subject cards */
-document.querySelectorAll('#subjectsGrid .subject-card').forEach(p=>{
-  p.addEventListener('click',()=>applySubjectFilter(p.dataset.subject));
-});
-
-/* Format cards "Explore" buttons */
-document.querySelectorAll('.format-card .btn[data-format]').forEach(b=>{
-  b.addEventListener('click',()=>applyFormatFilter(b.dataset.format));
-});
+$$('#heroFormats .format-pill').forEach(p=>p.addEventListener('click',()=>applyFormatFilter(p.dataset.format)));
+$$('#pathsGrid .path-card').forEach(p=>p.addEventListener('click',()=>applyFormatFilter(p.dataset.format)));
+$$('.format-card .btn[data-format]').forEach(b=>b.addEventListener('click',()=>applyFormatFilter(b.dataset.format)));
 
 /* =========================================================
    PROGRAMME DETAIL MODAL
@@ -1263,8 +1339,13 @@ document.querySelectorAll('.format-card .btn[data-format]').forEach(b=>{
 function openProgramme(id){
   const p = PROGRAMMES.find(x=>x.id===id);
   if(!p) return;
-  const content = $('#programmeContent');
-  content.innerHTML = `
+  const award = p.format==='Short Course'?'Certificate of Completion':
+    p.format==='Certificate'?'Professional Certificate':
+    p.format==='Professional Programme'?'Professional Programme Certificate':
+    p.format==='Bootcamp'?'Bootcamp Certificate of Completion':
+    'Advanced Professional Certificate';
+
+  $('#programmeContent').innerHTML = `
     <span class="pm-badge">${esc(p.format)}</span>
     <h2 class="pm-title">${esc(p.name)}</h2>
     <div class="pm-subject">${esc(p.subject)}</div>
@@ -1275,29 +1356,18 @@ function openProgramme(id){
       <div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtPrice(p.price)}</div></div>
     </div>
     <p class="pm-desc">${esc(p.description)}</p>
-
     <div class="pm-section">
       <h4>What You'll Learn</h4>
       <ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>
     </div>
-
     <div class="pm-section">
       <h4>Who Is It For</h4>
       <p class="pm-audience">${esc(p.audience)}</p>
     </div>
-
     <div class="pm-award">
       <i class="fas fa-certificate"></i>
-      <div>
-        <div class="label">On Successful Completion</div>
-        <div class="value">${p.format==='Short Course'?'Certificate of Completion':
-          p.format==='Certificate'?'Professional Certificate':
-          p.format==='Professional Programme'?'Professional Programme Certificate':
-          p.format==='Bootcamp'?'Bootcamp Certificate of Completion':
-          'Advanced Professional Certificate'}</div>
-      </div>
+      <div><div class="label">On Successful Completion</div><div class="value">${award}</div></div>
     </div>
-
     <div class="pm-actions">
       <button class="btn btn-primary btn-lg" onclick="closeProgramme();document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
         Apply Now <i class="fas fa-arrow-right"></i>
@@ -1308,27 +1378,32 @@ function openProgramme(id){
   $('#programmeModal').classList.add('show');
   document.body.style.overflow='hidden';
 }
-
 function closeProgramme(){
   $('#programmeModal').classList.remove('show');
   document.body.style.overflow='';
 }
 
 /* =========================================================
-   SEARCH ENGINE
+   SEARCH
    ========================================================= */
-const searchModal = $('#searchModal');
-const searchInput = $('#searchInput');
-const searchResults = $('#searchResults');
-const searchHint = $('#searchHint');
+const searchModal=$('#searchModal'), searchInput=$('#searchInput'), searchResults=$('#searchResults'), searchHint=$('#searchHint');
+
+function buildSearchTags(){
+  const tags = ['Finance','AI','Bootcamp','Certificate','Data Analytics','Risk Management','Advanced','Short Course','Leadership'];
+  $('#searchTags').innerHTML = tags.map(t=>`<button class="search-tag" data-tag="${esc(t)}">${esc(t)}</button>`).join('');
+  $$('#searchTags .search-tag').forEach(b=>b.addEventListener('click',()=>{
+    searchInput.value = b.dataset.tag;
+    renderSearchResults(b.dataset.tag);
+    searchInput.focus();
+  }));
+}
 
 function openSearch(){
   searchModal.classList.add('show');
   document.body.style.overflow='hidden';
   setTimeout(()=>searchInput.focus(),80);
-  renderSearchResults('');
+  renderSearchResults(searchInput.value);
 }
-
 function closeSearch(){
   searchModal.classList.remove('show');
   document.body.style.overflow='';
@@ -1337,34 +1412,20 @@ function closeSearch(){
 
 function renderSearchResults(q){
   const query = q.trim().toLowerCase();
-
   if(!query){
     searchHint.innerHTML = 'Type to search — try <strong>"finance"</strong>, <strong>"AI"</strong>, or <strong>"bootcamp"</strong>.';
-    searchResults.innerHTML = `
-      <div class="search-empty">
-        <i class="fas fa-search"></i>
-        Start typing to search across ${PROGRAMMES.length} programmes.
-      </div>
-    `;
+    searchResults.innerHTML = `<div class="search-empty"><i class="fas fa-search"></i>Start typing to search across ${PROGRAMMES.length} programmes.</div>`;
     return;
   }
-
   const matches = PROGRAMMES.filter(p=>{
     const hay = (p.name+' '+p.subject+' '+p.format+' '+p.description+' '+p.learn.join(' ')).toLowerCase();
     return hay.includes(query);
   });
-
   searchHint.innerHTML = `<strong>${matches.length}</strong> programme${matches.length!==1?'s':''} found for "<strong>${esc(q.trim())}</strong>"`;
-
   if(matches.length===0){
-    searchResults.innerHTML = `
-      <div class="search-empty">
-        <i class="fas fa-search-minus"></i>
-        No programmes match that search. Try a different keyword.
-      </div>`;
+    searchResults.innerHTML = `<div class="search-empty"><i class="fas fa-search-minus"></i>No programmes match that search. Try a different keyword.</div>`;
     return;
   }
-
   searchResults.innerHTML = matches.map(p=>`
     <div class="search-result" data-id="${p.id}">
       <div class="search-result-info">
@@ -1379,7 +1440,6 @@ function renderSearchResults(q){
       <i class="fas fa-arrow-right search-result-arrow"></i>
     </div>
   `).join('');
-
   searchResults.querySelectorAll('.search-result').forEach(el=>{
     el.addEventListener('click',()=>{
       const id = el.dataset.id;
@@ -1398,28 +1458,24 @@ searchInput.addEventListener('input',e=>renderSearchResults(e.target.value));
 const finderSubject=$('#finderSubject'), finderFormat=$('#finderFormat'),
       finderDuration=$('#finderDuration'), finderBudget=$('#finderBudget');
 
-function matchesDuration(weeks,f){
+function matchesDuration(w,f){
   if(!f) return true;
-  if(f==='short') return weeks<=12;
-  if(f==='medium') return weeks>=13 && weeks<=24;
-  if(f==='long')  return weeks>=25;
+  if(f==='short') return w<=12;
+  if(f==='medium') return w>=13 && w<=24;
+  if(f==='long')  return w>=25;
   return true;
 }
-function matchesBudget(price,f){
+function matchesBudget(pr,f){
   if(!f) return true;
-  if(f==='under5') return price<5000;
-  if(f==='5to10')  return price>=5000 && price<=10000;
-  if(f==='10to20') return price>10000 && price<=20000;
-  if(f==='over20') return price>20000;
+  if(f==='under5') return pr<5000;
+  if(f==='5to10')  return pr>=5000 && pr<=10000;
+  if(f==='10to20') return pr>10000 && pr<=20000;
+  if(f==='over20') return pr>20000;
   return true;
 }
 
 function runFinder(){
-  const subj = finderSubject.value;
-  const fmt  = finderFormat.value;
-  const dur  = finderDuration.value;
-  const bud  = finderBudget.value;
-
+  const subj=finderSubject.value, fmt=finderFormat.value, dur=finderDuration.value, bud=finderBudget.value;
   const results = PROGRAMMES.filter(p=>{
     if(subj && p.subject!==subj) return false;
     if(fmt && p.format!==fmt) return false;
@@ -1427,18 +1483,13 @@ function runFinder(){
     if(!matchesBudget(p.price,bud)) return false;
     return true;
   });
-
-  const wrap = $('#finderResults');
-  const list = $('#finderList');
-  const count = $('#finderCount');
+  const wrap=$('#finderResults'), list=$('#finderList'), count=$('#finderCount');
   wrap.classList.add('show');
   count.textContent = results.length + ' programme' + (results.length!==1?'s':'') + ' found';
-
   if(results.length===0){
     list.innerHTML = `<div class="finder-empty"><i class="fas fa-search-minus"></i>No programmes match your filters. Try broadening your search.</div>`;
     return;
   }
-
   list.innerHTML = results.map(p=>`
     <div class="finder-item" data-id="${p.id}">
       <h5>${esc(p.name)}</h5>
@@ -1449,70 +1500,57 @@ function runFinder(){
       </div>
     </div>
   `).join('');
-
-  list.querySelectorAll('.finder-item').forEach(el=>{
-    el.addEventListener('click',()=>openProgramme(el.dataset.id));
-  });
-
+  list.querySelectorAll('.finder-item').forEach(el=>el.addEventListener('click',()=>openProgramme(el.dataset.id)));
   wrap.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-
 $('#finderBtn').addEventListener('click',runFinder);
 $('#finderReset').addEventListener('click',()=>{
-  finderSubject.value=''; finderFormat.value='';
-  finderDuration.value=''; finderBudget.value='';
-  $('#finderResults').classList.remove('show');
-  $('#finderList').innerHTML='';
+  finderSubject.value=''; finderFormat.value=''; finderDuration.value=''; finderBudget.value='';
+  $('#finderResults').classList.remove('show'); $('#finderList').innerHTML='';
 });
 
 /* =========================================================
    GLOBAL UI
    ========================================================= */
-/* Mobile menu */
 const menuBtn=document.querySelector('.mobile-menu-btn'), mobileNav=$('#mobileNav');
 menuBtn.addEventListener('click',()=>{
   mobileNav.classList.toggle('show');
   menuBtn.setAttribute('aria-expanded',mobileNav.classList.contains('show'));
 });
-document.querySelectorAll('#mobileNav a').forEach(a=>{
-  a.addEventListener('click',()=>mobileNav.classList.remove('show'));
-});
+$$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('show')));
 
-/* Sticky header shadow */
 window.addEventListener('scroll',()=>{
   $('#mainHeader').classList.toggle('scrolled',window.scrollY>30);
 });
 
-/* Smooth scroll on [data-scroll] */
-document.querySelectorAll('[data-scroll]').forEach(a=>{
+$$('[data-scroll]').forEach(a=>{
   a.addEventListener('click',e=>{
-    const href = a.getAttribute('href');
-    if(!href || !href.startsWith('#')) return;
-    const t = document.querySelector(href);
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+    const href=a.getAttribute('href');
+    if(!href||!href.startsWith('#'))return;
+    const t=document.querySelector(href);
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
 
-/* Modal close on Escape + click outside */
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     if($('#programmeModal').classList.contains('show')) closeProgramme();
     if(searchModal.classList.contains('show')) closeSearch();
   }
 });
-$('#programmeModal').addEventListener('click',e=>{
-  if(e.target.id==='programmeModal') closeProgramme();
-});
-searchModal.addEventListener('click',e=>{
-  if(e.target.id==='searchModal') closeSearch();
-});
+$('#programmeModal').addEventListener('click',e=>{if(e.target.id==='programmeModal')closeProgramme();});
+searchModal.addEventListener('click',e=>{if(e.target.id==='searchModal')closeSearch();});
 
 /* =========================================================
    INIT
    ========================================================= */
+buildSubjectsGrid();
+buildFinderSubjects();
+buildSearchTags();
+updateFormatCounts();
 renderCatalogue();
 
-console.log('Nolan Institute — Learn. Innovate. Lead. · Interactive catalogue ready ('+PROGRAMMES.length+' programmes).');
+console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · 5 formats`);
 </script>
 </body>
 </html>
