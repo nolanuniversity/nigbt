@@ -364,7 +364,7 @@ button{font-family:inherit;cursor:pointer}
       <button class="icon-btn" id="searchOpenBtn" aria-label="Search programmes" title="Search">
         <i class="fas fa-search"></i>
       </button>
-      <a href="#apply" class="btn btn-primary btn-sm" data-scroll>Apply Now</a>
+      <a href="admissions-apply.html" class="btn btn-primary btn-sm">Apply Now</a>
       <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
   </div>
@@ -378,6 +378,7 @@ button{font-family:inherit;cursor:pointer}
     <li><a href="#why" data-scroll>About</a></li>
     <li><a href="#apply" data-scroll>Apply</a></li>
     <li><button class="btn btn-primary btn-block" onclick="openSearch()">Search Programmes</button></li>
+    <li><a href="admissions-apply.html" class="btn btn-primary btn-block">Apply Now</a></li>
   </ul>
 </div>
 
@@ -410,7 +411,7 @@ button{font-family:inherit;cursor:pointer}
 
       <div class="hero-actions">
         <button class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
-        <a href="#apply" class="btn btn-outline-white btn-lg" data-scroll>Apply Now</a>
+        <a href="admissions-apply.html" class="btn btn-outline-white btn-lg">Apply Now</a>
       </div>
     </div>
   </div>
@@ -688,7 +689,7 @@ button{font-family:inherit;cursor:pointer}
       <div class="step-card"><div class="step-num">03</div><h3>Start Learning</h3><p>Receive your enrolment information and begin your programme.</p></div>
     </div>
     <div class="center-cta">
-      <button class="btn btn-primary btn-lg" onclick="showToast('Application form opening soon — please contact admissions to reserve your seat.')">Start Your Application <i class="fas fa-arrow-right"></i></button>
+      <a href="admissions-apply.html" class="btn btn-primary btn-lg">Start Your Application <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -728,7 +729,7 @@ button{font-family:inherit;cursor:pointer}
     <p style="font-size:14.5px;color:var(--gold-light);font-weight:500">Learn. Innovate. Lead.</p>
     <div class="final-actions">
       <button class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
-      <a href="#apply" class="btn btn-outline-white btn-lg" data-scroll>Apply Now</a>
+      <a href="admissions-apply.html" class="btn btn-outline-white btn-lg">Apply Now</a>
     </div>
     <div class="final-tagline">Nolan Institute<small>Learn. Innovate. Lead.</small></div>
   </div>
@@ -761,6 +762,7 @@ button{font-family:inherit;cursor:pointer}
       <div class="footer-col">
         <h4>Apply</h4>
         <ul>
+          <li><a href="admissions-apply.html">Start Application</a></li>
           <li><a href="#apply" data-scroll>How to Apply</a></li>
           <li><a href="#" data-scroll>Payment Options</a></li>
           <li><a href="#">Scholarships</a></li>
@@ -814,7 +816,54 @@ button{font-family:inherit;cursor:pointer}
 
 <script>
 /* =========================================================
-   15 SUBJECTS — each with programmes across all 5 formats
+   CONFIG — POINT THIS AT YOUR REAL APPLY PAGE
+   ========================================================= */
+const APPLY_URL = 'admissions-apply.html';
+
+/* Map homepage subject → apply-page programme category */
+function categoryForSubject(subject){
+  const map = {
+    'Accounting & Finance':'Finance & Investment',
+    'Banking & Financial Services':'Finance & Investment',
+    'Investment & Capital Markets':'Finance & Investment',
+    'Financial Modelling':'Finance & Investment',
+    'Corporate Finance':'Finance & Investment',
+    'Risk Management':'Finance & Investment',
+    'Business Intelligence':'Technology & Digital Skills',
+    'Data Analytics':'Technology & Digital Skills',
+    'Artificial Intelligence':'Technology & Digital Skills',
+    'Digital Transformation':'Technology & Digital Skills',
+    'AI for Business':'Technology & Digital Skills',
+    'Leadership':'Executive Education',
+    'Business Management':'Professional Education',
+    'Project Management':'Professional Education',
+    'Entrepreneurship':'Professional Education'
+  };
+  return map[subject] || 'Professional Education';
+}
+
+/* Save the selected programme & navigate to the real apply page */
+function goToApply(programme){
+  try{
+    if(programme){
+      sessionStorage.setItem('nolanSelectedProgramme', JSON.stringify({
+        id: programme.id,
+        name: programme.name,
+        subject: programme.subject,
+        format: programme.format,
+        weeks: programme.weeks,
+        price: programme.price,
+        category: categoryForSubject(programme.subject)
+      }));
+    } else {
+      sessionStorage.removeItem('nolanSelectedProgramme');
+    }
+  }catch(e){ /* sessionStorage may be blocked, that's fine */ }
+  window.location.href = APPLY_URL;
+}
+
+/* =========================================================
+   15 SUBJECTS
    ========================================================= */
 const SUBJECTS = [
   {name:'Accounting & Finance',     icon:'fa-calculator',           blurb:'Build financial knowledge and decision-making capability.'},
@@ -1172,7 +1221,7 @@ const PROGRAMMES = [
 /* =========================================================
    STATE & UTILITIES
    ========================================================= */
-const state = { subject:null, format:null };
+const state = { subject:null, format:null, currentProgrammeId:null };
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
@@ -1187,7 +1236,7 @@ function showToast(msg){
 }
 
 /* =========================================================
-   BUILD SUBJECT GRID (15 subjects)
+   BUILD SUBJECT GRID
    ========================================================= */
 function buildSubjectsGrid(){
   const grid = $('#subjectsGrid');
@@ -1206,7 +1255,6 @@ function buildSubjectsGrid(){
   });
 }
 
-/* Build finder subject dropdown */
 function buildFinderSubjects(){
   const sel = $('#finderSubject');
   SUBJECTS.forEach(s=>{
@@ -1216,7 +1264,6 @@ function buildFinderSubjects(){
   });
 }
 
-/* Update format counts */
 function updateFormatCounts(){
   $('#count-short').textContent = PROGRAMMES.filter(p=>p.format==='Short Course').length + ' programmes';
   $('#count-cert').textContent  = PROGRAMMES.filter(p=>p.format==='Certificate').length + ' programmes';
@@ -1339,6 +1386,7 @@ $$('.format-card .btn[data-format]').forEach(b=>b.addEventListener('click',()=>a
 function openProgramme(id){
   const p = PROGRAMMES.find(x=>x.id===id);
   if(!p) return;
+  state.currentProgrammeId = id;
   const award = p.format==='Short Course'?'Certificate of Completion':
     p.format==='Certificate'?'Professional Certificate':
     p.format==='Professional Programme'?'Professional Programme Certificate':
@@ -1369,7 +1417,7 @@ function openProgramme(id){
       <div><div class="label">On Successful Completion</div><div class="value">${award}</div></div>
     </div>
     <div class="pm-actions">
-      <button class="btn btn-primary btn-lg" onclick="closeProgramme();document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+      <button class="btn btn-primary btn-lg" onclick="applyFromModal()">
         Apply Now <i class="fas fa-arrow-right"></i>
       </button>
       <button class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button>
@@ -1378,6 +1426,14 @@ function openProgramme(id){
   $('#programmeModal').classList.add('show');
   document.body.style.overflow='hidden';
 }
+
+function applyFromModal(){
+  const p = PROGRAMMES.find(x=>x.id===state.currentProgrammeId);
+  closeProgramme();
+  if(p) goToApply(p);
+  else goToApply();
+}
+
 function closeProgramme(){
   $('#programmeModal').classList.remove('show');
   document.body.style.overflow='';
@@ -1550,7 +1606,7 @@ buildSearchTags();
 updateFormatCounts();
 renderCatalogue();
 
-console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · 5 formats`);
+console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · Apply → ${APPLY_URL}`);
 </script>
 </body>
 </html>
