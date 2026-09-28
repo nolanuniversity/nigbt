@@ -1,2004 +1,1518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Nolan Institute of Global Business & Technology — Professional education designed for today's careers. Short Courses, Certificates, Professional Programmes, Bootcamps and Advanced Programmes in Finance, Business, Technology and Entrepreneurship.">
-    <meta name="keywords" content="Nolan Institute, professional education, finance courses, data analytics, AI, financial modelling, investment, entrepreneurship, online learning, Zambia, Africa">
-    <meta name="author" content="Nolan Institute">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Nolan Institute — Build the Skills. Advance Your Career.">
-    <meta property="og:description" content="Professional education designed for today's careers. Learn. Innovate. Lead.">
-    <meta property="og:type" content="website">
-    <title>Nolan Institute of Global Business & Technology | Build the Skills. Advance Your Career.</title>
-    <link rel="icon" type="image/x-icon" href="#">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --navy: #0A1C3A;
-            --navy-light: #1A2D4D;
-            --navy-dark: #05122A;
-            --gold: #C5A028;
-            --gold-light: #D4B84A;
-            --gold-dark: #A07F1F;
-            --gold-10: rgba(197, 160, 40, 0.1);
-            --white: #FFFFFF;
-            --off-white: #FAFAF8;
-            --gray-light: #F5F5F5;
-            --gray-mid: #E0E0E0;
-            --gray-dark: #666666;
-            --gray-darker: #333333;
-            --success: #28A745;
-            --error: #DC3545;
-            --warning: #FFC107;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
-            --shadow-xl: 0 24px 48px rgba(10,28,58,0.15);
-            --transition: all 0.3s ease;
-            --radius: 16px;
-            --radius-sm: 10px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Nolan Institute of Global Business & Technology — Professional education designed for today's careers.">
+<title>Nolan Institute | Build the Skills. Advance Your Career.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+:root{
+  --navy:#0A1C3A;--navy-light:#1A2D4D;--navy-dark:#05122A;
+  --gold:#C5A028;--gold-light:#D4B84A;--gold-dark:#A07F1F;--gold-10:rgba(197,160,40,0.1);
+  --white:#fff;--off-white:#FAFAF8;--gray-light:#F5F5F5;--gray-mid:#E0E0E0;--gray-dark:#666;--gray-darker:#333;
+  --success:#28A745;--error:#DC3545;--warning:#FFC107;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.05);--shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.12);--shadow-xl:0 24px 48px rgba(10,28,58,.18);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:'Inter',sans-serif;color:var(--gray-darker);line-height:1.6;background:var(--white);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2;color:var(--navy)}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+ul{list-style:none}img{max-width:100%;height:auto}
+button{font-family:inherit;cursor:pointer}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--gray-darker);
-            line-height: 1.6;
-            background: var(--white);
-            overflow-x: hidden;
-        }
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;font-weight:600;font-size:14.5px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:var(--transition);text-align:center;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--gold);color:var(--navy-dark);border-color:var(--gold)}
+.btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(197,160,40,.35)}
+.btn-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-navy:hover{background:var(--navy-light);border-color:var(--navy-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-outline-white:hover{background:#fff;color:var(--navy);border-color:#fff}
+.btn-sm{padding:9px 18px;font-size:13px}
+.btn-lg{padding:15px 34px;font-size:15.5px}
+.btn-block{display:flex;width:100%}
 
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.2; color: var(--navy); }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        img { max-width: 100%; height: auto; }
+/* TOP BAR */
+.top-bar{background:var(--navy-dark);color:#cbd5e1;font-size:12.5px;padding:8px 0}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.top-bar-left{display:flex;gap:24px;flex-wrap:wrap}
+.top-bar-left span{display:inline-flex;align-items:center;gap:8px}
+.top-bar-left i{color:var(--gold)}
+.top-bar-right{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.top-bar-right a{color:#cbd5e1;display:inline-flex;align-items:center;gap:6px}
+.top-bar-right a:hover{color:var(--gold)}
 
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-        .container-narrow { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+/* HEADER */
+.main-header{background:#fff;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:1000;transition:var(--transition)}
+.main-header.scrolled{box-shadow:var(--shadow-md)}
+.main-header .container{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;gap:20px}
+.logo{display:flex;flex-direction:column;flex-shrink:0}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:1.5px;color:var(--navy);line-height:1.2}
+.logo-tag{font-size:9.5px;color:var(--gold);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.main-nav ul{display:flex;gap:26px;align-items:center}
+.main-nav ul li a{font-size:14px;font-weight:500;color:var(--gray-darker);padding:8px 0;position:relative}
+.main-nav ul li a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:var(--transition)}
+.main-nav ul li a:hover{color:var(--gold)}
+.main-nav ul li a:hover::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.icon-btn{width:42px;height:42px;border-radius:10px;border:1px solid var(--gray-mid);background:#fff;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:15px;transition:var(--transition)}
+.icon-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);transform:translateY(-2px)}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:22px;color:var(--navy);padding:6px}
 
-        /* ============================================
-           BUTTONS
-           ============================================ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 30px;
-            font-weight: 600;
-            font-size: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition);
-            text-align: center;
-            white-space: nowrap;
-        }
-        .btn-primary { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); }
-        .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197,160,40,0.35); }
-        .btn-navy { background: var(--navy); color: var(--white); border-color: var(--navy); }
-        .btn-navy:hover { background: var(--navy-light); border-color: var(--navy-light); transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
-        .btn-outline:hover { background: var(--navy); color: var(--white); }
-        .btn-outline-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.5); }
-        .btn-outline-white:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
-        .btn-sm { padding: 10px 22px; font-size: 13.5px; }
-        .btn-lg { padding: 16px 38px; font-size: 16px; }
-        .btn-block { display: flex; width: 100%; }
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-mid);max-height:0;overflow:hidden;transition:max-height .4s ease}
+.mobile-nav.show{max-height:500px}
+.mobile-nav ul{padding:20px 24px}
+.mobile-nav ul li{margin-bottom:14px}
+.mobile-nav ul li a{display:block;font-size:15px;font-weight:500;color:var(--navy)}
+.mobile-nav ul li a:hover{color:var(--gold)}
 
-        /* ============================================
-           TOP BAR
-           ============================================ */
-        .top-bar {
-            background: var(--navy-dark);
-            color: #cbd5e1;
-            font-size: 12.5px;
-            padding: 8px 0;
-        }
-        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .top-bar-left { display: flex; gap: 24px; flex-wrap: wrap; }
-        .top-bar-left span { display: inline-flex; align-items: center; gap: 8px; }
-        .top-bar-left i { color: var(--gold); }
-        .top-bar-right { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-        .top-bar-right a { color: #cbd5e1; display: inline-flex; align-items: center; gap: 6px; }
-        .top-bar-right a:hover { color: var(--gold); }
+/* HERO */
+.hero{position:relative;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-light) 100%);color:#fff;padding:90px 0 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpattern id='p' x='0' y='0' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpolyline points='10,50 30,20 50,50' fill='none' stroke='%23C5A028' stroke-width='0.8' opacity='0.15'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%23C5A028' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");opacity:.6}
+.hero .container{position:relative;z-index:2}
+.hero-inner{max-width:850px}
+.hero-badge{display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);color:var(--gold-light);padding:8px 18px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:26px}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);color:#fff;margin-bottom:20px;letter-spacing:-.5px}
+.hero h1 .gold{color:var(--gold)}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.85);margin-bottom:28px;max-width:640px;line-height:1.65}
+.hero-formats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.format-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 18px;border-radius:50px;font-size:12.5px;color:rgba(255,255,255,.92);font-weight:600;cursor:pointer;transition:var(--transition)}
+.format-pill:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);transform:translateY(-2px)}
+.format-pill.active{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
+.hero-subjects{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;margin-bottom:32px}
+.hero-subjects-label{font-size:11.5px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
+.hero-subjects-list{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:rgba(255,255,255,.85)}
+.hero-subjects-list span{position:relative;padding-right:14px}
+.hero-subjects-list span:not(:last-child)::after{content:'|';position:absolute;right:0;color:rgba(197,160,40,.6)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 
-        /* ============================================
-           HEADER / NAV
-           ============================================ */
-        .main-header {
-            background: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        .main-header.scrolled { box-shadow: var(--shadow-md); }
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 24px;
-            gap: 20px;
-        }
-        .logo { display: flex; flex-direction: column; flex-shrink: 0; }
-        .logo-name { font-size: 17px; font-weight: 800; letter-spacing: 1.5px; color: var(--navy); line-height: 1.2; }
-        .logo-tag { font-size: 9.5px; color: var(--gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
+/* SECTIONS */
+.section{padding:80px 0}
+.section-alt{background:var(--off-white)}
+.section-navy{background:var(--navy);color:#fff}
+.section-navy h2,.section-navy h3{color:#fff}
+.section-head{text-align:center;margin-bottom:52px;max-width:760px;margin-left:auto;margin-right:auto}
+.section-tag{display:inline-block;background:var(--gold-10);color:var(--gold-dark);padding:5px 14px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.section-head h2{font-size:clamp(1.7rem,3.5vw,2.6rem);margin-bottom:14px}
+.section-head p{font-size:15.5px;color:var(--gray-dark);line-height:1.7}
+.section-navy .section-head p{color:rgba(255,255,255,.78)}
 
-        .main-nav ul { display: flex; gap: 28px; align-items: center; }
-        .main-nav ul li a { font-size: 14px; font-weight: 500; color: var(--gray-darker); padding: 8px 0; position: relative; }
-        .main-nav ul li a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition);
-        }
-        .main-nav ul li a:hover { color: var(--gold); }
-        .main-nav ul li a:hover::after { width: 100%; }
+/* PATH CARDS */
+.paths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.path-card{background:#fff;border:2px solid var(--gray-mid);border-radius:var(--radius);padding:28px 24px;cursor:pointer;text-align:left;transition:var(--transition);position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:var(--transition)}
+.path-card:hover,.path-card.active{border-color:var(--gold);transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.path-card:hover::before,.path-card.active::before{transform:scaleX(1)}
+.path-icon{width:48px;height:48px;background:var(--gold-10);color:var(--gold-dark);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;transition:var(--transition)}
+.path-card:hover .path-icon,.path-card.active .path-icon{background:var(--gold);color:var(--navy-dark)}
+.path-card h3{font-size:16.5px;margin-bottom:10px;font-family:'Inter',sans-serif;font-weight:700;color:var(--navy);line-height:1.35}
+.path-card p{font-size:13.5px;color:var(--gray-dark);line-height:1.6;margin-bottom:14px}
+.path-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--gold-dark);letter-spacing:.5px;text-transform:uppercase}
 
-        .header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 22px; color: var(--navy); cursor: pointer; padding: 6px; }
+/* SUBJECT CARDS */
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.subject-card{background:#fff;border:1px solid var(--gray-mid);border-radius:var(--radius);padding:24px 22px;transition:var(--transition);display:flex;flex-direction:column;height:100%;cursor:pointer;text-align:left}
+.subject-card:hover,.subject-card.active{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--gold);background:var(--off-white)}
+.subject-icon{width:42px;height:42px;background:var(--navy);color:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:16px;transition:var(--transition)}
+.subject-card:hover .subject-icon,.subject-card.active .subject-icon{background:var(--gold);color:var(--navy-dark)}
+.subject-card h3{font-size:15.5px;font-family:'Inter',sans-serif;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.35}
+.subject-card p{font-size:13px;color:var(--gray-dark);line-height:1.55;flex:1;margin-bottom:14px}
+.subject-link{font-size:12.5px;font-weight:700;color:var(--gold-dark);display:inline-flex;align-items:center;gap:6px;letter-spacing:.3px}
+.subject-card:hover .subject-link{gap:11px}
 
-        .mobile-nav {
-            display: none;
-            background: var(--white);
-            border-top: 1px solid var(--gray-mid);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-        .mobile-nav.show { max-height: 500px; }
-        .mobile-nav ul { padding: 20px 24px; }
-        .mobile-nav ul li { margin-bottom: 14px; }
-        .mobile-nav ul li a { display: block; font-size: 15px; font-weight: 500; color: var(--navy); }
-        .mobile-nav ul li a:hover { color: var(--gold); }
+/* CATALOGUE */
+.catalogue-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--gold-10);border:1px solid rgba(197,160,40,.3);border-radius:12px;padding:14px 20px;margin-bottom:26px;flex-wrap:wrap;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.catalogue-bar-label{font-size:13.5px;color:var(--navy);font-weight:600}
+.catalogue-bar-label strong{color:var(--gold-dark)}
+.clear-filter{background:transparent;border:1px solid var(--navy);color:var(--navy);padding:7px 16px;border-radius:50px;font-size:12.5px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px}
+.clear-filter:hover{background:var(--navy);color:#fff}
 
-        /* ============================================
-           HERO
-           ============================================ */
-        .hero {
-            position: relative;
-            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-light) 100%);
-            color: var(--white);
-            padding: 90px 0 80px;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpattern id='p' x='0' y='0' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpolyline points='10,50 30,20 50,50' fill='none' stroke='%23C5A028' stroke-width='0.8' opacity='0.15'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%23C5A028' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
-            opacity: 0.6;
-        }
-        .hero .container { position: relative; z-index: 2; }
-        .hero-inner { max-width: 850px; }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(197,160,40,0.15);
-            border: 1px solid rgba(197,160,40,0.4);
-            color: var(--gold-light);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-        }
-        .hero h1 {
-            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-            color: var(--white);
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-        }
-        .hero h1 .gold { color: var(--gold); }
-        .hero-sub {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 30px;
-            max-width: 640px;
-            line-height: 1.65;
-        }
-        .hero-formats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 36px;
-        }
-        .format-pill {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.18);
-            padding: 7px 16px;
-            border-radius: 50px;
-            font-size: 12.5px;
-            color: rgba(255,255,255,0.9);
-            font-weight: 500;
-        }
-        .hero-subjects {
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding-top: 24px;
-            margin-bottom: 36px;
-        }
-        .hero-subjects-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: block;
-        }
-        .hero-subjects-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 14px;
-            font-size: 13.5px;
-            color: rgba(255,255,255,0.85);
-        }
-        .hero-subjects-list span { position: relative; padding-right: 14px; }
-        .hero-subjects-list span:not(:last-child)::after {
-            content: '|'; position: absolute; right: 0; color: rgba(197,160,40,0.6);
-        }
-        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.prog-card{background:#fff;border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;cursor:pointer;position:relative;text-align:left}
+.prog-card:hover,.prog-card:focus{transform:translateY(-6px);box-shadow:var(--shadow-xl);border-color:var(--gold);outline:none}
+.prog-top{padding:20px 22px 16px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff}
+.prog-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);padding:3px 11px;border-radius:50px;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
+.prog-top h3{font-size:18px;color:#fff;margin-bottom:8px;line-height:1.3}
+.prog-meta{display:flex;gap:12px;font-size:12px;color:rgba(255,255,255,.78);flex-wrap:wrap}
+.prog-meta span{display:inline-flex;align-items:center;gap:5px}
+.prog-meta i{color:var(--gold)}
+.prog-body{padding:20px 22px;flex:1;display:flex;flex-direction:column}
+.prog-body p{font-size:13px;color:var(--gray-dark);line-height:1.55;margin-bottom:16px;flex:1}
+.prog-price-row{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--gray-mid);margin-bottom:14px}
+.prog-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--navy)}
+.prog-price small{display:block;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:500;color:var(--gray-dark);letter-spacing:.3px}
+.prog-duration{font-size:11px;color:var(--gray-dark);font-weight:600;text-align:right;text-transform:uppercase;letter-spacing:.5px}
+.prog-duration strong{display:block;font-size:13px;color:var(--navy);font-weight:700;margin-bottom:2px}
+.prog-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:700;color:var(--gold-dark);padding-top:10px;letter-spacing:.3px}
+.prog-cta i{transition:transform .3s ease}
+.prog-card:hover .prog-cta i{transform:translateX(4px)}
 
-        /* ============================================
-           SECTION HEADERS
-           ============================================ */
-        .section { padding: 80px 0; }
-        .section-alt { background: var(--off-white); }
-        .section-navy { background: var(--navy); color: var(--white); }
-        .section-navy h2, .section-navy h3 { color: var(--white); }
+.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;background:var(--off-white);border-radius:var(--radius);border:1px dashed var(--gray-mid)}
+.empty-state i{font-size:36px;color:var(--gray-mid);margin-bottom:14px;display:block}
+.empty-state h4{font-family:'Inter',sans-serif;font-size:16px;color:var(--navy);margin-bottom:8px}
+.empty-state p{font-size:13.5px;color:var(--gray-dark)}
 
-        .section-head { text-align: center; margin-bottom: 56px; max-width: 760px; margin-left: auto; margin-right: auto; }
-        .section-tag {
-            display: inline-block;
-            background: var(--gold-10);
-            color: var(--gold-dark);
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 11.5px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        .section-head h2 {
-            font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-            margin-bottom: 14px;
-        }
-        .section-head p {
-            font-size: 16px;
-            color: var(--gray-dark);
-            line-height: 1.7;
-        }
-        .section-navy .section-head p { color: rgba(255,255,255,0.75); }
+.center-cta{text-align:center;margin-top:44px}
 
-        /* ============================================
-           LEARNING PATHS (What do you want to achieve?)
-           ============================================ */
-        .paths-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-        .path-card {
-            background: var(--white);
-            border: 2px solid var(--gray-mid);
-            border-radius: var(--radius);
-            padding: 30px 26px;
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-        }
-        .path-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 3px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition);
-        }
-        .path-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-        .path-card:hover::before { transform: scaleX(1); }
-        .path-icon {
-            width: 48px; height: 48px;
-            background: var(--gold-10);
-            color: var(--gold-dark);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        .path-card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            color: var(--navy);
-        }
-        .path-card p {
-            font-size: 13.5px;
-            color: var(--gray-dark);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        .path-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--gold-dark);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
+/* FORMATS */
+.formats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.format-card{background:#fff;border-radius:var(--radius);padding:28px 22px;text-align:center;transition:var(--transition);border:1px solid var(--gray-mid);display:flex;flex-direction:column}
+.format-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.format-card h3{font-family:'Inter',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.format-duration{font-size:19px;font-family:'Playfair Display',serif;color:var(--gold-dark);font-weight:700;margin-bottom:14px}
+.format-desc{font-size:12.5px;color:var(--gray-dark);line-height:1.6;margin-bottom:16px;flex:1}
+.format-award{font-size:11.5px;color:var(--gray-dark);padding:10px 12px;background:var(--gray-light);border-radius:8px;margin-bottom:12px;line-height:1.5}
+.format-award strong{color:var(--navy);display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.format-price{font-family:'Playfair Display',serif;font-size:21px;font-weight:800;color:var(--navy);margin-bottom:16px}
+.format-price small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:var(--gray-dark);text-transform:uppercase;letter-spacing:1px}
 
-        /* ============================================
-           SUBJECTS GRID
-           ============================================ */
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
-        }
-        .subject-card {
-            background: var(--white);
-            border: 1px solid var(--gray-mid);
-            border-radius: var(--radius);
-            padding: 26px 24px;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--gold);
-        }
-        .subject-icon {
-            width: 44px; height: 44px;
-            background: var(--navy);
-            color: var(--gold);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            margin-bottom: 18px;
-        }
-        .subject-card h3 {
-            font-size: 16.5px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 10px;
-            line-height: 1.35;
-        }
-        .subject-card p {
-            font-size: 13.5px;
-            color: var(--gray-dark);
-            line-height: 1.6;
-            flex: 1;
-            margin-bottom: 14px;
-        }
-        .subject-link {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--gold-dark);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-        .subject-link:hover { gap: 12px; color: var(--gold); }
+/* WHY NOLAN */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
+.why-card{background:rgba(255,255,255,.05);border:1px solid rgba(197,160,40,.25);border-radius:var(--radius);padding:28px 24px;transition:var(--transition)}
+.why-card:hover{background:rgba(197,160,40,.08);border-color:var(--gold);transform:translateY(-4px)}
+.why-icon{font-size:26px;color:var(--gold);margin-bottom:16px}
+.why-card h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:.5px}
+.why-card p{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.65}
 
-        .center-cta { text-align: center; margin-top: 48px; }
+/* WHAT YOU LEAVE WITH */
+.leave-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.leave-card{background:#fff;border-radius:var(--radius);padding:28px 22px;text-align:center;border:1px solid var(--gray-mid);transition:var(--transition);position:relative;overflow:hidden}
+.leave-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:36px;height:3px;background:var(--gold);border-radius:3px 3px 0 0;transition:var(--transition)}
+.leave-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.leave-card:hover::after{width:60%}
+.leave-num{font-family:'Playfair Display',serif;font-size:12px;color:var(--gold-dark);font-weight:700;letter-spacing:2px;margin-bottom:10px}
+.leave-card h3{font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
+.leave-card p{font-size:13px;color:var(--gray-dark);line-height:1.6}
 
-        /* ============================================
-           FEATURED PROGRAMMES
-           ============================================ */
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 26px;
-        }
-        .prog-card {
-            background: var(--white);
-            border: 1px solid var(--gray-mid);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .prog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--gold);
-        }
-        .prog-top {
-            padding: 22px 24px 18px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--white);
-            position: relative;
-        }
-        .prog-badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--navy-dark);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 10.5px;
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .prog-top h3 {
-            font-size: 19px;
-            color: var(--white);
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-        .prog-meta {
-            display: flex;
-            gap: 14px;
-            font-size: 12.5px;
-            color: rgba(255,255,255,0.75);
-            flex-wrap: wrap;
-        }
-        .prog-meta span { display: inline-flex; align-items: center; gap: 6px; }
-        .prog-meta i { color: var(--gold); }
+/* CAREER */
+.career-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-bottom:32px}
+.career-card{background:#fff;border-left:4px solid var(--gold);border-radius:var(--radius-sm);padding:24px 22px;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.career-card:hover{transform:translateX(6px);box-shadow:var(--shadow-md)}
+.career-card h3{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:12px}
+.career-card ul li{font-size:13.5px;color:var(--gray-darker);padding:6px 0 6px 20px;position:relative}
+.career-card ul li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:6px;background:var(--gold);border-radius:50%}
+.career-disclaimer{background:var(--gray-light);border-radius:var(--radius-sm);padding:20px 24px;font-size:13px;color:var(--gray-dark);line-height:1.65;border-left:3px solid var(--navy)}
+.career-disclaimer strong{color:var(--navy)}
 
-        .prog-body {
-            padding: 22px 24px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .prog-body p {
-            font-size: 13.5px;
-            color: var(--gray-dark);
-            line-height: 1.6;
-            margin-bottom: 18px;
-            flex: 1;
-        }
-        .prog-price-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 18px;
-            border-top: 1px solid var(--gray-mid);
-            margin-bottom: 16px;
-        }
-        .prog-price { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--navy); }
-        .prog-price small { display: block; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; color: var(--gray-dark); letter-spacing: 0.3px; }
-        .prog-duration { font-size: 12px; color: var(--gray-dark); font-weight: 600; text-align: right; }
-        .prog-duration strong { display: block; font-size: 14px; color: var(--navy); }
+/* FINDER */
+.finder-card{background:#fff;border-radius:var(--radius);padding:36px;box-shadow:var(--shadow-lg);border:1px solid var(--gray-mid)}
+.finder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-bottom:22px}
+.finder-field label{display:block;font-size:11.5px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.finder-field select{width:100%;padding:12px 14px;border:2px solid var(--gray-mid);border-radius:8px;font-size:13.5px;background:#fff;color:var(--gray-darker);cursor:pointer;transition:var(--transition);font-family:inherit}
+.finder-field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-10)}
+.finder-actions{display:flex;gap:12px;flex-wrap:wrap}
+.finder-results{margin-top:30px;padding-top:30px;border-top:1px solid var(--gray-mid);display:none}
+.finder-results.show{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.finder-results-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.finder-results-head h4{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;color:var(--navy);letter-spacing:.5px}
+.finder-count{font-size:13px;color:var(--gray-dark)}
+.finder-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.finder-item{padding:16px 18px;background:var(--off-white);border:1px solid var(--gray-mid);border-radius:var(--radius-sm);transition:var(--transition);cursor:pointer}
+.finder-item:hover{border-color:var(--gold);background:#fff;transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.finder-item h5{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.35}
+.finder-item .finder-meta{font-size:11.5px;color:var(--gray-dark);display:flex;gap:12px;flex-wrap:wrap}
+.finder-item .finder-meta strong{color:var(--gold-dark)}
+.finder-empty{text-align:center;padding:30px 20px;color:var(--gray-dark);font-size:13.5px;grid-column:1/-1}
+.finder-empty i{font-size:24px;color:var(--gray-mid);margin-bottom:10px;display:block}
 
-        /* ============================================
-           FIVE FORMATS
-           ============================================ */
-        .formats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .format-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 30px 24px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--gray-mid);
-            display: flex;
-            flex-direction: column;
-        }
-        .format-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--gold);
-        }
-        .format-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--navy);
-            margin-bottom: 6px;
-        }
-        .format-duration {
-            font-size: 20px;
-            font-family: 'Playfair Display', serif;
-            color: var(--gold-dark);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        .format-desc {
-            font-size: 13px;
-            color: var(--gray-dark);
-            line-height: 1.6;
-            margin-bottom: 18px;
-            flex: 1;
-        }
-        .format-award {
-            font-size: 11.5px;
-            color: var(--gray-dark);
-            padding: 10px 12px;
-            background: var(--gray-light);
-            border-radius: 8px;
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-        .format-award strong { color: var(--navy); display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
-        .format-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 18px;
-        }
-        .format-price small { display: block; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 1px; }
+/* HOW TO APPLY */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.step-card{background:#fff;border-radius:var(--radius);padding:34px 26px;text-align:center;border:1px solid var(--gray-mid);transition:var(--transition)}
+.step-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.step-num{width:54px;height:54px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:800;margin:0 auto 18px}
+.step-card h3{font-family:'Inter',sans-serif;font-size:15.5px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.step-card p{font-size:13.5px;color:var(--gray-dark);line-height:1.6}
 
-        /* ============================================
-           WHY NOLAN
-           ============================================ */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 22px;
-        }
-        .why-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(197,160,40,0.25);
-            border-radius: var(--radius);
-            padding: 30px 26px;
-            transition: var(--transition);
-        }
-        .why-card:hover {
-            background: rgba(197,160,40,0.08);
-            border-color: var(--gold);
-            transform: translateY(-4px);
-        }
-        .why-icon {
-            font-size: 28px;
-            color: var(--gold);
-            margin-bottom: 18px;
-        }
-        .why-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 15.5px;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
-        .why-card p {
-            font-size: 13.5px;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.65;
-        }
+/* PAYMENT */
+.payment-inner{background:#fff;border-radius:var(--radius);padding:40px 36px;box-shadow:var(--shadow-md);border:1px solid var(--gray-mid)}
+.payment-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-bottom:26px}
+.pay-option{background:var(--off-white);border-radius:var(--radius-sm);padding:24px 22px;border:1px solid var(--gray-mid)}
+.pay-option h4{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.pay-option p{font-size:13px;color:var(--gray-dark);line-height:1.6;margin-bottom:12px}
+.pay-option .pay-example{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold-dark);font-weight:700}
+.pay-methods{display:flex;flex-wrap:wrap;gap:10px;padding-top:22px;border-top:1px solid var(--gray-mid)}
+.pay-method{background:var(--gray-light);padding:8px 16px;border-radius:50px;font-size:12px;font-weight:600;color:var(--navy);display:inline-flex;align-items:center;gap:8px}
+.pay-method i{color:var(--gold-dark)}
 
-        /* ============================================
-           WHAT YOU LEAVE WITH
-           ============================================ */
-        .leave-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .leave-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 32px 26px;
-            text-align: center;
-            border: 1px solid var(--gray-mid);
-            transition: var(--transition);
-            position: relative;
-        }
-        .leave-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 40px; height: 3px;
-            background: var(--gold);
-            border-radius: 3px 3px 0 0;
-        }
-        .leave-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-        .leave-num {
-            font-family: 'Playfair Display', serif;
-            font-size: 12px;
-            color: var(--gold-dark);
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-        .leave-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .leave-card p {
-            font-size: 13.5px;
-            color: var(--gray-dark);
-            line-height: 1.6;
-        }
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,var(--navy-light) 100%);color:#fff;text-align:center;padding:90px 0;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-50%;left:-20%;width:700px;height:700px;background:radial-gradient(circle,rgba(197,160,40,.15) 0%,rgba(197,160,40,0) 70%);border-radius:50%}
+.final-cta .container{position:relative;z-index:2}
+.final-cta h2{font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:16px;max-width:780px;margin-left:auto;margin-right:auto}
+.final-cta h2 .gold{color:var(--gold)}
+.final-cta p{font-size:16.5px;color:rgba(255,255,255,.8);margin-bottom:12px;max-width:620px;margin-left:auto;margin-right:auto}
+.final-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.final-tagline{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);letter-spacing:2px;margin-top:32px}
+.final-tagline small{display:block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.5);margin-top:6px}
 
-        /* ============================================
-           CAREER OUTCOMES
-           ============================================ */
-        .career-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 22px;
-            margin-bottom: 40px;
-        }
-        .career-card {
-            background: var(--white);
-            border-left: 4px solid var(--gold);
-            border-radius: var(--radius-sm);
-            padding: 26px 24px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        .career-card:hover { transform: translateX(6px); box-shadow: var(--shadow-md); }
-        .career-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            margin-bottom: 14px;
-        }
-        .career-card ul li {
-            font-size: 13.5px;
-            color: var(--gray-darker);
-            padding: 6px 0 6px 20px;
-            position: relative;
-        }
-        .career-card ul li::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 13px;
-            width: 6px; height: 6px;
-            background: var(--gold);
-            border-radius: 50%;
-        }
-        .career-disclaimer {
-            background: var(--gray-light);
-            border-radius: var(--radius-sm);
-            padding: 20px 24px;
-            font-size: 13px;
-            color: var(--gray-dark);
-            line-height: 1.65;
-            border-left: 3px solid var(--navy);
-        }
-        .career-disclaimer strong { color: var(--navy); }
+/* FOOTER */
+.footer{background:var(--navy-dark);color:#94a3b8;padding:60px 0 24px;font-size:13px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:44px}
+.footer-brand .brand-name{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:700;margin-bottom:6px}
+.footer-brand .brand-tag{font-size:10.5px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.footer-brand p{font-size:12.5px;line-height:1.7;margin-bottom:16px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:34px;height:34px;background:rgba(255,255,255,.06);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px}
+.footer-social a:hover{background:var(--gold);color:var(--navy-dark)}
+.footer-col h4{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.footer-col ul li{margin-bottom:9px}
+.footer-col ul li a{font-size:12.5px;color:#94a3b8}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-col ul li i{color:var(--gold);margin-right:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12px;color:#64748b}
+.footer-bottom a{color:#64748b}
+.footer-bottom a:hover{color:var(--gold)}
 
-        /* ============================================
-           PROGRAMME FINDER
-           ============================================ */
-        .finder-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--gray-mid);
-        }
-        .finder-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        .finder-field label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--navy);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        .finder-field select {
-            width: 100%;
-            padding: 13px 14px;
-            border: 2px solid var(--gray-mid);
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            background: var(--white);
-            color: var(--gray-darker);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .finder-field select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-10); }
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px)}
+.modal-overlay.show{display:flex;animation:fadeIn .2s ease}
+.modal-card{background:#fff;border-radius:20px;max-width:720px;width:100%;padding:40px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl)}
+.modal-card.search-modal{padding:0;max-width:680px;overflow:hidden}
+@keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:var(--gray-light);color:var(--navy);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:2}
+.modal-close:hover{background:var(--gold);color:var(--navy-dark);transform:rotate(90deg)}
 
-        .finder-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+/* Programme detail modal */
+.pm-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);padding:4px 14px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.pm-title{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:10px;line-height:1.25;padding-right:40px}
+.pm-subject{font-size:13px;color:var(--gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px}
+.pm-meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;padding:20px 0;border-top:1px solid var(--gray-mid);border-bottom:1px solid var(--gray-mid);margin-bottom:24px}
+.pm-meta-item .pm-label{font-size:10.5px;color:var(--gray-dark);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.pm-meta-item .pm-value{font-family:'Playfair Display',serif;font-size:19px;font-weight:800;color:var(--navy)}
+.pm-meta-item .pm-value.small{font-family:'Inter',sans-serif;font-size:14px;font-weight:600}
+.pm-desc{font-size:14.5px;color:var(--gray-darker);line-height:1.7;margin-bottom:26px}
+.pm-section{margin-bottom:24px}
+.pm-section h4{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:800;color:var(--gold-dark);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px}
+.pm-learn{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.pm-learn li{font-size:13.5px;color:var(--gray-darker);padding:8px 0 8px 22px;position:relative}
+.pm-learn li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;top:10px;color:var(--gold);font-size:11px}
+.pm-audience{font-size:13.5px;color:var(--gray-darker);line-height:1.7;background:var(--off-white);padding:16px 18px;border-radius:var(--radius-sm);border-left:3px solid var(--gold)}
+.pm-award{background:var(--navy);color:#fff;padding:18px 20px;border-radius:var(--radius-sm);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.pm-award i{font-size:24px;color:var(--gold);flex-shrink:0}
+.pm-award div .label{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:3px}
+.pm-award div .value{font-size:14.5px;font-weight:600}
+.pm-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 
-        .finder-results {
-            margin-top: 32px;
-            padding-top: 32px;
-            border-top: 1px solid var(--gray-mid);
-            display: none;
-        }
-        .finder-results.show { display: block; }
-        .finder-results-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .finder-results-head h4 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); letter-spacing: 0.5px; }
-        .finder-count { font-size: 13px; color: var(--gray-dark); }
-        .finder-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-        .finder-item {
-            padding: 18px 20px;
-            background: var(--off-white);
-            border: 1px solid var(--gray-mid);
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
-        }
-        .finder-item:hover { border-color: var(--gold); background: var(--white); }
-        .finder-item h5 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.35; }
-        .finder-item .finder-meta { font-size: 12px; color: var(--gray-dark); display: flex; gap: 12px; flex-wrap: wrap; }
-        .finder-item .finder-meta strong { color: var(--gold-dark); }
-        .finder-empty { text-align: center; padding: 24px; color: var(--gray-dark); font-size: 14px; }
+/* Search modal */
+.search-top{padding:22px 24px;border-bottom:1px solid var(--gray-mid);display:flex;align-items:center;gap:12px;background:var(--off-white)}
+.search-top i{color:var(--gold-dark);font-size:18px}
+.search-top input{flex:1;border:none;background:transparent;font-size:16px;outline:none;color:var(--navy);font-family:inherit;font-weight:500}
+.search-top input::placeholder{color:#94a3b8}
+.search-hint{padding:10px 24px;font-size:11.5px;color:var(--gray-dark);background:var(--off-white);border-bottom:1px solid var(--gray-mid);letter-spacing:.3px}
+.search-hint strong{color:var(--navy)}
+.search-results{max-height:440px;overflow-y:auto;padding:8px 0}
+.search-result{padding:14px 24px;cursor:pointer;border-bottom:1px solid var(--gray-light);transition:var(--transition);display:flex;align-items:center;justify-content:space-between;gap:14px}
+.search-result:hover{background:var(--gold-10)}
+.search-result-info h5{font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.search-result-info .search-meta{font-size:11.5px;color:var(--gray-dark);display:flex;gap:12px;flex-wrap:wrap}
+.search-result-info .search-meta strong{color:var(--gold-dark)}
+.search-result-arrow{color:var(--gold-dark);font-size:14px;flex-shrink:0}
+.search-empty{padding:40px 24px;text-align:center;color:var(--gray-dark);font-size:13.5px}
+.search-empty i{font-size:28px;color:var(--gray-mid);display:block;margin-bottom:12px}
 
-        /* ============================================
-           HOW TO APPLY
-           ============================================ */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            position: relative;
-        }
-        .step-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 36px 28px;
-            text-align: center;
-            border: 1px solid var(--gray-mid);
-            transition: var(--transition);
-            position: relative;
-        }
-        .step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
-        .step-num {
-            width: 56px; height: 56px;
-            background: var(--navy);
-            color: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 800;
-            margin: 0 auto 20px;
-        }
-        .step-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 12px;
-        }
-        .step-card p { font-size: 13.5px; color: var(--gray-dark); line-height: 1.65; }
+/* TOAST */
+.toast{position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13.5px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:340px;box-shadow:var(--shadow-lg)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast i{color:var(--gold);font-size:15px}
 
-        /* ============================================
-           PAYMENT
-           ============================================ */
-        .payment-inner {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 44px 40px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--gray-mid);
-        }
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-bottom: 36px;
-        }
-        .pay-option {
-            background: var(--off-white);
-            border-radius: var(--radius-sm);
-            padding: 26px 24px;
-            border: 1px solid var(--gray-mid);
-        }
-        .pay-option h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 12px;
-        }
-        .pay-option p { font-size: 13.5px; color: var(--gray-dark); line-height: 1.6; margin-bottom: 14px; }
-        .pay-option .pay-example {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: var(--gold-dark);
-            font-weight: 700;
-        }
-        .pay-methods {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding-top: 24px;
-            border-top: 1px solid var(--gray-mid);
-        }
-        .pay-method {
-            background: var(--gray-light);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: var(--navy);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .pay-method i { color: var(--gold-dark); }
-
-        /* ============================================
-           FINAL CTA
-           ============================================ */
-        .final-cta {
-            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 90px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .final-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -20%;
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(197,160,40,0.15) 0%, rgba(197,160,40,0) 70%);
-            border-radius: 50%;
-        }
-        .final-cta .container { position: relative; z-index: 2; }
-        .final-cta h2 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            color: var(--white);
-            margin-bottom: 18px;
-            max-width: 780px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .final-cta h2 .gold { color: var(--gold); }
-        .final-cta p {
-            font-size: 17px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 14px;
-            max-width: 620px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .final-cta .final-tagline {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            color: var(--gold);
-            letter-spacing: 2px;
-            margin: 30px 0 0;
-        }
-        .final-cta .final-tagline small {
-            display: block;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: rgba(255,255,255,0.5);
-            margin-top: 8px;
-        }
-        .final-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            background: var(--navy-dark);
-            color: #94a3b8;
-            padding: 60px 0 24px;
-            font-size: 13px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 44px;
-        }
-        .footer-brand .brand-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: var(--white);
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .footer-brand .brand-tag {
-            font-size: 10.5px;
-            letter-spacing: 2px;
-            color: var(--gold);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-        .footer-brand p { font-size: 13px; line-height: 1.7; margin-bottom: 18px; }
-        .footer-social { display: flex; gap: 14px; }
-        .footer-social a {
-            width: 36px; height: 36px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 14px;
-        }
-        .footer-social a:hover { background: var(--gold); color: var(--navy-dark); }
-        .footer-col h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { font-size: 13px; color: #94a3b8; }
-        .footer-col ul li a:hover { color: var(--gold); }
-        .footer-col ul li i { color: var(--gold); margin-right: 8px; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            font-size: 12px;
-            color: #64748b;
-        }
-        .footer-bottom a { color: #64748b; }
-        .footer-bottom a:hover { color: var(--gold); }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 992px) {
-            .main-nav { display: none; }
-            .mobile-menu-btn { display: block; }
-            .top-bar-left { display: none; }
-        }
-        @media (max-width: 768px) {
-            .section { padding: 60px 0; }
-            .hero { padding: 70px 0 60px; }
-            .finder-card, .payment-inner { padding: 28px 22px; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-        }
-        @media (max-width: 480px) {
-            .container { padding: 0 18px; }
-            .hero-actions, .final-actions { flex-direction: column; }
-            .hero-actions .btn, .final-actions .btn { width: 100%; }
-            .finder-actions { flex-direction: column; }
-            .finder-actions .btn { width: 100%; }
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:992px){
+  .main-nav{display:none}
+  .mobile-menu-btn{display:block}
+  .top-bar-left span:nth-child(3){display:none}
+}
+@media(max-width:768px){
+  .section{padding:60px 0}
+  .hero{padding:70px 0 60px}
+  .finder-card,.payment-inner,.modal-card{padding:26px 22px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .top-bar-left{display:none}
+}
+@media(max-width:480px){
+  .container{padding:0 18px}
+  .hero-actions,.final-actions{flex-direction:column;width:100%}
+  .hero-actions .btn,.final-actions .btn{width:100%}
+  .finder-actions{flex-direction:column}
+  .finder-actions .btn{width:100%}
+  .pm-actions{flex-direction:column}
+  .pm-actions .btn{width:100%}
+}
+</style>
 </head>
 <body>
 
-<!-- ============================================
-     TOP BAR
-     ============================================ -->
+<!-- TOP BAR -->
 <div class="top-bar">
-    <div class="container">
-        <div class="top-bar-left">
-            <span><i class="fas fa-phone-alt"></i> +260 768 526 191</span>
-            <span><i class="fas fa-envelope"></i> info@nolaninstitute.org</span>
-            <span><i class="fas fa-globe"></i> Online Learning Worldwide</span>
-        </div>
-        <div class="top-bar-right">
-            <a href="#"><i class="fas fa-user"></i> Student Portal</a>
-            <a href="#"><i class="fas fa-chalkboard-user"></i> Faculty &amp; Staff</a>
-            <a href="#"><i class="fas fa-graduation-cap"></i> Alumni</a>
-        </div>
+  <div class="container">
+    <div class="top-bar-left">
+      <span><i class="fas fa-phone-alt"></i> +260 768 526 191</span>
+      <span><i class="fas fa-envelope"></i> info@nolaninstitute.org</span>
+      <span><i class="fas fa-globe"></i> Online Learning Worldwide</span>
     </div>
+    <div class="top-bar-right">
+      <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+      <a href="#"><i class="fas fa-graduation-cap"></i> Alumni</a>
+    </div>
+  </div>
 </div>
 
-<!-- ============================================
-     HEADER
-     ============================================ -->
+<!-- HEADER -->
 <header class="main-header" id="mainHeader">
-    <div class="container">
-        <a href="#" class="logo">
-            <span class="logo-name">NOLAN INSTITUTE</span>
-            <span class="logo-tag">Learn. Innovate. Lead.</span>
-        </a>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#programmes">Programmes</a></li>
-                <li><a href="#subjects">Subjects</a></li>
-                <li><a href="#formats">How It Works</a></li>
-                <li><a href="#why">About</a></li>
-                <li><a href="#apply">How to Apply</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <a href="#apply" class="btn btn-primary btn-sm">Apply Now</a>
-            <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
-        </div>
+  <div class="container">
+    <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+      <span class="logo-name">NOLAN INSTITUTE</span>
+      <span class="logo-tag">Learn. Innovate. Lead.</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#catalogue" data-scroll>Catalogue</a></li>
+        <li><a href="#subjects" data-scroll>Subjects</a></li>
+        <li><a href="#formats" data-scroll>Formats</a></li>
+        <li><a href="#why" data-scroll>About</a></li>
+        <li><a href="#apply" data-scroll>Apply</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchOpenBtn" aria-label="Search programmes" title="Search">
+        <i class="fas fa-search"></i>
+      </button>
+      <a href="#apply" class="btn btn-primary btn-sm" data-scroll>Apply Now</a>
+      <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
+  </div>
 </header>
 
 <div class="mobile-nav" id="mobileNav">
-    <ul>
-        <li><a href="#programmes">Programmes</a></li>
-        <li><a href="#subjects">Subjects</a></li>
-        <li><a href="#formats">How It Works</a></li>
-        <li><a href="#why">About</a></li>
-        <li><a href="#apply">How to Apply</a></li>
-        <li><a href="#apply" class="btn btn-primary btn-block">Apply Now</a></li>
-    </ul>
+  <ul>
+    <li><a href="#catalogue" data-scroll>Catalogue</a></li>
+    <li><a href="#subjects" data-scroll>Subjects</a></li>
+    <li><a href="#formats" data-scroll>Formats</a></li>
+    <li><a href="#why" data-scroll>About</a></li>
+    <li><a href="#apply" data-scroll>Apply</a></li>
+    <li><button class="btn btn-primary btn-block" onclick="openSearch()">Search Programmes</button></li>
+  </ul>
 </div>
 
-<!-- ============================================
-     1. HERO
-     ============================================ -->
+<!-- HERO -->
 <section class="hero">
-    <div class="container">
-        <div class="hero-inner">
-            <span class="hero-badge">Nolan Institute · Founding Cohort 2026</span>
-            <h1>Build the Skills.<br><span class="gold">Advance Your Career.</span></h1>
-            <p class="hero-sub">Professional education designed for today's careers. Learn practical, career-relevant skills you can apply immediately — wherever you are in your professional journey.</p>
+  <div class="container">
+    <div class="hero-inner">
+      <span class="hero-badge">Nolan Institute · Founding Cohort 2026</span>
+      <h1>Build the Skills.<br><span class="gold">Advance Your Career.</span></h1>
+      <p class="hero-sub">Professional education designed for today's careers. Learn practical, career-relevant skills you can apply immediately.</p>
 
-            <div class="hero-formats">
-                <span class="format-pill">Short Courses</span>
-                <span class="format-pill">Certificates</span>
-                <span class="format-pill">Professional Programmes</span>
-                <span class="format-pill">Bootcamps</span>
-                <span class="format-pill">Advanced Programmes</span>
-            </div>
+      <div class="hero-formats" id="heroFormats">
+        <button class="format-pill" data-format="Short Course">Short Courses</button>
+        <button class="format-pill" data-format="Certificate">Certificates</button>
+        <button class="format-pill" data-format="Professional Programme">Professional Programmes</button>
+        <button class="format-pill" data-format="Bootcamp">Bootcamps</button>
+        <button class="format-pill" data-format="Advanced Programme">Advanced Programmes</button>
+      </div>
 
-            <div class="hero-subjects">
-                <span class="hero-subjects-label">Learn practical skills in</span>
-                <div class="hero-subjects-list">
-                    <span>Accounting &amp; Finance</span>
-                    <span>Banking</span>
-                    <span>Investment</span>
-                    <span>Financial Modelling</span>
-                    <span>Business</span>
-                    <span>Projects</span>
-                    <span>Data</span>
-                    <span>AI</span>
-                    <span>Digital Transformation</span>
-                    <span>Entrepreneurship</span>
-                    <span>Leadership</span>
-                </div>
-            </div>
-
-            <div class="hero-actions">
-                <a href="#programmes" class="btn btn-primary btn-lg">Explore Programmes <i class="fas fa-arrow-right"></i></a>
-                <a href="#apply" class="btn btn-outline-white btn-lg">Apply Now</a>
-            </div>
+      <div class="hero-subjects">
+        <span class="hero-subjects-label">Learn practical skills in</span>
+        <div class="hero-subjects-list">
+          <span>Accounting &amp; Finance</span><span>Banking</span><span>Investment</span>
+          <span>Financial Modelling</span><span>Business</span><span>Projects</span>
+          <span>Data</span><span>AI</span><span>Digital Transformation</span>
+          <span>Entrepreneurship</span><span>Leadership</span>
         </div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
+        <a href="#apply" class="btn btn-outline-white btn-lg" data-scroll>Apply Now</a>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ============================================
-     2. WHAT DO YOU WANT TO ACHIEVE?
-     ============================================ -->
+<!-- WHAT DO YOU WANT TO ACHIEVE -->
 <section class="section" id="paths">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Choose Your Learning Path</span>
-            <h2>What Do You Want to Achieve?</h2>
-            <p>Tell us what you're looking for, and we'll point you to the right format. Most learners start here.</p>
-        </div>
-
-        <div class="paths-grid">
-            <a href="#formats" class="path-card">
-                <div class="path-icon"><i class="fas fa-bolt"></i></div>
-                <h3>I want to learn a specific skill</h3>
-                <p>Focused, practical training in one area — delivered in 8 to 12 weeks.</p>
-                <span class="path-tag">Short Courses <i class="fas fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#formats" class="path-card">
-                <div class="path-icon"><i class="fas fa-certificate"></i></div>
-                <h3>I want a structured professional credential</h3>
-                <p>Build recognised knowledge and demonstrate your professional development.</p>
-                <span class="path-tag">Certificates <i class="fas fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#formats" class="path-card">
-                <div class="path-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>I want deeper career development</h3>
-                <p>Develop substantial, career-relevant professional capability.</p>
-                <span class="path-tag">Professional Programmes <i class="fas fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#formats" class="path-card">
-                <div class="path-icon"><i class="fas fa-fire"></i></div>
-                <h3>I want intensive practical training</h3>
-                <p>Short, application-focused — learn by doing, fast.</p>
-                <span class="path-tag">Bootcamps <i class="fas fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#formats" class="path-card">
-                <div class="path-icon"><i class="fas fa-trophy"></i></div>
-                <h3>I want advanced professional expertise</h3>
-                <p>Higher-level capability for experienced professionals.</p>
-                <span class="path-tag">Advanced Programmes <i class="fas fa-arrow-right"></i></span>
-            </a>
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Choose Your Learning Path</span>
+      <h2>What Do You Want to Achieve?</h2>
+      <p>Tell us what you're looking for, and we'll show you the right programmes.</p>
     </div>
+    <div class="paths-grid" id="pathsGrid">
+      <button class="path-card" data-format="Short Course">
+        <div class="path-icon"><i class="fas fa-bolt"></i></div>
+        <h3>I want to learn a specific skill</h3>
+        <p>Focused, practical training in one area — delivered in 8 to 12 weeks.</p>
+        <span class="path-tag">Short Courses <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="path-card" data-format="Certificate">
+        <div class="path-icon"><i class="fas fa-certificate"></i></div>
+        <h3>I want a structured professional credential</h3>
+        <p>Build recognised knowledge and demonstrate your professional development.</p>
+        <span class="path-tag">Certificates <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="path-card" data-format="Professional Programme">
+        <div class="path-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>I want deeper career development</h3>
+        <p>Develop substantial, career-relevant professional capability.</p>
+        <span class="path-tag">Professional Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="path-card" data-format="Bootcamp">
+        <div class="path-icon"><i class="fas fa-fire"></i></div>
+        <h3>I want intensive practical training</h3>
+        <p>Short, application-focused — learn by doing, fast.</p>
+        <span class="path-tag">Bootcamps <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="path-card" data-format="Advanced Programme">
+        <div class="path-icon"><i class="fas fa-trophy"></i></div>
+        <h3>I want advanced professional expertise</h3>
+        <p>Higher-level capability for experienced professionals.</p>
+        <span class="path-tag">Advanced Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     3. EXPLORE BY SUBJECT
-     ============================================ -->
+<!-- EXPLORE BY SUBJECT -->
 <section class="section section-alt" id="subjects">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Explore by Subject</span>
-            <h2>Eleven Subjects. One Institution.</h2>
-            <p>Choose the subject that maps to where you want your career to go next.</p>
-        </div>
-
-        <div class="subjects-grid">
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-calculator"></i></div>
-                <h3>Accounting &amp; Finance</h3>
-                <p>Build financial knowledge and decision-making capability for real professional environments.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-building-columns"></i></div>
-                <h3>Banking &amp; Financial Services</h3>
-                <p>Understand modern banking, financial services operations, and risk.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-chart-pie"></i></div>
-                <h3>Investment &amp; Capital Markets</h3>
-                <p>Develop investment and capital markets knowledge for analysis and decisions.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                <h3>Financial Modelling</h3>
-                <p>Build models that support financial analysis, forecasting and decisions.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Business Management</h3>
-                <p>Develop the capability to manage and grow organisations.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-diagram-project"></i></div>
-                <h3>Project Management</h3>
-                <p>Learn to plan, manage and deliver projects on time and to standard.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-chart-bar"></i></div>
-                <h3>Data Analytics</h3>
-                <p>Turn data into meaningful business insight and decisions.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-robot"></i></div>
-                <h3>Artificial Intelligence</h3>
-                <p>Develop practical AI skills for the modern workplace.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-arrows-spin"></i></div>
-                <h3>Digital Transformation</h3>
-                <p>Understand technology-driven organisational change and how to lead it.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-rocket"></i></div>
-                <h3>Entrepreneurship</h3>
-                <p>Turn opportunities and ideas into viable, sustainable ventures.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="subject-card">
-                <div class="subject-icon"><i class="fas fa-users"></i></div>
-                <h3>Leadership</h3>
-                <p>Develop the capability to lead people and organisations effectively.</p>
-                <a href="#programmes" class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-
-        <div class="center-cta">
-            <a href="#programmes" class="btn btn-navy btn-lg">Explore All Programmes <i class="fas fa-arrow-right"></i></a>
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Explore by Subject</span>
+      <h2>Eleven Subjects. One Institution.</h2>
+      <p>Click a subject to filter the catalogue instantly.</p>
     </div>
+    <div class="subjects-grid" id="subjectsGrid">
+      <button class="subject-card" data-subject="Accounting & Finance">
+        <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+        <h3>Accounting &amp; Finance</h3>
+        <p>Build financial knowledge and decision-making capability.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Banking & Financial Services">
+        <div class="subject-icon"><i class="fas fa-building-columns"></i></div>
+        <h3>Banking &amp; Financial Services</h3>
+        <p>Understand modern banking, financial services and risk.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Investment & Capital Markets">
+        <div class="subject-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Investment &amp; Capital Markets</h3>
+        <p>Develop investment and capital markets knowledge.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Financial Modelling">
+        <div class="subject-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3>Financial Modelling</h3>
+        <p>Build models that support financial analysis and decisions.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Business Management">
+        <div class="subject-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Business Management</h3>
+        <p>Develop the capability to manage and grow organisations.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Project Management">
+        <div class="subject-icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>Project Management</h3>
+        <p>Learn to plan, manage and deliver projects.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Data Analytics">
+        <div class="subject-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Data Analytics</h3>
+        <p>Turn data into meaningful business insight.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Artificial Intelligence">
+        <div class="subject-icon"><i class="fas fa-robot"></i></div>
+        <h3>Artificial Intelligence</h3>
+        <p>Develop practical AI skills for the modern workplace.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Digital Transformation">
+        <div class="subject-icon"><i class="fas fa-arrows-spin"></i></div>
+        <h3>Digital Transformation</h3>
+        <p>Understand technology-driven organisational change.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Entrepreneurship">
+        <div class="subject-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Entrepreneurship</h3>
+        <p>Turn opportunities and ideas into viable ventures.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+      <button class="subject-card" data-subject="Leadership">
+        <div class="subject-icon"><i class="fas fa-users"></i></div>
+        <h3>Leadership</h3>
+        <p>Develop the capability to lead people and organisations.</p>
+        <span class="subject-link">View Programmes <i class="fas fa-arrow-right"></i></span>
+      </button>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     4. FEATURED PROGRAMMES
-     ============================================ -->
-<section class="section" id="programmes">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Featured Programmes</span>
-            <h2>Popular Programmes Right Now</h2>
-            <p>Each programme shows duration, price and outcome. Apply directly — no back-and-forth.</p>
-        </div>
-
-        <div class="featured-grid">
-
-            <div class="prog-card">
-                <div class="prog-top">
-                    <span class="prog-badge">Professional Programme</span>
-                    <h3>Investment &amp; Capital Markets</h3>
-                    <div class="prog-meta">
-                        <span><i class="fas fa-clock"></i> 24 Weeks</span>
-                        <span><i class="fas fa-laptop"></i> Online</span>
-                    </div>
-                </div>
-                <div class="prog-body">
-                    <p>Develop deeper expertise in investment analysis, valuation, capital markets and financial decision-making.</p>
-                    <div class="prog-price-row">
-                        <div class="prog-price">K12,500<small>Payment plans available</small></div>
-                        <div class="prog-duration"><strong>24 Weeks</strong>Online</div>
-                    </div>
-                    <a href="#apply" class="btn btn-navy btn-block">View Programme <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="prog-card">
-                <div class="prog-top">
-                    <span class="prog-badge">Certificate</span>
-                    <h3>Certificate in Data Analytics</h3>
-                    <div class="prog-meta">
-                        <span><i class="fas fa-clock"></i> 16 Weeks</span>
-                        <span><i class="fas fa-laptop"></i> Online</span>
-                    </div>
-                </div>
-                <div class="prog-body">
-                    <p>Build practical capability in data analysis, visualisation and data-driven decision-making.</p>
-                    <div class="prog-price-row">
-                        <div class="prog-price">K8,500<small>Payment plans available</small></div>
-                        <div class="prog-duration"><strong>16 Weeks</strong>Online</div>
-                    </div>
-                    <a href="#apply" class="btn btn-navy btn-block">View Programme <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="prog-card">
-                <div class="prog-top">
-                    <span class="prog-badge">Bootcamp</span>
-                    <h3>Financial Modelling Bootcamp</h3>
-                    <div class="prog-meta">
-                        <span><i class="fas fa-clock"></i> 4 Weeks</span>
-                        <span><i class="fas fa-fire"></i> Intensive</span>
-                    </div>
-                </div>
-                <div class="prog-body">
-                    <p>Learn by building practical financial models — from forecasting to valuation and decision support.</p>
-                    <div class="prog-price-row">
-                        <div class="prog-price">K5,500<small>Payment plans available</small></div>
-                        <div class="prog-duration"><strong>4 Weeks</strong>Intensive</div>
-                    </div>
-                    <a href="#apply" class="btn btn-navy btn-block">View Programme <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="prog-card">
-                <div class="prog-top">
-                    <span class="prog-badge">Certificate</span>
-                    <h3>AI for Business</h3>
-                    <div class="prog-meta">
-                        <span><i class="fas fa-clock"></i> 16 Weeks</span>
-                        <span><i class="fas fa-laptop"></i> Online</span>
-                    </div>
-                </div>
-                <div class="prog-body">
-                    <p>Identify, scope and apply AI opportunities inside real organisations — no coding background required.</p>
-                    <div class="prog-price-row">
-                        <div class="prog-price">K8,500<small>Payment plans available</small></div>
-                        <div class="prog-duration"><strong>16 Weeks</strong>Online</div>
-                    </div>
-                    <a href="#apply" class="btn btn-navy btn-block">View Programme <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="prog-card">
-                <div class="prog-top">
-                    <span class="prog-badge">Short Course</span>
-                    <h3>Corporate Finance Essentials</h3>
-                    <div class="prog-meta">
-                        <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                        <span><i class="fas fa-laptop"></i> Online</span>
-                    </div>
-                </div>
-                <div class="prog-body">
-                    <p>Build working knowledge of corporate finance — valuation, capital structure and financial decisions.</p>
-                    <div class="prog-price-row">
-                        <div class="prog-price">K4,500<small>Payment plans available</small></div>
-                        <div class="prog-duration"><strong>10 Weeks</strong>Online</div>
-                    </div>
-                    <a href="#apply" class="btn btn-navy btn-block">View Programme <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="prog-card">
-                <div class="prog-top">
-                    <span class="prog-badge">Advanced Programme</span>
-                    <h3>Advanced Financial Modelling</h3>
-                    <div class="prog-meta">
-                        <span><i class="fas fa-clock"></i> 30 Weeks</span>
-                        <span><i class="fas fa-laptop"></i> Online</span>
-                    </div>
-                </div>
-                <div class="prog-body">
-                    <p>Develop higher-level capability in integrated modelling, valuation and decision-support analysis.</p>
-                    <div class="prog-price-row">
-                        <div class="prog-price">K22,500<small>Payment plans available</small></div>
-                        <div class="prog-duration"><strong>30 Weeks</strong>Online</div>
-                    </div>
-                    <a href="#apply" class="btn btn-navy btn-block">View Programme <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="center-cta">
-            <a href="#finder" class="btn btn-primary btn-lg">Find Your Programme <i class="fas fa-search"></i></a>
-        </div>
+<!-- CATALOGUE (dynamic) -->
+<section class="section" id="catalogue">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag" id="catalogueTag">Featured Programmes</span>
+      <h2 id="catalogueTitle">Popular Programmes Right Now</h2>
+      <p id="catalogueSub">Each programme shows duration, price and outcome. Click any card to see full details.</p>
     </div>
+
+    <div class="catalogue-bar" id="catalogueBar" style="display:none">
+      <span class="catalogue-bar-label" id="catalogueBarLabel"></span>
+      <button class="clear-filter" id="catalogueClear"><i class="fas fa-times"></i> Clear filter</button>
+    </div>
+
+    <div class="featured-grid" id="catalogueGrid"></div>
+
+    <div class="center-cta">
+      <a href="#finder" class="btn btn-navy btn-lg" data-scroll><i class="fas fa-sliders-h"></i> Use Programme Finder</a>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     5. FIVE LEARNING FORMATS
-     ============================================ -->
+<!-- FIVE FORMATS -->
 <section class="section section-alt" id="formats">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Choose How You Want to Learn</span>
-            <h2>Five Learning Formats</h2>
-            <p>Different goals need different formats. Choose the structure that fits your objective and your schedule.</p>
-        </div>
-
-        <div class="formats-grid">
-
-            <div class="format-card">
-                <h3>Short Courses</h3>
-                <div class="format-duration">8–12 Weeks</div>
-                <p class="format-desc">Learn a focused practical skill you can apply right away.</p>
-                <div class="format-award"><strong>Certificate</strong>Certificate of Completion</div>
-                <div class="format-price">From K4,500<small>Investment</small></div>
-                <a href="#finder" class="btn btn-outline btn-block">Explore Short Courses</a>
-            </div>
-
-            <div class="format-card">
-                <h3>Certificates</h3>
-                <div class="format-duration">16 Weeks</div>
-                <p class="format-desc">Build structured knowledge and demonstrate your professional development.</p>
-                <div class="format-award"><strong>Award</strong>Professional Certificate</div>
-                <div class="format-price">From K7,500<small>Investment</small></div>
-                <a href="#finder" class="btn btn-outline btn-block">Explore Certificates</a>
-            </div>
-
-            <div class="format-card">
-                <h3>Professional Programmes</h3>
-                <div class="format-duration">24 Weeks</div>
-                <p class="format-desc">Develop deeper professional capability and substantial expertise.</p>
-                <div class="format-award"><strong>Award</strong>Professional Programme Certificate</div>
-                <div class="format-price">From K12,500<small>Investment</small></div>
-                <a href="#finder" class="btn btn-outline btn-block">Explore Professional Programmes</a>
-            </div>
-
-            <div class="format-card">
-                <h3>Bootcamps</h3>
-                <div class="format-duration">2–6 Weeks</div>
-                <p class="format-desc">Intensive. Practical. Application-focused. Learn by doing.</p>
-                <div class="format-award"><strong>Award</strong>Bootcamp Certificate of Completion</div>
-                <div class="format-price">From K5,500<small>Investment</small></div>
-                <a href="#finder" class="btn btn-outline btn-block">Explore Bootcamps</a>
-            </div>
-
-            <div class="format-card">
-                <h3>Advanced Programmes</h3>
-                <div class="format-duration">24–36 Weeks</div>
-                <p class="format-desc">Develop higher-level professional expertise and leadership capability.</p>
-                <div class="format-award"><strong>Award</strong>Advanced Professional Certificate</div>
-                <div class="format-price">From K22,500<small>Investment</small></div>
-                <a href="#finder" class="btn btn-outline btn-block">Explore Advanced Programmes</a>
-            </div>
-
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Choose How You Want to Learn</span>
+      <h2>Five Learning Formats</h2>
+      <p>Click any format to instantly filter the catalogue.</p>
     </div>
+
+    <div class="formats-grid">
+      <div class="format-card">
+        <h3>Short Courses</h3>
+        <div class="format-duration">8–12 Weeks</div>
+        <p class="format-desc">Learn a focused practical skill you can apply right away.</p>
+        <div class="format-award"><strong>Certificate</strong>Certificate of Completion</div>
+        <div class="format-price">From K4,500<small>Investment</small></div>
+        <button class="btn btn-outline btn-block" data-format="Short Course">Explore Short Courses <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="format-card">
+        <h3>Certificates</h3>
+        <div class="format-duration">16 Weeks</div>
+        <p class="format-desc">Build structured knowledge and demonstrate your professional development.</p>
+        <div class="format-award"><strong>Award</strong>Professional Certificate</div>
+        <div class="format-price">From K8,500<small>Investment</small></div>
+        <button class="btn btn-outline btn-block" data-format="Certificate">Explore Certificates <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="format-card">
+        <h3>Professional Programmes</h3>
+        <div class="format-duration">24 Weeks</div>
+        <p class="format-desc">Develop deeper professional capability and substantial expertise.</p>
+        <div class="format-award"><strong>Award</strong>Professional Programme Certificate</div>
+        <div class="format-price">From K12,500<small>Investment</small></div>
+        <button class="btn btn-outline btn-block" data-format="Professional Programme">Explore Professional Programmes <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="format-card">
+        <h3>Bootcamps</h3>
+        <div class="format-duration">2–6 Weeks</div>
+        <p class="format-desc">Intensive. Practical. Application-focused. Learn by doing.</p>
+        <div class="format-award"><strong>Award</strong>Bootcamp Certificate of Completion</div>
+        <div class="format-price">From K5,500<small>Investment</small></div>
+        <button class="btn btn-outline btn-block" data-format="Bootcamp">Explore Bootcamps <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="format-card">
+        <h3>Advanced Programmes</h3>
+        <div class="format-duration">24–36 Weeks</div>
+        <p class="format-desc">Develop higher-level professional expertise and leadership capability.</p>
+        <div class="format-award"><strong>Award</strong>Advanced Professional Certificate</div>
+        <div class="format-price">From K22,500<small>Investment</small></div>
+        <button class="btn btn-outline btn-block" data-format="Advanced Programme">Explore Advanced Programmes <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     6. WHY NOLAN INSTITUTE
-     ============================================ -->
+<!-- WHY NOLAN -->
 <section class="section section-navy" id="why">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag" style="background: rgba(197,160,40,0.15);">Why Nolan Institute</span>
-            <h2>Built Around Practical Professional Growth</h2>
-            <p>Technology-enabled education for the global economy — Learn. Innovate. Lead.</p>
-        </div>
-
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Practical Learning</h3>
-                <p>Learn skills you can apply immediately in real professional environments.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-compass"></i></div>
-                <h3>Career-Relevant Subjects</h3>
-                <p>Study areas aligned with modern business, finance, technology and entrepreneurship.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-laptop"></i></div>
-                <h3>Flexible Online Learning</h3>
-                <p>Develop your skills while continuing your work or other commitments.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-cogs"></i></div>
-                <h3>Practical Application</h3>
-                <p>Go beyond theory through exercises, projects, case studies and applied learning.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Professional Credentials</h3>
-                <p>Complete your programme and receive the appropriate Nolan Institute credential.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-arrow-trend-up"></i></div>
-                <h3>Built for Professional Growth</h3>
-                <p>From your first skill to advanced professional development — one institution, one pathway.</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag" style="background:rgba(197,160,40,.15)">Why Nolan Institute</span>
+      <h2>Built Around Practical Professional Growth</h2>
+      <p>Technology-enabled education for the global economy — Learn. Innovate. Lead.</p>
     </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><i class="fas fa-briefcase"></i></div><h3>Practical Learning</h3><p>Learn skills you can apply immediately in real professional environments.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-compass"></i></div><h3>Career-Relevant Subjects</h3><p>Study areas aligned with modern business, finance, technology and entrepreneurship.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-laptop"></i></div><h3>Flexible Online Learning</h3><p>Develop your skills while continuing your work or other commitments.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-cogs"></i></div><h3>Practical Application</h3><p>Go beyond theory through exercises, projects, case studies and applied learning.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-certificate"></i></div><h3>Professional Credentials</h3><p>Complete your programme and receive the appropriate Nolan Institute credential.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-arrow-trend-up"></i></div><h3>Built for Professional Growth</h3><p>From your first skill to advanced professional development.</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     7. WHAT YOU WILL LEAVE WITH
-     ============================================ -->
+<!-- WHAT YOU LEAVE WITH -->
 <section class="section">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Outcomes</span>
-            <h2>When You Complete a Nolan Programme, You Build:</h2>
-            <p>Not just knowledge — a complete professional asset you can carry into your career.</p>
-        </div>
-
-        <div class="leave-grid">
-            <div class="leave-card">
-                <div class="leave-num">01</div>
-                <h3>Knowledge</h3>
-                <p>Understand the concepts that underpin your subject area.</p>
-            </div>
-            <div class="leave-card">
-                <div class="leave-num">02</div>
-                <h3>Skills</h3>
-                <p>Apply what you've learned in realistic professional scenarios.</p>
-            </div>
-            <div class="leave-card">
-                <div class="leave-num">03</div>
-                <h3>Practical Experience</h3>
-                <p>Work through realistic exercises, cases and projects.</p>
-            </div>
-            <div class="leave-card">
-                <div class="leave-num">04</div>
-                <h3>Credential</h3>
-                <p>Receive your appropriate Nolan Institute award on completion.</p>
-            </div>
-            <div class="leave-card">
-                <div class="leave-num">05</div>
-                <h3>Career Evidence</h3>
-                <p>Build tangible evidence of what you can do — not just what you've studied.</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Outcomes</span>
+      <h2>When You Complete a Nolan Programme, You Build:</h2>
+      <p>Not just knowledge — a complete professional asset you can carry into your career.</p>
     </div>
+    <div class="leave-grid">
+      <div class="leave-card"><div class="leave-num">01</div><h3>Knowledge</h3><p>Understand the concepts that underpin your subject area.</p></div>
+      <div class="leave-card"><div class="leave-num">02</div><h3>Skills</h3><p>Apply what you've learned in realistic professional scenarios.</p></div>
+      <div class="leave-card"><div class="leave-num">03</div><h3>Practical Experience</h3><p>Work through realistic exercises, cases and projects.</p></div>
+      <div class="leave-card"><div class="leave-num">04</div><h3>Credential</h3><p>Receive your appropriate Nolan Institute award on completion.</p></div>
+      <div class="leave-card"><div class="leave-num">05</div><h3>Career Evidence</h3><p>Build tangible evidence of what you can do.</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     8. CAREER OUTCOMES
-     ============================================ -->
-<section class="section section-alt" id="careers">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Career Application</span>
-            <h2>Build Skills That Support Your Career</h2>
-            <p>Depending on the subject, Nolan programmes help learners develop capabilities relevant to roles such as:</p>
-        </div>
-
-        <div class="career-grid">
-            <div class="career-card">
-                <h3>Finance</h3>
-                <ul>
-                    <li>Financial Analyst</li>
-                    <li>Finance Officer</li>
-                    <li>Financial Planning roles</li>
-                    <li>Corporate Finance roles</li>
-                </ul>
-            </div>
-            <div class="career-card">
-                <h3>Investment</h3>
-                <ul>
-                    <li>Investment Analyst</li>
-                    <li>Research roles</li>
-                    <li>Corporate Finance</li>
-                    <li>Investment-related roles</li>
-                </ul>
-            </div>
-            <div class="career-card">
-                <h3>Data</h3>
-                <ul>
-                    <li>Data Analyst</li>
-                    <li>Business Intelligence roles</li>
-                    <li>Reporting &amp; Analytics roles</li>
-                </ul>
-            </div>
-            <div class="career-card">
-                <h3>Technology</h3>
-                <ul>
-                    <li>AI-enabled business roles</li>
-                    <li>Digital Transformation roles</li>
-                    <li>Technology-related business functions</li>
-                </ul>
-            </div>
-            <div class="career-card">
-                <h3>Business</h3>
-                <ul>
-                    <li>Business Analyst</li>
-                    <li>Operations roles</li>
-                    <li>Management roles</li>
-                    <li>Entrepreneurship</li>
-                </ul>
-            </div>
-            <div class="career-card">
-                <h3>Leadership</h3>
-                <ul>
-                    <li>Team leadership</li>
-                    <li>Management</li>
-                    <li>Business leadership</li>
-                    <li>Organisational development</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="career-disclaimer">
-            <strong>Important:</strong> Nolan Institute develops professional capabilities. Employment outcomes depend on individual qualifications, experience, performance and employer requirements.
-        </div>
+<!-- CAREER OUTCOMES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Career Application</span>
+      <h2>Build Skills That Support Your Career</h2>
+      <p>Depending on the subject, Nolan programmes help learners develop capabilities relevant to roles such as:</p>
     </div>
+    <div class="career-grid">
+      <div class="career-card"><h3>Finance</h3><ul><li>Financial Analyst</li><li>Finance Officer</li><li>Financial Planning roles</li><li>Corporate Finance roles</li></ul></div>
+      <div class="career-card"><h3>Investment</h3><ul><li>Investment Analyst</li><li>Research roles</li><li>Corporate Finance</li><li>Investment-related roles</li></ul></div>
+      <div class="career-card"><h3>Data</h3><ul><li>Data Analyst</li><li>Business Intelligence roles</li><li>Reporting &amp; Analytics roles</li></ul></div>
+      <div class="career-card"><h3>Technology</h3><ul><li>AI-enabled business roles</li><li>Digital Transformation roles</li><li>Technology-related business functions</li></ul></div>
+      <div class="career-card"><h3>Business</h3><ul><li>Business Analyst</li><li>Operations roles</li><li>Management roles</li><li>Entrepreneurship</li></ul></div>
+      <div class="career-card"><h3>Leadership</h3><ul><li>Team leadership</li><li>Management</li><li>Business leadership</li><li>Organisational development</li></ul></div>
+    </div>
+    <div class="career-disclaimer"><strong>Important:</strong> Nolan Institute develops professional capabilities. Employment outcomes depend on individual qualifications, experience, performance and employer requirements.</div>
+  </div>
 </section>
 
-<!-- ============================================
-     9. PROGRAMME FINDER
-     ============================================ -->
+<!-- PROGRAMME FINDER -->
 <section class="section" id="finder">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Programme Finder</span>
-            <h2>Find Your Programme</h2>
-            <p>Filter by subject, format, duration and budget to see what fits you best.</p>
-        </div>
-
-        <div class="finder-card">
-            <div class="finder-grid">
-                <div class="finder-field">
-                    <label>I'm interested in</label>
-                    <select id="finderSubject">
-                        <option value="">All Subjects</option>
-                        <option value="Accounting &amp; Finance">Accounting &amp; Finance</option>
-                        <option value="Banking &amp; Financial Services">Banking &amp; Financial Services</option>
-                        <option value="Investment &amp; Capital Markets">Investment &amp; Capital Markets</option>
-                        <option value="Financial Modelling">Financial Modelling</option>
-                        <option value="Business Management">Business Management</option>
-                        <option value="Project Management">Project Management</option>
-                        <option value="Data Analytics">Data Analytics</option>
-                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                        <option value="Digital Transformation">Digital Transformation</option>
-                        <option value="Entrepreneurship">Entrepreneurship</option>
-                        <option value="Leadership">Leadership</option>
-                    </select>
-                </div>
-                <div class="finder-field">
-                    <label>My preferred format</label>
-                    <select id="finderFormat">
-                        <option value="">All Formats</option>
-                        <option value="Short Course">Short Course</option>
-                        <option value="Certificate">Certificate</option>
-                        <option value="Professional Programme">Professional Programme</option>
-                        <option value="Bootcamp">Bootcamp</option>
-                        <option value="Advanced Programme">Advanced Programme</option>
-                    </select>
-                </div>
-                <div class="finder-field">
-                    <label>My preferred duration</label>
-                    <select id="finderDuration">
-                        <option value="">Any Duration</option>
-                        <option value="short">2–12 Weeks</option>
-                        <option value="medium">13–24 Weeks</option>
-                        <option value="long">25+ Weeks</option>
-                    </select>
-                </div>
-                <div class="finder-field">
-                    <label>My budget</label>
-                    <select id="finderBudget">
-                        <option value="">Any Budget</option>
-                        <option value="under5">Under K5,000</option>
-                        <option value="5to10">K5,000 – K10,000</option>
-                        <option value="10to20">K10,000 – K20,000</option>
-                        <option value="over20">K20,000+</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="finder-actions">
-                <button type="button" class="btn btn-primary" id="finderBtn">Show Programmes <i class="fas fa-search"></i></button>
-                <button type="button" class="btn btn-outline" id="finderReset">Reset</button>
-            </div>
-
-            <div class="finder-results" id="finderResults">
-                <div class="finder-results-head">
-                    <h4>Matching Programmes</h4>
-                    <span class="finder-count" id="finderCount"></span>
-                </div>
-                <div class="finder-list" id="finderList"></div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Programme Finder</span>
+      <h2>Find Your Programme</h2>
+      <p>Filter by subject, format, duration and budget. Click any result to see full details.</p>
     </div>
+
+    <div class="finder-card">
+      <div class="finder-grid">
+        <div class="finder-field">
+          <label>I'm interested in</label>
+          <select id="finderSubject">
+            <option value="">All Subjects</option>
+            <option>Accounting &amp; Finance</option>
+            <option>Banking &amp; Financial Services</option>
+            <option>Investment &amp; Capital Markets</option>
+            <option>Financial Modelling</option>
+            <option>Business Management</option>
+            <option>Project Management</option>
+            <option>Data Analytics</option>
+            <option>Artificial Intelligence</option>
+            <option>Digital Transformation</option>
+            <option>Entrepreneurship</option>
+            <option>Leadership</option>
+          </select>
+        </div>
+        <div class="finder-field">
+          <label>My preferred format</label>
+          <select id="finderFormat">
+            <option value="">All Formats</option>
+            <option>Short Course</option>
+            <option>Certificate</option>
+            <option>Professional Programme</option>
+            <option>Bootcamp</option>
+            <option>Advanced Programme</option>
+          </select>
+        </div>
+        <div class="finder-field">
+          <label>My preferred duration</label>
+          <select id="finderDuration">
+            <option value="">Any Duration</option>
+            <option value="short">2–12 Weeks</option>
+            <option value="medium">13–24 Weeks</option>
+            <option value="long">25+ Weeks</option>
+          </select>
+        </div>
+        <div class="finder-field">
+          <label>My budget</label>
+          <select id="finderBudget">
+            <option value="">Any Budget</option>
+            <option value="under5">Under K5,000</option>
+            <option value="5to10">K5,000 – K10,000</option>
+            <option value="10to20">K10,000 – K20,000</option>
+            <option value="over20">K20,000+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="finder-actions">
+        <button class="btn btn-primary" id="finderBtn"><i class="fas fa-search"></i> Show Programmes</button>
+        <button class="btn btn-outline" id="finderReset">Reset</button>
+      </div>
+
+      <div class="finder-results" id="finderResults">
+        <div class="finder-results-head">
+          <h4>Matching Programmes</h4>
+          <span class="finder-count" id="finderCount"></span>
+        </div>
+        <div class="finder-list" id="finderList"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     10. HOW TO APPLY
-     ============================================ -->
+<!-- HOW TO APPLY -->
 <section class="section section-alt" id="apply">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Start Your Journey</span>
-            <h2>Apply in 3 Simple Steps</h2>
-            <p>From deciding to starting — the entire process is designed to be straightforward.</p>
-        </div>
-
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-num">01</div>
-                <h3>Choose Your Programme</h3>
-                <p>Select your subject and learning format. Use the programme finder if you're not sure.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">02</div>
-                <h3>Apply Online</h3>
-                <p>Complete your application and select your payment option — full or payment plan.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">03</div>
-                <h3>Start Learning</h3>
-                <p>Receive your enrolment information and begin your programme.</p>
-            </div>
-        </div>
-
-        <div class="center-cta">
-            <a href="#" class="btn btn-primary btn-lg">Start Your Application <i class="fas fa-arrow-right"></i></a>
-        </div>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Start Your Journey</span>
+      <h2>Apply in 3 Simple Steps</h2>
+      <p>From deciding to starting — the entire process is designed to be straightforward.</p>
     </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">01</div><h3>Choose Your Programme</h3><p>Select your subject and learning format. Use the programme finder if you're not sure.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h3>Apply Online</h3><p>Complete your application and select your payment option — full or payment plan.</p></div>
+      <div class="step-card"><div class="step-num">03</div><h3>Start Learning</h3><p>Receive your enrolment information and begin your programme.</p></div>
+    </div>
+    <div class="center-cta">
+      <button class="btn btn-primary btn-lg" onclick="showToast('Application form opening soon — please contact admissions to reserve your seat.')">Start Your Application <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     11. PAYMENT OPTIONS
-     ============================================ -->
-<section class="section" id="payment">
-    <div class="container">
-        <div class="section-head">
-            <span class="section-tag">Payment</span>
-            <h2>Flexible Payment Options</h2>
-            <p>We don't hide the price. Choose the option that works for you.</p>
-        </div>
-
-        <div class="payment-inner">
-            <div class="payment-options">
-                <div class="pay-option">
-                    <h4>Pay in Full</h4>
-                    <p>Pay the full programme fee at once — simple, immediate and confirmed.</p>
-                    <div class="pay-example">Full fee upfront</div>
-                </div>
-                <div class="pay-option">
-                    <h4>Payment Plan</h4>
-                    <p>For longer programmes, choose an approved payment plan and pay in monthly instalments.</p>
-                    <div class="pay-example">From K3,500 / month</div>
-                </div>
-            </div>
-
-            <div style="background: var(--gold-10); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px; border-left: 4px solid var(--gold);">
-                <p style="margin: 0; font-size: 14.5px; color: var(--navy); line-height: 1.7;">
-                    <strong>Example:</strong> Professional Programme — K12,500 · From <strong>K3,500/month</strong> with a payment plan.
-                </p>
-            </div>
-
-            <div class="pay-methods">
-                <span class="pay-method"><i class="fas fa-mobile-alt"></i> Mobile Money</span>
-                <span class="pay-method"><i class="far fa-credit-card"></i> Card</span>
-                <span class="pay-method"><i class="fas fa-university"></i> Bank Transfer</span>
-                <span class="pay-method"><i class="fas fa-money-bill-wave"></i> Local Payment Options</span>
-                <span class="pay-method"><i class="fas fa-globe"></i> International Payments</span>
-            </div>
-        </div>
+<!-- PAYMENT -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Payment</span>
+      <h2>Flexible Payment Options</h2>
+      <p>We don't hide the price. Choose the option that works for you.</p>
     </div>
+    <div class="payment-inner">
+      <div class="payment-options">
+        <div class="pay-option"><h4>Pay in Full</h4><p>Pay the full programme fee at once — simple, immediate and confirmed.</p><div class="pay-example">Full fee upfront</div></div>
+        <div class="pay-option"><h4>Payment Plan</h4><p>For longer programmes, choose an approved payment plan and pay in monthly instalments.</p><div class="pay-example">From K3,500 / month</div></div>
+      </div>
+      <div style="background:var(--gold-10);border-radius:12px;padding:20px 22px;margin-bottom:22px;border-left:4px solid var(--gold)">
+        <p style="margin:0;font-size:14px;color:var(--navy);line-height:1.7"><strong>Example:</strong> Professional Programme — K12,500 · From <strong>K3,500/month</strong> with a payment plan.</p>
+      </div>
+      <div class="pay-methods">
+        <span class="pay-method"><i class="fas fa-mobile-alt"></i> Mobile Money</span>
+        <span class="pay-method"><i class="far fa-credit-card"></i> Card</span>
+        <span class="pay-method"><i class="fas fa-university"></i> Bank Transfer</span>
+        <span class="pay-method"><i class="fas fa-money-bill-wave"></i> Local Payment Options</span>
+        <span class="pay-method"><i class="fas fa-globe"></i> International Payments</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     12. FINAL CTA
-     ============================================ -->
+<!-- FINAL CTA -->
 <section class="final-cta">
-    <div class="container">
-        <h2>Your Next Skill Could Change<br><span class="gold">Your Next Opportunity.</span></h2>
-        <p>Choose the subject. Choose the programme. Start learning.</p>
-        <p style="font-size: 15px; color: var(--gold-light); font-weight: 500;">Learn. Innovate. Lead.</p>
-
-        <div class="final-actions">
-            <a href="#programmes" class="btn btn-primary btn-lg">Explore Programmes <i class="fas fa-arrow-right"></i></a>
-            <a href="#apply" class="btn btn-outline-white btn-lg">Apply Now</a>
-        </div>
-
-        <div class="final-tagline">
-            Nolan Institute
-            <small>Learn. Innovate. Lead.</small>
-        </div>
+  <div class="container">
+    <h2>Your Next Skill Could Change<br><span class="gold">Your Next Opportunity.</span></h2>
+    <p>Choose the subject. Choose the programme. Start learning.</p>
+    <p style="font-size:14.5px;color:var(--gold-light);font-weight:500">Learn. Innovate. Lead.</p>
+    <div class="final-actions">
+      <button class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
+      <a href="#apply" class="btn btn-outline-white btn-lg" data-scroll>Apply Now</a>
     </div>
+    <div class="final-tagline">Nolan Institute<small>Learn. Innovate. Lead.</small></div>
+  </div>
 </section>
 
-<!-- ============================================
-     FOOTER
-     ============================================ -->
+<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="brand-name">Nolan Institute</div>
-                <div class="brand-tag">Learn. Innovate. Lead.</div>
-                <p>Technology-enabled education for the global economy. Part of the Nolan University digital platform.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Learn</h4>
-                <ul>
-                    <li><a href="#subjects">All Subjects</a></li>
-                    <li><a href="#programmes">Featured Programmes</a></li>
-                    <li><a href="#formats">Learning Formats</a></li>
-                    <li><a href="#finder">Programme Finder</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Apply</h4>
-                <ul>
-                    <li><a href="#apply">How to Apply</a></li>
-                    <li><a href="#payment">Payment Options</a></li>
-                    <li><a href="#">Scholarships</a></li>
-                    <li><a href="#">Corporate Training</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><i class="fas fa-phone"></i> +260 768 526 191</li>
-                    <li><i class="fas fa-envelope"></i> info@nolaninstitute.org</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</li>
-                </ul>
-            </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Nolan Institute</div>
+        <div class="brand-tag">Learn. Innovate. Lead.</div>
+        <p>Technology-enabled education for the global economy. Part of the Nolan University digital platform.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Nolan Institute of Global Business &amp; Technology. All rights reserved.</span>
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Accessibility</a>
-            </div>
-        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#subjects" data-scroll>All Subjects</a></li>
+          <li><a href="#catalogue" data-scroll>Catalogue</a></li>
+          <li><a href="#formats" data-scroll>Learning Formats</a></li>
+          <li><a href="#finder" data-scroll>Programme Finder</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Apply</h4>
+        <ul>
+          <li><a href="#apply" data-scroll>How to Apply</a></li>
+          <li><a href="#" data-scroll>Payment Options</a></li>
+          <li><a href="#">Scholarships</a></li>
+          <li><a href="#">Corporate Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +260 768 526 191</li>
+          <li><i class="fas fa-envelope"></i> info@nolaninstitute.org</li>
+          <li><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Nolan Institute of Global Business &amp; Technology. All rights reserved.</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
+<!-- PROGRAMME DETAIL MODAL -->
+<div class="modal-overlay" id="programmeModal">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeProgramme()" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div id="programmeContent"></div>
+  </div>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="modal-overlay" id="searchModal">
+  <div class="modal-card search-modal" role="dialog" aria-modal="true">
+    <div class="search-top">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search programmes, subjects or formats..." autocomplete="off">
+      <button class="modal-close" style="position:static" onclick="closeSearch()" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="search-hint" id="searchHint">Type to search — try <strong>"finance"</strong>, <strong>"AI"</strong>, or <strong>"bootcamp"</strong>.</div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Message</span></div>
+
 <script>
-    // ============================================
-    // MOBILE MENU
-    // ============================================
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileNav = document.getElementById('mobileNav');
-    if (menuBtn && mobileNav) {
-        menuBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('show');
-            menuBtn.setAttribute('aria-expanded', mobileNav.classList.contains('show'));
-        });
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => mobileNav.classList.remove('show'));
-        });
-    }
+/* =========================================================
+   PROGRAMME DATA — the single source of truth
+   ========================================================= */
+const PROGRAMMES = [
+  // ── Accounting & Finance ──
+  {id:'af1',name:'Corporate Finance Essentials',subject:'Accounting & Finance',format:'Short Course',weeks:10,price:4500,featured:true,
+   description:'Build working knowledge of corporate finance — valuation, capital structure and financial decision-making for real business contexts.',
+   learn:['Financial statement analysis','Time value of money','Capital budgeting basics','Cost of capital','Financing decisions'],
+   audience:'Professionals, managers and business owners who need a practical foundation in corporate finance.'},
+  {id:'af2',name:'Financial Literacy Programme',subject:'Accounting & Finance',format:'Short Course',weeks:8,price:4500,
+   description:'Build personal and business financial literacy — from reading statements to making informed financial decisions.',
+   learn:['Reading financial statements','Budgeting & cashflow','Understanding debt & credit','Basic investing concepts','Financial planning'],
+   audience:'Individuals and professionals seeking a solid foundation in personal and business finance.'},
+  {id:'af3',name:'Certificate in Accounting & Finance',subject:'Accounting & Finance',format:'Certificate',weeks:16,price:8500,featured:true,
+   description:'Structured professional certificate covering accounting principles, financial reporting and financial analysis.',
+   learn:['Financial accounting','Management accounting','Financial reporting','Ratio analysis','Financial planning & control'],
+   audience:'Aspiring accountants, finance officers and professionals moving into financial roles.'},
+  {id:'af4',name:'Advanced Accounting & Reporting',subject:'Accounting & Finance',format:'Advanced Programme',weeks:28,price:22500,
+   description:'Develop advanced capability in financial reporting, consolidation and strategic financial management.',
+   learn:['Advanced financial reporting','Group accounts & consolidation','IFRS frameworks','Strategic financial management','Audit & assurance'],
+   audience:'Senior finance professionals, controllers and managers pursuing advanced expertise.'},
+  {id:'af5',name:'Finance Fundamentals Bootcamp',subject:'Accounting & Finance',format:'Bootcamp',weeks:5,price:5500,
+   description:'Intensive, hands-on introduction to finance fundamentals — learn by doing in a short, focused sprint.',
+   learn:['Financial statement basics','Budgeting & forecasting','Cashflow modelling','Financial decision frameworks','Practical exercises'],
+   audience:'Career changers and professionals needing rapid, practical finance skills.'},
 
-    // ============================================
-    // STICKY HEADER SHADOW ON SCROLL
-    // ============================================
-    const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 30) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
+  // ── Banking & Financial Services ──
+  {id:'bk1',name:'Banking Operations Short Course',subject:'Banking & Financial Services',format:'Short Course',weeks:10,price:4500,
+   description:'Understand modern banking operations — from retail and commercial banking to payments and compliance.',
+   learn:['Retail & commercial banking','Payments & settlement systems','Compliance basics','Customer operations','Banking products'],
+   audience:'Bank staff, operations professionals and those entering banking.'},
+  {id:'bk2',name:'Certificate in Banking & Financial Services',subject:'Banking & Financial Services',format:'Certificate',weeks:16,price:8500,
+   description:'Structured professional certificate covering banking, financial services, risk and regulation.',
+   learn:['Banking models & services','Financial services landscape','Credit & lending fundamentals','Risk in banking','Regulatory environment'],
+   audience:'Banking professionals and those seeking a career in financial services.'},
+  {id:'bk3',name:'Risk Management in Banking',subject:'Banking & Financial Services',format:'Professional Programme',weeks:24,price:12500,
+   description:'Develop professional capability in banking risk — credit, market, operational and regulatory risk.',
+   learn:['Credit risk assessment','Market risk fundamentals','Operational risk','Basel & regulatory frameworks','Risk governance'],
+   audience:'Banking professionals moving into risk, compliance or treasury roles.'},
+
+  // ── Investment & Capital Markets ──
+  {id:'iv1',name:'Investment & Capital Markets',subject:'Investment & Capital Markets',format:'Professional Programme',weeks:24,price:12500,featured:true,
+   description:'Develop deeper expertise in investment analysis, valuation, capital markets and financial decision-making.',
+   learn:['Investment analysis','Asset valuation','Equity & fixed income','Portfolio construction','Capital market structures','Investment decision-making'],
+   audience:'Finance professionals, analysts and investors seeking professional-level investment capability.'},
+  {id:'iv2',name:'Investment Analysis Certificate',subject:'Investment & Capital Markets',format:'Certificate',weeks:16,price:8500,
+   description:'Structured certificate covering investment analysis, valuation methods and market fundamentals.',
+   learn:['Fundamental analysis','Valuation techniques','Equity research basics','Fixed income basics','Investment reporting'],
+   audience:'Analysts, finance professionals and investors building structured investment knowledge.'},
+  {id:'iv3',name:'Portfolio Management Short Course',subject:'Investment & Capital Markets',format:'Short Course',weeks:10,price:4500,
+   description:'Learn the principles of portfolio construction, diversification and performance measurement.',
+   learn:['Portfolio theory basics','Diversification','Risk & return','Performance measurement','Asset allocation'],
+   audience:'Investors, analysts and finance professionals managing or advising on portfolios.'},
+  {id:'iv4',name:'Advanced Capital Markets Programme',subject:'Investment & Capital Markets',format:'Advanced Programme',weeks:30,price:22500,
+   description:'Advanced programme covering capital markets, structured products and institutional investment.',
+   learn:['Advanced capital markets','Structured products','Derivatives overview','Institutional investing','Trading & market microstructure'],
+   audience:'Senior investment professionals, treasurers and capital markets practitioners.'},
+
+  // ── Financial Modelling ──
+  {id:'fm1',name:'Financial Modelling Bootcamp',subject:'Financial Modelling',format:'Bootcamp',weeks:4,price:5500,featured:true,
+   description:'Learn by building practical financial models — from forecasting to valuation and decision support.',
+   learn:['Three-statement modelling','Forecasting techniques','Cashflow modelling','Scenario analysis','Valuation basics'],
+   audience:'Analysts, finance professionals and entrepreneurs needing hands-on modelling skill fast.'},
+  {id:'fm2',name:'Financial Modelling Certificate',subject:'Financial Modelling',format:'Certificate',weeks:16,price:8500,
+   description:'Structured certificate building mastery of financial modelling for analysis, forecasting and decision-making.',
+   learn:['Model design & structure','Forecasting & sensitivity','Integrated financial models','Valuation modelling','Model review & audit'],
+   audience:'Finance professionals, analysts and consultants building structured modelling capability.'},
+  {id:'fm3',name:'Financial Modelling Short Course',subject:'Financial Modelling',format:'Short Course',weeks:10,price:4500,
+   description:'A focused, practical introduction to financial modelling for analysis and decision-making.',
+   learn:['Model structure','Basic forecasting','Scenario analysis','Decision-support models','Spreadsheet discipline'],
+   audience:'Professionals who need a focused introduction to modelling.'},
+  {id:'fm4',name:'Advanced Financial Modelling',subject:'Financial Modelling',format:'Advanced Programme',weeks:30,price:22500,featured:true,
+   description:'Develop higher-level capability in integrated modelling, valuation and decision-support analysis.',
+   learn:['Integrated financial modelling','Advanced valuation','M&A modelling','Scenario & sensitivity analysis','Decision-support modelling','Model audit'],
+   audience:'Experienced analysts, corporate finance professionals and investment practitioners.'},
+
+  // ── Business Management ──
+  {id:'bm1',name:'Business Management',subject:'Business Management',format:'Certificate',weeks:16,price:8500,
+   description:'Build structured capability in business management — strategy, operations, people and performance.',
+   learn:['Business strategy basics','Operations management','People & performance','Financial management','Business planning'],
+   audience:'Managers, team leaders and professionals moving into management.'},
+  {id:'bm2',name:'Business Strategy Short Course',subject:'Business Management',format:'Short Course',weeks:10,price:4500,
+   description:'Learn practical business strategy — from analysis to competitive positioning and execution.',
+   learn:['Strategic analysis','Competitive positioning','Business models','Strategic execution','Performance measurement'],
+   audience:'Managers, entrepreneurs and professionals involved in strategic decisions.'},
+  {id:'bm3',name:'Business Management Professional Programme',subject:'Business Management',format:'Professional Programme',weeks:24,price:12500,
+   description:'Professional-level programme covering advanced business management and organisational performance.',
+   learn:['Advanced strategy','Organisational management','Financial performance','Change management','Leadership in business'],
+   audience:'Senior managers, business leaders and professionals pursuing deeper management capability.'},
+
+  // ── Project Management ──
+  {id:'pm1',name:'Project Management',subject:'Project Management',format:'Certificate',weeks:16,price:8500,
+   description:'Structured certificate covering project planning, delivery, control and stakeholder management.',
+   learn:['Project planning','Scheduling & budgeting','Risk management','Stakeholder management','Project delivery & control'],
+   audience:'Project managers, coordinators and professionals delivering projects.'},
+  {id:'pm2',name:'Project Delivery Bootcamp',subject:'Project Management',format:'Bootcamp',weeks:5,price:5500,
+   description:'Intensive, practical bootcamp focused on delivering projects end-to-end.',
+   learn:['Project setup','Work breakdown structure','Scheduling','Risk & issues','Delivery & closure'],
+   audience:'Professionals who need to deliver projects with confidence.'},
+  {id:'pm3',name:'Advanced Project Management',subject:'Project Management',format:'Advanced Programme',weeks:28,price:22500,
+   description:'Advanced programme for experienced project managers leading complex, strategic projects.',
+   learn:['Portfolio management','Programme management','Complex stakeholder environments','Advanced risk','Strategic project delivery'],
+   audience:'Senior project and programme managers leading strategic initiatives.'},
+
+  // ── Data Analytics ──
+  {id:'da1',name:'Certificate in Data Analytics',subject:'Data Analytics',format:'Certificate',weeks:16,price:8500,featured:true,
+   description:'Build practical capability in data analysis, visualisation and data-driven decision-making.',
+   learn:['Data fundamentals','Data analysis techniques','Data visualisation','Statistical basics','Business insight generation'],
+   audience:'Analysts, business professionals and anyone working with data.'},
+  {id:'da2',name:'Data Analytics Bootcamp',subject:'Data Analytics',format:'Bootcamp',weeks:5,price:5500,
+   description:'Intensive, hands-on bootcamp to build data analytics skill fast.',
+   learn:['Data preparation','Analysis with spreadsheets','Visualisation','Dashboarding basics','Presenting insight'],
+   audience:'Professionals needing rapid, practical data skills.'},
+  {id:'da3',name:'Business Intelligence Short Course',subject:'Data Analytics',format:'Short Course',weeks:10,price:4500,
+   description:'Learn to turn organisational data into business intelligence and reporting.',
+   learn:['BI concepts','Reporting & dashboards','Data storytelling','KPIs & metrics','BI tools overview'],
+   audience:'Analysts, managers and professionals responsible for reporting.'},
+  {id:'da4',name:'Advanced Data Analytics',subject:'Data Analytics',format:'Advanced Programme',weeks:30,price:22500,
+   description:'Advanced programme developing professional-level analytics and data strategy capability.',
+   learn:['Advanced analytics','Data modelling','Predictive analytics basics','Data strategy','Analytics leadership'],
+   audience:'Senior analysts and data professionals moving into advanced or leadership roles.'},
+
+  // ── Artificial Intelligence ──
+  {id:'ai1',name:'AI for Business',subject:'Artificial Intelligence',format:'Certificate',weeks:16,price:8500,featured:true,
+   description:'Identify, scope and apply AI opportunities inside real organisations — no coding background required.',
+   learn:['AI concepts for business','Identifying AI opportunities','AI project scoping','AI governance basics','Practical AI tools'],
+   audience:'Managers, professionals and business leaders who want to apply AI in their organisations.'},
+  {id:'ai2',name:'AI Foundations Short Course',subject:'Artificial Intelligence',format:'Short Course',weeks:10,price:4500,
+   description:'A focused, practical introduction to artificial intelligence for professionals.',
+   learn:['What AI is (and isn\'t)','Key AI capabilities','AI use cases','Practical AI tools','AI ethics & risks'],
+   audience:'Professionals new to AI who need practical, non-technical foundations.'},
+  {id:'ai3',name:'AI Innovation Management',subject:'Artificial Intelligence',format:'Professional Programme',weeks:24,price:12500,
+   description:'Develop professional capability to manage AI-driven innovation and transformation projects.',
+   learn:['AI strategy','Innovation management','AI project delivery','Organisational transformation','AI governance'],
+   audience:'Innovation leaders, managers and professionals driving AI adoption.'},
+  {id:'ai4',name:'Advanced AI Programme',subject:'Artificial Intelligence',format:'Advanced Programme',weeks:32,price:22500,
+   description:'Advanced programme developing higher-level capability in applied AI and AI leadership.',
+   learn:['Advanced AI applications','AI architecture basics','Applied machine learning','AI governance & risk','AI leadership'],
+   audience:'Senior professionals leading AI initiatives and strategy.'},
+
+  // ── Digital Transformation ──
+  {id:'dt1',name:'Digital Transformation',subject:'Digital Transformation',format:'Professional Programme',weeks:24,price:12500,
+   description:'Develop professional capability to lead technology-driven organisational change.',
+   learn:['Digital strategy','Change leadership','Technology foundations','Operating model design','Digital execution'],
+   audience:'Managers and leaders driving digital change in their organisations.'},
+  {id:'dt2',name:'Digital Transformation Short Course',subject:'Digital Transformation',format:'Short Course',weeks:10,price:4500,
+   description:'A focused introduction to digital transformation for professionals and managers.',
+   learn:['What digital transformation means','Digital trends','Change management basics','Digital operating models','Practical case studies'],
+   audience:'Professionals and managers new to digital transformation.'},
+  {id:'dt3',name:'Digital Transformation Bootcamp',subject:'Digital Transformation',format:'Bootcamp',weeks:6,price:5500,
+   description:'Intensive bootcamp building practical digital transformation capability.',
+   learn:['Digital diagnosis','Customer & process mapping','Digital solutions','Change planning','Measuring transformation'],
+   audience:'Managers and professionals leading digital initiatives.'},
+
+  // ── Entrepreneurship ──
+  {id:'en1',name:'Entrepreneurship Programme',subject:'Entrepreneurship',format:'Certificate',weeks:16,price:8500,
+   description:'Build structured entrepreneurial capability — from idea to viable venture.',
+   learn:['Opportunity identification','Business models','Customer discovery','Financial basics for founders','Go-to-market'],
+   audience:'Aspiring founders and professionals building ventures.'},
+  {id:'en2',name:'Startup Builder Bootcamp',subject:'Entrepreneurship',format:'Bootcamp',weeks:6,price:5500,
+   description:'Intensive bootcamp for founders — build, test and refine your venture idea.',
+   learn:['Problem & customer','MVP design','Business model','Pitch basics','Go-to-market'],
+   audience:'Founders and aspiring entrepreneurs ready to build fast.'},
+  {id:'en3',name:'Venture Creation Professional Programme',subject:'Entrepreneurship',format:'Professional Programme',weeks:24,price:12500,
+   description:'Professional-level programme for founders building scalable ventures.',
+   learn:['Venture strategy','Business model design','Startup finance','Growth & scaling','Investor readiness'],
+   audience:'Founders and entrepreneurs building scalable businesses.'},
+  {id:'en4',name:'Advanced Entrepreneurship Programme',subject:'Entrepreneurship',format:'Advanced Programme',weeks:28,price:22500,
+   description:'Advanced programme for experienced entrepreneurs and business builders.',
+   learn:['Advanced venture strategy','Funding & capital','Scaling operations','Leadership in growth','Enterprise building'],
+   audience:'Experienced founders and business builders scaling ventures.'},
+
+  // ── Leadership ──
+  {id:'ld1',name:'Leadership Development',subject:'Leadership',format:'Certificate',weeks:16,price:8500,
+   description:'Build structured leadership capability — leading self, teams and organisations.',
+   learn:['Leadership foundations','Leading teams','Communication & influence','Performance management','Leading change'],
+   audience:'New and emerging leaders, managers and professionals stepping into leadership.'},
+  {id:'ld2',name:'Executive Leadership Programme',subject:'Leadership',format:'Advanced Programme',weeks:28,price:22500,
+   description:'Advanced leadership programme for senior executives and organisational leaders.',
+   learn:['Executive leadership','Strategic leadership','Organisational development','Executive communication','Leading transformation'],
+   audience:'Senior executives and organisational leaders.'},
+  {id:'ld3',name:'Leadership Essentials Short Course',subject:'Leadership',format:'Short Course',weeks:8,price:4500,
+   description:'Focused introduction to leadership essentials for professionals.',
+   learn:['Leadership basics','Self-leadership','Team communication','Feedback & coaching','Leading small teams'],
+   audience:'Professionals new to leadership or seeking a refresher.'},
+  {id:'ld4',name:'Leadership Professional Programme',subject:'Leadership',format:'Professional Programme',weeks:24,price:12500,
+   description:'Professional programme developing substantial leadership capability for managers.',
+   learn:['Advanced leadership','Leading teams at scale','Strategic thinking','Change leadership','Leadership presence'],
+   audience:'Managers and professionals seeking professional-level leadership capability.'}
+];
+
+/* =========================================================
+   STATE & HELPERS
+   ========================================================= */
+const state = { subject:null, format:null };
+
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtPrice(n){return 'K'+n.toLocaleString()}
+
+/* Toast */
+let toastTimer;
+function showToast(msg){
+  const t=$('#toast'); $('#toastMsg').textContent=msg;
+  t.classList.add('show'); clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* =========================================================
+   CATALOGUE RENDERING
+   ========================================================= */
+function getFilteredProgrammes(){
+  let list = PROGRAMMES.slice();
+  if(state.subject) list = list.filter(p=>p.subject===state.subject);
+  if(state.format)  list = list.filter(p=>p.format===state.format);
+  return list;
+}
+
+function getFeatured(){
+  return PROGRAMMES.filter(p=>p.featured);
+}
+
+function progCardHTML(p){
+  return `<button class="prog-card" data-id="${p.id}" aria-label="View ${esc(p.name)}">
+    <div class="prog-top">
+      <span class="prog-badge">${esc(p.format)}</span>
+      <h3>${esc(p.name)}</h3>
+      <div class="prog-meta">
+        <span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span>
+        <span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span>
+      </div>
+    </div>
+    <div class="prog-body">
+      <p>${esc(p.description)}</p>
+      <div class="prog-price-row">
+        <div class="prog-price">${fmtPrice(p.price)}<small>Payment plans available</small></div>
+        <div class="prog-duration"><strong>${p.weeks} Wks</strong>Online</div>
+      </div>
+      <div class="prog-cta"><span>View full details</span><i class="fas fa-arrow-right"></i></div>
+    </div>
+  </button>`;
+}
+
+function renderCatalogue(){
+  const grid = $('#catalogueGrid');
+  const bar = $('#catalogueBar');
+  const tag = $('#catalogueTag');
+  const title = $('#catalogueTitle');
+  const sub = $('#catalogueSub');
+  const label = $('#catalogueBarLabel');
+
+  const filtering = state.subject || state.format;
+
+  if(filtering){
+    const list = getFilteredProgrammes();
+    tag.textContent = 'Filtered Results';
+    title.textContent = state.subject && state.format
+      ? `${state.subject} · ${state.format}`
+      : (state.subject ? state.subject : state.format + 's');
+    sub.textContent = `${list.length} programme${list.length!==1?'s':''} match your selection. Click any card to see full details.`;
+    bar.style.display='flex';
+    let parts=[];
+    if(state.subject) parts.push(`Subject: <strong>${esc(state.subject)}</strong>`);
+    if(state.format)  parts.push(`Format: <strong>${esc(state.format)}</strong>`);
+    label.innerHTML = 'Showing ' + parts.join(' &nbsp;·&nbsp; ');
+
+    if(list.length===0){
+      grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try selecting a different subject or format.</p></div>`;
+    } else {
+      grid.innerHTML = list.map(progCardHTML).join('');
+    }
+  } else {
+    const list = getFeatured();
+    tag.textContent = 'Featured Programmes';
+    title.textContent = 'Popular Programmes Right Now';
+    sub.textContent = 'Each programme shows duration, price and outcome. Click any card to see full details.';
+    bar.style.display='none';
+    grid.innerHTML = list.map(progCardHTML).join('');
+  }
+
+  // Attach click handlers
+  grid.querySelectorAll('.prog-card').forEach(card=>{
+    card.addEventListener('click',()=>openProgramme(card.dataset.id));
+  });
+
+  // Update active states on subject/format cards
+  document.querySelectorAll('.subject-card').forEach(c=>{
+    c.classList.toggle('active', c.dataset.subject===state.subject);
+  });
+  document.querySelectorAll('.format-pill').forEach(c=>{
+    c.classList.toggle('active', c.dataset.format===state.format);
+  });
+  document.querySelectorAll('.path-card').forEach(c=>{
+    c.classList.toggle('active', c.dataset.format===state.format);
+  });
+}
+
+/* =========================================================
+   FILTER ACTIONS
+   ========================================================= */
+function scrollToCatalogue(){
+  document.getElementById('catalogue').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function applyFormatFilter(format){
+  state.format = (state.format===format) ? null : format;
+  renderCatalogue();
+  scrollToCatalogue();
+  if(state.format) showToast(`Showing ${state.format}s`);
+}
+
+function applySubjectFilter(subject){
+  state.subject = (state.subject===subject) ? null : subject;
+  renderCatalogue();
+  scrollToCatalogue();
+  if(state.subject) showToast(`Showing programmes in ${subject}`);
+}
+
+function clearFilters(){
+  state.subject=null; state.format=null;
+  renderCatalogue();
+  showToast('Filters cleared');
+}
+
+$('#catalogueClear').addEventListener('click', clearFilters);
+
+/* Hero format pills */
+document.querySelectorAll('#heroFormats .format-pill').forEach(p=>{
+  p.addEventListener('click',()=>applyFormatFilter(p.dataset.format));
+});
+
+/* Path cards */
+document.querySelectorAll('#pathsGrid .path-card').forEach(p=>{
+  p.addEventListener('click',()=>applyFormatFilter(p.dataset.format));
+});
+
+/* Subject cards */
+document.querySelectorAll('#subjectsGrid .subject-card').forEach(p=>{
+  p.addEventListener('click',()=>applySubjectFilter(p.dataset.subject));
+});
+
+/* Format cards "Explore" buttons */
+document.querySelectorAll('.format-card .btn[data-format]').forEach(b=>{
+  b.addEventListener('click',()=>applyFormatFilter(b.dataset.format));
+});
+
+/* =========================================================
+   PROGRAMME DETAIL MODAL
+   ========================================================= */
+function openProgramme(id){
+  const p = PROGRAMMES.find(x=>x.id===id);
+  if(!p) return;
+  const content = $('#programmeContent');
+  content.innerHTML = `
+    <span class="pm-badge">${esc(p.format)}</span>
+    <h2 class="pm-title">${esc(p.name)}</h2>
+    <div class="pm-subject">${esc(p.subject)}</div>
+    <div class="pm-meta-row">
+      <div class="pm-meta-item"><div class="pm-label">Duration</div><div class="pm-value">${p.weeks} <span style="font-size:12px;font-weight:600">Weeks</span></div></div>
+      <div class="pm-meta-item"><div class="pm-label">Delivery</div><div class="pm-value small">Online</div></div>
+      <div class="pm-meta-item"><div class="pm-label">Format</div><div class="pm-value small">${esc(p.format)}</div></div>
+      <div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtPrice(p.price)}</div></div>
+    </div>
+    <p class="pm-desc">${esc(p.description)}</p>
+
+    <div class="pm-section">
+      <h4>What You'll Learn</h4>
+      <ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>
+    </div>
+
+    <div class="pm-section">
+      <h4>Who Is It For</h4>
+      <p class="pm-audience">${esc(p.audience)}</p>
+    </div>
+
+    <div class="pm-award">
+      <i class="fas fa-certificate"></i>
+      <div>
+        <div class="label">On Successful Completion</div>
+        <div class="value">${p.format==='Short Course'?'Certificate of Completion':
+          p.format==='Certificate'?'Professional Certificate':
+          p.format==='Professional Programme'?'Professional Programme Certificate':
+          p.format==='Bootcamp'?'Bootcamp Certificate of Completion':
+          'Advanced Professional Certificate'}</div>
+      </div>
+    </div>
+
+    <div class="pm-actions">
+      <button class="btn btn-primary btn-lg" onclick="closeProgramme();document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+        Apply Now <i class="fas fa-arrow-right"></i>
+      </button>
+      <button class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button>
+    </div>
+  `;
+  $('#programmeModal').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+
+function closeProgramme(){
+  $('#programmeModal').classList.remove('show');
+  document.body.style.overflow='';
+}
+
+/* =========================================================
+   SEARCH ENGINE
+   ========================================================= */
+const searchModal = $('#searchModal');
+const searchInput = $('#searchInput');
+const searchResults = $('#searchResults');
+const searchHint = $('#searchHint');
+
+function openSearch(){
+  searchModal.classList.add('show');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>searchInput.focus(),80);
+  renderSearchResults('');
+}
+
+function closeSearch(){
+  searchModal.classList.remove('show');
+  document.body.style.overflow='';
+  searchInput.value='';
+}
+
+function renderSearchResults(q){
+  const query = q.trim().toLowerCase();
+
+  if(!query){
+    searchHint.innerHTML = 'Type to search — try <strong>"finance"</strong>, <strong>"AI"</strong>, or <strong>"bootcamp"</strong>.';
+    searchResults.innerHTML = `
+      <div class="search-empty">
+        <i class="fas fa-search"></i>
+        Start typing to search across ${PROGRAMMES.length} programmes.
+      </div>
+    `;
+    return;
+  }
+
+  const matches = PROGRAMMES.filter(p=>{
+    const hay = (p.name+' '+p.subject+' '+p.format+' '+p.description+' '+p.learn.join(' ')).toLowerCase();
+    return hay.includes(query);
+  });
+
+  searchHint.innerHTML = `<strong>${matches.length}</strong> programme${matches.length!==1?'s':''} found for "<strong>${esc(q.trim())}</strong>"`;
+
+  if(matches.length===0){
+    searchResults.innerHTML = `
+      <div class="search-empty">
+        <i class="fas fa-search-minus"></i>
+        No programmes match that search. Try a different keyword.
+      </div>`;
+    return;
+  }
+
+  searchResults.innerHTML = matches.map(p=>`
+    <div class="search-result" data-id="${p.id}">
+      <div class="search-result-info">
+        <h5>${esc(p.name)}</h5>
+        <div class="search-meta">
+          <span>${esc(p.format)}</span>
+          <span>${esc(p.subject)}</span>
+          <span><strong>${fmtPrice(p.price)}</strong></span>
+          <span>${p.weeks} Weeks</span>
+        </div>
+      </div>
+      <i class="fas fa-arrow-right search-result-arrow"></i>
+    </div>
+  `).join('');
+
+  searchResults.querySelectorAll('.search-result').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const id = el.dataset.id;
+      closeSearch();
+      setTimeout(()=>openProgramme(id),200);
     });
+  });
+}
 
-    // ============================================
-    // PROGRAMME FINDER DATA
-    // ============================================
-    const programmes = [
-        { name: 'Corporate Finance Essentials', subject: 'Accounting & Finance', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'Financial Literacy Programme', subject: 'Accounting & Finance', format: 'Short Course', weeks: 8, price: 4500 },
-        { name: 'Certificate in Accounting & Finance', subject: 'Accounting & Finance', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Banking & Financial Services', subject: 'Banking & Financial Services', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Banking Operations Short Course', subject: 'Banking & Financial Services', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'Investment & Capital Markets', subject: 'Investment & Capital Markets', format: 'Professional Programme', weeks: 24, price: 12500 },
-        { name: 'Investment Analysis Certificate', subject: 'Investment & Capital Markets', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Portfolio Management Short Course', subject: 'Investment & Capital Markets', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'Financial Modelling Bootcamp', subject: 'Financial Modelling', format: 'Bootcamp', weeks: 4, price: 5500 },
-        { name: 'Advanced Financial Modelling', subject: 'Financial Modelling', format: 'Advanced Programme', weeks: 30, price: 22500 },
-        { name: 'Business Management', subject: 'Business Management', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Business Strategy Short Course', subject: 'Business Management', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'Project Management', subject: 'Project Management', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Project Delivery Bootcamp', subject: 'Project Management', format: 'Bootcamp', weeks: 5, price: 5500 },
-        { name: 'Certificate in Data Analytics', subject: 'Data Analytics', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Data Analytics Bootcamp', subject: 'Data Analytics', format: 'Bootcamp', weeks: 5, price: 5500 },
-        { name: 'Business Intelligence Short Course', subject: 'Data Analytics', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'AI for Business', subject: 'Artificial Intelligence', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'AI Foundations Short Course', subject: 'Artificial Intelligence', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'AI Innovation Management', subject: 'Artificial Intelligence', format: 'Professional Programme', weeks: 24, price: 12500 },
-        { name: 'Digital Transformation', subject: 'Digital Transformation', format: 'Professional Programme', weeks: 24, price: 12500 },
-        { name: 'Digital Transformation Short Course', subject: 'Digital Transformation', format: 'Short Course', weeks: 10, price: 4500 },
-        { name: 'Entrepreneurship Programme', subject: 'Entrepreneurship', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Startup Builder Bootcamp', subject: 'Entrepreneurship', format: 'Bootcamp', weeks: 6, price: 5500 },
-        { name: 'Venture Creation Professional Programme', subject: 'Entrepreneurship', format: 'Professional Programme', weeks: 24, price: 12500 },
-        { name: 'Leadership Development', subject: 'Leadership', format: 'Certificate', weeks: 16, price: 8500 },
-        { name: 'Executive Leadership Programme', subject: 'Leadership', format: 'Advanced Programme', weeks: 28, price: 22500 },
-        { name: 'Leadership Essentials Short Course', subject: 'Leadership', format: 'Short Course', weeks: 8, price: 4500 }
-    ];
+$('#searchOpenBtn').addEventListener('click',openSearch);
+searchInput.addEventListener('input',e=>renderSearchResults(e.target.value));
 
-    const finderBtn = document.getElementById('finderBtn');
-    const finderReset = document.getElementById('finderReset');
-    const finderResults = document.getElementById('finderResults');
-    const finderList = document.getElementById('finderList');
-    const finderCount = document.getElementById('finderCount');
+/* =========================================================
+   PROGRAMME FINDER
+   ========================================================= */
+const finderSubject=$('#finderSubject'), finderFormat=$('#finderFormat'),
+      finderDuration=$('#finderDuration'), finderBudget=$('#finderBudget');
 
-    function matchesDuration(weeks, filter) {
-        if (!filter) return true;
-        if (filter === 'short') return weeks <= 12;
-        if (filter === 'medium') return weeks >= 13 && weeks <= 24;
-        if (filter === 'long') return weeks >= 25;
-        return true;
-    }
+function matchesDuration(weeks,f){
+  if(!f) return true;
+  if(f==='short') return weeks<=12;
+  if(f==='medium') return weeks>=13 && weeks<=24;
+  if(f==='long')  return weeks>=25;
+  return true;
+}
+function matchesBudget(price,f){
+  if(!f) return true;
+  if(f==='under5') return price<5000;
+  if(f==='5to10')  return price>=5000 && price<=10000;
+  if(f==='10to20') return price>10000 && price<=20000;
+  if(f==='over20') return price>20000;
+  return true;
+}
 
-    function matchesBudget(price, filter) {
-        if (!filter) return true;
-        if (filter === 'under5') return price < 5000;
-        if (filter === '5to10') return price >= 5000 && price <= 10000;
-        if (filter === '10to20') return price > 10000 && price <= 20000;
-        if (filter === 'over20') return price > 20000;
-        return true;
-    }
+function runFinder(){
+  const subj = finderSubject.value;
+  const fmt  = finderFormat.value;
+  const dur  = finderDuration.value;
+  const bud  = finderBudget.value;
 
-    function runFinder() {
-        const subject = document.getElementById('finderSubject').value;
-        const format = document.getElementById('finderFormat').value;
-        const duration = document.getElementById('finderDuration').value;
-        const budget = document.getElementById('finderBudget').value;
+  const results = PROGRAMMES.filter(p=>{
+    if(subj && p.subject!==subj) return false;
+    if(fmt && p.format!==fmt) return false;
+    if(!matchesDuration(p.weeks,dur)) return false;
+    if(!matchesBudget(p.price,bud)) return false;
+    return true;
+  });
 
-        const results = programmes.filter(p => {
-            if (subject && p.subject !== subject) return false;
-            if (format && p.format !== format) return false;
-            if (!matchesDuration(p.weeks, duration)) return false;
-            if (!matchesBudget(p.price, budget)) return false;
-            return true;
-        });
+  const wrap = $('#finderResults');
+  const list = $('#finderList');
+  const count = $('#finderCount');
+  wrap.classList.add('show');
+  count.textContent = results.length + ' programme' + (results.length!==1?'s':'') + ' found';
 
-        finderResults.classList.add('show');
-        finderCount.textContent = results.length + ' programme' + (results.length !== 1 ? 's' : '') + ' found';
+  if(results.length===0){
+    list.innerHTML = `<div class="finder-empty"><i class="fas fa-search-minus"></i>No programmes match your filters. Try broadening your search.</div>`;
+    return;
+  }
 
-        if (results.length === 0) {
-            finderList.innerHTML = '<div class="finder-empty"><i class="fas fa-search" style="font-size: 24px; color: var(--gray-mid); margin-bottom: 10px; display: block;"></i>No programmes match your filters. Try broadening your search.</div>';
-            return;
-        }
+  list.innerHTML = results.map(p=>`
+    <div class="finder-item" data-id="${p.id}">
+      <h5>${esc(p.name)}</h5>
+      <div class="finder-meta">
+        <span><i class="fas fa-clock" style="color:var(--gold)"></i> ${p.weeks} Wks</span>
+        <span><strong>${fmtPrice(p.price)}</strong></span>
+        <span>${esc(p.format)}</span>
+      </div>
+    </div>
+  `).join('');
 
-        finderList.innerHTML = results.map(p => `
-            <div class="finder-item">
-                <h5>${p.name}</h5>
-                <div class="finder-meta">
-                    <span><i class="fas fa-clock" style="color: var(--gold);"></i> ${p.weeks} Weeks</span>
-                    <span><strong>K${p.price.toLocaleString()}</strong></span>
-                    <span>${p.format}</span>
-                </div>
-            </div>
-        `).join('');
+  list.querySelectorAll('.finder-item').forEach(el=>{
+    el.addEventListener('click',()=>openProgramme(el.dataset.id));
+  });
 
-        finderList.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  wrap.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 
-    if (finderBtn) finderBtn.addEventListener('click', runFinder);
-    if (finderReset) finderReset.addEventListener('click', () => {
-        document.getElementById('finderSubject').value = '';
-        document.getElementById('finderFormat').value = '';
-        document.getElementById('finderDuration').value = '';
-        document.getElementById('finderBudget').value = '';
-        finderResults.classList.remove('show');
-        finderList.innerHTML = '';
-    });
+$('#finderBtn').addEventListener('click',runFinder);
+$('#finderReset').addEventListener('click',()=>{
+  finderSubject.value=''; finderFormat.value='';
+  finderDuration.value=''; finderBudget.value='';
+  $('#finderResults').classList.remove('show');
+  $('#finderList').innerHTML='';
+});
 
-    // ============================================
-    // SMOOTH SCROLL FOR INTERNAL LINKS
-    // ============================================
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#' || href === '') return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
+/* =========================================================
+   GLOBAL UI
+   ========================================================= */
+/* Mobile menu */
+const menuBtn=document.querySelector('.mobile-menu-btn'), mobileNav=$('#mobileNav');
+menuBtn.addEventListener('click',()=>{
+  mobileNav.classList.toggle('show');
+  menuBtn.setAttribute('aria-expanded',mobileNav.classList.contains('show'));
+});
+document.querySelectorAll('#mobileNav a').forEach(a=>{
+  a.addEventListener('click',()=>mobileNav.classList.remove('show'));
+});
 
-    // ============================================
-    // SCROLL REVEAL
-    // ============================================
-    const revealEls = document.querySelectorAll('.path-card, .subject-card, .prog-card, .format-card, .why-card, .leave-card, .career-card, .step-card');
-    if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    io.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+/* Sticky header shadow */
+window.addEventListener('scroll',()=>{
+  $('#mainHeader').classList.toggle('scrolled',window.scrollY>30);
+});
 
-        revealEls.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(18px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            io.observe(el);
-        });
-    }
+/* Smooth scroll on [data-scroll] */
+document.querySelectorAll('[data-scroll]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href = a.getAttribute('href');
+    if(!href || !href.startsWith('#')) return;
+    const t = document.querySelector(href);
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
 
-    console.log('Nolan Institute — Learn. Innovate. Lead. Ready.');
+/* Modal close on Escape + click outside */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if($('#programmeModal').classList.contains('show')) closeProgramme();
+    if(searchModal.classList.contains('show')) closeSearch();
+  }
+});
+$('#programmeModal').addEventListener('click',e=>{
+  if(e.target.id==='programmeModal') closeProgramme();
+});
+searchModal.addEventListener('click',e=>{
+  if(e.target.id==='searchModal') closeSearch();
+});
+
+/* =========================================================
+   INIT
+   ========================================================= */
+renderCatalogue();
+
+console.log('Nolan Institute — Learn. Innovate. Lead. · Interactive catalogue ready ('+PROGRAMMES.length+' programmes).');
 </script>
 </body>
 </html>
