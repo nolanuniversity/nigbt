@@ -18,7 +18,6 @@
   --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
 }
 
-/* ============ FIX 1: Kill horizontal overflow everywhere ============ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:hidden;width:100%}
 body{
@@ -47,7 +46,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .btn-lg{padding:15px 34px;font-size:15.5px}
 .btn-block{display:flex;width:100%}
 
-/* ============ TOP BAR ============ */
 .top-bar{background:var(--navy-dark);color:#cbd5e1;font-size:12.5px;padding:8px 0}
 .top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .top-bar-left{display:flex;gap:20px;flex-wrap:wrap;min-width:0}
@@ -57,13 +55,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .top-bar-right a{color:#cbd5e1;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .top-bar-right a:hover{color:var(--gold)}
 
-/* ============ HEADER ============ */
 .main-header{background:#fff;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:1000;transition:var(--transition);width:100%}
 .main-header.scrolled{box-shadow:var(--shadow-md)}
-.main-header .container{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 24px;gap:16px;min-width:0;max-width:100%;
-}
+.main-header .container{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;gap:16px;min-width:0;max-width:100%}
 .logo{display:flex;flex-direction:column;flex-shrink:1;min-width:0;overflow:hidden}
 .logo-name{font-size:17px;font-weight:800;letter-spacing:1.5px;color:var(--navy);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .logo-tag{font-size:9.5px;color:var(--gold);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -73,31 +67,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .main-nav ul li a:hover{color:var(--gold)}
 .main-nav ul li a:hover::after{width:100%}
 .header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.icon-btn{
-  width:42px;height:42px;border-radius:10px;border:1px solid var(--gray-mid);background:#fff;
-  color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:15px;
-  transition:var(--transition);flex-shrink:0;
-}
+.icon-btn{width:42px;height:42px;border-radius:10px;border:1px solid var(--gray-mid);background:#fff;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:15px;transition:var(--transition);flex-shrink:0}
 .icon-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);transform:translateY(-2px)}
-.mobile-menu-btn{
-  display:none;background:none;border:none;font-size:22px;color:var(--navy);
-  padding:6px;flex-shrink:0;line-height:1;
-}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:22px;color:var(--navy);padding:6px;flex-shrink:0;line-height:1}
 
-/* ============ FIX 2: Mobile nav actually shows when toggled ============ */
-.mobile-nav{
-  display:none;
-  background:#fff;
-  border-top:1px solid var(--gray-mid);
-  overflow:hidden;
-  max-height:0;
-  transition:max-height .4s ease;
-  width:100%;
-}
-.mobile-nav.show{
-  display:block;      /* <-- this was missing — the menu never appeared */
-  max-height:600px;
-}
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-mid);overflow:hidden;max-height:0;transition:max-height .4s ease;width:100%}
+.mobile-nav.show{display:block;max-height:600px}
 .mobile-nav ul{padding:16px 20px 20px}
 .mobile-nav ul li{margin-bottom:10px}
 .mobile-nav ul li:last-child{margin-bottom:0}
@@ -106,38 +81,185 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .mobile-nav ul li .btn{margin-top:6px}
 
 /* ============ HERO ============ */
-.hero{position:relative;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-light) 100%);color:#fff;padding:90px 0 80px;overflow:hidden;width:100%}
+.hero{position:relative;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-light) 100%);color:#fff;padding:80px 0 70px;overflow:hidden;width:100%}
 .hero::before{
   content:'';position:absolute;inset:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpattern id='p' x='0' y='0' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpolyline points='10,50 30,20 50,50' fill='none' stroke='%23C5A028' stroke-width='0.8' opacity='0.15'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%23C5A028' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
-  opacity:.6;pointer-events:none;
+  opacity:.55;pointer-events:none;
 }
 .hero .container{position:relative;z-index:2}
-.hero-inner{max-width:900px;width:100%}
+
+/* Two-column hero grid */
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:56px;
+  align-items:center;
+}
+.hero-inner{max-width:640px;width:100%}
 .hero-badge{
   display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);
-  color:var(--gold-light);padding:8px 16px;border-radius:50px;font-size:11.5px;font-weight:700;
-  letter-spacing:1.2px;text-transform:uppercase;margin-bottom:24px;
+  color:var(--gold-light);padding:8px 16px;border-radius:50px;font-size:11px;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;margin-bottom:22px;
   max-width:100%;white-space:normal;line-height:1.5;word-wrap:break-word;
 }
-.hero h1{font-size:clamp(1.9rem,5.5vw,3.8rem);color:#fff;margin-bottom:20px;letter-spacing:-.5px;line-height:1.15}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3.3rem);color:#fff;margin-bottom:18px;letter-spacing:-.5px;line-height:1.15}
 .hero h1 .gold{color:var(--gold)}
-.hero-sub{font-size:clamp(0.98rem,2vw,1.2rem);color:rgba(255,255,255,.85);margin-bottom:28px;max-width:680px;line-height:1.65}
-.hero-formats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;max-width:100%}
+.hero-sub{font-size:clamp(0.98rem,1.7vw,1.1rem);color:rgba(255,255,255,.85);margin-bottom:26px;max-width:560px;line-height:1.65}
+.hero-formats{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;max-width:100%}
 .format-pill{
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
-  padding:8px 18px;border-radius:50px;font-size:12.5px;color:rgba(255,255,255,.92);
+  padding:8px 16px;border-radius:50px;font-size:12px;color:rgba(255,255,255,.92);
   font-weight:600;cursor:pointer;transition:var(--transition);
   max-width:100%;white-space:normal;text-align:left;line-height:1.3;
 }
 .format-pill:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);transform:translateY(-2px)}
 .format-pill.active{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
-.hero-subjects{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;margin-bottom:32px}
-.hero-subjects-label{font-size:11.5px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
-.hero-subjects-list{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:rgba(255,255,255,.85)}
+.hero-subjects{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;margin-bottom:28px}
+.hero-subjects-label{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
+.hero-subjects-list{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:rgba(255,255,255,.85)}
 .hero-subjects-list span{position:relative;padding-right:14px}
 .hero-subjects-list span:not(:last-child)::after{content:'|';position:absolute;right:0;color:rgba(197,160,40,.6)}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ============ HERO IMAGE SLIDER ============ */
+.hero-slider{
+  position:relative;
+  width:100%;
+  max-width:520px;
+  margin-left:auto;
+}
+
+.hero-slider-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(197,160,40,.35);
+  box-shadow:0 30px 70px -25px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.04);
+  background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+  isolation:isolate;
+}
+.hero-slider-frame::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%, rgba(197,160,40,.12) 0%, rgba(197,160,40,0) 60%);
+  pointer-events:none;z-index:1;
+}
+
+.hero-slide-track{position:absolute;inset:0;z-index:2}
+
+.hero-slide{
+  position:absolute;inset:0;
+  border:none;background:transparent;padding:0;margin:0;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity .55s ease, transform .65s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;
+  text-align:left;
+}
+.hero-slide.active{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
+  z-index:3;
+}
+.hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+  padding:14px;
+  border-radius:20px;
+  user-select:none;
+  -webkit-user-drag:none;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.35));
+  transition:transform .5s ease;
+}
+.hero-slide:hover img{transform:scale(1.015)}
+
+.hero-slide-caption{
+  position:absolute;
+  left:16px;right:16px;bottom:16px;
+  background:linear-gradient(135deg, rgba(10,28,58,.95), rgba(5,18,42,.95));
+  border:1px solid rgba(197,160,40,.4);
+  border-radius:14px;
+  padding:14px 18px;
+  display:flex;flex-direction:column;gap:3px;
+  text-align:left;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:var(--transition);
+  z-index:4;
+}
+.hero-slide:hover .hero-slide-caption{
+  background:linear-gradient(135deg, rgba(10,28,58,.99), rgba(5,18,42,.99));
+  border-color:var(--gold);
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px -12px rgba(0,0,0,.6);
+}
+.hero-slide-badge{
+  font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:800;
+}
+.hero-slide-sub{
+  font-size:12.5px;color:rgba(255,255,255,.88);font-weight:500;
+}
+.hero-slide-cta{
+  font-size:11.5px;color:var(--gold-light);font-weight:800;
+  margin-top:5px;
+  display:inline-flex;align-items:center;gap:6px;
+  letter-spacing:.5px;text-transform:uppercase;
+}
+.hero-slide-cta i{transition:transform .3s ease}
+.hero-slide:hover .hero-slide-cta i{transform:translateX(5px)}
+
+.hero-slider-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(10,28,58,.7);
+  color:#fff;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:var(--transition);
+  z-index:6;cursor:pointer;
+}
+.hero-slider-arrow:hover{background:var(--gold);color:var(--navy-dark);border-color:var(--gold);transform:translateY(-50%) scale(1.06)}
+.hero-slider-arrow.prev{left:12px}
+.hero-slider-arrow.next{right:12px}
+
+.hero-slider-hint{
+  position:absolute;top:14px;left:14px;
+  background:rgba(10,28,58,.78);
+  border:1px solid rgba(197,160,40,.4);
+  color:var(--gold-light);
+  font-size:10.5px;font-weight:700;letter-spacing:.5px;
+  padding:6px 12px;border-radius:50px;
+  display:inline-flex;align-items:center;gap:6px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  z-index:6;pointer-events:none;
+  text-transform:uppercase;
+}
+.hero-slider-hint i{animation:hintPulse 2.2s ease-in-out infinite;font-size:10px}
+@keyframes hintPulse{
+  0%,100%{transform:translateX(0);opacity:1}
+  50%{transform:translateX(4px);opacity:.65}
+}
+
+.hero-slider-dots{
+  display:flex;justify-content:center;gap:8px;
+  margin-top:18px;
+}
+.hero-slider-dot{
+  width:9px;height:9px;border-radius:50%;
+  border:none;background:rgba(255,255,255,.25);
+  cursor:pointer;transition:var(--transition);padding:0;
+}
+.hero-slider-dot:hover{background:rgba(255,255,255,.5)}
+.hero-slider-dot.active{background:var(--gold);width:26px;border-radius:20px;box-shadow:0 0 12px rgba(197,160,40,.6)}
 
 /* ============ SECTIONS ============ */
 .section{padding:80px 0}
@@ -352,7 +474,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .search-tag{background:#fff;border:1px solid var(--gray-mid);padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;color:var(--navy);cursor:pointer;transition:var(--transition)}
 .search-tag:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
 
-/* ============ FIX 3: Toast never overflows the viewport ============ */
 .toast{
   position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;
   padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:3000;
@@ -364,19 +485,28 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .toast.show{transform:translateY(0);opacity:1}
 .toast i{color:var(--gold);font-size:14px;flex-shrink:0}
 
-/* ============ RESPONSIVE — MOBILE HEADER FITS & MENU WORKS ============ */
-
-/* Tablet / small desktop */
+/* ============ RESPONSIVE ============ */
+@media(max-width:1100px){
+  .hero-grid{gap:40px}
+  .hero-slider{max-width:440px}
+}
 @media(max-width:992px){
   .main-nav{display:none}
   .mobile-menu-btn{display:block}
   .top-bar-left span:nth-child(3){display:none}
+  .hero-grid{grid-template-columns:1fr;gap:44px;text-align:center}
+  .hero-inner{max-width:640px;margin:0 auto}
+  .hero-badge{margin-left:auto;margin-right:auto}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-formats{justify-content:center}
+  .hero-subjects{text-align:center}
+  .hero-subjects-list{justify-content:center}
+  .hero-actions{justify-content:center}
+  .hero-slider{max-width:480px;margin:0 auto}
 }
-
-/* Tablet portrait */
 @media(max-width:768px){
   .section{padding:60px 0}
-  .hero{padding:70px 0 60px}
+  .hero{padding:64px 0 56px}
   .finder-card,.payment-inner,.modal-card{padding:26px 20px}
   .footer-bottom{flex-direction:column;text-align:center}
   .top-bar-left{display:none}
@@ -384,8 +514,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .top-bar-right{gap:14px}
   .top-bar-right a{font-size:12px}
 }
-
-/* Phone: make header fit — logo shrinks, actions shrink, nothing overflows */
 @media(max-width:600px){
   .container{padding:0 16px}
   .main-header .container{padding:10px 16px;gap:8px;flex-wrap:nowrap}
@@ -396,14 +524,29 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .header-actions .btn-primary{padding:8px 14px;font-size:12px}
   .icon-btn{width:38px;height:38px;font-size:14px}
   .mobile-menu-btn{font-size:20px;padding:5px}
-  .hero{padding:56px 0 50px}
-  .hero-badge{font-size:10.5px;padding:7px 14px;letter-spacing:.8px}
-  .hero h1{font-size:clamp(1.7rem,7vw,2.4rem)}
-  .hero-sub{font-size:.95rem;margin-bottom:22px}
-  .format-pill{padding:7px 14px;font-size:11.5px}
-  .hero-subjects-list{font-size:11.5px;gap:5px 12px}
+  .hero{padding:48px 0 44px}
+  .hero-grid{gap:32px}
+  .hero-badge{font-size:10px;padding:7px 13px;letter-spacing:.8px}
+  .hero h1{font-size:clamp(1.7rem,7vw,2.3rem)}
+  .hero-sub{font-size:.94rem;margin-bottom:20px}
+  .format-pill{padding:7px 13px;font-size:11.5px}
+  .hero-subjects-list{font-size:11px;gap:5px 11px}
   .hero-actions{gap:10px}
   .hero-actions .btn{padding:12px 20px;font-size:13.5px}
+  .hero-slider{max-width:100%}
+  .hero-slider-frame{aspect-ratio:1 / 1;border-radius:16px}
+  .hero-slide img{padding:8px;border-radius:16px}
+  .hero-slide-caption{left:10px;right:10px;bottom:10px;padding:11px 14px;border-radius:12px}
+  .hero-slide-badge{font-size:9.5px;letter-spacing:1.6px}
+  .hero-slide-sub{font-size:11px}
+  .hero-slide-cta{font-size:10.5px;margin-top:4px}
+  .hero-slider-arrow{width:34px;height:34px;font-size:11px}
+  .hero-slider-arrow.prev{left:8px}
+  .hero-slider-arrow.next{right:8px}
+  .hero-slider-hint{top:10px;left:10px;font-size:9.5px;padding:5px 10px;letter-spacing:.4px}
+  .hero-slider-dots{margin-top:14px;gap:7px}
+  .hero-slider-dot{width:8px;height:8px}
+  .hero-slider-dot.active{width:22px}
   .section-head{margin-bottom:36px}
   .section-head h2{font-size:clamp(1.4rem,5.5vw,1.9rem)}
   .section-head p{font-size:14px}
@@ -412,18 +555,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .footer-grid{gap:28px;margin-bottom:32px}
   .toast{right:12px;bottom:12px;font-size:12.5px;padding:10px 16px;max-width:calc(100vw - 24px)}
 }
-
-/* Small phones: shrink header further so Apply Now + Menu both fit */
 @media(max-width:400px){
   .container{padding:0 12px}
   .main-header .container{padding:9px 12px;gap:6px}
   .logo-name{font-size:12px;letter-spacing:.5px}
   .logo-tag{font-size:7px;letter-spacing:.8px}
   .header-actions{gap:5px}
-  .header-actions .btn-primary{padding:7px 11px;font-size:11px;letter-spacing:.2px}
+  .header-actions .btn-primary{padding:7px 11px;font-size:11px}
   .icon-btn{width:34px;height:34px;font-size:12.5px;border-radius:8px}
   .mobile-menu-btn{font-size:18px;padding:4px}
-  .hero h1{font-size:1.6rem}
+  .hero h1{font-size:1.55rem}
   .hero-actions,.final-actions{flex-direction:column;width:100%}
   .hero-actions .btn,.final-actions .btn{width:100%}
   .finder-actions{flex-direction:column}
@@ -433,8 +574,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .subjects-grid,.featured-grid,.formats-grid,.why-grid,.leave-grid,.career-grid,.steps-grid,.payment-options,.paths-grid{grid-template-columns:1fr}
   .footer-social{justify-content:center}
 }
-
-/* No hover jitter on touch devices */
 @media(hover:none){
   .prog-card:hover,.subject-card:hover,.path-card:hover,.format-card:hover,
   .why-card:hover,.leave-card:hover,.career-card:hover,.step-card:hover{transform:none}
@@ -496,37 +635,52 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </ul>
 </div>
 
-<!-- HERO -->
+<!-- HERO WITH IMAGE SLIDER -->
 <section class="hero">
   <div class="container">
-    <div class="hero-inner">
-      <span class="hero-badge">Nolan Institute · A Professional Learning Marketplace with Institutional Credibility.</span>
-      <h1>Build the Skills.<br><span class="gold">Advance Your Career.</span></h1>
-      <p class="hero-sub">Professional education designed for today's careers. Learn practical, career-relevant skills you can apply immediately.</p>
+    <div class="hero-grid">
 
-      <div class="hero-formats" id="heroFormats">
-        <button type="button" class="format-pill" data-format="Short Course">Short Courses</button>
-        <button type="button" class="format-pill" data-format="Certificate">Certificates</button>
-        <button type="button" class="format-pill" data-format="Professional Programme">Professional Programmes</button>
-        <button type="button" class="format-pill" data-format="Bootcamp">Bootcamps</button>
-        <button type="button" class="format-pill" data-format="Advanced Programme">Advanced Programmes</button>
-      </div>
+      <div class="hero-inner">
+        <span class="hero-badge">Nolan Institute · A Professional Learning Marketplace with Institutional Credibility.</span>
+        <h1>Build the Skills.<br><span class="gold">Advance Your Career.</span></h1>
+        <p class="hero-sub">Professional education designed for today's careers. Learn practical, career-relevant skills you can apply immediately.</p>
 
-      <div class="hero-subjects">
-        <span class="hero-subjects-label">Learn practical skills in</span>
-        <div class="hero-subjects-list">
-          <span>Accounting &amp; Finance</span><span>Banking &amp; Financial Services</span><span>Investment &amp; Capital Markets</span>
-          <span>Financial Modelling</span><span>Business Management</span><span>Project Management</span>
-          <span>Data Analytics</span><span>Artificial Intelligence</span><span>Digital Transformation</span>
-          <span>Entrepreneurship</span><span>Leadership</span><span>Corporate Finance</span>
-          <span>Business Intelligence</span><span>AI for Business</span><span>Risk Management</span>
+        <div class="hero-formats" id="heroFormats">
+          <button type="button" class="format-pill" data-format="Short Course">Short Courses</button>
+          <button type="button" class="format-pill" data-format="Certificate">Certificates</button>
+          <button type="button" class="format-pill" data-format="Professional Programme">Professional Programmes</button>
+          <button type="button" class="format-pill" data-format="Bootcamp">Bootcamps</button>
+          <button type="button" class="format-pill" data-format="Advanced Programme">Advanced Programmes</button>
+        </div>
+
+        <div class="hero-subjects">
+          <span class="hero-subjects-label">Learn practical skills in</span>
+          <div class="hero-subjects-list">
+            <span>Accounting &amp; Finance</span><span>Banking &amp; Financial Services</span><span>Investment &amp; Capital Markets</span>
+            <span>Financial Modelling</span><span>Business Management</span><span>Project Management</span>
+            <span>Data Analytics</span><span>Artificial Intelligence</span><span>Digital Transformation</span>
+            <span>Entrepreneurship</span><span>Leadership</span><span>Corporate Finance</span>
+            <span>Business Intelligence</span><span>AI for Business</span><span>Risk Management</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
+          <a href="admissions-apply.html" class="btn btn-outline-white btn-lg">Apply Now</a>
         </div>
       </div>
 
-      <div class="hero-actions">
-        <button type="button" class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
-        <a href="admissions-apply.html" class="btn btn-outline-white btn-lg">Apply Now</a>
+      <!-- HERO IMAGE SLIDER -->
+      <div class="hero-slider" id="heroSlider" aria-label="Featured programme formats">
+        <div class="hero-slider-frame">
+          <div class="hero-slide-track" id="heroTrack"></div>
+          <span class="hero-slider-hint"><i class="fas fa-hand-pointer"></i> Tap a slide to explore</span>
+          <button type="button" class="hero-slider-arrow prev" id="heroPrev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+          <button type="button" class="hero-slider-arrow next" id="heroNext" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="hero-slider-dots" id="heroDots"></div>
       </div>
+
     </div>
   </div>
 </section>
@@ -932,6 +1086,37 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
    ========================================================= */
 const APPLY_URL = 'admissions-apply.html';
 
+/* =========================================================
+   HERO SLIDER — EDIT THESE TO CHANGE IMAGES / MAPPING
+   Each slide: src (image path), format (filter), badge (label), sub (detail line)
+   ========================================================= */
+const HERO_SLIDES = [
+  {
+    src: '85fd7197-bc0f-41ec-b22a-930c3b3f7294.png',
+    format: 'Short Course',
+    badge: 'Short Courses',
+    sub: '8–12 Weeks · From K4,500'
+  },
+  {
+    src: '7de14444-a94c-4c84-8841-c59b21f9163f.png',
+    format: 'Certificate',
+    badge: 'Certificates',
+    sub: '16 Weeks · From K8,500'
+  },
+  {
+    src: '6e6ce8d3-0632-41cf-885b-70af0e9cb711.png',
+    format: 'Professional Programme',
+    badge: 'Professional Programmes',
+    sub: '24 Weeks · From K12,500'
+  }
+  /* Optional: add more slides if you get images for Bootcamps / Advanced Programmes
+  ,{ src:'bootcamp.png', format:'Bootcamp', badge:'Bootcamps', sub:'2–6 Weeks · From K5,500' }
+  ,{ src:'advanced.png', format:'Advanced Programme', badge:'Advanced Programmes', sub:'24–36 Weeks · From K22,500' }
+  */
+];
+
+const HERO_ROTATE_MS = 5500; // auto-rotate speed
+
 function categoryForSubject(subject){
   const map = {
     'Accounting & Finance':'Finance & Investment',
@@ -1328,6 +1513,99 @@ function showToast(msg){
 }
 
 /* =========================================================
+   HERO SLIDER BUILD + LOGIC
+   ========================================================= */
+let heroSlideIndex = 0;
+let heroSlideTimer = null;
+
+function buildHeroSlider(){
+  const track = document.getElementById('heroTrack');
+  const dots  = document.getElementById('heroDots');
+  if(!track || !dots) return;
+
+  track.innerHTML = HERO_SLIDES.map((s, i) => `
+    <button type="button" class="hero-slide ${i===0?'active':''}"
+            data-index="${i}" data-format="${esc(s.format)}"
+            aria-label="Explore ${esc(s.badge)}">
+      <img src="${esc(s.src)}" alt="${esc(s.badge)}" loading="${i===0?'eager':'lazy'}" draggable="false">
+      <span class="hero-slide-caption">
+        <span class="hero-slide-badge">${esc(s.badge)}</span>
+        <span class="hero-slide-sub">${esc(s.sub)}</span>
+        <span class="hero-slide-cta">Explore <i class="fas fa-arrow-right"></i></span>
+      </span>
+    </button>
+  `).join('');
+
+  dots.innerHTML = HERO_SLIDES.map((_, i) => `
+    <button type="button" class="hero-slider-dot ${i===0?'active':''}"
+            data-index="${i}" aria-label="Go to slide ${i+1}"></button>
+  `).join('');
+
+  // Slide click → apply filter + scroll
+  track.querySelectorAll('.hero-slide').forEach(slide => {
+    slide.addEventListener('click', () => {
+      const fmt = slide.dataset.format;
+      state.subject = null;
+      state.format = fmt;
+      renderCatalogue();
+      scrollToCatalogue();
+      showToast(`Showing ${fmt}s (${getFilteredProgrammes().length})`);
+      goToHeroSlide(parseInt(slide.dataset.index, 10));
+      resetHeroRotation();
+    });
+  });
+
+  // Dots
+  dots.querySelectorAll('.hero-slider-dot').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToHeroSlide(parseInt(dot.dataset.index, 10));
+      resetHeroRotation();
+    });
+  });
+
+  // Arrows
+  const prev = document.getElementById('heroPrev');
+  const next = document.getElementById('heroNext');
+  if(prev) prev.addEventListener('click', (e) => { e.stopPropagation(); prevHeroSlide(); resetHeroRotation(); });
+  if(next) next.addEventListener('click', (e) => { e.stopPropagation(); nextHeroSlide(); resetHeroRotation(); });
+
+  // Pause on hover
+  const frame = track.parentElement;
+  if(frame){
+    frame.addEventListener('mouseenter', stopHeroRotation);
+    frame.addEventListener('mouseleave', startHeroRotation);
+  }
+
+  startHeroRotation();
+}
+
+function goToHeroSlide(i){
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-slider-dot');
+  if(!slides.length) return;
+  if(i < 0) i = slides.length - 1;
+  if(i >= slides.length) i = 0;
+  slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+  dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  heroSlideIndex = i;
+}
+function nextHeroSlide(){ goToHeroSlide(heroSlideIndex + 1); }
+function prevHeroSlide(){ goToHeroSlide(heroSlideIndex - 1); }
+function startHeroRotation(){
+  stopHeroRotation();
+  if(HERO_SLIDES.length < 2) return;
+  heroSlideTimer = setInterval(nextHeroSlide, HERO_ROTATE_MS);
+}
+function stopHeroRotation(){
+  if(heroSlideTimer){ clearInterval(heroSlideTimer); heroSlideTimer = null; }
+}
+function resetHeroRotation(){
+  stopHeroRotation();
+  startHeroRotation();
+}
+
+/* =========================================================
    BUILD SUBJECT GRID
    ========================================================= */
 function buildSubjectsGrid(){
@@ -1455,12 +1733,14 @@ function scrollToCatalogue(){
   if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function applyFormatFilter(format){
+  state.subject = null;
   state.format = (state.format===format) ? null : format;
   renderCatalogue();
   scrollToCatalogue();
   showToast(state.format ? `Showing ${state.format}s (${getFilteredProgrammes().length})` : 'Filter cleared');
 }
 function applySubjectFilter(subject){
+  state.format = null;
   state.subject = (state.subject===subject) ? null : subject;
   renderCatalogue();
   scrollToCatalogue();
@@ -1659,7 +1939,7 @@ $('#finderReset').addEventListener('click',()=>{
 });
 
 /* =========================================================
-   FIX 4: MENU TOGGLE — works reliably via event delegation
+   MOBILE MENU TOGGLE (delegated)
    ========================================================= */
 function toggleMobileMenu(force){
   const nav = document.getElementById('mobileNav');
@@ -1669,8 +1949,6 @@ function toggleMobileMenu(force){
   nav.classList.toggle('show', willShow);
   btn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
 }
-
-// Delegated listener — works even if the button gets re-rendered
 document.addEventListener('click', function(e){
   const btn = e.target.closest('#mobileMenuBtn, .mobile-menu-btn');
   if(btn){
@@ -1679,8 +1957,6 @@ document.addEventListener('click', function(e){
     toggleMobileMenu();
   }
 }, true);
-
-// Close menu when a link inside it is clicked
 document.addEventListener('click', function(e){
   const link = e.target.closest('#mobileNav a');
   if(link){
@@ -1705,7 +1981,6 @@ $$('[data-scroll]').forEach(a=>{
     if(!href||!href.startsWith('#'))return;
     const t=document.querySelector(href);
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-    // close mobile menu
     const nav = document.getElementById('mobileNav');
     if(nav) nav.classList.remove('show');
   });
@@ -1725,13 +2000,14 @@ searchModal.addEventListener('click',e=>{if(e.target.id==='searchModal')closeSea
 /* =========================================================
    INIT
    ========================================================= */
+buildHeroSlider();
 buildSubjectsGrid();
 buildFinderSubjects();
 buildSearchTags();
 updateFormatCounts();
 renderCatalogue();
 
-console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes`);
+console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · ${HERO_SLIDES.length} hero slides`);
 </script>
 </body>
 </html>
