@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pricing & Payment Plans | Nolan Institute</title>
+<meta name="description" content="Transparent pricing for Nolan Institute programmes. Standard and specialist subjects, flexible payment plans, USD reference pricing for international students.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+:root{
+  --navy:#0A1C3A;--navy-light:#1A2D4D;--navy-dark:#05122A;
+  --gold:#C5A028;--gold-light:#D4B84A;--gold-dark:#A07F1F;--gold-10:rgba(197,160,40,0.1);
+  --white:#fff;--off-white:#FAFAF8;--gray-light:#F5F5F5;--gray-mid:#E0E0E0;--gray-dark:#666;--gray-darker:#333;
+  --success:#28A745;--error:#DC3545;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.05);--shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.12);--shadow-xl:0 24px 48px rgba(10,28,58,.18);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:'Inter',sans-serif;color:var(--gray-darker);line-height:1.6;background:var(--white);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2;color:var(--navy)}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+ul{list-style:none}img{max-width:100%;height:auto}
+button{font-family:inherit;cursor:pointer}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;font-weight:600;font-size:14.5px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:var(--transition);text-align:center;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--gold);color:var(--navy-dark);border-color:var(--gold)}
+.btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(197,160,40,.35)}
+.btn-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-navy:hover{background:var(--navy-light);border-color:var(--navy-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-outline-white:hover{background:#fff;color:var(--navy);border-color:#fff}
+.btn-sm{padding:9px 18px;font-size:13px}
+.btn-lg{padding:15px 34px;font-size:15.5px}
+.btn-block{display:flex;width:100%}
+
+/* TOP BAR */
+.top-bar{background:var(--navy-dark);color:#cbd5e1;font-size:12.5px;padding:8px 0}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.top-bar-left{display:flex;gap:24px;flex-wrap:wrap}
+.top-bar-left span{display:inline-flex;align-items:center;gap:8px}
+.top-bar-left i{color:var(--gold)}
+.top-bar-right{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.top-bar-right a{color:#cbd5e1;display:inline-flex;align-items:center;gap:6px}
+.top-bar-right a:hover{color:var(--gold)}
+
+/* HEADER */
+.main-header{background:#fff;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:1000;transition:var(--transition)}
+.main-header.scrolled{box-shadow:var(--shadow-md)}
+.main-header .container{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;gap:20px}
+.logo{display:flex;flex-direction:column;flex-shrink:0}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:1.5px;color:var(--navy);line-height:1.2}
+.logo-tag{font-size:9.5px;color:var(--gold);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.main-nav ul{display:flex;gap:26px;align-items:center}
+.main-nav ul li a{font-size:14px;font-weight:500;color:var(--gray-darker);padding:8px 0;position:relative}
+.main-nav ul li a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:var(--transition)}
+.main-nav ul li a:hover,.main-nav ul li a.active{color:var(--gold)}
+.main-nav ul li a:hover::after,.main-nav ul li a.active::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:22px;color:var(--navy);padding:6px}
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-mid);max-height:0;overflow:hidden;transition:max-height .4s ease}
+.mobile-nav.show{max-height:500px}
+.mobile-nav ul{padding:20px 24px}
+.mobile-nav ul li{margin-bottom:14px}
+.mobile-nav ul li a{display:block;font-size:15px;font-weight:500;color:var(--navy)}
+
+/* HERO */
+.pricing-hero{position:relative;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-light) 100%);color:#fff;padding:80px 0 70px;overflow:hidden}
+.pricing-hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpattern id='p' x='0' y='0' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpolyline points='10,50 30,20 50,50' fill='none' stroke='%23C5A028' stroke-width='0.8' opacity='0.15'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%23C5A028' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");opacity:.5}
+.pricing-hero .container{position:relative;z-index:2;text-align:center}
+.hero-badge{display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);color:var(--gold-light);padding:8px 18px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px}
+.pricing-hero h1{font-size:clamp(2rem,5vw,3.4rem);color:#fff;margin-bottom:18px;letter-spacing:-.5px}
+.pricing-hero h1 .gold{color:var(--gold)}
+.pricing-hero p{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(255,255,255,.85);max-width:680px;margin:0 auto 30px;line-height:1.7}
+.hero-quick-stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin-top:34px;padding-top:30px;border-top:1px solid rgba(255,255,255,.15)}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);font-weight:800;line-height:1}
+.hero-stat span{font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600;margin-top:8px;display:block}
+
+/* STICKY CONTROLS */
+.controls-bar{background:#fff;border-bottom:1px solid var(--gray-mid);padding:16px 0;position:sticky;top:70px;z-index:900;box-shadow:var(--shadow-sm)}
+.controls-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.currency-toggle{display:inline-flex;background:var(--gray-light);border-radius:50px;padding:4px;flex-shrink:0}
+.currency-toggle button{border:none;background:transparent;padding:8px 20px;border-radius:50px;font-size:13px;font-weight:700;color:var(--gray-dark);cursor:pointer;transition:var(--transition);letter-spacing:.3px}
+.currency-toggle button.active{background:var(--navy);color:#fff;box-shadow:var(--shadow-sm)}
+.controls-note{font-size:12.5px;color:var(--gray-dark);display:flex;align-items:center;gap:8px}
+.controls-note i{color:var(--gold-dark)}
+
+/* SECTIONS */
+.section{padding:70px 0}
+.section-alt{background:var(--off-white)}
+.section-navy{background:var(--navy);color:#fff}
+.section-head{text-align:center;margin-bottom:44px;max-width:760px;margin-left:auto;margin-right:auto}
+.section-tag{display:inline-block;background:var(--gold-10);color:var(--gold-dark);padding:5px 14px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.section-head h2{font-size:clamp(1.6rem,3.2vw,2.4rem);margin-bottom:12px}
+.section-head p{font-size:15px;color:var(--gray-dark);line-height:1.7}
+
+/* CATEGORY TABS */
+.category-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.cat-tab{background:#fff;border:2px solid var(--gray-mid);padding:12px 26px;border-radius:50px;font-size:14px;font-weight:700;color:var(--navy);cursor:pointer;transition:var(--transition);font-family:inherit}
+.cat-tab:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cat-tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* FORMAT TABS */
+.format-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.fmt-tab{background:transparent;border:1px solid var(--gray-mid);padding:9px 20px;border-radius:50px;font-size:12.5px;font-weight:600;color:var(--gray-darker);cursor:pointer;transition:var(--transition);font-family:inherit}
+.fmt-tab:hover{border-color:var(--gold);color:var(--gold-dark)}
+.fmt-tab.active{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
+
+/* PRICING CARDS */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-bottom:36px}
+.price-card{background:#fff;border-radius:var(--radius);border:1px solid var(--gray-mid);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;text-align:left;cursor:pointer;position:relative}
+.price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-xl);border-color:var(--gold)}
+.price-card-top{padding:22px 24px 18px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;position:relative}
+.pc-tier{position:absolute;top:18px;right:18px;font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:50px}
+.pc-tier.standard{background:rgba(255,255,255,.15);color:#fff}
+.pc-tier.specialist{background:var(--gold);color:var(--navy-dark)}
+.price-card-top .pc-format{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:var(--gold-light);padding:3px 11px;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.price-card-top h3{font-size:17px;color:#fff;margin-bottom:6px;line-height:1.3;padding-right:70px}
+.price-card-top .pc-subject{font-size:11.5px;color:rgba(255,255,255,.7);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+.price-card-body{padding:20px 24px;flex:1;display:flex;flex-direction:column}
+.pc-price-block{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--gray-mid)}
+.pc-price{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--navy);line-height:1}
+.pc-price small{font-size:15px;font-weight:600;color:var(--gray-dark);margin-left:4px}
+.pc-price-ref{font-size:12px;color:var(--gray-dark);margin-top:6px;font-weight:500}
+.pc-price-ref strong{color:var(--gold-dark)}
+.pc-price-note{font-size:11.5px;color:var(--success);font-weight:700;margin-top:8px;display:inline-flex;align-items:center;gap:6px}
+.pc-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--gray-dark);margin-bottom:16px}
+.pc-meta span{display:inline-flex;align-items:center;gap:6px}
+.pc-meta i{color:var(--gold)}
+.pc-actions{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.pc-plan-btn{background:var(--gold-10);border:1px dashed var(--gold);color:var(--gold-dark);padding:9px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:var(--transition);font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px}
+.pc-plan-btn:hover{background:var(--gold);color:var(--navy-dark);border-style:solid}
+
+/* Empty state */
+.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;background:var(--off-white);border-radius:var(--radius);border:1px dashed var(--gray-mid)}
+.empty-state i{font-size:34px;color:var(--gray-mid);margin-bottom:14px;display:block}
+.empty-state h4{font-family:'Inter',sans-serif;font-size:15px;color:var(--navy);margin-bottom:6px}
+.empty-state p{font-size:13px;color:var(--gray-dark)}
+
+/* TIER EXPLAINER */
+.tier-explainer{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:44px}
+.tier-card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--gray-mid);position:relative;overflow:hidden}
+.tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.tier-card.standard::before{background:var(--navy)}
+.tier-card.specialist::before{background:var(--gold)}
+.tier-card h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.tier-card h3 i{color:var(--gold-dark)}
+.tier-card p{font-size:13.5px;color:var(--gray-dark);line-height:1.65;margin-bottom:14px}
+.tier-card .tier-subjects{display:flex;flex-wrap:wrap;gap:6px}
+.tier-card .tier-subjects span{background:var(--gray-light);border:1px solid var(--gray-mid);padding:4px 11px;border-radius:50px;font-size:11.5px;color:var(--navy);font-weight:600}
+.tier-card.specialist .tier-subjects span{background:var(--gold-10);border-color:rgba(197,160,40,.3)}
+.tier-card .tier-range{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-mid);font-size:13px;color:var(--gray-dark)}
+.tier-card .tier-range strong{color:var(--navy);font-family:'Playfair Display',serif;font-size:16px}
+
+/* PAYMENT PLANS */
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.plan-card{background:#fff;border-radius:var(--radius);padding:30px 28px;border:1px solid var(--gray-mid);transition:var(--transition);position:relative}
+.plan-card:hover{border-color:var(--gold);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.plan-card .plan-badge{display:inline-block;background:var(--navy);color:#fff;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.plan-card h3{font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.plan-card .plan-price-line{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:var(--navy);margin-bottom:20px}
+.plan-card .plan-price-line small{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--gray-dark);display:block;margin-top:4px}
+.plan-breakdown{background:var(--off-white);border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:16px}
+.plan-step{display:flex;align-items:center;justify-content:space-between;padding:9px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-mid)}
+.plan-step:last-child{border-bottom:none}
+.plan-step .ps-label{color:var(--gray-dark);font-weight:500}
+.plan-step .ps-value{font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;font-size:15px}
+.plan-step.first .ps-label{color:var(--navy);font-weight:700}
+.plan-note{font-size:12px;color:var(--gray-dark);line-height:1.6;display:flex;gap:8px;align-items:flex-start}
+.plan-note i{color:var(--gold-dark);margin-top:3px;flex-shrink:0}
+
+/* INTERNATIONAL SECTION */
+.intl-section{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 100%);color:#fff;padding:70px 0;position:relative;overflow:hidden}
+.intl-section::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(197,160,40,.12) 0%,rgba(197,160,40,0) 70%);border-radius:50%}
+.intl-section .container{position:relative;z-index:2}
+.intl-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.intl-content .section-tag{background:rgba(197,160,40,.15);color:var(--gold-light)}
+.intl-content h2{color:#fff;font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:18px}
+.intl-content h2 .gold{color:var(--gold)}
+.intl-content p{color:rgba(255,255,255,.82);font-size:15px;line-height:1.75;margin-bottom:16px}
+.intl-card{background:rgba(255,255,255,.06);border:1px solid rgba(197,160,40,.3);border-radius:var(--radius);padding:30px 28px;backdrop-filter:blur(8px)}
+.intl-card .ic-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+.intl-card h4{color:#fff;font-family:'Playfair Display',serif;font-size:19px;margin-bottom:8px;line-height:1.3}
+.intl-card .ic-format{font-size:12px;color:rgba(255,255,255,.65);margin-bottom:20px;letter-spacing:.5px}
+.intl-card .ic-price{font-family:'Playfair Display',serif;font-size:42px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:6px}
+.intl-card .ic-price small{font-size:16px;color:rgba(255,255,255,.65);font-weight:600;margin-left:4px}
+.intl-card .ic-equiv{font-size:13px;color:rgba(255,255,255,.72);margin-bottom:22px}
+.intl-card .ic-equiv strong{color:#fff}
+.intl-card .ic-plans{font-size:12px;color:rgba(255,255,255,.7);padding-top:16px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:8px}
+.intl-card .ic-plans i{color:var(--gold)}
+
+/* WHAT'S INCLUDED */
+.included-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.included-card{background:#fff;border-radius:var(--radius);padding:24px 22px;border:1px solid var(--gray-mid);transition:var(--transition)}
+.included-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.included-card i{font-size:22px;color:var(--gold);margin-bottom:14px;display:block}
+.included-card h4{font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.included-card p{font-size:13px;color:var(--gray-dark);line-height:1.6}
+
+/* FAQ */
+.faq-list{max-width:840px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid var(--gray-mid);border-radius:var(--radius-sm);margin-bottom:12px;overflow:hidden;transition:var(--transition)}
+.faq-item.open{border-color:var(--gold);box-shadow:var(--shadow-md)}
+.faq-q{padding:20px 24px;font-size:15px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:'Inter',sans-serif;transition:var(--transition)}
+.faq-q:hover{color:var(--gold-dark)}
+.faq-q i{color:var(--gold);transition:transform .3s ease;flex-shrink:0}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 24px}
+.faq-item.open .faq-a{max-height:400px;padding:0 24px 20px}
+.faq-a p{font-size:13.5px;color:var(--gray-dark);line-height:1.75}
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,var(--navy-light) 100%);color:#fff;text-align:center;padding:70px 0;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-50%;left:-20%;width:700px;height:700px;background:radial-gradient(circle,rgba(197,160,40,.15) 0%,rgba(197,160,40,0) 70%);border-radius:50%}
+.final-cta .container{position:relative;z-index:2}
+.final-cta h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.4rem);margin-bottom:14px;max-width:680px;margin-left:auto;margin-right:auto}
+.final-cta h2 .gold{color:var(--gold)}
+.final-cta p{color:rgba(255,255,255,.82);font-size:15.5px;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto}
+.final-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+.footer{background:var(--navy-dark);color:#94a3b8;padding:60px 0 24px;font-size:13px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:44px}
+.footer-brand .brand-name{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:700;margin-bottom:6px}
+.footer-brand .brand-tag{font-size:10.5px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.footer-brand p{font-size:12.5px;line-height:1.7;margin-bottom:16px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:34px;height:34px;background:rgba(255,255,255,.06);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px}
+.footer-social a:hover{background:var(--gold);color:var(--navy-dark)}
+.footer-col h4{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.footer-col ul li{margin-bottom:9px}
+.footer-col ul li a{font-size:12.5px;color:#94a3b8}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-col ul li i{color:var(--gold);margin-right:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12px;color:#64748b}
+.footer-bottom a{color:#64748b}
+.footer-bottom a:hover{color:var(--gold)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px)}
+.modal-overlay.show{display:flex;animation:fadeIn .2s ease}
+.modal-card{background:#fff;border-radius:20px;max-width:640px;width:100%;padding:38px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:var(--gray-light);color:var(--navy);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:2}
+.modal-close:hover{background:var(--gold);color:var(--navy-dark);transform:rotate(90deg)}
+.modal-badge{display:inline-block;background:var(--navy);color:var(--gold);padding:4px 14px;border-radius:50px;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.modal-card h2{font-size:24px;margin-bottom:6px;padding-right:40px;line-height:1.3}
+.modal-card .modal-sub{font-size:12.5px;color:var(--gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px}
+.modal-price-line{padding:18px 20px;background:var(--gold-10);border-radius:var(--radius-sm);margin-bottom:24px;border-left:4px solid var(--gold)}
+.modal-price-line .mp-big{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--navy);line-height:1}
+.modal-price-line .mp-ref{font-size:13px;color:var(--gray-dark);margin-top:6px}
+.modal-price-line .mp-ref strong{color:var(--gold-dark)}
+.modal-breakdown{margin-bottom:24px}
+.modal-breakdown h4{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--gold-dark);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px}
+.modal-steps{background:var(--off-white);border-radius:var(--radius-sm);padding:6px 18px}
+.modal-step{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px dashed var(--gray-mid);font-size:14px}
+.modal-step:last-child{border-bottom:none}
+.modal-step .ms-label{color:var(--gray-dark);font-weight:500}
+.modal-step .ms-value{font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;font-size:16px}
+.modal-step.first .ms-label{color:var(--navy);font-weight:700}
+.modal-total{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--navy);border-radius:var(--radius-sm);margin-top:8px;color:#fff}
+.modal-total .mt-label{font-size:13px;font-weight:600}
+.modal-total .mt-value{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--gold)}
+.modal-note{font-size:12.5px;color:var(--gray-dark);line-height:1.7;padding:16px 18px;background:var(--gray-light);border-radius:var(--radius-sm);margin-bottom:22px;border-left:3px solid var(--navy)}
+.modal-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* TOAST */
+.toast{position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13.5px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:340px;box-shadow:var(--shadow-lg)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast i{color:var(--gold);font-size:15px}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .main-nav{display:none}
+  .mobile-menu-btn{display:block}
+  .intl-grid{grid-template-columns:1fr;gap:32px}
+  .tier-explainer{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .section{padding:56px 0}
+  .pricing-hero{padding:64px 0 54px}
+  .controls-bar{top:62px}
+  .modal-card{padding:28px 22px}
+  .hero-quick-stats{gap:24px}
+}
+@media(max-width:480px){
+  .container{padding:0 18px}
+  .hero-quick-stats{flex-direction:column;gap:18px}
+  .final-actions{flex-direction:column;width:100%}
+  .final-actions .btn{width:100%}
+  .modal-actions{flex-direction:column}
+  .modal-actions .btn{width:100%}
+  .controls-inner{flex-direction:column;align-items:flex-start;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <span><i class="fas fa-phone-alt"></i> +260 768 526 191</span>
+      <span><i class="fas fa-envelope"></i> info@nolaninstitute.org</span>
+      <span><i class="fas fa-globe"></i> Online Learning Worldwide</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+      <a href="#"><i class="fas fa-graduation-cap"></i> Alumni</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="main-header" id="mainHeader">
+  <div class="container">
+    <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+      <span class="logo-name">NOLAN INSTITUTE</span>
+      <span class="logo-tag">Learn. Innovate. Lead.</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#pricing" class="active">Pricing</a></li>
+        <li><a href="#plans">Payment Plans</a></li>
+        <li><a href="#international">International</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
+      <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#plans">Payment Plans</a></li>
+    <li><a href="#international">International</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#" class="btn btn-primary btn-block">Apply Now</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="pricing-hero">
+  <div class="container">
+    <span class="hero-badge">Transparent Programme Pricing</span>
+    <h1>Clear Pricing.<br><span class="gold">Flexible Payment.</span></h1>
+    <p>Standard and specialist subject pricing, shown in ZMW or USD. Every longer programme offers a payment plan so you can spread the cost.</p>
+    <div class="hero-quick-stats">
+      <div class="hero-stat"><strong>15</strong><span>Subjects</span></div>
+      <div class="hero-stat"><strong>5</strong><span>Learning Formats</span></div>
+      <div class="hero-stat"><strong>From K4,500</strong><span>Entry Point</span></div>
+      <div class="hero-stat"><strong>From K1,500</strong><span>Payment Plan Start</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY CONTROLS -->
+<div class="controls-bar">
+  <div class="container">
+    <div class="controls-inner">
+      <div class="currency-toggle" id="currencyToggle" role="tablist">
+        <button class="active" data-currency="ZMW" role="tab">ZMW</button>
+        <button data-currency="USD" role="tab">USD</button>
+      </div>
+      <div class="controls-note">
+        <i class="fas fa-info-circle"></i>
+        <span id="rateNote">Zambian Kwacha · USD reference pricing shown for international students</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIER EXPLAINER -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Two Pricing Tiers</span>
+      <h2>Standard &amp; Specialist Subjects</h2>
+      <p>Specialist subjects require more technical instruction, tools, modelling exercises and specialist faculty — so they carry a higher fee. Standard subjects focus on management, leadership and business capability.</p>
+    </div>
+    <div class="tier-explainer">
+      <div class="tier-card standard">
+        <h3><i class="fas fa-layer-group"></i> Standard Subjects</h3>
+        <p>Management, leadership and business capability focused. Ideal for professionals building core business and organisational skills.</p>
+        <div class="tier-subjects">
+          <span>Leadership</span>
+          <span>Business Management</span>
+          <span>Entrepreneurship</span>
+          <span>Project Management</span>
+        </div>
+        <div class="tier-range">Fees from <strong>K4,500</strong> to <strong>K22,500</strong></div>
+      </div>
+      <div class="tier-card specialist">
+        <h3><i class="fas fa-gears"></i> Specialist Subjects</h3>
+        <p>Technical, analytical or tool-intensive capability. Includes modelling, datasets, software and specialist faculty.</p>
+        <div class="tier-subjects">
+          <span>Accounting &amp; Finance</span>
+          <span>Banking &amp; Financial Services</span>
+          <span>Investment &amp; Capital Markets</span>
+          <span>Financial Modelling</span>
+          <span>Data Analytics</span>
+          <span>Artificial Intelligence</span>
+          <span>Digital Transformation</span>
+          <span>Corporate Finance</span>
+          <span>Business Intelligence</span>
+          <span>AI for Business</span>
+          <span>Risk Management</span>
+        </div>
+        <div class="tier-range">Fees from <strong>K5,500</strong> to <strong>K25,000</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Programme Pricing</span>
+      <h2>Choose Your Tier &amp; Format</h2>
+      <p>Filter by subject tier and format. Click any card to see payment plan options.</p>
+    </div>
+
+    <div class="category-tabs" id="categoryTabs">
+      <button class="cat-tab active" data-cat="all">All Programmes</button>
+      <button class="cat-tab" data-cat="standard">Standard Subjects</button>
+      <button class="cat-tab" data-cat="specialist">Specialist Subjects</button>
+    </div>
+
+    <div class="format-tabs" id="formatTabs">
+      <button class="fmt-tab active" data-fmt="all">All Formats</button>
+      <button class="fmt-tab" data-fmt="Short Course">Short Courses</button>
+      <button class="fmt-tab" data-fmt="Certificate">Certificates</button>
+      <button class="fmt-tab" data-fmt="Professional Programme">Professional</button>
+      <button class="fmt-tab" data-fmt="Bootcamp">Bootcamps</button>
+      <button class="fmt-tab" data-fmt="Advanced Programme">Advanced</button>
+    </div>
+
+    <div class="pricing-grid" id="pricingGrid"></div>
+  </div>
+</section>
+
+<!-- PAYMENT PLANS -->
+<section class="section" id="plans">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Flexible Payment</span>
+      <h2>Payment Plans for Longer Programmes</h2>
+      <p>No need to pay everything upfront. Longer programmes are structured into a registration amount and instalments across the programme.</p>
+    </div>
+
+    <div class="plans-grid" id="plansGrid"></div>
+  </div>
+</section>
+
+<!-- INTERNATIONAL -->
+<section class="intl-section" id="international">
+  <div class="container">
+    <div class="intl-grid">
+      <div class="intl-content">
+        <span class="section-tag">Pan-African Pricing</span>
+        <h2>USD Reference Pricing for<br><span class="gold">International Students</span></h2>
+        <p>For students outside Zambia, we quote a single USD reference price — no country-by-country tuition structures. Zambian students see the local equivalent.</p>
+        <p>This keeps Nolan Institute's pricing simple, transparent and consistent across the continent and beyond.</p>
+        <p style="font-size:13.5px;color:rgba(255,255,255,.65)"><i class="fas fa-info-circle" style="color:var(--gold);margin-right:6px"></i>Toggle the currency switch above to view all programme prices in USD.</p>
+      </div>
+      <div class="intl-card">
+        <div class="ic-label">USD Reference Example</div>
+        <h4>Professional Programme in Investment &amp; Capital Markets</h4>
+        <div class="ic-format">24 Weeks · Online</div>
+        <div class="ic-price">US$750</div>
+        <div class="ic-equiv">Zambian equivalent <strong>K15,000</strong></div>
+        <div class="ic-plans"><i class="fas fa-check-circle"></i> Flexible payment plans available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">What's Included</span>
+      <h2>Every Programme Includes</h2>
+      <p>Regardless of format or tier, every Nolan programme includes the full learning experience.</p>
+    </div>
+    <div class="included-grid">
+      <div class="included-card"><i class="fas fa-chalkboard-user"></i><h4>Live &amp; Recorded Learning</h4><p>Access teaching sessions, recordings and materials throughout your programme.</p></div>
+      <div class="included-card"><i class="fas fa-file-signature"></i><h4>Practical Exercises</h4><p>Real exercises, case studies and applied work to build genuine capability.</p></div>
+      <div class="included-card"><i class="fas fa-certificate"></i><h4>Credential on Completion</h4><p>Receive your appropriate Nolan Institute certificate or programme award.</p></div>
+      <div class="included-card"><i class="fas fa-user-tie"></i><h4>Faculty Support</h4><p>Direct access to faculty and mentors throughout your programme.</p></div>
+      <div class="included-card"><i class="fas fa-laptop"></i><h4>Online Learning Platform</h4><p>Full access to the Nolan Institute learning environment.</p></div>
+      <div class="included-card"><i class="fas fa-headset"></i><h4>Admissions Support</h4><p>Dedicated support for admissions, payment and enrolment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Questions</span>
+      <h2>Pricing FAQ</h2>
+      <p>Common questions about fees, payment and international pricing.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <div class="faq-q">Why do specialist subjects cost more than standard subjects? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Specialist subjects — such as Financial Modelling, Investment &amp; Capital Markets, Data Analytics and AI — require more technical instruction, software and tools, modelling exercises, datasets and specialist faculty. Standard subjects focus on management, leadership and business capability. The pricing reflects the difference in delivery cost and technical depth.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I pay in instalments? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Yes. Every Professional Programme and Advanced Programme includes a structured payment plan — a registration amount upfront followed by instalments. Click "View Payment Plan" on any longer programme to see the exact breakdown.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do international students pay different fees? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>We use a single USD reference price for international students — no country-by-country tuition structures. Zambian students see the local ZMW equivalent. Toggle the currency switch to view all prices in USD or ZMW.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What payment methods are accepted? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Mobile money (Airtel, MTN, Zamtel), card, bank transfer, and international payments. If you're outside Zambia, USD card or international transfer options are available.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is the application fee separate from programme fees? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Yes. There is a separate non-refundable application fee (ZK250 for Zambian and African applicants, US$25 for international applicants). This is paid when you submit your application, before programme fees.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens if I need to defer or withdraw? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Payment terms, deferral and withdrawal conditions are set out in your programme agreement. Please contact admissions before making a decision — our team will walk you through the options.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to Choose Your Programme?<br><span class="gold">Start Your Application.</span></h2>
+    <p>Every longer programme offers a payment plan. Choose your subject, choose your format, and start learning.</p>
+    <div class="final-actions">
+      <a href="#" class="btn btn-primary btn-lg">Start Your Application <i class="fas fa-arrow-right"></i></a>
+      <a href="#pricing" class="btn btn-outline-white btn-lg">View All Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Nolan Institute</div>
+        <div class="brand-tag">Learn. Innovate. Lead.</div>
+        <p>Technology-enabled education for the global economy. Part of the Nolan University digital platform.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pricing</h4>
+        <ul>
+          <li><a href="#pricing">All Programmes</a></li>
+          <li><a href="#plans">Payment Plans</a></li>
+          <li><a href="#international">International Pricing</a></li>
+          <li><a href="#faq">Pricing FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Apply</h4>
+        <ul>
+          <li><a href="#">How to Apply</a></li>
+          <li><a href="#">Application Fee</a></li>
+          <li><a href="#">Scholarships</a></li>
+          <li><a href="#">Corporate Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +260 768 526 191</li>
+          <li><i class="fas fa-envelope"></i> info@nolaninstitute.org</li>
+          <li><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Nolan Institute of Global Business &amp; Technology. All rights reserved.</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- PAYMENT PLAN MODAL -->
+<div class="modal-overlay" id="planModal">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div id="planModalContent"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Message</span></div>
+
+<script>
+/* =========================================================
+   PRICING DATA
+   Standard subjects (4): Leadership, Business Management,
+   Entrepreneurship, Project Management
+   Specialist subjects (11): the rest
+   USD rate: 1 USD ≈ 20 ZMW
+   ========================================================= */
+const RATE = 20; // ZMW per USD
+
+const STANDARD_SUBJECTS = ['Leadership','Business Management','Entrepreneurship','Project Management'];
+
+function tierOf(subject){
+  return STANDARD_SUBJECTS.includes(subject) ? 'standard' : 'specialist';
+}
+
+/* Standard pricing by format */
+const PRICE_STANDARD = {
+  'Short Course': { zmw: 4500,  usd: 225 },
+  'Certificate':  { zmw: 7500,  usd: 375 },
+  'Professional Programme': { zmw: 12500, usd: 625 },
+  'Bootcamp':     { zmw: 5500,  usd: 275 },
+  'Advanced Programme': { zmw: 22500, usd: 1125 }
+};
+
+/* Specialist pricing by format */
+const PRICE_SPECIALIST = {
+  'Short Course': { zmw: 5500,  usd: 275 },
+  'Certificate':  { zmw: 8500,  usd: 425 },
+  'Professional Programme': { zmw: 15000, usd: 750 },
+  'Bootcamp':     { zmw: 6500,  usd: 325 },
+  'Advanced Programme': { zmw: 25000, usd: 1250 }
+};
+
+/* AI Certificate override (K9,000 / US$450) */
+const PRICE_OVERRIDES = {
+  'Artificial Intelligence|Certificate': { zmw: 9000, usd: 450 },
+  'AI for Business|Certificate':         { zmw: 9000, usd: 450 }
+};
+
+/* Programme catalogue: subject → base name per format */
+const CATALOGUE = {
+  'Leadership': {
+    'Short Course':'Leadership Essentials',
+    'Certificate':'Certificate in Leadership Development',
+    'Professional Programme':'Professional Programme in Leadership',
+    'Bootcamp':'Leadership Impact Bootcamp',
+    'Advanced Programme':'Executive Leadership Programme',
+    weeks:{'Short Course':8,'Certificate':16,'Professional Programme':24,'Bootcamp':4,'Advanced Programme':28}
+  },
+  'Business Management': {
+    'Short Course':'Business Essentials',
+    'Certificate':'Certificate in Business Management',
+    'Professional Programme':'Professional Programme in Business Management',
+    'Bootcamp':'Business Management Bootcamp',
+    'Advanced Programme':'Advanced Business Management',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'Entrepreneurship': {
+    'Short Course':'Entrepreneurship Essentials',
+    'Certificate':'Certificate in Entrepreneurship',
+    'Professional Programme':'Venture Creation Professional Programme',
+    'Bootcamp':'Startup Builder Bootcamp',
+    'Advanced Programme':'Advanced Entrepreneurship',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':6,'Advanced Programme':28}
+  },
+  'Project Management': {
+    'Short Course':'Project Essentials',
+    'Certificate':'Certificate in Project Management',
+    'Professional Programme':'Professional Programme in Project Management',
+    'Bootcamp':'Project Delivery Bootcamp',
+    'Advanced Programme':'Advanced Project Management',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'Accounting & Finance': {
+    'Short Course':'Finance Fundamentals',
+    'Certificate':'Certificate in Accounting & Finance',
+    'Professional Programme':'Professional Programme in Accounting & Finance',
+    'Bootcamp':'Accounting & Finance Bootcamp',
+    'Advanced Programme':'Advanced Accounting & Reporting',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'Banking & Financial Services': {
+    'Short Course':'Banking Operations Essentials',
+    'Certificate':'Certificate in Banking & Financial Services',
+    'Professional Programme':'Professional Programme in Banking',
+    'Bootcamp':'Banking & Financial Services Bootcamp',
+    'Advanced Programme':'Advanced Banking & Financial Services',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'Investment & Capital Markets': {
+    'Short Course':'Capital Markets Essentials',
+    'Certificate':'Certificate in Investment Analysis',
+    'Professional Programme':'Investment & Capital Markets',
+    'Bootcamp':'Investment Analysis Bootcamp',
+    'Advanced Programme':'Advanced Capital Markets',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':30}
+  },
+  'Financial Modelling': {
+    'Short Course':'Financial Modelling Essentials',
+    'Certificate':'Certificate in Financial Modelling',
+    'Professional Programme':'Professional Programme in Financial Modelling',
+    'Bootcamp':'Financial Modelling Bootcamp',
+    'Advanced Programme':'Advanced Financial Modelling',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':4,'Advanced Programme':30}
+  },
+  'Data Analytics': {
+    'Short Course':'Data Analytics Essentials',
+    'Certificate':'Certificate in Data Analytics',
+    'Professional Programme':'Professional Programme in Data Analytics',
+    'Bootcamp':'Data Analytics Bootcamp',
+    'Advanced Programme':'Advanced Data Analytics',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':30}
+  },
+  'Artificial Intelligence': {
+    'Short Course':'AI Foundations',
+    'Certificate':'Certificate in Artificial Intelligence',
+    'Professional Programme':'AI Innovation Management',
+    'Bootcamp':'AI Applications Bootcamp',
+    'Advanced Programme':'Advanced AI Programme',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':32}
+  },
+  'Digital Transformation': {
+    'Short Course':'Digital Transformation Essentials',
+    'Certificate':'Certificate in Digital Transformation',
+    'Professional Programme':'Digital Transformation',
+    'Bootcamp':'Digital Transformation Bootcamp',
+    'Advanced Programme':'Advanced Digital Transformation',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':6,'Advanced Programme':28}
+  },
+  'Corporate Finance': {
+    'Short Course':'Corporate Finance Essentials',
+    'Certificate':'Certificate in Corporate Finance',
+    'Professional Programme':'Professional Programme in Corporate Finance',
+    'Bootcamp':'Corporate Finance Bootcamp',
+    'Advanced Programme':'Advanced Corporate Finance',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'Business Intelligence': {
+    'Short Course':'Business Intelligence Essentials',
+    'Certificate':'Certificate in Business Intelligence',
+    'Professional Programme':'Professional Programme in Business Intelligence',
+    'Bootcamp':'BI & Dashboarding Bootcamp',
+    'Advanced Programme':'Advanced Business Intelligence',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'AI for Business': {
+    'Short Course':'AI for Business Essentials',
+    'Certificate':'AI for Business',
+    'Professional Programme':'Professional Programme in AI for Business',
+    'Bootcamp':'AI for Business Bootcamp',
+    'Advanced Programme':'Advanced AI for Business',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  },
+  'Risk Management': {
+    'Short Course':'Risk Management Essentials',
+    'Certificate':'Certificate in Risk Management',
+    'Professional Programme':'Professional Programme in Risk Management',
+    'Bootcamp':'Risk Management Bootcamp',
+    'Advanced Programme':'Advanced Risk Management',
+    weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
+  }
+};
+
+/* Build the flat programme list */
+const PROGRAMMES = [];
+Object.entries(CATALOGUE).forEach(([subject, formats])=>{
+  const tier = tierOf(subject);
+  Object.entries(formats).forEach(([format, name])=>{
+    if(format === 'weeks') return;
+    const override = PRICE_OVERRIDES[subject+'|'+format];
+    const base = tier==='standard' ? PRICE_STANDARD[format] : PRICE_SPECIALIST[format];
+    const price = override || base;
+    PROGRAMMES.push({
+      id: subject.toLowerCase().replace(/[^a-z]/g,'-')+'-'+format.toLowerCase().replace(/[^a-z]/g,'-'),
+      name, subject, format, tier,
+      weeks: formats.weeks[format],
+      zmw: price.zmw,
+      usd: price.usd
+    });
+  });
+});
+
+/* Payment plan templates */
+function paymentPlan(p){
+  if(p.format === 'Professional Programme'){
+    const total = p.zmw;
+    // Registration K1,500, then 3 instalments
+    const reg = 1500;
+    const remaining = total - reg;
+    const p1 = Math.floor(remaining * 0.28);
+    const p2 = Math.floor(remaining * 0.28);
+    const p3 = remaining - p1 - p2;
+    return [
+      {label:'Registration', zmw:reg, usd:75},
+      {label:'Payment 1', zmw:p1, usd:Math.round(p1/RATE)},
+      {label:'Payment 2', zmw:p2, usd:Math.round(p2/RATE)},
+      {label:'Payment 3', zmw:p3, usd:Math.round(p3/RATE)}
+    ];
+  }
+  if(p.format === 'Advanced Programme'){
+    const total = p.zmw;
+    const reg = 2500;
+    const remaining = total - reg;
+    const t1 = Math.floor(remaining / 3);
+    const t2 = Math.floor(remaining / 3);
+    const t3 = remaining - t1 - t2;
+    return [
+      {label:'Application/Registration', zmw:reg, usd:125},
+      {label:'Term 1', zmw:t1, usd:Math.round(t1/RATE)},
+      {label:'Term 2', zmw:t2, usd:Math.round(t2/RATE)},
+      {label:'Term 3', zmw:t3, usd:Math.round(t3/RATE)}
+    ];
+  }
+  // Certificates — half upfront, half later (2 steps)
+  if(p.format === 'Certificate'){
+    const total = p.zmw;
+    const first = Math.floor(total/2);
+    const second = total - first;
+    return [
+      {label:'Registration', zmw:first, usd:Math.round(first/RATE)},
+      {label:'Completion Payment', zmw:second, usd:Math.round(second/RATE)}
+    ];
+  }
+  // Short Course / Bootcamp: payable in full only
+  return null;
+}
+
+/* =========================================================
+   STATE
+   ========================================================= */
+const state = { currency:'ZMW', category:'all', format:'all' };
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtZMW(n){return 'K'+n.toLocaleString()}
+function fmtUSD(n){return 'US$'+n.toLocaleString()}
+function priceOf(p){
+  return state.currency === 'ZMW' ? fmtZMW(p.zmw) : fmtUSD(p.usd);
+}
+function refOf(p){
+  return state.currency === 'ZMW'
+    ? `≈ ${fmtUSD(p.usd)} reference for international students`
+    : `≈ ${fmtZMW(p.zmw)} equivalent for Zambian students`;
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=$('#toast'); $('#toastMsg').textContent=msg;
+  t.classList.add('show'); clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+function getFiltered(){
+  return PROGRAMMES.filter(p=>{
+    if(state.category !== 'all' && p.tier !== state.category) return false;
+    if(state.format !== 'all' && p.format !== state.format) return false;
+    return true;
+  });
+}
+
+/* =========================================================
+   RENDER PRICING GRID
+   ========================================================= */
+function renderPricing(){
+  const grid = $('#pricingGrid');
+  const list = getFiltered();
+
+  if(list.length === 0){
+    grid.innerHTML = `<div class="empty-state"><i class="fas fa-search-minus"></i><h4>No programmes match these filters</h4><p>Try a different tier or format.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(p=>{
+    const plan = paymentPlan(p);
+    const hasPlan = !!plan;
+    return `
+      <div class="price-card" data-id="${p.id}">
+        <div class="price-card-top">
+          <span class="pc-tier ${p.tier}">${p.tier==='standard'?'Standard':'Specialist'}</span>
+          <span class="pc-format">${esc(p.format)}</span>
+          <h3>${esc(p.name)}</h3>
+          <div class="pc-subject">${esc(p.subject)}</div>
+        </div>
+        <div class="price-card-body">
+          <div class="pc-price-block">
+            <div class="pc-price">${priceOf(p)}</div>
+            <div class="pc-price-ref">${refOf(p)}</div>
+            ${hasPlan ? `<div class="pc-price-note"><i class="fas fa-check-circle"></i> Payment plan available</div>` : ''}
+          </div>
+          <div class="pc-meta">
+            <span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span>
+            <span><i class="fas fa-laptop"></i> Online</span>
+          </div>
+          <div class="pc-actions">
+            ${hasPlan ? `<button class="pc-plan-btn" data-plan-id="${p.id}"><i class="fas fa-list-ul"></i> View Payment Plan</button>` : ''}
+            <a href="#" class="btn btn-navy btn-block btn-sm" onclick="event.stopPropagation();showToast('Application form opening soon.')">Apply Now <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Clicking the card opens the plan modal (if plan exists)
+  grid.querySelectorAll('.price-card').forEach(card=>{
+    card.addEventListener('click', e=>{
+      if(e.target.closest('.pc-plan-btn') || e.target.closest('.btn')) return;
+      const id = card.dataset.id;
+      const p = PROGRAMMES.find(x=>x.id===id);
+      if(paymentPlan(p)) openPlanModal(id);
+    });
+  });
+  // View plan buttons
+  grid.querySelectorAll('.pc-plan-btn').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      openPlanModal(btn.dataset.planId);
+    });
+  });
+}
+
+/* =========================================================
+   RENDER PLANS GRID (featured payment plans)
+   ========================================================= */
+function renderPlans(){
+  const grid = $('#plansGrid');
+  const showcase = [
+    PROGRAMMES.find(p=>p.subject==='Leadership' && p.format==='Professional Programme'),
+    PROGRAMMES.find(p=>p.subject==='Investment & Capital Markets' && p.format==='Professional Programme'),
+    PROGRAMMES.find(p=>p.subject==='Leadership' && p.format==='Advanced Programme'),
+    PROGRAMMES.find(p=>p.subject==='Artificial Intelligence' && p.format==='Advanced Programme')
+  ].filter(Boolean);
+
+  grid.innerHTML = showcase.map(p=>{
+    const plan = paymentPlan(p);
+    if(!plan) return '';
+    return `
+      <div class="plan-card">
+        <span class="plan-badge">${esc(p.format)}</span>
+        <h3>${esc(p.name)}</h3>
+        <div class="plan-price-line">
+          ${priceOf(p)}<small>Total programme fee</small>
+        </div>
+        <div class="plan-breakdown">
+          ${plan.map((s,i)=>`
+            <div class="plan-step ${i===0?'first':''}">
+              <span class="ps-label">${esc(s.label)}</span>
+              <span class="ps-value">${state.currency==='ZMW'?fmtZMW(s.zmw):fmtUSD(s.usd)}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="plan-note">
+          <i class="fas fa-info-circle"></i>
+          <span>Pay in instalments across the programme. Registration is due upfront.</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* =========================================================
+   PLAN MODAL
+   ========================================================= */
+function openPlanModal(id){
+  const p = PROGRAMMES.find(x=>x.id===id);
+  if(!p) return;
+  const plan = paymentPlan(p);
+  if(!plan) return;
+
+  const total = state.currency==='ZMW' ? p.zmw : p.usd;
+  const totalLabel = state.currency==='ZMW' ? fmtZMW(p.zmw) : fmtUSD(p.usd);
+  const refLabel   = state.currency==='ZMW' ? `≈ ${fmtUSD(p.usd)}` : `≈ ${fmtZMW(p.zmw)}`;
+
+  const stepsHTML = plan.map((s,i)=>`
+    <div class="modal-step ${i===0?'first':''}">
+      <span class="ms-label">${esc(s.label)}</span>
+      <span class="ms-value">${state.currency==='ZMW'?fmtZMW(s.zmw):fmtUSD(s.usd)}</span>
+    </div>
+  `).join('');
+
+  $('#planModalContent').innerHTML = `
+    <span class="modal-badge">${esc(p.format)}</span>
+    <h2>${esc(p.name)}</h2>
+    <div class="modal-sub">${esc(p.subject)} · ${p.weeks} Weeks · Online</div>
+
+    <div class="modal-price-line">
+      <div class="mp-big">${totalLabel}</div>
+      <div class="mp-ref">Total programme fee · <strong>${refLabel}</strong> reference</div>
+    </div>
+
+    <div class="modal-breakdown">
+      <h4>Payment Plan Breakdown</h4>
+      <div class="modal-steps">${stepsHTML}</div>
+      <div class="modal-total">
+        <span class="mt-label">Total</span>
+        <span class="mt-value">${totalLabel}</span>
+      </div>
+    </div>
+
+    <div class="modal-note">
+      <strong>How it works:</strong> Pay the registration amount upfront to secure your place, then the instalments across the programme. All amounts shown in ${state.currency}. Refer to your programme agreement for exact due dates.
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary btn-lg" onclick="closeModal();showToast('Application form opening soon.')">Apply Now <i class="fas fa-arrow-right"></i></button>
+      <button class="btn btn-outline btn-lg" onclick="closeModal()">Close</button>
+    </div>
+  `;
+
+  $('#planModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  $('#planModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+/* =========================================================
+   CURRENCY TOGGLE
+   ========================================================= */
+$$('#currencyToggle button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    $$('#currencyToggle button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.currency = btn.dataset.currency;
+    $('#rateNote').textContent = state.currency === 'ZMW'
+      ? 'Zambian Kwacha · USD reference pricing shown for international students'
+      : 'US Dollars · Zambian equivalent shown for local students';
+    renderPricing();
+    renderPlans();
+    showToast(`Showing prices in ${state.currency}`);
+  });
+});
+
+/* =========================================================
+   CATEGORY & FORMAT TABS
+   ========================================================= */
+$$('#categoryTabs .cat-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    $$('#categoryTabs .cat-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.category = btn.dataset.cat;
+    renderPricing();
+    const count = getFiltered().length;
+    showToast(`${count} programme${count!==1?'s':''}`);
+  });
+});
+
+$$('#formatTabs .fmt-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    $$('#formatTabs .fmt-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.format = btn.dataset.fmt;
+    renderPricing();
+    const count = getFiltered().length;
+    showToast(`${count} programme${count!==1?'s':''}`);
+  });
+});
+
+/* =========================================================
+   FAQ ACCORDION
+   ========================================================= */
+$$('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const isOpen = item.classList.contains('open');
+    $$('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+/* =========================================================
+   GLOBAL UI
+   ========================================================= */
+const menuBtn = document.querySelector('.mobile-menu-btn'), mobileNav = $('#mobileNav');
+menuBtn.addEventListener('click',()=>{
+  mobileNav.classList.toggle('show');
+  menuBtn.setAttribute('aria-expanded',mobileNav.classList.contains('show'));
+});
+$$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('show')));
+
+window.addEventListener('scroll',()=>{
+  $('#mainHeader').classList.toggle('scrolled',window.scrollY>30);
+});
+
+$$('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href = a.getAttribute('href');
+    if(href==='#'||!href.startsWith('#'))return;
+    const t = document.querySelector(href);
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && $('#planModal').classList.contains('show')) closeModal();
+});
+$('#planModal').addEventListener('click',e=>{
+  if(e.target.id==='planModal') closeModal();
+});
+
+/* =========================================================
+   INIT
+   ========================================================= */
+renderPricing();
+renderPlans();
+console.log(`Nolan Institute Pricing — ${PROGRAMMES.length} programmes · ${STANDARD_SUBJECTS.length} standard · ${15-STANDARD_SUBJECTS.length} specialist`);
+</script>
+</body>
+</html>
