@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
 <title>Nolan Institute | Build the Skills. Advance Your Career.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,6 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 :root{
+  color-scheme: light only;
   --navy:#0A1C3A;--navy-light:#1A2D4D;--navy-dark:#05122A;
   --gold:#C5A028;--gold-light:#D4B84A;--gold-dark:#A07F1F;--gold-10:rgba(197,160,40,0.1);
   --white:#fff;--off-white:#FAFAF8;--gray-light:#F5F5F5;--gray-mid:#E0E0E0;--gray-dark:#666;--gray-darker:#333;
@@ -19,14 +21,15 @@
   --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:hidden;width:100%}
-body{font-family:'Inter',sans-serif;color:var(--gray-darker);line-height:1.6;background:var(--white);overflow-x:hidden;width:100%;position:relative;max-width:100vw}
+html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:hidden;width:100%;color-scheme:light only;background:#fff}
+body{font-family:'Inter',sans-serif;color:var(--gray-darker);line-height:1.6;background:#fff;overflow-x:hidden;width:100%;position:relative;max-width:100vw;color-scheme:light only}
 img,video,iframe,table,svg{max-width:100%;height:auto}
 h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2;color:var(--navy);word-wrap:break-word;overflow-wrap:break-word}
 p,span,a,li,div{word-wrap:break-word;overflow-wrap:break-word}
 a{text-decoration:none;color:inherit;transition:var(--transition)}
 ul{list-style:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{color-scheme:light only}
 .container{max-width:1240px;margin:0 auto;padding:0 24px;width:100%}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;font-weight:600;font-size:14.5px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:var(--transition);text-align:center;white-space:nowrap}
@@ -49,8 +52,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .top-bar-left span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .top-bar-left i{color:var(--gold);flex-shrink:0}
 .top-bar-right{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.top-bar-right a{color:#cbd5e1;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:none;border:none;cursor:pointer;font-size:12.5px;font-family:inherit;padding:0}
-.top-bar-right a:hover{color:var(--gold)}
+.top-bar-right a,.top-bar-right button{color:#cbd5e1;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:none;border:none;cursor:pointer;font-size:12.5px;font-family:inherit;padding:0}
+.top-bar-right a:hover,.top-bar-right button:hover{color:var(--gold)}
 
 .main-header{background:#fff;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:1000;transition:var(--transition);width:100%}
 .main-header.scrolled{box-shadow:var(--shadow-md)}
@@ -226,7 +229,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .finder-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-lg);border:1px solid var(--gray-mid)}
 .finder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:20px}
 .finder-field label{display:block;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-.finder-field select{width:100%;padding:11px 12px;border:2px solid var(--gray-mid);border-radius:8px;font-size:13px;background:#fff;color:var(--gray-darker);cursor:pointer;transition:var(--transition);font-family:inherit}
+.finder-field select{width:100%;padding:11px 12px;border:2px solid var(--gray-mid);border-radius:8px;font-size:13px;background:#fff;color:var(--gray-darker);cursor:pointer;transition:var(--transition);font-family:inherit;color-scheme:light only}
 .finder-field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-10)}
 .finder-actions{display:flex;gap:12px;flex-wrap:wrap}
 .finder-results{margin-top:28px;padding-top:28px;border-top:1px solid var(--gray-mid);display:none}
@@ -288,12 +291,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .footer-bottom a{color:#64748b}
 .footer-bottom a:hover{color:var(--gold)}
 
-/* ============ MODALS ============ */
+/* ============ MODALS (base) ============ */
 .modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .modal-overlay.show{display:flex;animation:fadeIn .2s ease}
-.modal-card{background:#fff;border-radius:20px;max-width:720px;width:100%;padding:36px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl)}
+.modal-card{background:#ffffff !important;border-radius:20px;max-width:720px;width:100%;padding:36px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl);color:var(--gray-darker);color-scheme:light only}
 .modal-card.search-modal{padding:0;max-width:680px;overflow:hidden}
-.modal-card.portal-modal{padding:0;max-width:460px;overflow:hidden}
+.modal-card.portal-modal{padding:0;max-width:460px;overflow:hidden;background:#ffffff !important}
 @keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:none;background:var(--gray-light);color:var(--navy);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:2}
 .modal-close:hover{background:var(--gold);color:var(--navy-dark);transform:rotate(90deg)}
@@ -318,63 +321,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .pm-award div .value{font-size:14px;font-weight:600}
 .pm-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 
-/* ============ STUDENT PORTAL ============ */
-.portal-view{display:none;padding:40px 34px 32px}
-.portal-view.active{display:block;animation:fadeIn .28s ease}
-.portal-header{text-align:center;margin-bottom:26px}
-.portal-icon{width:64px;height:64px;border-radius:50%;background:var(--gold-10);color:var(--gold-dark);display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
-.portal-view h2{font-size:24px;margin-bottom:6px;text-align:center}
-.portal-view .portal-sub{font-size:13.5px;color:var(--gray-dark);text-align:center;margin-bottom:26px;line-height:1.6}
-.portal-field{margin-bottom:16px;text-align:left}
-.portal-field label{display:block;font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
-.portal-field input{width:100%;padding:12px 14px;border:2px solid var(--gray-mid);border-radius:8px;font-size:14px;font-family:inherit;color:var(--navy);transition:var(--transition);background:#fff}
-.portal-field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-10)}
-.portal-field input.err{border-color:var(--error);background:#fff5f5}
-.portal-pw-wrap{position:relative}
-.portal-pw-wrap input{padding-right:46px}
-.portal-pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:var(--gray-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
-.portal-pw-toggle:hover{background:var(--gray-light);color:var(--navy)}
-.portal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
-.portal-row label{font-size:12.5px;color:var(--gray-darker);display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:500}
-.portal-row input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold-dark);cursor:pointer}
-.portal-row a{font-size:12.5px;color:var(--gold-dark);font-weight:600;cursor:pointer}
-.portal-row a:hover{color:var(--gold);text-decoration:underline}
-.portal-error{background:#fdecec;color:var(--error);font-size:12.5px;padding:10px 14px;border-radius:8px;margin-bottom:16px;border-left:3px solid var(--error);display:none;line-height:1.5}
-.portal-error.show{display:block;animation:fadeIn .25s ease}
-.portal-success{background:#eaf7ee;color:#1a7a3f;font-size:12.5px;padding:10px 14px;border-radius:8px;margin-bottom:16px;border-left:3px solid var(--success);display:none;line-height:1.5}
-.portal-success.show{display:block;animation:fadeIn .25s ease}
-.portal-submit{background:var(--navy);color:#fff;border:2px solid var(--navy);width:100%;padding:13px 24px;border-radius:8px;font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.portal-submit:hover{background:var(--navy-light);border-color:var(--navy-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,28,58,.25)}
-.portal-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;box-shadow:none}
-.portal-footer{text-align:center;margin-top:22px;padding-top:20px;border-top:1px solid var(--gray-mid)}
-.portal-footer p{font-size:13px;color:var(--gray-dark)}
-.portal-footer a{color:var(--gold-dark);font-weight:700;cursor:pointer}
-.portal-footer a:hover{color:var(--gold);text-decoration:underline}
-.portal-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-dark);cursor:pointer;margin-top:20px;background:none;border:none;font-family:inherit;font-weight:600}
-.portal-back:hover{color:var(--gold-dark)}
-.portal-hint{background:var(--gold-10);border:1px dashed rgba(197,160,40,.5);color:var(--navy);font-size:12px;padding:10px 14px;border-radius:8px;margin-bottom:18px;line-height:1.55;text-align:left}
-.portal-hint strong{color:var(--gold-dark)}
-.portal-hint code{background:rgba(197,160,40,.15);padding:1px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:var(--navy)}
-
-.portal-dashboard{padding:34px 30px}
-.portal-dashboard-head{text-align:center;margin-bottom:24px}
-.portal-dashboard-head .portal-icon{background:rgba(40,167,69,.12);color:var(--success)}
-.portal-dashboard-head h2{font-size:22px;margin-bottom:6px}
-.portal-dashboard-head .portal-sub{font-size:13px;color:var(--gray-dark);margin:0}
-.portal-dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
-.portal-dash-card{background:var(--off-white);border:1px solid var(--gray-mid);border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;transition:var(--transition);font-family:inherit}
-.portal-dash-card:hover{border-color:var(--gold);background:#fff;transform:translateY(-3px);box-shadow:var(--shadow-sm)}
-.portal-dash-card i{font-size:20px;color:var(--gold-dark);margin-bottom:10px;display:block}
-.portal-dash-card h4{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:4px}
-.portal-dash-card p{font-size:11.5px;color:var(--gray-dark);line-height:1.5}
-.portal-signout{background:transparent;border:2px solid var(--gray-mid);color:var(--gray-darker);width:100%;padding:12px 24px;border-radius:8px;font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer;transition:var(--transition)}
-.portal-signout:hover{border-color:var(--navy);color:var(--navy)}
-.portal-user-info{background:var(--gold-10);border-left:3px solid var(--gold);padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:12.5px;color:var(--navy);text-align:left;line-height:1.6}
-.portal-user-info strong{color:var(--gold-dark)}
-
 .search-top{padding:20px 22px;border-bottom:1px solid var(--gray-mid);display:flex;align-items:center;gap:12px;background:var(--off-white)}
 .search-top i{color:var(--gold-dark);font-size:17px}
-.search-top input{flex:1;border:none;background:transparent;font-size:15.5px;outline:none;color:var(--navy);font-family:inherit;font-weight:500;min-width:0}
+.search-top input{flex:1;border:none;background:transparent;font-size:15.5px;outline:none;color:var(--navy);font-family:inherit;font-weight:500;min-width:0;background:#fff;color-scheme:light only}
 .search-top input::placeholder{color:#94a3b8}
 .search-hint{padding:10px 22px;font-size:11.5px;color:var(--gray-dark);background:var(--off-white);border-bottom:1px solid var(--gray-mid);letter-spacing:.3px}
 .search-hint strong{color:var(--navy)}
@@ -390,6 +339,210 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .search-tags{display:flex;flex-wrap:wrap;gap:6px;padding:12px 22px;background:var(--off-white);border-top:1px solid var(--gray-mid)}
 .search-tag{background:#fff;border:1px solid var(--gray-mid);padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;color:var(--navy);cursor:pointer;transition:var(--transition)}
 .search-tag:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
+
+/* ====================================================
+   STUDENT PORTAL — FORCED WHITE, HIGH CONTRAST
+   ==================================================== */
+.portal-modal, .portal-modal *{color-scheme:light only}
+.portal-view{
+  display:none;
+  padding:40px 34px 32px;
+  background:#ffffff !important;
+  color:#333333 !important;
+  border-radius:20px;
+}
+.portal-view.active{display:block;animation:fadeIn .28s ease}
+
+.portal-header{text-align:center;margin-bottom:24px}
+.portal-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:#FBF5E1 !important;
+  color:#A07F1F !important;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:26px;margin-bottom:14px;
+  border:1px solid rgba(197,160,40,.35);
+}
+.portal-view h2{
+  font-size:24px;margin-bottom:6px;text-align:center;
+  color:#0A1C3A !important;
+  font-family:'Playfair Display',serif;font-weight:700;
+}
+.portal-view .portal-sub{
+  font-size:13.5px;color:#666666 !important;
+  text-align:center;margin-bottom:22px;line-height:1.6;
+}
+
+.portal-field{margin-bottom:16px;text-align:left}
+.portal-field label{
+  display:block;font-size:12px;font-weight:700;
+  color:#0A1C3A !important;
+  text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;
+}
+.portal-field input{
+  width:100%;padding:12px 14px;
+  border:2px solid #E0E0E0 !important;
+  border-radius:8px;font-size:14px;font-family:inherit;
+  color:#0A1C3A !important;
+  background:#FFFFFF !important;
+  transition:var(--transition);
+  -webkit-text-fill-color:#0A1C3A !important;
+  color-scheme:light only;
+}
+.portal-field input::placeholder{color:#94a3b8 !important;opacity:1}
+.portal-field input:focus{
+  outline:none;border-color:#C5A028 !important;
+  box-shadow:0 0 0 3px rgba(197,160,40,.12);
+  background:#FFFFFF !important;
+}
+.portal-field input.err{border-color:#DC3545 !important;background:#FFF5F5 !important}
+
+.portal-pw-wrap{position:relative}
+.portal-pw-wrap input{padding-right:46px}
+.portal-pw-toggle{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  width:34px;height:34px;border-radius:8px;border:none;
+  background:transparent !important;
+  color:#666666 !important;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.portal-pw-toggle:hover{background:#F5F5F5 !important;color:#0A1C3A !important}
+
+.portal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.portal-row label{
+  font-size:12.5px;color:#333333 !important;
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:500;
+}
+.portal-row input[type="checkbox"]{
+  width:16px;height:16px;
+  accent-color:#A07F1F !important;
+  cursor:pointer;
+}
+.portal-row a{
+  font-size:12.5px;color:#A07F1F !important;
+  font-weight:600;cursor:pointer;
+}
+.portal-row a:hover{color:#C5A028 !important;text-decoration:underline}
+
+.portal-error{
+  background:#FDECEC !important;
+  color:#B5202E !important;
+  font-size:12.5px;padding:10px 14px;border-radius:8px;
+  margin-bottom:16px;border-left:3px solid #DC3545;
+  display:none;line-height:1.5;font-weight:500;
+}
+.portal-error.show{display:block;animation:fadeIn .25s ease}
+
+.portal-success{
+  background:#EAF7EE !important;
+  color:#1A7A3F !important;
+  font-size:12.5px;padding:10px 14px;border-radius:8px;
+  margin-bottom:16px;border-left:3px solid #28A745;
+  display:none;line-height:1.5;font-weight:500;
+}
+.portal-success.show{display:block;animation:fadeIn .25s ease}
+
+.portal-submit{
+  background:#0A1C3A !important;
+  color:#FFFFFF !important;
+  border:2px solid #0A1C3A !important;
+  width:100%;padding:13px 24px;border-radius:8px;
+  font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;
+  transition:var(--transition);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.portal-submit:hover{
+  background:#1A2D4D !important;border-color:#1A2D4D !important;
+  transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,28,58,.25);
+}
+.portal-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;box-shadow:none}
+
+.portal-footer{
+  text-align:center;margin-top:22px;padding-top:20px;
+  border-top:1px solid #E0E0E0;
+  background:#FFFFFF !important;
+}
+.portal-footer p{font-size:13px;color:#666666 !important}
+.portal-footer a{color:#A07F1F !important;font-weight:700;cursor:pointer}
+.portal-footer a:hover{color:#C5A028 !important;text-decoration:underline}
+
+.portal-back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:#666666 !important;
+  cursor:pointer;margin-top:6px;
+  background:none !important;border:none;font-family:inherit;font-weight:600;
+  padding:8px 12px;border-radius:8px;
+}
+.portal-back:hover{color:#A07F1F !important;background:#F5F5F5 !important}
+
+.portal-hint{
+  background:#FBF5E1 !important;
+  border:1px dashed rgba(197,160,40,.55) !important;
+  color:#0A1C3A !important;
+  font-size:12px;padding:10px 14px;border-radius:8px;
+  margin-bottom:18px;line-height:1.55;text-align:left;
+}
+.portal-hint strong{color:#A07F1F !important}
+.portal-hint code{
+  background:rgba(197,160,40,.18) !important;
+  padding:1px 6px;border-radius:4px;
+  font-family:monospace;font-size:12px;color:#0A1C3A !important;
+}
+
+/* Dashboard view */
+.portal-dashboard{
+  padding:34px 30px;
+  background:#FFFFFF !important;
+}
+.portal-dashboard-head{text-align:center;margin-bottom:22px}
+.portal-dashboard-head .portal-icon{
+  background:#EAF7EE !important;
+  color:#1A7A3F !important;
+  border:1px solid rgba(40,167,69,.35);
+}
+.portal-dashboard-head h2{font-size:22px;margin-bottom:6px;color:#0A1C3A !important}
+.portal-dashboard-head .portal-sub{font-size:13px;color:#666666 !important;margin:0}
+
+.portal-user-info{
+  background:#FBF5E1 !important;
+  border-left:3px solid #C5A028;
+  padding:12px 16px;border-radius:8px;margin-bottom:20px;
+  font-size:12.5px;color:#0A1C3A !important;
+  text-align:left;line-height:1.6;
+}
+.portal-user-info strong{color:#A07F1F !important}
+
+.portal-dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+.portal-dash-card{
+  background:#FAFAF8 !important;
+  border:1px solid #E0E0E0 !important;
+  border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;
+  transition:var(--transition);font-family:inherit;color:#0A1C3A !important;
+}
+.portal-dash-card:hover{
+  border-color:#C5A028 !important;
+  background:#FFFFFF !important;
+  transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+.portal-dash-card i{font-size:20px;color:#A07F1F !important;margin-bottom:10px;display:block}
+.portal-dash-card h4{
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:800;
+  color:#0A1C3A !important;margin-bottom:4px;
+}
+.portal-dash-card p{font-size:11.5px;color:#666666 !important;line-height:1.5}
+
+.portal-signout{
+  background:transparent !important;
+  border:2px solid #E0E0E0 !important;
+  color:#333333 !important;
+  width:100%;padding:12px 24px;border-radius:8px;
+  font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer;
+  transition:var(--transition);
+}
+.portal-signout:hover{
+  border-color:#0A1C3A !important;
+  color:#0A1C3A !important;
+  background:#F5F5F5 !important;
+}
 
 .toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);width:max-content;box-shadow:var(--shadow-lg);pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}
@@ -420,7 +573,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .top-bar-left{display:none}
   .top-bar{padding:6px 0;font-size:12px}
   .top-bar-right{gap:14px}
-  .top-bar-right a{font-size:12px}
+  .top-bar-right a,.top-bar-right button{font-size:12px}
 }
 @media(max-width:600px){
   .container{padding:0 16px}
@@ -489,6 +642,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 @media(hover:none){
   .prog-card:hover,.subject-card:hover,.path-card:hover,.format-card:hover,.why-card:hover,.leave-card:hover,.career-card:hover,.step-card:hover{transform:none}
+}
+/* Ensure portal inputs never get auto-dark-inverted */
+@media (prefers-color-scheme: dark){
+  .portal-modal,.portal-view,.portal-view *,.modal-card,.modal-card *{color-scheme:light only}
+  .portal-view,.portal-modal,.modal-card{background:#FFFFFF !important}
+  .portal-field input{background:#FFFFFF !important;color:#0A1C3A !important;-webkit-text-fill-color:#0A1C3A !important}
+  .portal-field input::placeholder{color:#94a3b8 !important}
+  .portal-view h2,.portal-field label,.portal-view .portal-sub{color:#0A1C3A !important}
+  .portal-view .portal-sub,.portal-footer p{color:#666666 !important}
 }
 </style>
 </head>
@@ -588,11 +750,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 <section class="section" id="paths">
   <div class="container">
-    <div class="section-head">
-      <span class="section-tag">Choose Your Learning Path</span>
-      <h2>What Do You Want to Achieve?</h2>
-      <p>Tell us what you're looking for, and we'll show you the right programmes.</p>
-    </div>
+    <div class="section-head"><span class="section-tag">Choose Your Learning Path</span><h2>What Do You Want to Achieve?</h2><p>Tell us what you're looking for, and we'll show you the right programmes.</p></div>
     <div class="paths-grid" id="pathsGrid">
       <button type="button" class="path-card" data-format="Short Course"><div class="path-icon"><i class="fas fa-bolt"></i></div><h3>I want to learn a specific skill</h3><p>Focused, practical training in one area — delivered in 8 to 12 weeks.</p><span class="path-tag">Short Courses <i class="fas fa-arrow-right"></i></span></button>
       <button type="button" class="path-card" data-format="Certificate"><div class="path-icon"><i class="fas fa-certificate"></i></div><h3>I want a structured professional credential</h3><p>Build recognised knowledge and demonstrate your professional development.</p><span class="path-tag">Certificates <i class="fas fa-arrow-right"></i></span></button>
@@ -605,26 +763,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 <section class="section section-alt" id="subjects">
   <div class="container">
-    <div class="section-head">
-      <span class="section-tag">Explore by Subject</span>
-      <h2>Fifteen Subjects. One Institution.</h2>
-      <p>Click any subject to instantly filter the catalogue and see all its programmes.</p>
-    </div>
+    <div class="section-head"><span class="section-tag">Explore by Subject</span><h2>Fifteen Subjects. One Institution.</h2><p>Click any subject to instantly filter the catalogue and see all its programmes.</p></div>
     <div class="subjects-grid" id="subjectsGrid"></div>
   </div>
 </section>
 
 <section class="section" id="catalogue">
   <div class="container">
-    <div class="section-head">
-      <span class="section-tag" id="catalogueTag">Featured Programmes</span>
-      <h2 id="catalogueTitle">Popular Programmes Right Now</h2>
-      <p id="catalogueSub">Each programme shows duration, price and outcome. Click any card to see full details.</p>
-    </div>
-    <div class="catalogue-bar" id="catalogueBar" style="display:none">
-      <span class="catalogue-bar-label" id="catalogueBarLabel"></span>
-      <button type="button" class="clear-filter" id="catalogueClear"><i class="fas fa-times"></i> Clear filter</button>
-    </div>
+    <div class="section-head"><span class="section-tag" id="catalogueTag">Featured Programmes</span><h2 id="catalogueTitle">Popular Programmes Right Now</h2><p id="catalogueSub">Each programme shows duration, price and outcome. Click any card to see full details.</p></div>
+    <div class="catalogue-bar" id="catalogueBar" style="display:none"><span class="catalogue-bar-label" id="catalogueBarLabel"></span><button type="button" class="clear-filter" id="catalogueClear"><i class="fas fa-times"></i> Clear filter</button></div>
     <div class="featured-grid" id="catalogueGrid"></div>
     <div class="center-cta"><a href="#finder" class="btn btn-navy btn-lg" data-scroll><i class="fas fa-sliders-h"></i> Use Programme Finder</a></div>
   </div>
@@ -632,11 +779,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 <section class="section section-alt" id="formats">
   <div class="container">
-    <div class="section-head">
-      <span class="section-tag">Choose How You Want to Learn</span>
-      <h2>Five Learning Formats</h2>
-      <p>Click any format to instantly show every programme offered in that format.</p>
-    </div>
+    <div class="section-head"><span class="section-tag">Choose How You Want to Learn</span><h2>Five Learning Formats</h2><p>Click any format to instantly show every programme offered in that format.</p></div>
     <div class="formats-grid">
       <div class="format-card"><h3>Short Courses</h3><div class="format-duration">8–12 Weeks</div><p class="format-desc">Learn a focused practical skill you can apply right away.</p><div class="format-award"><strong>Certificate</strong>Certificate of Completion</div><div class="format-price">From K4,500<small>Investment</small></div><div class="format-count" id="count-short"></div><button type="button" class="btn btn-outline btn-block" data-format="Short Course">Explore Short Courses <i class="fas fa-arrow-right"></i></button></div>
       <div class="format-card"><h3>Certificates</h3><div class="format-duration">16 Weeks</div><p class="format-desc">Build structured knowledge and demonstrate your professional development.</p><div class="format-award"><strong>Award</strong>Professional Certificate</div><div class="format-price">From K8,500<small>Investment</small></div><div class="format-count" id="count-cert"></div><button type="button" class="btn btn-outline btn-block" data-format="Certificate">Explore Certificates <i class="fas fa-arrow-right"></i></button></div>
@@ -783,7 +926,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </footer>
 
-<!-- PROGRAMME DETAIL MODAL -->
 <div class="modal-overlay" id="programmeModal">
   <div class="modal-card" role="dialog" aria-modal="true">
     <button type="button" class="modal-close" onclick="closeProgramme()" aria-label="Close"><i class="fas fa-times"></i></button>
@@ -791,7 +933,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </div>
 
-<!-- SEARCH MODAL -->
 <div class="modal-overlay" id="searchModal">
   <div class="modal-card search-modal" role="dialog" aria-modal="true">
     <div class="search-top">
@@ -805,12 +946,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </div>
 
-<!-- ================= STUDENT PORTAL MODAL ================= -->
 <div class="modal-overlay" id="portalModal">
   <div class="modal-card portal-modal" role="dialog" aria-modal="true">
     <button type="button" class="modal-close" onclick="closePortal()" aria-label="Close"><i class="fas fa-times"></i></button>
 
-    <!-- VIEW 1: SIGN IN -->
     <div class="portal-view active" id="portalLoginView">
       <div class="portal-header">
         <div class="portal-icon"><i class="fas fa-user-graduate"></i></div>
@@ -838,16 +977,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <label><input type="checkbox" id="portalRemember"> Remember me</label>
           <a id="portalForgotLink">Forgot password?</a>
         </div>
-        <button type="submit" class="portal-submit" id="portalLoginBtn">
-          <i class="fas fa-sign-in-alt"></i> Sign In
-        </button>
+        <button type="submit" class="portal-submit" id="portalLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
       </form>
-      <div class="portal-footer">
-        <p>Don't have an account? <a id="portalCreateLink">Create one</a></p>
-      </div>
+      <div class="portal-footer"><p>Don't have an account? <a id="portalCreateLink">Create one</a></p></div>
     </div>
 
-    <!-- VIEW 2: FORGOT PASSWORD -->
     <div class="portal-view" id="portalForgotView">
       <div class="portal-header">
         <div class="portal-icon"><i class="fas fa-key"></i></div>
@@ -861,16 +995,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <label for="portalForgotEmail">Email Address</label>
           <input type="email" id="portalForgotEmail" placeholder="you@example.com" autocomplete="email">
         </div>
-        <button type="submit" class="portal-submit" id="portalForgotBtn">
-          <i class="fas fa-paper-plane"></i> Send Reset Link
-        </button>
+        <button type="submit" class="portal-submit" id="portalForgotBtn"><i class="fas fa-paper-plane"></i> Send Reset Link</button>
       </form>
       <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
         <button type="button" class="portal-back" id="portalBack1"><i class="fas fa-arrow-left"></i> Back to Sign In</button>
       </div>
     </div>
 
-    <!-- VIEW 3: CREATE ACCOUNT -->
     <div class="portal-view" id="portalCreateView">
       <div class="portal-header">
         <div class="portal-icon"><i class="fas fa-user-plus"></i></div>
@@ -895,16 +1026,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
             <button type="button" class="portal-pw-toggle" id="portalNewPwToggle" aria-label="Show password"><i class="fas fa-eye"></i></button>
           </div>
         </div>
-        <button type="submit" class="portal-submit" id="portalCreateBtn">
-          <i class="fas fa-user-plus"></i> Create Account
-        </button>
+        <button type="submit" class="portal-submit" id="portalCreateBtn"><i class="fas fa-user-plus"></i> Create Account</button>
       </form>
       <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
         <button type="button" class="portal-back" id="portalBack2"><i class="fas fa-arrow-left"></i> Back to Sign In</button>
       </div>
     </div>
 
-    <!-- VIEW 4: DASHBOARD -->
     <div class="portal-view portal-dashboard" id="portalDashboardView">
       <div class="portal-dashboard-head">
         <div class="portal-icon"><i class="fas fa-check-circle"></i></div>
@@ -913,7 +1041,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="portal-user-info">
         Signed in as <strong id="portalUserEmail">—</strong><br>
-        <span id="portalSessionInfo" style="color:var(--gray-dark)">Session active</span>
+        <span id="portalSessionInfo" style="color:#666">Session active</span>
       </div>
       <div class="portal-dashboard-grid">
         <button type="button" class="portal-dash-card" data-dash="courses"><i class="fas fa-book-open"></i><h4>My Courses</h4><p>View your enrolled programmes</p></button>
@@ -936,7 +1064,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 const APPLY_URL = 'admissions-apply.html';
 
 /* =========================================================
-   HERO SLIDES — 12 slides mapped to the 5 formats
+   HERO SLIDES — 12 slides
    ========================================================= */
 const HERO_SLIDES = [
   { src: '85fd7197-bc0f-41ec-b22a-930c3b3f7294.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500' },
@@ -954,16 +1082,9 @@ const HERO_SLIDES = [
 ];
 const HERO_ROTATE_MS = 5500;
 
-/* =========================================================
-   PORTAL CONFIG — demo credentials
-   ========================================================= */
-const PORTAL_DEMO = {
-  email: 'student@nolaninstitute.org',
-  password: 'nolan2026',
-  name: 'Nolan Student'
-};
+const PORTAL_DEMO = { email: 'student@nolaninstitute.org', password: 'nolan2026', name: 'Nolan Student' };
 const PORTAL_STORAGE_KEY = 'nolanPortalSession';
-const PORTAL_ACCOUNTS_KEY = 'nolanPortalAccounts'; // created accounts (local)
+const PORTAL_ACCOUNTS_KEY = 'nolanPortalAccounts';
 
 /* =========================================================
    HELPERS
@@ -973,31 +1094,17 @@ const $$ = s => document.querySelectorAll(s);
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function fmtPrice(n){return 'K'+n.toLocaleString()}
 function categoryForSubject(subject){
-  const map = {
-    'Accounting & Finance':'Finance & Investment','Banking & Financial Services':'Finance & Investment',
-    'Investment & Capital Markets':'Finance & Investment','Financial Modelling':'Finance & Investment',
-    'Corporate Finance':'Finance & Investment','Risk Management':'Finance & Investment',
-    'Business Intelligence':'Technology & Digital Skills','Data Analytics':'Technology & Digital Skills',
-    'Artificial Intelligence':'Technology & Digital Skills','Digital Transformation':'Technology & Digital Skills',
-    'AI for Business':'Technology & Digital Skills','Leadership':'Executive Education',
-    'Business Management':'Professional Education','Project Management':'Professional Education',
-    'Entrepreneurship':'Professional Education'
-  };
+  const map = {'Accounting & Finance':'Finance & Investment','Banking & Financial Services':'Finance & Investment','Investment & Capital Markets':'Finance & Investment','Financial Modelling':'Finance & Investment','Corporate Finance':'Finance & Investment','Risk Management':'Finance & Investment','Business Intelligence':'Technology & Digital Skills','Data Analytics':'Technology & Digital Skills','Artificial Intelligence':'Technology & Digital Skills','Digital Transformation':'Technology & Digital Skills','AI for Business':'Technology & Digital Skills','Leadership':'Executive Education','Business Management':'Professional Education','Project Management':'Professional Education','Entrepreneurship':'Professional Education'};
   return map[subject] || 'Professional Education';
 }
 function goToApply(programme){
   try{
     if(programme){
-      sessionStorage.setItem('nolanSelectedProgramme', JSON.stringify({
-        id: programme.id, name: programme.name, subject: programme.subject,
-        format: programme.format, weeks: programme.weeks, price: programme.price,
-        category: categoryForSubject(programme.subject)
-      }));
+      sessionStorage.setItem('nolanSelectedProgramme', JSON.stringify({ id: programme.id, name: programme.name, subject: programme.subject, format: programme.format, weeks: programme.weeks, price: programme.price, category: categoryForSubject(programme.subject) }));
     } else sessionStorage.removeItem('nolanSelectedProgramme');
   }catch(e){}
   window.location.href = APPLY_URL;
 }
-
 let toastTimer;
 function showToast(msg, type){
   const t=$('#toast'); if(!t) return;
@@ -1034,85 +1141,71 @@ const PROGRAMMES = [
   {id:'af-pp',name:'Professional Programme in Accounting & Finance',subject:'Accounting & Finance',format:'Professional Programme',weeks:24,price:12500,description:'Develop professional-level capability across accounting, finance and financial analysis.',learn:['Advanced accounting','Financial analysis','Planning and control','Professional reporting'],audience:'Finance professionals seeking deeper capability.'},
   {id:'af-bc',name:'Accounting & Finance Bootcamp',subject:'Accounting & Finance',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, hands-on accounting and finance bootcamp — learn by doing in a short, focused sprint.',learn:['Financial statement basics','Budgeting and forecasting','Cashflow','Practical exercises'],audience:'Professionals who need rapid, practical accounting and finance skill.'},
   {id:'af-adv',name:'Advanced Accounting & Reporting',subject:'Accounting & Finance',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced capability in financial reporting, consolidation and strategic financial management.',learn:['Advanced financial reporting','Group accounts','IFRS frameworks','Strategic financial management'],audience:'Senior finance professionals and controllers.'},
-
   {id:'bk-sc',name:'Banking Operations Essentials',subject:'Banking & Financial Services',format:'Short Course',weeks:10,price:4500,description:'Understand modern banking operations — from retail and commercial banking to payments and compliance.',learn:['Retail and commercial banking','Payments and settlement','Compliance basics','Banking products'],audience:'Bank staff and those entering banking.'},
   {id:'bk-c',name:'Certificate in Banking & Financial Services',subject:'Banking & Financial Services',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering banking, financial services, credit and regulation.',learn:['Banking models and services','Financial services landscape','Credit fundamentals','Regulatory environment'],audience:'Banking professionals and those entering financial services.'},
   {id:'bk-pp',name:'Professional Programme in Banking',subject:'Banking & Financial Services',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level programme developing banking, financial services and risk capability.',learn:['Advanced banking','Credit and lending','Banking risk','Regulatory frameworks'],audience:'Banking professionals moving into senior roles.'},
   {id:'bk-bc',name:'Banking & Financial Services Bootcamp',subject:'Banking & Financial Services',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, practical banking bootcamp focused on real banking operations and decisions.',learn:['Banking products','Customer operations','Credit basics','Compliance overview'],audience:'Professionals needing rapid, practical banking skill.'},
   {id:'bk-adv',name:'Advanced Banking & Financial Services',subject:'Banking & Financial Services',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme for senior banking professionals across strategy, risk and regulation.',learn:['Banking strategy','Advanced credit','Banking regulation','Treasury and capital'],audience:'Senior banking professionals and executives.'},
-
   {id:'iv-sc',name:'Capital Markets Essentials',subject:'Investment & Capital Markets',format:'Short Course',weeks:10,price:4500,description:'Focused introduction to capital markets, instruments and how investment markets work.',learn:['Capital market structure','Equities and bonds','Market participants','Investment basics'],audience:'Professionals and investors new to capital markets.'},
   {id:'iv-c',name:'Certificate in Investment Analysis',subject:'Investment & Capital Markets',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering investment analysis, valuation and market fundamentals.',learn:['Fundamental analysis','Valuation techniques','Equity research basics','Investment reporting'],audience:'Analysts and finance professionals building investment capability.'},
   {id:'iv-pp',name:'Investment & Capital Markets',subject:'Investment & Capital Markets',format:'Professional Programme',weeks:24,price:12500,featured:true,description:'Develop deeper expertise in investment analysis, valuation, capital markets and financial decision-making.',learn:['Investment analysis','Asset valuation','Portfolio construction','Capital market structures'],audience:'Finance professionals, analysts and investors.'},
   {id:'iv-bc',name:'Investment Analysis Bootcamp',subject:'Investment & Capital Markets',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, practical bootcamp on investment analysis and valuation.',learn:['Analysis frameworks','Valuation practice','Comparables','Investment memo writing'],audience:'Analysts and professionals needing fast investment analysis skill.'},
   {id:'iv-adv',name:'Advanced Capital Markets',subject:'Investment & Capital Markets',format:'Advanced Programme',weeks:30,price:22500,description:'Advanced programme in capital markets, structured products and institutional investing.',learn:['Advanced capital markets','Structured products','Derivatives overview','Institutional investing'],audience:'Senior investment professionals and treasurers.'},
-
   {id:'fm-sc',name:'Financial Modelling Essentials',subject:'Financial Modelling',format:'Short Course',weeks:10,price:4500,description:'Focused, practical introduction to building financial models for analysis and decisions.',learn:['Model structure','Basic forecasting','Scenario analysis','Spreadsheet discipline'],audience:'Professionals who need a focused introduction to modelling.'},
   {id:'fm-c',name:'Certificate in Financial Modelling',subject:'Financial Modelling',format:'Certificate',weeks:16,price:8500,description:'Structured certificate building mastery of financial modelling for analysis, forecasting and decision-making.',learn:['Model design and structure','Forecasting and sensitivity','Integrated models','Valuation modelling'],audience:'Finance professionals, analysts and consultants.'},
   {id:'fm-pp',name:'Professional Programme in Financial Modelling',subject:'Financial Modelling',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level modelling programme covering forecasting, valuation and decision-support models.',learn:['Advanced modelling','Valuation models','Scenario & sensitivity','Model audit'],audience:'Analysts and finance professionals building deeper modelling capability.'},
   {id:'fm-bc',name:'Financial Modelling Bootcamp',subject:'Financial Modelling',format:'Bootcamp',weeks:4,price:5500,featured:true,description:'Learn by building practical financial models — from forecasting to valuation and decision support.',learn:['Three-statement modelling','Forecasting techniques','Cashflow modelling','Valuation basics'],audience:'Analysts, finance professionals and entrepreneurs needing hands-on modelling skill fast.'},
   {id:'fm-adv',name:'Advanced Financial Modelling',subject:'Financial Modelling',format:'Advanced Programme',weeks:30,price:22500,featured:true,description:'Develop higher-level capability in integrated modelling, valuation and decision-support analysis.',learn:['Integrated financial modelling','Advanced valuation','M&A modelling','Decision-support modelling'],audience:'Experienced analysts and corporate finance professionals.'},
-
   {id:'bm-sc',name:'Business Essentials',subject:'Business Management',format:'Short Course',weeks:10,price:4500,description:'Focused introduction to business management covering strategy, operations and performance.',learn:['Business strategy basics','Operations overview','People and performance','Business planning'],audience:'Managers and professionals stepping into management.'},
   {id:'bm-c',name:'Certificate in Business Management',subject:'Business Management',format:'Certificate',weeks:16,price:8500,description:'Structured certificate developing practical business management capability.',learn:['Business strategy','Operations management','Financial management','Business planning'],audience:'Managers and professionals building structured management capability.'},
   {id:'bm-pp',name:'Professional Programme in Business Management',subject:'Business Management',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level management programme covering advanced strategy, operations and performance.',learn:['Advanced strategy','Organisational management','Financial performance','Change management'],audience:'Senior managers and business leaders.'},
   {id:'bm-bc',name:'Business Management Bootcamp',subject:'Business Management',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, practical business management bootcamp for managers and team leads.',learn:['Strategic thinking','Team management','Performance tracking','Business decisions'],audience:'New managers and professionals needing rapid management skill.'},
   {id:'bm-adv',name:'Advanced Business Management',subject:'Business Management',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme for senior managers and business leaders building enterprise capability.',learn:['Enterprise strategy','Advanced operations','Leadership in business','Organisational performance'],audience:'Senior managers and organisational leaders.'},
-
   {id:'pm-sc',name:'Project Essentials',subject:'Project Management',format:'Short Course',weeks:10,price:4500,description:'Focused, practical introduction to project management principles and delivery.',learn:['Project lifecycle','Scheduling basics','Risk basics','Stakeholder basics'],audience:'Professionals starting to manage projects.'},
   {id:'pm-c',name:'Certificate in Project Management',subject:'Project Management',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering planning, delivery, control and stakeholder management.',learn:['Project planning','Scheduling and budgeting','Risk management','Stakeholder management'],audience:'Project managers and coordinators.'},
   {id:'pm-pp',name:'Professional Programme in Project Management',subject:'Project Management',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level programme developing project and programme management capability.',learn:['Advanced planning','Programme management','Complex stakeholder environments','Project governance'],audience:'Experienced project managers.'},
   {id:'pm-bc',name:'Project Delivery Bootcamp',subject:'Project Management',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, practical bootcamp focused on delivering projects end-to-end.',learn:['Project setup','Work breakdown','Scheduling','Delivery and closure'],audience:'Professionals who need to deliver projects with confidence.'},
   {id:'pm-adv',name:'Advanced Project & Programme Management',subject:'Project Management',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme for experienced project and programme managers leading strategic initiatives.',learn:['Portfolio management','Programme management','Advanced risk','Strategic delivery'],audience:'Senior project and programme managers.'},
-
   {id:'da-sc',name:'Data Analytics Essentials',subject:'Data Analytics',format:'Short Course',weeks:10,price:4500,description:'Focused, practical introduction to data analysis and data-driven decision-making.',learn:['Data fundamentals','Analysis basics','Visualisation basics','Reporting basics'],audience:'Professionals working with data.'},
   {id:'da-c',name:'Certificate in Data Analytics',subject:'Data Analytics',format:'Certificate',weeks:16,price:8500,featured:true,description:'Build practical capability in data analysis, visualisation and data-driven decision-making.',learn:['Data fundamentals','Analysis techniques','Data visualisation','Business insight'],audience:'Analysts, business professionals and anyone working with data.'},
   {id:'da-pp',name:'Professional Programme in Data Analytics',subject:'Data Analytics',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level analytics programme covering advanced analysis and data-driven strategy.',learn:['Advanced analysis','Data modelling','Analytics strategy','Data storytelling'],audience:'Analysts and professionals building professional analytics capability.'},
   {id:'da-bc',name:'Data Analytics Bootcamp',subject:'Data Analytics',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, hands-on bootcamp to build data analytics skill fast.',learn:['Data preparation','Analysis with spreadsheets','Visualisation','Dashboards'],audience:'Professionals needing rapid, practical data skills.'},
   {id:'da-adv',name:'Advanced Data Analytics',subject:'Data Analytics',format:'Advanced Programme',weeks:30,price:22500,description:'Advanced programme developing professional-level analytics and data strategy capability.',learn:['Advanced analytics','Predictive analytics basics','Data strategy','Analytics leadership'],audience:'Senior analysts and data professionals.'},
-
   {id:'ai-sc',name:'AI Foundations',subject:'Artificial Intelligence',format:'Short Course',weeks:10,price:4500,description:'A focused, practical introduction to artificial intelligence for professionals.',learn:["What AI is (and isn't)",'Key AI capabilities','Practical AI tools','AI ethics and risks'],audience:'Professionals new to AI who need practical foundations.'},
   {id:'ai-c',name:'Certificate in Artificial Intelligence',subject:'Artificial Intelligence',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering artificial intelligence concepts, tools and applications.',learn:['AI concepts','AI applications','AI tools','AI governance basics'],audience:'Professionals building structured AI capability.'},
   {id:'ai-pp',name:'AI Innovation Management',subject:'Artificial Intelligence',format:'Professional Programme',weeks:24,price:12500,description:'Develop professional capability to manage AI-driven innovation and transformation projects.',learn:['AI strategy','Innovation management','AI project delivery','AI governance'],audience:'Innovation leaders and professionals driving AI adoption.'},
   {id:'ai-bc',name:'AI Applications Bootcamp',subject:'Artificial Intelligence',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, practical bootcamp applying AI tools to real professional tasks.',learn:['AI tools in practice','Prompting and workflows','AI use-case design','Practical AI projects'],audience:'Professionals wanting fast, practical AI application skill.'},
   {id:'ai-adv',name:'Advanced AI Programme',subject:'Artificial Intelligence',format:'Advanced Programme',weeks:32,price:22500,description:'Advanced programme developing higher-level capability in applied AI and AI leadership.',learn:['Advanced AI applications','Applied machine learning','AI governance & risk','AI leadership'],audience:'Senior professionals leading AI initiatives.'},
-
   {id:'dt-sc',name:'Digital Transformation Essentials',subject:'Digital Transformation',format:'Short Course',weeks:10,price:4500,description:'A focused introduction to digital transformation for professionals and managers.',learn:['What digital transformation means','Digital trends','Change management basics','Practical case studies'],audience:'Professionals and managers new to digital transformation.'},
   {id:'dt-c',name:'Certificate in Digital Transformation',subject:'Digital Transformation',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering digital strategy, change and technology foundations.',learn:['Digital strategy','Technology foundations','Change management','Digital operating models'],audience:'Managers and professionals leading digital initiatives.'},
   {id:'dt-pp',name:'Digital Transformation',subject:'Digital Transformation',format:'Professional Programme',weeks:24,price:12500,description:'Develop professional capability to lead technology-driven organisational change.',learn:['Digital strategy','Change leadership','Operating model design','Digital execution'],audience:'Managers and leaders driving digital change.'},
   {id:'dt-bc',name:'Digital Transformation Bootcamp',subject:'Digital Transformation',format:'Bootcamp',weeks:6,price:5500,description:'Intensive bootcamp building practical digital transformation capability.',learn:['Digital diagnosis','Customer and process mapping','Digital solutions','Change planning'],audience:'Managers and professionals leading digital initiatives.'},
   {id:'dt-adv',name:'Advanced Digital Transformation',subject:'Digital Transformation',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme for leaders driving large-scale digital transformation.',learn:['Enterprise digital strategy','Advanced change leadership','Digital ecosystems','Transformation governance'],audience:'Senior leaders driving organisational transformation.'},
-
   {id:'en-sc',name:'Entrepreneurship Essentials',subject:'Entrepreneurship',format:'Short Course',weeks:10,price:4500,description:'Focused, practical introduction to entrepreneurship and venture building.',learn:['Opportunity identification','Business model basics','Customer discovery','Go-to-market basics'],audience:'Aspiring founders and professionals exploring entrepreneurship.'},
   {id:'en-c',name:'Certificate in Entrepreneurship',subject:'Entrepreneurship',format:'Certificate',weeks:16,price:8500,description:'Build structured entrepreneurial capability — from idea to viable venture.',learn:['Opportunity identification','Business models','Customer discovery','Financial basics for founders'],audience:'Aspiring founders and professionals building ventures.'},
   {id:'en-pp',name:'Venture Creation Professional Programme',subject:'Entrepreneurship',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level programme for founders building scalable ventures.',learn:['Venture strategy','Business model design','Startup finance','Investor readiness'],audience:'Founders and entrepreneurs building scalable businesses.'},
   {id:'en-bc',name:'Startup Builder Bootcamp',subject:'Entrepreneurship',format:'Bootcamp',weeks:6,price:5500,featured:true,description:'Intensive bootcamp for founders — build, test and refine your venture idea.',learn:['Problem and customer','MVP design','Business model','Pitch basics'],audience:'Founders and aspiring entrepreneurs ready to build fast.'},
   {id:'en-adv',name:'Advanced Entrepreneurship',subject:'Entrepreneurship',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme for experienced entrepreneurs and business builders.',learn:['Advanced venture strategy','Funding and capital','Scaling operations','Enterprise building'],audience:'Experienced founders scaling ventures.'},
-
   {id:'ld-sc',name:'Leadership Essentials',subject:'Leadership',format:'Short Course',weeks:8,price:4500,description:'Focused introduction to leadership essentials for professionals.',learn:['Leadership basics','Self-leadership','Team communication','Feedback and coaching'],audience:'Professionals new to leadership or seeking a refresher.'},
   {id:'ld-c',name:'Certificate in Leadership Development',subject:'Leadership',format:'Certificate',weeks:16,price:8500,description:'Structured certificate developing practical leadership capability.',learn:['Leadership foundations','Leading teams','Communication and influence','Leading change'],audience:'Emerging leaders and professionals stepping into leadership.'},
   {id:'ld-pp',name:'Professional Programme in Leadership',subject:'Leadership',format:'Professional Programme',weeks:24,price:12500,description:'Professional programme developing substantial leadership capability for managers.',learn:['Advanced leadership','Leading teams at scale','Strategic thinking','Leadership presence'],audience:'Managers and professionals seeking professional-level leadership.'},
   {id:'ld-bc',name:'Leadership Impact Bootcamp',subject:'Leadership',format:'Bootcamp',weeks:4,price:5500,description:'Intensive leadership bootcamp focused on practical leadership impact.',learn:['Leadership presence','Team motivation','Difficult conversations','Leading change'],audience:'Managers and team leads needing rapid leadership impact.'},
   {id:'ld-adv',name:'Executive Leadership Programme',subject:'Leadership',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced leadership programme for senior executives and organisational leaders.',learn:['Executive leadership','Strategic leadership','Organisational development','Leading transformation'],audience:'Senior executives and organisational leaders.'},
-
   {id:'cf-sc',name:'Corporate Finance Essentials',subject:'Corporate Finance',format:'Short Course',weeks:10,price:4500,featured:true,description:'Build working knowledge of corporate finance — valuation, capital structure and financial decisions.',learn:['Financial statement analysis','Time value of money','Capital budgeting basics','Cost of capital'],audience:'Professionals, managers and business owners needing corporate finance foundations.'},
   {id:'cf-c',name:'Certificate in Corporate Finance',subject:'Corporate Finance',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering corporate finance, valuation and financial decision-making.',learn:['Corporate finance frameworks','Valuation methods','Capital structure','Financial decision-making'],audience:'Finance professionals and analysts building corporate finance capability.'},
   {id:'cf-pp',name:'Professional Programme in Corporate Finance',subject:'Corporate Finance',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level programme developing corporate finance and financial strategy capability.',learn:['Advanced corporate finance','Valuation and M&A','Capital raising','Financial strategy'],audience:'Corporate finance professionals and finance leaders.'},
   {id:'cf-bc',name:'Corporate Finance Bootcamp',subject:'Corporate Finance',format:'Bootcamp',weeks:5,price:5500,description:'Intensive, practical corporate finance bootcamp focused on real decisions.',learn:['Valuation practice','Capital budgeting','Financing decisions','Practical analysis'],audience:'Professionals needing rapid corporate finance skill.'},
   {id:'cf-adv',name:'Advanced Corporate Finance',subject:'Corporate Finance',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme covering corporate finance, M&A and capital markets strategy.',learn:['Advanced valuation','M&A and deal structuring','Capital markets','Corporate strategy'],audience:'Senior finance professionals and corporate finance leaders.'},
-
   {id:'bi-sc',name:'Business Intelligence Essentials',subject:'Business Intelligence',format:'Short Course',weeks:10,price:4500,description:'Focused introduction to business intelligence, reporting and dashboards.',learn:['BI concepts','Reporting basics','KPI and metrics','Dashboard basics'],audience:'Analysts and professionals responsible for reporting.'},
   {id:'bi-c',name:'Certificate in Business Intelligence',subject:'Business Intelligence',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering business intelligence, reporting and analytics.',learn:['BI frameworks','Reporting and dashboards','Data storytelling','BI tools overview'],audience:'Analysts and professionals building BI capability.'},
   {id:'bi-pp',name:'Professional Programme in Business Intelligence',subject:'Business Intelligence',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level BI programme developing analytics and reporting capability at scale.',learn:['Advanced BI','Data modelling for BI','Enterprise reporting','BI strategy'],audience:'Senior analysts and BI professionals.'},
   {id:'bi-bc',name:'BI & Dashboarding Bootcamp',subject:'Business Intelligence',format:'Bootcamp',weeks:5,price:5500,description:'Intensive bootcamp focused on building practical BI dashboards.',learn:['Dashboard design','Data preparation','Interactive reporting','Business insight'],audience:'Professionals needing fast, practical dashboard skills.'},
   {id:'bi-adv',name:'Advanced Business Intelligence',subject:'Business Intelligence',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme covering enterprise BI, data governance and analytics strategy.',learn:['Enterprise BI','Data governance','Advanced analytics','BI leadership'],audience:'BI leaders and senior analytics professionals.'},
-
   {id:'ab-sc',name:'AI for Business Essentials',subject:'AI for Business',format:'Short Course',weeks:10,price:4500,description:'Focused, practical introduction to using AI in business settings.',learn:['AI concepts for business','AI tools overview','Practical AI use cases','AI risk awareness'],audience:'Business professionals exploring AI for their work.'},
   {id:'ab-c',name:'AI for Business',subject:'AI for Business',format:'Certificate',weeks:16,price:8500,featured:true,description:'Identify, scope and apply AI opportunities inside real organisations — no coding background required.',learn:['AI concepts for business','Identifying AI opportunities','AI project scoping','Practical AI tools'],audience:'Managers and professionals who want to apply AI in their organisations.'},
   {id:'ab-pp',name:'Professional Programme in AI for Business',subject:'AI for Business',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level programme developing capability to lead AI adoption in organisations.',learn:['AI strategy','AI project delivery','AI governance','Organisational AI adoption'],audience:'Managers and professionals leading AI adoption.'},
   {id:'ab-bc',name:'AI for Business Bootcamp',subject:'AI for Business',format:'Bootcamp',weeks:5,price:5500,description:'Intensive bootcamp applying AI tools directly to business workflows.',learn:['Practical AI tools','AI in workflows','Use-case design','Rapid AI prototypes'],audience:'Business professionals needing rapid AI application skills.'},
   {id:'ab-adv',name:'Advanced AI for Business',subject:'AI for Business',format:'Advanced Programme',weeks:28,price:22500,description:'Advanced programme developing senior capability in AI strategy and enterprise AI.',learn:['Enterprise AI strategy','AI operating models','AI governance and risk','AI leadership'],audience:'Senior leaders driving enterprise AI.'},
-
   {id:'rm-sc',name:'Risk Management Essentials',subject:'Risk Management',format:'Short Course',weeks:10,price:4500,description:'Focused introduction to risk management principles and frameworks.',learn:['Risk concepts','Risk identification','Risk assessment basics','Risk frameworks'],audience:'Professionals new to risk management.'},
   {id:'rm-c',name:'Certificate in Risk Management',subject:'Risk Management',format:'Certificate',weeks:16,price:8500,description:'Structured certificate covering risk identification, assessment and management.',learn:['Risk frameworks','Risk assessment','Operational risk','Risk reporting'],audience:'Professionals building structured risk capability.'},
   {id:'rm-pp',name:'Professional Programme in Risk Management',subject:'Risk Management',format:'Professional Programme',weeks:24,price:12500,description:'Professional-level programme developing advanced risk management capability.',learn:['Advanced risk management','Credit and market risk','Risk governance','Risk strategy'],audience:'Risk professionals and managers.'},
@@ -1126,64 +1219,34 @@ const state = { subject:null, format:null, currentProgrammeId:null };
    HERO SLIDER
    ========================================================= */
 let heroSlideIndex = 0, heroSlideTimer = null;
-
 function buildHeroSlider(){
-  const track = document.getElementById('heroTrack');
-  const dots  = document.getElementById('heroDots');
+  const track = document.getElementById('heroTrack'), dots = document.getElementById('heroDots');
   if(!track || !dots) return;
-
-  track.innerHTML = HERO_SLIDES.map((s, i) => `
-    <button type="button" class="hero-slide ${i===0?'active':''}" data-index="${i}" data-format="${esc(s.format)}" aria-label="Explore ${esc(s.badge)}">
-      <img src="${esc(s.src)}" alt="${esc(s.badge)}" loading="${i===0?'eager':'lazy'}" draggable="false">
-      <span class="hero-slide-caption">
-        <span class="hero-slide-badge">${esc(s.badge)}</span>
-        <span class="hero-slide-sub">${esc(s.sub)}</span>
-        <span class="hero-slide-cta">Explore <i class="fas fa-arrow-right"></i></span>
-      </span>
-    </button>
-  `).join('');
-
+  track.innerHTML = HERO_SLIDES.map((s, i) => `<button type="button" class="hero-slide ${i===0?'active':''}" data-index="${i}" data-format="${esc(s.format)}" aria-label="Explore ${esc(s.badge)}"><img src="${esc(s.src)}" alt="${esc(s.badge)}" loading="${i===0?'eager':'lazy'}" draggable="false"><span class="hero-slide-caption"><span class="hero-slide-badge">${esc(s.badge)}</span><span class="hero-slide-sub">${esc(s.sub)}</span><span class="hero-slide-cta">Explore <i class="fas fa-arrow-right"></i></span></span></button>`).join('');
   dots.innerHTML = HERO_SLIDES.map((_, i) => `<button type="button" class="hero-slider-dot ${i===0?'active':''}" data-index="${i}" aria-label="Go to slide ${i+1}"></button>`).join('');
-
   track.querySelectorAll('.hero-slide').forEach(slide => {
     slide.addEventListener('click', () => {
       state.subject = null;
       state.format = slide.dataset.format;
-      renderCatalogue();
-      scrollToCatalogue();
+      renderCatalogue(); scrollToCatalogue();
       showToast(`Showing ${slide.dataset.format}s (${getFilteredProgrammes().length})`);
       goToHeroSlide(parseInt(slide.dataset.index, 10));
       resetHeroRotation();
     });
   });
-  dots.querySelectorAll('.hero-slider-dot').forEach(dot => {
-    dot.addEventListener('click', e => { e.stopPropagation(); goToHeroSlide(parseInt(dot.dataset.index, 10)); resetHeroRotation(); });
-  });
+  dots.querySelectorAll('.hero-slider-dot').forEach(dot => dot.addEventListener('click', e => { e.stopPropagation(); goToHeroSlide(parseInt(dot.dataset.index, 10)); resetHeroRotation(); }));
   const prev = document.getElementById('heroPrev'), next = document.getElementById('heroNext');
   if(prev) prev.addEventListener('click', e => { e.stopPropagation(); prevHeroSlide(); resetHeroRotation(); });
   if(next) next.addEventListener('click', e => { e.stopPropagation(); nextHeroSlide(); resetHeroRotation(); });
-
   const frame = track.parentElement;
-  if(frame){
-    frame.addEventListener('mouseenter', stopHeroRotation);
-    frame.addEventListener('mouseleave', startHeroRotation);
-  }
+  if(frame){ frame.addEventListener('mouseenter', stopHeroRotation); frame.addEventListener('mouseleave', startHeroRotation); }
   startHeroRotation();
 }
-function goToHeroSlide(i){
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots = document.querySelectorAll('.hero-slider-dot');
-  if(!slides.length) return;
-  if(i < 0) i = slides.length - 1;
-  if(i >= slides.length) i = 0;
-  slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
-  dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-  heroSlideIndex = i;
-}
-function nextHeroSlide(){ goToHeroSlide(heroSlideIndex + 1); }
-function prevHeroSlide(){ goToHeroSlide(heroSlideIndex - 1); }
-function startHeroRotation(){ stopHeroRotation(); if(HERO_SLIDES.length < 2) return; heroSlideTimer = setInterval(nextHeroSlide, HERO_ROTATE_MS); }
-function stopHeroRotation(){ if(heroSlideTimer){ clearInterval(heroSlideTimer); heroSlideTimer = null; } }
+function goToHeroSlide(i){ const slides = document.querySelectorAll('.hero-slide'), dots = document.querySelectorAll('.hero-slider-dot'); if(!slides.length) return; if(i<0) i=slides.length-1; if(i>=slides.length) i=0; slides.forEach((s,idx)=>s.classList.toggle('active',idx===i)); dots.forEach((d,idx)=>d.classList.toggle('active',idx===i)); heroSlideIndex=i; }
+function nextHeroSlide(){ goToHeroSlide(heroSlideIndex+1); }
+function prevHeroSlide(){ goToHeroSlide(heroSlideIndex-1); }
+function startHeroRotation(){ stopHeroRotation(); if(HERO_SLIDES.length<2) return; heroSlideTimer=setInterval(nextHeroSlide, HERO_ROTATE_MS); }
+function stopHeroRotation(){ if(heroSlideTimer){ clearInterval(heroSlideTimer); heroSlideTimer=null; } }
 function resetHeroRotation(){ stopHeroRotation(); startHeroRotation(); }
 
 /* =========================================================
@@ -1191,21 +1254,10 @@ function resetHeroRotation(){ stopHeroRotation(); startHeroRotation(); }
    ========================================================= */
 function buildSubjectsGrid(){
   const grid = $('#subjectsGrid');
-  grid.innerHTML = SUBJECTS.map(s=>{
-    const count = PROGRAMMES.filter(p=>p.subject===s.name).length;
-    return `<button type="button" class="subject-card" data-subject="${esc(s.name)}">
-      <div class="subject-icon"><i class="fas ${s.icon}"></i></div>
-      <h3>${esc(s.name)}</h3>
-      <p>${esc(s.blurb)}</p>
-      <span class="subject-count">${count} programmes · 5 formats</span>
-    </button>`;
-  }).join('');
+  grid.innerHTML = SUBJECTS.map(s=>{ const count = PROGRAMMES.filter(p=>p.subject===s.name).length; return `<button type="button" class="subject-card" data-subject="${esc(s.name)}"><div class="subject-icon"><i class="fas ${s.icon}"></i></div><h3>${esc(s.name)}</h3><p>${esc(s.blurb)}</p><span class="subject-count">${count} programmes · 5 formats</span></button>`; }).join('');
   grid.querySelectorAll('.subject-card').forEach(c=>c.addEventListener('click',()=>applySubjectFilter(c.dataset.subject)));
 }
-function buildFinderSubjects(){
-  const sel = $('#finderSubject');
-  SUBJECTS.forEach(s=>{ const o=document.createElement('option'); o.value=s.name; o.textContent=s.name; sel.appendChild(o); });
-}
+function buildFinderSubjects(){ const sel = $('#finderSubject'); SUBJECTS.forEach(s=>{ const o=document.createElement('option'); o.value=s.name; o.textContent=s.name; sel.appendChild(o); }); }
 function updateFormatCounts(){
   $('#count-short').textContent = PROGRAMMES.filter(p=>p.format==='Short Course').length + ' programmes';
   $('#count-cert').textContent  = PROGRAMMES.filter(p=>p.format==='Certificate').length + ' programmes';
@@ -1217,33 +1269,13 @@ function updateFormatCounts(){
 /* =========================================================
    CATALOGUE
    ========================================================= */
-function getFilteredProgrammes(){
-  let list = PROGRAMMES.slice();
-  if(state.subject) list = list.filter(p=>p.subject===state.subject);
-  if(state.format)  list = list.filter(p=>p.format===state.format);
-  return list;
-}
+function getFilteredProgrammes(){ let list = PROGRAMMES.slice(); if(state.subject) list = list.filter(p=>p.subject===state.subject); if(state.format) list = list.filter(p=>p.format===state.format); return list; }
 function getFeatured(){ return PROGRAMMES.filter(p=>p.featured); }
 function progCardHTML(p){
-  return `<button type="button" class="prog-card" data-id="${p.id}" aria-label="View ${esc(p.name)}">
-    <div class="prog-top">
-      <span class="prog-badge">${esc(p.format)}</span>
-      <h3>${esc(p.name)}</h3>
-      <div class="prog-meta"><span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span><span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span></div>
-    </div>
-    <div class="prog-body">
-      <p>${esc(p.description)}</p>
-      <div class="prog-price-row">
-        <div class="prog-price">${fmtPrice(p.price)}<small>Payment plans available</small></div>
-        <div class="prog-duration"><strong>${p.weeks} Wks</strong>Online</div>
-      </div>
-      <div class="prog-cta"><span>View full details</span><i class="fas fa-arrow-right"></i></div>
-    </div>
-  </button>`;
+  return `<button type="button" class="prog-card" data-id="${p.id}" aria-label="View ${esc(p.name)}"><div class="prog-top"><span class="prog-badge">${esc(p.format)}</span><h3>${esc(p.name)}</h3><div class="prog-meta"><span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span><span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span></div></div><div class="prog-body"><p>${esc(p.description)}</p><div class="prog-price-row"><div class="prog-price">${fmtPrice(p.price)}<small>Payment plans available</small></div><div class="prog-duration"><strong>${p.weeks} Wks</strong>Online</div></div><div class="prog-cta"><span>View full details</span><i class="fas fa-arrow-right"></i></div></div></button>`;
 }
 function renderCatalogue(){
-  const grid = $('#catalogueGrid'), bar = $('#catalogueBar'), tag = $('#catalogueTag'),
-        title = $('#catalogueTitle'), sub = $('#catalogueSub'), label = $('#catalogueBarLabel');
+  const grid = $('#catalogueGrid'), bar = $('#catalogueBar'), tag = $('#catalogueTag'), title = $('#catalogueTitle'), sub = $('#catalogueSub'), label = $('#catalogueBarLabel');
   const filtering = state.subject || state.format;
   if(filtering){
     const list = getFilteredProgrammes();
@@ -1251,45 +1283,23 @@ function renderCatalogue(){
     title.textContent = state.subject && state.format ? `${state.subject} · ${state.format}` : (state.subject ? state.subject : state.format + 's');
     sub.textContent = `${list.length} programme${list.length!==1?'s':''} match your selection. Click any card to see full details.`;
     bar.style.display='flex';
-    let parts=[];
-    if(state.subject) parts.push(`Subject: <strong>${esc(state.subject)}</strong>`);
-    if(state.format)  parts.push(`Format: <strong>${esc(state.format)}</strong>`);
+    let parts=[]; if(state.subject) parts.push(`Subject: <strong>${esc(state.subject)}</strong>`); if(state.format) parts.push(`Format: <strong>${esc(state.format)}</strong>`);
     label.innerHTML = 'Showing ' + parts.join(' &nbsp;·&nbsp; ');
-    grid.innerHTML = list.length===0
-      ? `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try a different subject or format.</p></div>`
-      : list.map(progCardHTML).join('');
+    grid.innerHTML = list.length===0 ? `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try a different subject or format.</p></div>` : list.map(progCardHTML).join('');
   } else {
     const list = getFeatured();
-    tag.textContent = 'Featured Programmes';
-    title.textContent = 'Popular Programmes Right Now';
-    sub.textContent = 'A selection across subjects and formats. Click any card to see full details.';
-    bar.style.display='none';
-    grid.innerHTML = list.map(progCardHTML).join('');
+    tag.textContent = 'Featured Programmes'; title.textContent = 'Popular Programmes Right Now'; sub.textContent = 'A selection across subjects and formats. Click any card to see full details.';
+    bar.style.display='none'; grid.innerHTML = list.map(progCardHTML).join('');
   }
   grid.querySelectorAll('.prog-card').forEach(card=>card.addEventListener('click',()=>openProgramme(card.dataset.id)));
   document.querySelectorAll('.subject-card').forEach(c=>c.classList.toggle('active', c.dataset.subject===state.subject));
   document.querySelectorAll('.format-pill').forEach(c=>c.classList.toggle('active', c.dataset.format===state.format));
   document.querySelectorAll('.path-card').forEach(c=>c.classList.toggle('active', c.dataset.format===state.format));
 }
-
-/* =========================================================
-   FILTERS
-   ========================================================= */
 function scrollToCatalogue(){ const el = document.getElementById('catalogue'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
-function applyFormatFilter(format){
-  state.subject = null;
-  state.format = (state.format===format) ? null : format;
-  renderCatalogue(); scrollToCatalogue();
-  showToast(state.format ? `Showing ${state.format}s (${getFilteredProgrammes().length})` : 'Filter cleared');
-}
-function applySubjectFilter(subject){
-  state.format = null;
-  state.subject = (state.subject===subject) ? null : subject;
-  renderCatalogue(); scrollToCatalogue();
-  showToast(state.subject ? `Showing ${subject} (${getFilteredProgrammes().length})` : 'Filter cleared');
-}
+function applyFormatFilter(format){ state.subject = null; state.format = (state.format===format) ? null : format; renderCatalogue(); scrollToCatalogue(); showToast(state.format ? `Showing ${state.format}s (${getFilteredProgrammes().length})` : 'Filter cleared'); }
+function applySubjectFilter(subject){ state.format = null; state.subject = (state.subject===subject) ? null : subject; renderCatalogue(); scrollToCatalogue(); showToast(state.subject ? `Showing ${subject} (${getFilteredProgrammes().length})` : 'Filter cleared'); }
 function clearFilters(){ state.subject=null; state.format=null; renderCatalogue(); showToast('Filters cleared'); }
-
 $('#catalogueClear').addEventListener('click', clearFilters);
 $$('#heroFormats .format-pill').forEach(p=>p.addEventListener('click',()=>applyFormatFilter(p.dataset.format)));
 $$('#pathsGrid .path-card').forEach(p=>p.addEventListener('click',()=>applyFormatFilter(p.dataset.format)));
@@ -1302,26 +1312,8 @@ function openProgramme(id){
   const p = PROGRAMMES.find(x=>x.id===id); if(!p) return;
   state.currentProgrammeId = id;
   const award = p.format==='Short Course'?'Certificate of Completion':p.format==='Certificate'?'Professional Certificate':p.format==='Professional Programme'?'Professional Programme Certificate':p.format==='Bootcamp'?'Bootcamp Certificate of Completion':'Advanced Professional Certificate';
-  $('#programmeContent').innerHTML = `
-    <span class="pm-badge">${esc(p.format)}</span>
-    <h2 class="pm-title">${esc(p.name)}</h2>
-    <div class="pm-subject">${esc(p.subject)}</div>
-    <div class="pm-meta-row">
-      <div class="pm-meta-item"><div class="pm-label">Duration</div><div class="pm-value">${p.weeks} <span style="font-size:12px;font-weight:600">Weeks</span></div></div>
-      <div class="pm-meta-item"><div class="pm-label">Delivery</div><div class="pm-value small">Online</div></div>
-      <div class="pm-meta-item"><div class="pm-label">Format</div><div class="pm-value small">${esc(p.format)}</div></div>
-      <div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtPrice(p.price)}</div></div>
-    </div>
-    <p class="pm-desc">${esc(p.description)}</p>
-    <div class="pm-section"><h4>What You'll Learn</h4><ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>
-    <div class="pm-section"><h4>Who Is It For</h4><p class="pm-audience">${esc(p.audience)}</p></div>
-    <div class="pm-award"><i class="fas fa-certificate"></i><div><div class="label">On Successful Completion</div><div class="value">${award}</div></div></div>
-    <div class="pm-actions">
-      <button type="button" class="btn btn-primary btn-lg" onclick="applyFromModal()">Apply Now <i class="fas fa-arrow-right"></i></button>
-      <button type="button" class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button>
-    </div>`;
-  $('#programmeModal').classList.add('show');
-  document.body.style.overflow='hidden';
+  $('#programmeContent').innerHTML = `<span class="pm-badge">${esc(p.format)}</span><h2 class="pm-title">${esc(p.name)}</h2><div class="pm-subject">${esc(p.subject)}</div><div class="pm-meta-row"><div class="pm-meta-item"><div class="pm-label">Duration</div><div class="pm-value">${p.weeks} <span style="font-size:12px;font-weight:600">Weeks</span></div></div><div class="pm-meta-item"><div class="pm-label">Delivery</div><div class="pm-value small">Online</div></div><div class="pm-meta-item"><div class="pm-label">Format</div><div class="pm-value small">${esc(p.format)}</div></div><div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtPrice(p.price)}</div></div></div><p class="pm-desc">${esc(p.description)}</p><div class="pm-section"><h4>What You'll Learn</h4><ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div><div class="pm-section"><h4>Who Is It For</h4><p class="pm-audience">${esc(p.audience)}</p></div><div class="pm-award"><i class="fas fa-certificate"></i><div><div class="label">On Successful Completion</div><div class="value">${award}</div></div></div><div class="pm-actions"><button type="button" class="btn btn-primary btn-lg" onclick="applyFromModal()">Apply Now <i class="fas fa-arrow-right"></i></button><button type="button" class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button></div>`;
+  $('#programmeModal').classList.add('show'); document.body.style.overflow='hidden';
 }
 function applyFromModal(){ const p = PROGRAMMES.find(x=>x.id===state.currentProgrammeId); closeProgramme(); if(p) goToApply(p); else goToApply(); }
 function closeProgramme(){ $('#programmeModal').classList.remove('show'); document.body.style.overflow=''; }
@@ -1330,11 +1322,7 @@ function closeProgramme(){ $('#programmeModal').classList.remove('show'); docume
    SEARCH
    ========================================================= */
 const searchModal=$('#searchModal'), searchInput=$('#searchInput'), searchResults=$('#searchResults'), searchHint=$('#searchHint');
-function buildSearchTags(){
-  const tags = ['Finance','AI','Bootcamp','Certificate','Data Analytics','Risk Management','Advanced','Short Course','Leadership'];
-  $('#searchTags').innerHTML = tags.map(t=>`<button type="button" class="search-tag" data-tag="${esc(t)}">${esc(t)}</button>`).join('');
-  $$('#searchTags .search-tag').forEach(b=>b.addEventListener('click',()=>{ searchInput.value = b.dataset.tag; renderSearchResults(b.dataset.tag); searchInput.focus(); }));
-}
+function buildSearchTags(){ const tags = ['Finance','AI','Bootcamp','Certificate','Data Analytics','Risk Management','Advanced','Short Course','Leadership']; $('#searchTags').innerHTML = tags.map(t=>`<button type="button" class="search-tag" data-tag="${esc(t)}">${esc(t)}</button>`).join(''); $$('#searchTags .search-tag').forEach(b=>b.addEventListener('click',()=>{ searchInput.value = b.dataset.tag; renderSearchResults(b.dataset.tag); searchInput.focus(); })); }
 function openSearch(){ searchModal.classList.add('show'); document.body.style.overflow='hidden'; setTimeout(()=>searchInput.focus(),80); renderSearchResults(searchInput.value); }
 function closeSearch(){ searchModal.classList.remove('show'); document.body.style.overflow=''; searchInput.value=''; }
 function renderSearchResults(q){
@@ -1370,145 +1358,52 @@ $('#finderBtn').addEventListener('click',runFinder);
 $('#finderReset').addEventListener('click',()=>{ finderSubject.value=''; finderFormat.value=''; finderDuration.value=''; finderBudget.value=''; $('#finderResults').classList.remove('show'); $('#finderList').innerHTML=''; });
 
 /* =========================================================
-   MOBILE MENU TOGGLE
+   MOBILE MENU
    ========================================================= */
-function toggleMobileMenu(force){
-  const nav = document.getElementById('mobileNav');
-  const btn = document.getElementById('mobileMenuBtn');
-  if(!nav || !btn) return;
-  const willShow = (typeof force === 'boolean') ? force : !nav.classList.contains('show');
-  nav.classList.toggle('show', willShow);
-  btn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
-}
-document.addEventListener('click', function(e){
-  const btn = e.target.closest('#mobileMenuBtn, .mobile-menu-btn');
-  if(btn){ e.preventDefault(); e.stopPropagation(); toggleMobileMenu(); }
-}, true);
-document.addEventListener('click', function(e){
-  const link = e.target.closest('#mobileNav a, #mobileNav button');
-  if(link){
-    const nav = document.getElementById('mobileNav');
-    if(nav) nav.classList.remove('show');
-    const btn = document.getElementById('mobileMenuBtn');
-    if(btn) btn.setAttribute('aria-expanded','false');
-  }
-});
+function toggleMobileMenu(force){ const nav = document.getElementById('mobileNav'), btn = document.getElementById('mobileMenuBtn'); if(!nav || !btn) return; const willShow = (typeof force === 'boolean') ? force : !nav.classList.contains('show'); nav.classList.toggle('show', willShow); btn.setAttribute('aria-expanded', willShow ? 'true' : 'false'); }
+document.addEventListener('click', function(e){ const btn = e.target.closest('#mobileMenuBtn, .mobile-menu-btn'); if(btn){ e.preventDefault(); e.stopPropagation(); toggleMobileMenu(); } }, true);
+document.addEventListener('click', function(e){ const link = e.target.closest('#mobileNav a, #mobileNav button'); if(link){ const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show'); const btn = document.getElementById('mobileMenuBtn'); if(btn) btn.setAttribute('aria-expanded','false'); } });
 
 /* =========================================================
-   STUDENT PORTAL — FULLY FUNCTIONAL
+   STUDENT PORTAL
    ========================================================= */
 const portalModal = document.getElementById('portalModal');
-const portalViews = {
-  login:      document.getElementById('portalLoginView'),
-  forgot:     document.getElementById('portalForgotView'),
-  create:     document.getElementById('portalCreateView'),
-  dashboard:  document.getElementById('portalDashboardView')
-};
+const portalViews = { login: document.getElementById('portalLoginView'), forgot: document.getElementById('portalForgotView'), create: document.getElementById('portalCreateView'), dashboard: document.getElementById('portalDashboardView') };
 
 function showPortalView(name){
   Object.values(portalViews).forEach(v => v && v.classList.remove('active'));
   if(portalViews[name]) portalViews[name].classList.add('active');
-  // reset errors/successes on view change
-  ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el){ el.classList.remove('show'); el.textContent = ''; }
-  });
+  ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => { const el = document.getElementById(id); if(el){ el.classList.remove('show'); el.textContent=''; } });
 }
-
 function openPortal(view){
   if(!portalModal) return;
-  portalModal.classList.add('show');
-  document.body.style.overflow='hidden';
-  // If a session exists and no specific view is requested, go to dashboard
+  portalModal.classList.add('show'); document.body.style.overflow='hidden';
   const session = loadSession();
-  if(session && (!view || view === 'login')){
-    setDashboardUser(session);
-    showPortalView('dashboard');
-  } else {
-    showPortalView(view || 'login');
-    setTimeout(() => {
-      const focusEl = document.getElementById('portalEmail');
-      if(focusEl && view !== 'forgot' && view !== 'create') focusEl.focus();
-    }, 100);
-  }
+  if(session && (!view || view === 'login')){ setDashboardUser(session); showPortalView('dashboard'); }
+  else { showPortalView(view || 'login'); setTimeout(()=>{ const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100); }
 }
-function closePortal(){
-  if(!portalModal) return;
-  portalModal.classList.remove('show');
-  document.body.style.overflow='';
-}
+function closePortal(){ if(!portalModal) return; portalModal.classList.remove('show'); document.body.style.overflow=''; }
 
-/* ---- SESSION STORAGE ---- */
-function saveSession(session, remember){
-  const payload = JSON.stringify(session);
-  if(remember){ try{ localStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} }
-  else        { try{ sessionStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} }
-  try{ localStorage.setItem('nolanPortalRememberedEmail', session.email); }catch(e){}
-}
-function loadSession(){
-  try{
-    const s = sessionStorage.getItem(PORTAL_STORAGE_KEY) || localStorage.getItem(PORTAL_STORAGE_KEY);
-    return s ? JSON.parse(s) : null;
-  }catch(e){ return null; }
-}
-function clearSession(){
-  try{
-    sessionStorage.removeItem(PORTAL_STORAGE_KEY);
-    localStorage.removeItem(PORTAL_STORAGE_KEY);
-  }catch(e){}
-}
+function saveSession(session, remember){ const payload = JSON.stringify(session); if(remember){ try{ localStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } else { try{ sessionStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } }
+function loadSession(){ try{ const s = sessionStorage.getItem(PORTAL_STORAGE_KEY) || localStorage.getItem(PORTAL_STORAGE_KEY); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
+function clearSession(){ try{ sessionStorage.removeItem(PORTAL_STORAGE_KEY); localStorage.removeItem(PORTAL_STORAGE_KEY); }catch(e){} }
+function loadAccounts(){ try{ return JSON.parse(localStorage.getItem(PORTAL_ACCOUNTS_KEY) || '[]'); }catch(e){ return []; } }
+function saveAccount(account){ const accounts = loadAccounts(); accounts.push(account); try{ localStorage.setItem(PORTAL_ACCOUNTS_KEY, JSON.stringify(accounts)); }catch(e){} }
+function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email||'').trim()); }
+function setPortalMessage(elId, message, isError){ const el = document.getElementById(elId); if(!el) return; el.textContent = message; el.classList.toggle('show', !!message); }
 
-/* ---- LOCAL ACCOUNTS (created accounts) ---- */
-function loadAccounts(){
-  try{ return JSON.parse(localStorage.getItem(PORTAL_ACCOUNTS_KEY) || '[]'); }catch(e){ return []; }
-}
-function saveAccount(account){
-  const accounts = loadAccounts();
-  accounts.push(account);
-  try{ localStorage.setItem(PORTAL_ACCOUNTS_KEY, JSON.stringify(accounts)); }catch(e){}
-}
-
-/* ---- EMAIL VALIDATION ---- */
-function isValidEmail(email){
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email||'').trim());
-}
-
-/* ---- ERROR / SUCCESS MESSAGES ---- */
-function setPortalMessage(elId, message, isError){
-  const el = document.getElementById(elId);
-  if(!el) return;
-  el.textContent = message;
-  el.classList.toggle('show', !!message);
-  el.style.color = isError ? '' : '';
-}
-
-/* ---- PASSWORD VISIBILITY TOGGLE ---- */
-function setupPwToggle(btnId, inputId){
-  const btn = document.getElementById(btnId);
-  const inp = document.getElementById(inputId);
-  if(!btn || !inp) return;
-  btn.addEventListener('click', () => {
-    const isPw = inp.type === 'password';
-    inp.type = isPw ? 'text' : 'password';
-    btn.innerHTML = isPw ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
-    btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
-  });
-}
+function setupPwToggle(btnId, inputId){ const btn = document.getElementById(btnId), inp = document.getElementById(inputId); if(!btn || !inp) return; btn.addEventListener('click', () => { const isPw = inp.type === 'password'; inp.type = isPw ? 'text' : 'password'; btn.innerHTML = isPw ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>'; btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password'); }); }
 setupPwToggle('portalPwToggle','portalPassword');
 setupPwToggle('portalNewPwToggle','portalNewPassword');
 
-/* ---- SIGN IN FORM ---- */
 document.getElementById('portalLoginForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const errEl = document.getElementById('portalLoginError');
-  errEl.classList.remove('show');
-
+  const errEl = document.getElementById('portalLoginError'); errEl.classList.remove('show');
   const email = document.getElementById('portalEmail').value.trim();
   const password = document.getElementById('portalPassword').value;
   const remember = document.getElementById('portalRemember').checked;
   const btn = document.getElementById('portalLoginBtn');
 
-  // Validation
   if(!email){ setPortalMessage('portalLoginError','Please enter your email address.',true); document.getElementById('portalEmail').classList.add('err'); return; }
   document.getElementById('portalEmail').classList.remove('err');
   if(!isValidEmail(email)){ setPortalMessage('portalLoginError','Please enter a valid email address.',true); document.getElementById('portalEmail').classList.add('err'); return; }
@@ -1516,54 +1411,33 @@ document.getElementById('portalLoginForm').addEventListener('submit', function(e
   document.getElementById('portalPassword').classList.remove('err');
   if(password.length < 6){ setPortalMessage('portalLoginError','Password must be at least 6 characters.',true); document.getElementById('portalPassword').classList.add('err'); return; }
 
-  // Simulate processing
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
-
   setTimeout(() => {
-    // Authentication logic:
-    // 1. Demo credentials match OR
-    // 2. Any locally-created account matches OR
-    // 3. Any valid email + password >= 6 chars (demo mode)
     const lowerEmail = email.toLowerCase();
     const accounts = loadAccounts();
     const localAccount = accounts.find(a => a.email.toLowerCase() === lowerEmail && a.password === password);
-
     let name = 'Student';
-    if(lowerEmail === PORTAL_DEMO.email.toLowerCase() && password === PORTAL_DEMO.password){
-      name = PORTAL_DEMO.name;
-    } else if(localAccount){
-      name = localAccount.name;
-    } else {
-      // Demo mode: derive a friendly name from the email
-      name = lowerEmail.split('@')[0].replace(/[._-]+/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-    }
-
+    if(lowerEmail === PORTAL_DEMO.email.toLowerCase() && password === PORTAL_DEMO.password){ name = PORTAL_DEMO.name; }
+    else if(localAccount){ name = localAccount.name; }
+    else { name = lowerEmail.split('@')[0].replace(/[._-]+/g,' ').replace(/\b\w/g, c => c.toUpperCase()); }
     const session = { email: lowerEmail, name: name, signedInAt: Date.now() };
     saveSession(session, remember);
-
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
-    setDashboardUser(session);
-    showPortalView('dashboard');
+    setDashboardUser(session); showPortalView('dashboard');
     showToast('Welcome back, ' + name + '!', 'success');
     document.getElementById('portalLoginForm').reset();
   }, 900);
 });
 
-/* ---- FORGOT PASSWORD FORM ---- */
 document.getElementById('portalForgotForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const errEl = document.getElementById('portalForgotError');
-  const sucEl = document.getElementById('portalForgotSuccess');
+  const errEl = document.getElementById('portalForgotError'), sucEl = document.getElementById('portalForgotSuccess');
   errEl.classList.remove('show'); sucEl.classList.remove('show');
-
   const email = document.getElementById('portalForgotEmail').value.trim();
   const btn = document.getElementById('portalForgotBtn');
-
   if(!email){ setPortalMessage('portalForgotError','Please enter your email address.',true); return; }
   if(!isValidEmail(email)){ setPortalMessage('portalForgotError','Please enter a valid email address.',true); return; }
-
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
   setTimeout(() => {
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Reset Link';
     setPortalMessage('portalForgotSuccess', 'If an account exists for ' + email + ', a password reset link has been sent. Check your inbox and spam folder.', false);
@@ -1572,92 +1446,53 @@ document.getElementById('portalForgotForm').addEventListener('submit', function(
   }, 1000);
 });
 
-/* ---- CREATE ACCOUNT FORM ---- */
 document.getElementById('portalCreateForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const errEl = document.getElementById('portalCreateError');
-  const sucEl = document.getElementById('portalCreateSuccess');
+  const errEl = document.getElementById('portalCreateError'), sucEl = document.getElementById('portalCreateSuccess');
   errEl.classList.remove('show'); sucEl.classList.remove('show');
-
   const name = document.getElementById('portalNewName').value.trim();
   const email = document.getElementById('portalNewEmail').value.trim();
   const password = document.getElementById('portalNewPassword').value;
   const btn = document.getElementById('portalCreateBtn');
-
   if(!name){ setPortalMessage('portalCreateError','Please enter your full name.',true); return; }
   if(!email){ setPortalMessage('portalCreateError','Please enter your email address.',true); return; }
   if(!isValidEmail(email)){ setPortalMessage('portalCreateError','Please enter a valid email address.',true); return; }
   if(password.length < 6){ setPortalMessage('portalCreateError','Password must be at least 6 characters.',true); return; }
-
-  // Check duplicate
   const accounts = loadAccounts();
   if(accounts.some(a => a.email.toLowerCase() === email.toLowerCase()) || email.toLowerCase() === PORTAL_DEMO.email.toLowerCase()){
-    setPortalMessage('portalCreateError','An account with that email already exists. Try signing in instead.',true);
-    return;
+    setPortalMessage('portalCreateError','An account with that email already exists. Try signing in instead.',true); return;
   }
-
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
-
   setTimeout(() => {
     saveAccount({ name, email: email.toLowerCase(), password, createdAt: Date.now() });
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
     setPortalMessage('portalCreateSuccess','Account created! Signing you in...', false);
     showToast('Account created successfully', 'success');
-
-    // Auto sign-in
     const session = { email: email.toLowerCase(), name: name, signedInAt: Date.now() };
     saveSession(session, true);
-    setTimeout(() => {
-      setDashboardUser(session);
-      showPortalView('dashboard');
-      document.getElementById('portalCreateForm').reset();
-    }, 900);
+    setTimeout(() => { setDashboardUser(session); showPortalView('dashboard'); document.getElementById('portalCreateForm').reset(); }, 900);
   }, 1100);
 });
 
-/* ---- SIGN OUT ---- */
-document.getElementById('portalSignOut').addEventListener('click', () => {
-  clearSession();
-  showToast('Signed out successfully');
-  showPortalView('login');
-});
+document.getElementById('portalSignOut').addEventListener('click', () => { clearSession(); showToast('Signed out successfully'); showPortalView('login'); });
 
-/* ---- DASHBOARD USER INFO ---- */
 function setDashboardUser(session){
   document.getElementById('portalUserName').textContent = session.name || 'Student';
   document.getElementById('portalUserEmail').textContent = session.email || '';
   const infoEl = document.getElementById('portalSessionInfo');
-  if(infoEl){
-    const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now';
-    infoEl.textContent = 'Session started ' + when;
-  }
+  if(infoEl){ const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now'; infoEl.textContent = 'Session started ' + when; }
 }
 
-/* ---- DASHBOARD CARD ACTIONS (real feedback) ---- */
 document.querySelectorAll('.portal-dash-card').forEach(card => {
   card.addEventListener('click', () => {
     const what = card.dataset.dash;
-    const messages = {
-      courses: 'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.',
-      grades: 'Grades — no assessment results available yet.',
-      resources: 'Resources — learning materials will appear here once enrolled.',
-      timetable: 'Timetable — your class schedule will appear here once enrolled.'
-    };
+    const messages = { courses: 'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.', grades: 'Grades — no assessment results available yet.', resources: 'Resources — learning materials will appear here once enrolled.', timetable: 'Timetable — your class schedule will appear here once enrolled.' };
     showToast(messages[what] || 'Coming soon');
   });
 });
 
-/* ---- OPEN PORTAL FROM ANY BUTTON ---- */
-document.addEventListener('click', e => {
-  const trigger = e.target.closest('.open-portal');
-  if(trigger){
-    e.preventDefault();
-    const view = trigger.dataset.portal || 'login';
-    openPortal(view);
-  }
-});
+document.addEventListener('click', e => { const trigger = e.target.closest('.open-portal'); if(trigger){ e.preventDefault(); const view = trigger.dataset.portal || 'login'; openPortal(view); } });
 
-/* ---- PORTAL INTERNAL NAVIGATION ---- */
 document.getElementById('portalForgotLink').addEventListener('click', () => showPortalView('forgot'));
 document.getElementById('portalCreateLink').addEventListener('click', () => showPortalView('create'));
 document.getElementById('portalBack1').addEventListener('click', () => showPortalView('login'));
