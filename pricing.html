@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
 <title>Pricing & Payment Plans | Nolan Institute</title>
-<meta name="description" content="Transparent pricing for Nolan Institute programmes. Standard and specialist subjects, flexible payment plans, USD reference pricing for international students.">
+<meta name="description" content="Transparent pricing for Nolan Institute programmes. Standard and specialist subjects, flexible payment plans, ZMW and USD pricing for local and international students.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 :root{
+  color-scheme: light only;
   --navy:#0A1C3A;--navy-light:#1A2D4D;--navy-dark:#05122A;
   --gold:#C5A028;--gold-light:#D4B84A;--gold-dark:#A07F1F;--gold-10:rgba(197,160,40,0.1);
   --white:#fff;--off-white:#FAFAF8;--gray-light:#F5F5F5;--gray-mid:#E0E0E0;--gray-dark:#666;--gray-darker:#333;
@@ -19,14 +21,16 @@
   --shadow-lg:0 12px 32px rgba(0,0,0,.12);--shadow-xl:0 24px 48px rgba(10,28,58,.18);
   --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{font-family:'Inter',sans-serif;color:var(--gray-darker);line-height:1.6;background:var(--white);overflow-x:hidden}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:hidden;width:100%;color-scheme:light only;background:#fff}
+body{font-family:'Inter',sans-serif;color:var(--gray-darker);line-height:1.6;background:var(--white);overflow-x:hidden;width:100%;max-width:100vw;color-scheme:light only}
+img,video,iframe,table,svg{max-width:100%;height:auto}
 h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2;color:var(--navy)}
 a{text-decoration:none;color:inherit;transition:var(--transition)}
-ul{list-style:none}img{max-width:100%;height:auto}
-button{font-family:inherit;cursor:pointer}
-.container{max-width:1240px;margin:0 auto;padding:0 24px}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{color-scheme:light only}
+.container{max-width:1240px;margin:0 auto;padding:0 24px;width:100%}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;font-weight:600;font-size:14.5px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:var(--transition);text-align:center;white-space:nowrap}
 .btn:active{transform:scale(.97)}
@@ -79,10 +83,11 @@ button{font-family:inherit;cursor:pointer}
 .hero-badge{display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);color:var(--gold-light);padding:8px 18px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px}
 .pricing-hero h1{font-size:clamp(2rem,5vw,3.4rem);color:#fff;margin-bottom:18px;letter-spacing:-.5px}
 .pricing-hero h1 .gold{color:var(--gold)}
-.pricing-hero p{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(255,255,255,.85);max-width:680px;margin:0 auto 30px;line-height:1.7}
+.pricing-hero p{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(255,255,255,.85);max-width:720px;margin:0 auto 30px;line-height:1.7}
 .hero-quick-stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin-top:34px;padding-top:30px;border-top:1px solid rgba(255,255,255,.15)}
 .hero-stat{text-align:center}
 .hero-stat strong{display:block;font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);font-weight:800;line-height:1}
+.hero-stat .hero-stat-usd{display:block;font-family:'Inter',sans-serif;font-size:12.5px;color:rgba(255,255,255,.72);font-weight:600;margin-top:5px;letter-spacing:.3px}
 .hero-stat span{font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600;margin-top:8px;display:block}
 
 /* STICKY CONTROLS */
@@ -97,8 +102,7 @@ button{font-family:inherit;cursor:pointer}
 /* SECTIONS */
 .section{padding:70px 0}
 .section-alt{background:var(--off-white)}
-.section-navy{background:var(--navy);color:#fff}
-.section-head{text-align:center;margin-bottom:44px;max-width:760px;margin-left:auto;margin-right:auto}
+.section-head{text-align:center;margin-bottom:44px;max-width:780px;margin-left:auto;margin-right:auto}
 .section-tag{display:inline-block;background:var(--gold-10);color:var(--gold-dark);padding:5px 14px;border-radius:50px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
 .section-head h2{font-size:clamp(1.6rem,3.2vw,2.4rem);margin-bottom:12px}
 .section-head p{font-size:15px;color:var(--gray-dark);line-height:1.7}
@@ -128,11 +132,14 @@ button{font-family:inherit;cursor:pointer}
 .price-card-top .pc-subject{font-size:11.5px;color:rgba(255,255,255,.7);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
 .price-card-body{padding:20px 24px;flex:1;display:flex;flex-direction:column}
 .pc-price-block{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--gray-mid)}
-.pc-price{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--navy);line-height:1}
-.pc-price small{font-size:15px;font-weight:600;color:var(--gray-dark);margin-left:4px}
-.pc-price-ref{font-size:12px;color:var(--gray-dark);margin-top:6px;font-weight:500}
-.pc-price-ref strong{color:var(--gold-dark)}
-.pc-price-note{font-size:11.5px;color:var(--success);font-weight:700;margin-top:8px;display:inline-flex;align-items:center;gap:6px}
+
+/* Dual currency display */
+.pc-price-dual{display:flex;flex-direction:column;gap:4px}
+.pc-price-dual .pc-main{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--navy);line-height:1}
+.pc-price-dual .pc-main small{font-size:15px;font-weight:600;color:var(--gray-dark);margin-left:4px}
+.pc-price-dual .pc-secondary{font-size:14px;font-weight:700;color:var(--gold-dark);letter-spacing:.3px}
+.pc-price-dual .pc-secondary-lbl{font-size:11px;color:var(--gray-dark);font-weight:500;letter-spacing:.3px}
+.pc-price-note{font-size:11.5px;color:var(--success);font-weight:700;margin-top:10px;display:inline-flex;align-items:center;gap:6px}
 .pc-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--gray-dark);margin-bottom:16px}
 .pc-meta span{display:inline-flex;align-items:center;gap:6px}
 .pc-meta i{color:var(--gold)}
@@ -158,8 +165,9 @@ button{font-family:inherit;cursor:pointer}
 .tier-card .tier-subjects{display:flex;flex-wrap:wrap;gap:6px}
 .tier-card .tier-subjects span{background:var(--gray-light);border:1px solid var(--gray-mid);padding:4px 11px;border-radius:50px;font-size:11.5px;color:var(--navy);font-weight:600}
 .tier-card.specialist .tier-subjects span{background:var(--gold-10);border-color:rgba(197,160,40,.3)}
-.tier-card .tier-range{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-mid);font-size:13px;color:var(--gray-dark)}
+.tier-card .tier-range{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-mid);font-size:13px;color:var(--gray-dark);line-height:1.7}
 .tier-card .tier-range strong{color:var(--navy);font-family:'Playfair Display',serif;font-size:16px}
+.tier-card .tier-range .usd-line{display:block;font-size:12.5px;color:var(--gold-dark);font-weight:600;margin-top:3px}
 
 /* PAYMENT PLANS */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
@@ -167,13 +175,16 @@ button{font-family:inherit;cursor:pointer}
 .plan-card:hover{border-color:var(--gold);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
 .plan-card .plan-badge{display:inline-block;background:var(--navy);color:#fff;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
 .plan-card h3{font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.plan-card .plan-price-line{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:var(--navy);margin-bottom:20px}
-.plan-card .plan-price-line small{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--gray-dark);display:block;margin-top:4px}
-.plan-breakdown{background:var(--off-white);border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:16px}
-.plan-step{display:flex;align-items:center;justify-content:space-between;padding:9px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-mid)}
+.plan-card .plan-price-line{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:var(--navy);margin-bottom:6px;line-height:1.15}
+.plan-card .plan-price-line .usd-line{display:block;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;color:var(--gold-dark);margin-top:4px;letter-spacing:.3px}
+.plan-card .plan-price-line small{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--gray-dark);display:block;margin-top:6px}
+.plan-breakdown{background:var(--off-white);border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:16px;margin-top:16px}
+.plan-step{padding:11px 0;border-bottom:1px dashed var(--gray-mid)}
 .plan-step:last-child{border-bottom:none}
-.plan-step .ps-label{color:var(--gray-dark);font-weight:500}
+.plan-step .ps-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.plan-step .ps-label{color:var(--gray-dark);font-weight:500;font-size:13.5px}
 .plan-step .ps-value{font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;font-size:15px}
+.plan-step .ps-usd{display:block;font-size:12px;font-weight:700;color:var(--gold-dark);text-align:right;margin-top:2px;letter-spacing:.3px}
 .plan-step.first .ps-label{color:var(--navy);font-weight:700}
 .plan-note{font-size:12px;color:var(--gray-dark);line-height:1.6;display:flex;gap:8px;align-items:flex-start}
 .plan-note i{color:var(--gold-dark);margin-top:3px;flex-shrink:0}
@@ -191,7 +202,7 @@ button{font-family:inherit;cursor:pointer}
 .intl-card .ic-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
 .intl-card h4{color:#fff;font-family:'Playfair Display',serif;font-size:19px;margin-bottom:8px;line-height:1.3}
 .intl-card .ic-format{font-size:12px;color:rgba(255,255,255,.65);margin-bottom:20px;letter-spacing:.5px}
-.intl-card .ic-price{font-family:'Playfair Display',serif;font-size:42px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:6px}
+.intl-card .ic-price{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:6px}
 .intl-card .ic-price small{font-size:16px;color:rgba(255,255,255,.65);font-weight:600;margin-left:4px}
 .intl-card .ic-equiv{font-size:13px;color:rgba(255,255,255,.72);margin-bottom:22px}
 .intl-card .ic-equiv strong{color:#fff}
@@ -246,9 +257,9 @@ button{font-family:inherit;cursor:pointer}
 .footer-bottom a:hover{color:var(--gold)}
 
 /* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px)}
+.modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .modal-overlay.show{display:flex;animation:fadeIn .2s ease}
-.modal-card{background:#fff;border-radius:20px;max-width:640px;width:100%;padding:38px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl)}
+.modal-card{background:#fff !important;border-radius:20px;max-width:640px;width:100%;padding:38px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl);color-scheme:light only}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:none;background:var(--gray-light);color:var(--navy);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:2}
@@ -258,24 +269,28 @@ button{font-family:inherit;cursor:pointer}
 .modal-card .modal-sub{font-size:12.5px;color:var(--gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px}
 .modal-price-line{padding:18px 20px;background:var(--gold-10);border-radius:var(--radius-sm);margin-bottom:24px;border-left:4px solid var(--gold)}
 .modal-price-line .mp-big{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--navy);line-height:1}
+.modal-price-line .mp-usd{font-size:15px;font-weight:700;color:var(--gold-dark);margin-top:4px;letter-spacing:.3px}
 .modal-price-line .mp-ref{font-size:13px;color:var(--gray-dark);margin-top:6px}
-.modal-price-line .mp-ref strong{color:var(--gold-dark)}
 .modal-breakdown{margin-bottom:24px}
 .modal-breakdown h4{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--gold-dark);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px}
 .modal-steps{background:var(--off-white);border-radius:var(--radius-sm);padding:6px 18px}
-.modal-step{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px dashed var(--gray-mid);font-size:14px}
+.modal-step{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px dashed var(--gray-mid);font-size:14px;gap:10px;flex-wrap:wrap}
 .modal-step:last-child{border-bottom:none}
 .modal-step .ms-label{color:var(--gray-dark);font-weight:500}
+.modal-step .ms-values{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
 .modal-step .ms-value{font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;font-size:16px}
+.modal-step .ms-usd{font-size:12.5px;font-weight:700;color:var(--gold-dark);letter-spacing:.3px}
 .modal-step.first .ms-label{color:var(--navy);font-weight:700}
-.modal-total{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--navy);border-radius:var(--radius-sm);margin-top:8px;color:#fff}
+.modal-total{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--navy);border-radius:var(--radius-sm);margin-top:8px;color:#fff;flex-wrap:wrap;gap:8px}
 .modal-total .mt-label{font-size:13px;font-weight:600}
+.modal-total .mt-values{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .modal-total .mt-value{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--gold)}
+.modal-total .mt-usd{font-size:13px;font-weight:700;color:var(--gold-light);letter-spacing:.3px}
 .modal-note{font-size:12.5px;color:var(--gray-dark);line-height:1.7;padding:16px 18px;background:var(--gray-light);border-radius:var(--radius-sm);margin-bottom:22px;border-left:3px solid var(--navy)}
 .modal-actions{display:flex;gap:12px;flex-wrap:wrap}
 
 /* TOAST */
-.toast{position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13.5px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:340px;box-shadow:var(--shadow-lg)}
+.toast{position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13.5px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:340px;box-shadow:var(--shadow-lg);pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}
 .toast i{color:var(--gold);font-size:15px}
 
@@ -358,12 +373,26 @@ button{font-family:inherit;cursor:pointer}
   <div class="container">
     <span class="hero-badge">Transparent Programme Pricing</span>
     <h1>Clear Pricing.<br><span class="gold">Flexible Payment.</span></h1>
-    <p>Standard and specialist subject pricing, shown in ZMW or USD. Every longer programme offers a payment plan so you can spread the cost.</p>
+    <p>Standard and specialist subject pricing — shown in Zambian Kwacha and its USD equivalent, so local and international students see the same fees in the currency they understand best.</p>
     <div class="hero-quick-stats">
-      <div class="hero-stat"><strong>15</strong><span>Subjects</span></div>
-      <div class="hero-stat"><strong>5</strong><span>Learning Formats</span></div>
-      <div class="hero-stat"><strong>From K4,500</strong><span>Entry Point</span></div>
-      <div class="hero-stat"><strong>From K1,500</strong><span>Payment Plan Start</span></div>
+      <div class="hero-stat">
+        <strong>15</strong>
+        <span>Subjects</span>
+      </div>
+      <div class="hero-stat">
+        <strong>5</strong>
+        <span>Learning Formats</span>
+      </div>
+      <div class="hero-stat">
+        <strong>From K4,500</strong>
+        <span class="hero-stat-usd">≈ US$225</span>
+        <span>Entry Point</span>
+      </div>
+      <div class="hero-stat">
+        <strong>From K1,500</strong>
+        <span class="hero-stat-usd">≈ US$75</span>
+        <span>Payment Plan Start</span>
+      </div>
     </div>
   </div>
 </section>
@@ -373,12 +402,12 @@ button{font-family:inherit;cursor:pointer}
   <div class="container">
     <div class="controls-inner">
       <div class="currency-toggle" id="currencyToggle" role="tablist">
-        <button class="active" data-currency="ZMW" role="tab">ZMW</button>
-        <button data-currency="USD" role="tab">USD</button>
+        <button class="active" data-currency="ZMW" role="tab" aria-label="Show ZMW as primary">ZMW Primary</button>
+        <button data-currency="USD" role="tab" aria-label="Show USD as primary">USD Primary</button>
       </div>
       <div class="controls-note">
         <i class="fas fa-info-circle"></i>
-        <span id="rateNote">Zambian Kwacha · USD reference pricing shown for international students</span>
+        <span id="rateNote">All prices display both ZMW and USD. Toggle to change which is the primary figure.</span>
       </div>
     </div>
   </div>
@@ -402,7 +431,10 @@ button{font-family:inherit;cursor:pointer}
           <span>Entrepreneurship</span>
           <span>Project Management</span>
         </div>
-        <div class="tier-range">Fees from <strong>K4,500</strong> to <strong>K22,500</strong></div>
+        <div class="tier-range">
+          Fees from <strong>K4,500</strong> to <strong>K22,500</strong>
+          <span class="usd-line">≈ US$225 to US$1,125</span>
+        </div>
       </div>
       <div class="tier-card specialist">
         <h3><i class="fas fa-gears"></i> Specialist Subjects</h3>
@@ -420,7 +452,10 @@ button{font-family:inherit;cursor:pointer}
           <span>AI for Business</span>
           <span>Risk Management</span>
         </div>
-        <div class="tier-range">Fees from <strong>K5,500</strong> to <strong>K25,000</strong></div>
+        <div class="tier-range">
+          Fees from <strong>K5,500</strong> to <strong>K25,000</strong>
+          <span class="usd-line">≈ US$275 to US$1,250</span>
+        </div>
       </div>
     </div>
   </div>
@@ -432,7 +467,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="section-head">
       <span class="section-tag">Programme Pricing</span>
       <h2>Choose Your Tier &amp; Format</h2>
-      <p>Filter by subject tier and format. Click any card to see payment plan options.</p>
+      <p>Filter by subject tier and format. Every price is shown in both ZMW and USD. Click any card to see payment plan options.</p>
     </div>
 
     <div class="category-tabs" id="categoryTabs">
@@ -460,7 +495,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="section-head">
       <span class="section-tag">Flexible Payment</span>
       <h2>Payment Plans for Longer Programmes</h2>
-      <p>No need to pay everything upfront. Longer programmes are structured into a registration amount and instalments across the programme.</p>
+      <p>No need to pay everything upfront. Longer programmes are structured into a registration amount and instalments — each shown in ZMW and USD.</p>
     </div>
 
     <div class="plans-grid" id="plansGrid"></div>
@@ -473,18 +508,18 @@ button{font-family:inherit;cursor:pointer}
     <div class="intl-grid">
       <div class="intl-content">
         <span class="section-tag">Pan-African Pricing</span>
-        <h2>USD Reference Pricing for<br><span class="gold">International Students</span></h2>
-        <p>For students outside Zambia, we quote a single USD reference price — no country-by-country tuition structures. Zambian students see the local equivalent.</p>
+        <h2>Same Fees,<br><span class="gold">Two Currencies</span></h2>
+        <p>We quote the same fee for every student — shown in Zambian Kwacha alongside its USD equivalent. Local students see the ZMW amount prominently; international students see the USD equivalent prominently. No country-by-country tuition structures.</p>
         <p>This keeps Nolan Institute's pricing simple, transparent and consistent across the continent and beyond.</p>
-        <p style="font-size:13.5px;color:rgba(255,255,255,.65)"><i class="fas fa-info-circle" style="color:var(--gold);margin-right:6px"></i>Toggle the currency switch above to view all programme prices in USD.</p>
+        <p style="font-size:13.5px;color:rgba(255,255,255,.65)"><i class="fas fa-info-circle" style="color:var(--gold);margin-right:6px"></i>Toggle the currency switch above to change which currency is the primary figure. Both remain visible at all times.</p>
       </div>
       <div class="intl-card">
-        <div class="ic-label">USD Reference Example</div>
+        <div class="ic-label">Worked Example</div>
         <h4>Professional Programme in Investment &amp; Capital Markets</h4>
         <div class="ic-format">24 Weeks · Online</div>
         <div class="ic-price">US$750</div>
         <div class="ic-equiv">Zambian equivalent <strong>K15,000</strong></div>
-        <div class="ic-plans"><i class="fas fa-check-circle"></i> Flexible payment plans available</div>
+        <div class="ic-plans"><i class="fas fa-check-circle"></i> Flexible payment plans available in both currencies</div>
       </div>
     </div>
   </div>
@@ -524,11 +559,11 @@ button{font-family:inherit;cursor:pointer}
       </div>
       <div class="faq-item">
         <div class="faq-q">Can I pay in instalments? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Yes. Every Professional Programme and Advanced Programme includes a structured payment plan — a registration amount upfront followed by instalments. Click "View Payment Plan" on any longer programme to see the exact breakdown.</p></div>
+        <div class="faq-a"><p>Yes. Every Professional Programme and Advanced Programme includes a structured payment plan — a registration amount upfront followed by instalments. Click "View Payment Plan" on any longer programme to see the exact breakdown in ZMW and USD.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Do international students pay different fees? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>We use a single USD reference price for international students — no country-by-country tuition structures. Zambian students see the local ZMW equivalent. Toggle the currency switch to view all prices in USD or ZMW.</p></div>
+        <div class="faq-q">Why do you show two currencies? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>We charge the same fee to every student — no country-by-country tuition structures. To make the fee meaningful for both local and international students, every price is shown in Zambian Kwacha (ZMW) alongside its USD equivalent. The USD figure is a reference conversion at 1 USD ≈ 20 ZMW. Your final invoice will be issued in the currency most appropriate for your location.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What payment methods are accepted? <i class="fas fa-chevron-down"></i></div>
@@ -536,7 +571,7 @@ button{font-family:inherit;cursor:pointer}
       </div>
       <div class="faq-item">
         <div class="faq-q">Is the application fee separate from programme fees? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a"><p>Yes. There is a separate non-refundable application fee (ZK250 for Zambian and African applicants, US$25 for international applicants). This is paid when you submit your application, before programme fees.</p></div>
+        <div class="faq-a"><p>Yes. There is a separate non-refundable application fee — <strong>ZK250</strong> (≈ US$12.50) for Zambian and African applicants, or <strong>US$25</strong> (≈ K500) for international applicants. This is paid when you submit your application, before programme fees.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What happens if I need to defer or withdraw? <i class="fas fa-chevron-down"></i></div>
@@ -568,7 +603,7 @@ button{font-family:inherit;cursor:pointer}
         <p>Technology-enabled education for the global economy. Part of the Nolan University digital platform.</p>
         <div class="footer-social">
           <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.facebook.com/NolanInstituteof" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
@@ -624,13 +659,9 @@ button{font-family:inherit;cursor:pointer}
 
 <script>
 /* =========================================================
-   PRICING DATA
-   Standard subjects (4): Leadership, Business Management,
-   Entrepreneurship, Project Management
-   Specialist subjects (11): the rest
-   USD rate: 1 USD ≈ 20 ZMW
+   CONFIG — currency
    ========================================================= */
-const RATE = 20; // ZMW per USD
+const RATE = 20; // ZMW per 1 USD
 
 const STANDARD_SUBJECTS = ['Leadership','Business Management','Entrepreneurship','Project Management'];
 
@@ -638,7 +669,6 @@ function tierOf(subject){
   return STANDARD_SUBJECTS.includes(subject) ? 'standard' : 'specialist';
 }
 
-/* Standard pricing by format */
 const PRICE_STANDARD = {
   'Short Course': { zmw: 4500,  usd: 225 },
   'Certificate':  { zmw: 7500,  usd: 375 },
@@ -646,8 +676,6 @@ const PRICE_STANDARD = {
   'Bootcamp':     { zmw: 5500,  usd: 275 },
   'Advanced Programme': { zmw: 22500, usd: 1125 }
 };
-
-/* Specialist pricing by format */
 const PRICE_SPECIALIST = {
   'Short Course': { zmw: 5500,  usd: 275 },
   'Certificate':  { zmw: 8500,  usd: 425 },
@@ -655,138 +683,104 @@ const PRICE_SPECIALIST = {
   'Bootcamp':     { zmw: 6500,  usd: 325 },
   'Advanced Programme': { zmw: 25000, usd: 1250 }
 };
-
-/* AI Certificate override (K9,000 / US$450) */
 const PRICE_OVERRIDES = {
   'Artificial Intelligence|Certificate': { zmw: 9000, usd: 450 },
   'AI for Business|Certificate':         { zmw: 9000, usd: 450 }
 };
 
-/* Programme catalogue: subject → base name per format */
 const CATALOGUE = {
   'Leadership': {
-    'Short Course':'Leadership Essentials',
-    'Certificate':'Certificate in Leadership Development',
-    'Professional Programme':'Professional Programme in Leadership',
-    'Bootcamp':'Leadership Impact Bootcamp',
+    'Short Course':'Leadership Essentials','Certificate':'Certificate in Leadership Development',
+    'Professional Programme':'Professional Programme in Leadership','Bootcamp':'Leadership Impact Bootcamp',
     'Advanced Programme':'Executive Leadership Programme',
     weeks:{'Short Course':8,'Certificate':16,'Professional Programme':24,'Bootcamp':4,'Advanced Programme':28}
   },
   'Business Management': {
-    'Short Course':'Business Essentials',
-    'Certificate':'Certificate in Business Management',
-    'Professional Programme':'Professional Programme in Business Management',
-    'Bootcamp':'Business Management Bootcamp',
+    'Short Course':'Business Essentials','Certificate':'Certificate in Business Management',
+    'Professional Programme':'Professional Programme in Business Management','Bootcamp':'Business Management Bootcamp',
     'Advanced Programme':'Advanced Business Management',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'Entrepreneurship': {
-    'Short Course':'Entrepreneurship Essentials',
-    'Certificate':'Certificate in Entrepreneurship',
-    'Professional Programme':'Venture Creation Professional Programme',
-    'Bootcamp':'Startup Builder Bootcamp',
+    'Short Course':'Entrepreneurship Essentials','Certificate':'Certificate in Entrepreneurship',
+    'Professional Programme':'Venture Creation Professional Programme','Bootcamp':'Startup Builder Bootcamp',
     'Advanced Programme':'Advanced Entrepreneurship',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':6,'Advanced Programme':28}
   },
   'Project Management': {
-    'Short Course':'Project Essentials',
-    'Certificate':'Certificate in Project Management',
-    'Professional Programme':'Professional Programme in Project Management',
-    'Bootcamp':'Project Delivery Bootcamp',
+    'Short Course':'Project Essentials','Certificate':'Certificate in Project Management',
+    'Professional Programme':'Professional Programme in Project Management','Bootcamp':'Project Delivery Bootcamp',
     'Advanced Programme':'Advanced Project Management',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'Accounting & Finance': {
-    'Short Course':'Finance Fundamentals',
-    'Certificate':'Certificate in Accounting & Finance',
-    'Professional Programme':'Professional Programme in Accounting & Finance',
-    'Bootcamp':'Accounting & Finance Bootcamp',
+    'Short Course':'Finance Fundamentals','Certificate':'Certificate in Accounting & Finance',
+    'Professional Programme':'Professional Programme in Accounting & Finance','Bootcamp':'Accounting & Finance Bootcamp',
     'Advanced Programme':'Advanced Accounting & Reporting',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'Banking & Financial Services': {
-    'Short Course':'Banking Operations Essentials',
-    'Certificate':'Certificate in Banking & Financial Services',
-    'Professional Programme':'Professional Programme in Banking',
-    'Bootcamp':'Banking & Financial Services Bootcamp',
+    'Short Course':'Banking Operations Essentials','Certificate':'Certificate in Banking & Financial Services',
+    'Professional Programme':'Professional Programme in Banking','Bootcamp':'Banking & Financial Services Bootcamp',
     'Advanced Programme':'Advanced Banking & Financial Services',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'Investment & Capital Markets': {
-    'Short Course':'Capital Markets Essentials',
-    'Certificate':'Certificate in Investment Analysis',
-    'Professional Programme':'Investment & Capital Markets',
-    'Bootcamp':'Investment Analysis Bootcamp',
+    'Short Course':'Capital Markets Essentials','Certificate':'Certificate in Investment Analysis',
+    'Professional Programme':'Investment & Capital Markets','Bootcamp':'Investment Analysis Bootcamp',
     'Advanced Programme':'Advanced Capital Markets',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':30}
   },
   'Financial Modelling': {
-    'Short Course':'Financial Modelling Essentials',
-    'Certificate':'Certificate in Financial Modelling',
-    'Professional Programme':'Professional Programme in Financial Modelling',
-    'Bootcamp':'Financial Modelling Bootcamp',
+    'Short Course':'Financial Modelling Essentials','Certificate':'Certificate in Financial Modelling',
+    'Professional Programme':'Professional Programme in Financial Modelling','Bootcamp':'Financial Modelling Bootcamp',
     'Advanced Programme':'Advanced Financial Modelling',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':4,'Advanced Programme':30}
   },
   'Data Analytics': {
-    'Short Course':'Data Analytics Essentials',
-    'Certificate':'Certificate in Data Analytics',
-    'Professional Programme':'Professional Programme in Data Analytics',
-    'Bootcamp':'Data Analytics Bootcamp',
+    'Short Course':'Data Analytics Essentials','Certificate':'Certificate in Data Analytics',
+    'Professional Programme':'Professional Programme in Data Analytics','Bootcamp':'Data Analytics Bootcamp',
     'Advanced Programme':'Advanced Data Analytics',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':30}
   },
   'Artificial Intelligence': {
-    'Short Course':'AI Foundations',
-    'Certificate':'Certificate in Artificial Intelligence',
-    'Professional Programme':'AI Innovation Management',
-    'Bootcamp':'AI Applications Bootcamp',
+    'Short Course':'AI Foundations','Certificate':'Certificate in Artificial Intelligence',
+    'Professional Programme':'AI Innovation Management','Bootcamp':'AI Applications Bootcamp',
     'Advanced Programme':'Advanced AI Programme',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':32}
   },
   'Digital Transformation': {
-    'Short Course':'Digital Transformation Essentials',
-    'Certificate':'Certificate in Digital Transformation',
-    'Professional Programme':'Digital Transformation',
-    'Bootcamp':'Digital Transformation Bootcamp',
+    'Short Course':'Digital Transformation Essentials','Certificate':'Certificate in Digital Transformation',
+    'Professional Programme':'Digital Transformation','Bootcamp':'Digital Transformation Bootcamp',
     'Advanced Programme':'Advanced Digital Transformation',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':6,'Advanced Programme':28}
   },
   'Corporate Finance': {
-    'Short Course':'Corporate Finance Essentials',
-    'Certificate':'Certificate in Corporate Finance',
-    'Professional Programme':'Professional Programme in Corporate Finance',
-    'Bootcamp':'Corporate Finance Bootcamp',
+    'Short Course':'Corporate Finance Essentials','Certificate':'Certificate in Corporate Finance',
+    'Professional Programme':'Professional Programme in Corporate Finance','Bootcamp':'Corporate Finance Bootcamp',
     'Advanced Programme':'Advanced Corporate Finance',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'Business Intelligence': {
-    'Short Course':'Business Intelligence Essentials',
-    'Certificate':'Certificate in Business Intelligence',
-    'Professional Programme':'Professional Programme in Business Intelligence',
-    'Bootcamp':'BI & Dashboarding Bootcamp',
+    'Short Course':'Business Intelligence Essentials','Certificate':'Certificate in Business Intelligence',
+    'Professional Programme':'Professional Programme in Business Intelligence','Bootcamp':'BI & Dashboarding Bootcamp',
     'Advanced Programme':'Advanced Business Intelligence',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'AI for Business': {
-    'Short Course':'AI for Business Essentials',
-    'Certificate':'AI for Business',
-    'Professional Programme':'Professional Programme in AI for Business',
-    'Bootcamp':'AI for Business Bootcamp',
+    'Short Course':'AI for Business Essentials','Certificate':'AI for Business',
+    'Professional Programme':'Professional Programme in AI for Business','Bootcamp':'AI for Business Bootcamp',
     'Advanced Programme':'Advanced AI for Business',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   },
   'Risk Management': {
-    'Short Course':'Risk Management Essentials',
-    'Certificate':'Certificate in Risk Management',
-    'Professional Programme':'Professional Programme in Risk Management',
-    'Bootcamp':'Risk Management Bootcamp',
+    'Short Course':'Risk Management Essentials','Certificate':'Certificate in Risk Management',
+    'Professional Programme':'Professional Programme in Risk Management','Bootcamp':'Risk Management Bootcamp',
     'Advanced Programme':'Advanced Risk Management',
     weeks:{'Short Course':10,'Certificate':16,'Professional Programme':24,'Bootcamp':5,'Advanced Programme':28}
   }
 };
 
-/* Build the flat programme list */
 const PROGRAMMES = [];
 Object.entries(CATALOGUE).forEach(([subject, formats])=>{
   const tier = tierOf(subject);
@@ -805,13 +799,10 @@ Object.entries(CATALOGUE).forEach(([subject, formats])=>{
   });
 });
 
-/* Payment plan templates */
 function paymentPlan(p){
   if(p.format === 'Professional Programme'){
-    const total = p.zmw;
-    // Registration K1,500, then 3 instalments
     const reg = 1500;
-    const remaining = total - reg;
+    const remaining = p.zmw - reg;
     const p1 = Math.floor(remaining * 0.28);
     const p2 = Math.floor(remaining * 0.28);
     const p3 = remaining - p1 - p2;
@@ -823,9 +814,8 @@ function paymentPlan(p){
     ];
   }
   if(p.format === 'Advanced Programme'){
-    const total = p.zmw;
     const reg = 2500;
-    const remaining = total - reg;
+    const remaining = p.zmw - reg;
     const t1 = Math.floor(remaining / 3);
     const t2 = Math.floor(remaining / 3);
     const t3 = remaining - t1 - t2;
@@ -836,24 +826,21 @@ function paymentPlan(p){
       {label:'Term 3', zmw:t3, usd:Math.round(t3/RATE)}
     ];
   }
-  // Certificates — half upfront, half later (2 steps)
   if(p.format === 'Certificate'){
-    const total = p.zmw;
-    const first = Math.floor(total/2);
-    const second = total - first;
+    const first = Math.floor(p.zmw/2);
+    const second = p.zmw - first;
     return [
       {label:'Registration', zmw:first, usd:Math.round(first/RATE)},
       {label:'Completion Payment', zmw:second, usd:Math.round(second/RATE)}
     ];
   }
-  // Short Course / Bootcamp: payable in full only
   return null;
 }
 
 /* =========================================================
    STATE
    ========================================================= */
-const state = { currency:'ZMW', category:'all', format:'all' };
+const state = { primary:'ZMW', category:'all', format:'all' };
 
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -861,13 +848,14 @@ const $$ = s => document.querySelectorAll(s);
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function fmtZMW(n){return 'K'+n.toLocaleString()}
 function fmtUSD(n){return 'US$'+n.toLocaleString()}
-function priceOf(p){
-  return state.currency === 'ZMW' ? fmtZMW(p.zmw) : fmtUSD(p.usd);
-}
-function refOf(p){
-  return state.currency === 'ZMW'
-    ? `≈ ${fmtUSD(p.usd)} reference for international students`
-    : `≈ ${fmtZMW(p.zmw)} equivalent for Zambian students`;
+
+/* Returns an object with primary and secondary currency strings for a ZMW amount + USD amount */
+function dualPrices(zmw, usd){
+  if(state.primary === 'ZMW'){
+    return { primary: fmtZMW(zmw), secondary: '≈ ' + fmtUSD(usd), primaryCur:'ZMW', secondaryCur:'USD' };
+  } else {
+    return { primary: fmtUSD(usd), secondary: '≈ ' + fmtZMW(zmw), primaryCur:'USD', secondaryCur:'ZMW' };
+  }
 }
 
 let toastTimer;
@@ -903,6 +891,8 @@ function renderPricing(){
   grid.innerHTML = list.map(p=>{
     const plan = paymentPlan(p);
     const hasPlan = !!plan;
+    const dual = dualPrices(p.zmw, p.usd);
+    const otherCur = state.primary === 'ZMW' ? 'USD' : 'ZMW';
     return `
       <div class="price-card" data-id="${p.id}">
         <div class="price-card-top">
@@ -913,8 +903,11 @@ function renderPricing(){
         </div>
         <div class="price-card-body">
           <div class="pc-price-block">
-            <div class="pc-price">${priceOf(p)}</div>
-            <div class="pc-price-ref">${refOf(p)}</div>
+            <div class="pc-price-dual">
+              <div class="pc-main">${dual.primary}</div>
+              <div class="pc-secondary">${dual.secondary}</div>
+              <div class="pc-secondary-lbl">Fee shown in ${dual.primaryCur} · ${otherCur} equivalent</div>
+            </div>
             ${hasPlan ? `<div class="pc-price-note"><i class="fas fa-check-circle"></i> Payment plan available</div>` : ''}
           </div>
           <div class="pc-meta">
@@ -930,7 +923,6 @@ function renderPricing(){
     `;
   }).join('');
 
-  // Clicking the card opens the plan modal (if plan exists)
   grid.querySelectorAll('.price-card').forEach(card=>{
     card.addEventListener('click', e=>{
       if(e.target.closest('.pc-plan-btn') || e.target.closest('.btn')) return;
@@ -939,7 +931,6 @@ function renderPricing(){
       if(paymentPlan(p)) openPlanModal(id);
     });
   });
-  // View plan buttons
   grid.querySelectorAll('.pc-plan-btn').forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
@@ -949,7 +940,7 @@ function renderPricing(){
 }
 
 /* =========================================================
-   RENDER PLANS GRID (featured payment plans)
+   RENDER PLANS GRID
    ========================================================= */
 function renderPlans(){
   const grid = $('#plansGrid');
@@ -963,24 +954,31 @@ function renderPlans(){
   grid.innerHTML = showcase.map(p=>{
     const plan = paymentPlan(p);
     if(!plan) return '';
+    const dual = dualPrices(p.zmw, p.usd);
+    const otherCur = state.primary === 'ZMW' ? 'USD' : 'ZMW';
     return `
       <div class="plan-card">
         <span class="plan-badge">${esc(p.format)}</span>
         <h3>${esc(p.name)}</h3>
         <div class="plan-price-line">
-          ${priceOf(p)}<small>Total programme fee</small>
+          ${dual.primary}
+          <span class="usd-line">${dual.secondary}</span>
+          <small>Total programme fee · shown in ${dual.primaryCur}, ${otherCur} equivalent</small>
         </div>
         <div class="plan-breakdown">
           ${plan.map((s,i)=>`
             <div class="plan-step ${i===0?'first':''}">
-              <span class="ps-label">${esc(s.label)}</span>
-              <span class="ps-value">${state.currency==='ZMW'?fmtZMW(s.zmw):fmtUSD(s.usd)}</span>
+              <div class="ps-row">
+                <span class="ps-label">${esc(s.label)}</span>
+                <span class="ps-value">${state.primary==='ZMW'?fmtZMW(s.zmw):fmtUSD(s.usd)}</span>
+              </div>
+              <span class="ps-usd">${state.primary==='ZMW'?'≈ '+fmtUSD(s.usd):'≈ '+fmtZMW(s.zmw)}</span>
             </div>
           `).join('')}
         </div>
         <div class="plan-note">
           <i class="fas fa-info-circle"></i>
-          <span>Pay in instalments across the programme. Registration is due upfront.</span>
+          <span>Pay in instalments across the programme. Registration is due upfront. All amounts shown in both currencies.</span>
         </div>
       </div>
     `;
@@ -996,14 +994,16 @@ function openPlanModal(id){
   const plan = paymentPlan(p);
   if(!plan) return;
 
-  const total = state.currency==='ZMW' ? p.zmw : p.usd;
-  const totalLabel = state.currency==='ZMW' ? fmtZMW(p.zmw) : fmtUSD(p.usd);
-  const refLabel   = state.currency==='ZMW' ? `≈ ${fmtUSD(p.usd)}` : `≈ ${fmtZMW(p.zmw)}`;
+  const dual = dualPrices(p.zmw, p.usd);
+  const otherCur = state.primary === 'ZMW' ? 'USD' : 'ZMW';
 
   const stepsHTML = plan.map((s,i)=>`
     <div class="modal-step ${i===0?'first':''}">
       <span class="ms-label">${esc(s.label)}</span>
-      <span class="ms-value">${state.currency==='ZMW'?fmtZMW(s.zmw):fmtUSD(s.usd)}</span>
+      <span class="ms-values">
+        <span class="ms-value">${state.primary==='ZMW'?fmtZMW(s.zmw):fmtUSD(s.usd)}</span>
+        <span class="ms-usd">${state.primary==='ZMW'?'≈ '+fmtUSD(s.usd):'≈ '+fmtZMW(s.zmw)}</span>
+      </span>
     </div>
   `).join('');
 
@@ -1013,8 +1013,9 @@ function openPlanModal(id){
     <div class="modal-sub">${esc(p.subject)} · ${p.weeks} Weeks · Online</div>
 
     <div class="modal-price-line">
-      <div class="mp-big">${totalLabel}</div>
-      <div class="mp-ref">Total programme fee · <strong>${refLabel}</strong> reference</div>
+      <div class="mp-big">${dual.primary}</div>
+      <div class="mp-usd">${dual.secondary}</div>
+      <div class="mp-ref">Total programme fee · shown in ${dual.primaryCur}, ${otherCur} equivalent</div>
     </div>
 
     <div class="modal-breakdown">
@@ -1022,12 +1023,15 @@ function openPlanModal(id){
       <div class="modal-steps">${stepsHTML}</div>
       <div class="modal-total">
         <span class="mt-label">Total</span>
-        <span class="mt-value">${totalLabel}</span>
+        <span class="mt-values">
+          <span class="mt-value">${dual.primary}</span>
+          <span class="mt-usd">${dual.secondary}</span>
+        </span>
       </div>
     </div>
 
     <div class="modal-note">
-      <strong>How it works:</strong> Pay the registration amount upfront to secure your place, then the instalments across the programme. All amounts shown in ${state.currency}. Refer to your programme agreement for exact due dates.
+      <strong>How it works:</strong> Pay the registration amount upfront to secure your place, then the instalments across the programme. Amounts are shown in both ZMW and USD — your final invoice will be issued in the currency most appropriate for your location. Refer to your programme agreement for exact due dates.
     </div>
 
     <div class="modal-actions">
@@ -1045,19 +1049,19 @@ function closeModal(){
 }
 
 /* =========================================================
-   CURRENCY TOGGLE
+   CURRENCY TOGGLE (changes which currency is PRIMARY)
    ========================================================= */
 $$('#currencyToggle button').forEach(btn=>{
   btn.addEventListener('click',()=>{
     $$('#currencyToggle button').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    state.currency = btn.dataset.currency;
-    $('#rateNote').textContent = state.currency === 'ZMW'
-      ? 'Zambian Kwacha · USD reference pricing shown for international students'
-      : 'US Dollars · Zambian equivalent shown for local students';
+    state.primary = btn.dataset.currency;
+    $('#rateNote').textContent = state.primary === 'ZMW'
+      ? 'ZMW is the primary figure. USD equivalent is shown beside it. Toggle to change.'
+      : 'USD is the primary figure. ZMW equivalent is shown beside it. Toggle to change.';
     renderPricing();
     renderPlans();
-    showToast(`Showing prices in ${state.currency}`);
+    showToast(`Primary currency: ${state.primary}`);
   });
 });
 
@@ -1109,7 +1113,7 @@ $$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList
 
 window.addEventListener('scroll',()=>{
   $('#mainHeader').classList.toggle('scrolled',window.scrollY>30);
-});
+},{ passive:true });
 
 $$('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
@@ -1132,7 +1136,7 @@ $('#planModal').addEventListener('click',e=>{
    ========================================================= */
 renderPricing();
 renderPlans();
-console.log(`Nolan Institute Pricing — ${PROGRAMMES.length} programmes · ${STANDARD_SUBJECTS.length} standard · ${15-STANDARD_SUBJECTS.length} specialist`);
+console.log(`Nolan Institute Pricing — ${PROGRAMMES.length} programmes · dual currency · 1 USD = ${RATE} ZMW`);
 </script>
 </body>
 </html>
