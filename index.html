@@ -177,6 +177,7 @@ input,select,textarea{color-scheme:light only}
 .prog-price-row{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--gray-mid);margin-bottom:12px}
 .prog-price{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--navy)}
 .prog-price small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:var(--gray-dark);letter-spacing:.3px}
+.prog-price .usd{display:block;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;color:var(--gold-dark);letter-spacing:.3px;margin-top:2px}
 .prog-duration{font-size:10.5px;color:var(--gray-dark);font-weight:600;text-align:right;text-transform:uppercase;letter-spacing:.5px}
 .prog-duration strong{display:block;font-size:12.5px;color:var(--navy);font-weight:700;margin-bottom:2px}
 .prog-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:700;color:var(--gold-dark);padding-top:8px;letter-spacing:.3px}
@@ -197,8 +198,9 @@ input,select,textarea{color-scheme:light only}
 .format-desc{font-size:12.5px;color:var(--gray-dark);line-height:1.6;margin-bottom:16px;flex:1}
 .format-award{font-size:11px;color:var(--gray-dark);padding:10px 12px;background:var(--gray-light);border-radius:8px;margin-bottom:12px;line-height:1.5}
 .format-award strong{color:var(--navy);display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
-.format-price{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--navy);margin-bottom:14px}
+.format-price{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.2}
 .format-price small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:var(--gray-dark);text-transform:uppercase;letter-spacing:1px}
+.format-price .usd{display:block;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;color:var(--gold-dark);letter-spacing:.3px;margin-top:3px;text-transform:none}
 .format-count{font-size:11px;color:var(--gray-dark);text-align:center;margin-bottom:10px;font-weight:600}
 
 .why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
@@ -291,7 +293,6 @@ input,select,textarea{color-scheme:light only}
 .footer-bottom a{color:#64748b}
 .footer-bottom a:hover{color:var(--gold)}
 
-/* ============ MODALS (base) ============ */
 .modal-overlay{position:fixed;inset:0;background:rgba(5,18,42,.85);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .modal-overlay.show{display:flex;animation:fadeIn .2s ease}
 .modal-card{background:#ffffff !important;border-radius:20px;max-width:720px;width:100%;padding:36px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl);color:var(--gray-darker);color-scheme:light only}
@@ -306,8 +307,9 @@ input,select,textarea{color-scheme:light only}
 .pm-subject{font-size:12.5px;color:var(--gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:22px}
 .pm-meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:14px;padding:18px 0;border-top:1px solid var(--gray-mid);border-bottom:1px solid var(--gray-mid);margin-bottom:22px}
 .pm-meta-item .pm-label{font-size:10px;color:var(--gray-dark);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
-.pm-meta-item .pm-value{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--navy)}
+.pm-meta-item .pm-value{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--navy);line-height:1.15}
 .pm-meta-item .pm-value.small{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600}
+.pm-meta-item .pm-value .usd{display:block;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--gold-dark);letter-spacing:.3px;margin-top:3px}
 .pm-desc{font-size:14px;color:var(--gray-darker);line-height:1.7;margin-bottom:24px}
 .pm-section{margin-bottom:22px}
 .pm-section h4{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--gold-dark);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px}
@@ -340,209 +342,59 @@ input,select,textarea{color-scheme:light only}
 .search-tag{background:#fff;border:1px solid var(--gray-mid);padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;color:var(--navy);cursor:pointer;transition:var(--transition)}
 .search-tag:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
 
-/* ====================================================
-   STUDENT PORTAL — FORCED WHITE, HIGH CONTRAST
-   ==================================================== */
 .portal-modal, .portal-modal *{color-scheme:light only}
-.portal-view{
-  display:none;
-  padding:40px 34px 32px;
-  background:#ffffff !important;
-  color:#333333 !important;
-  border-radius:20px;
-}
+.portal-view{display:none;padding:40px 34px 32px;background:#ffffff !important;color:#333333 !important;border-radius:20px}
 .portal-view.active{display:block;animation:fadeIn .28s ease}
-
 .portal-header{text-align:center;margin-bottom:24px}
-.portal-icon{
-  width:64px;height:64px;border-radius:50%;
-  background:#FBF5E1 !important;
-  color:#A07F1F !important;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:26px;margin-bottom:14px;
-  border:1px solid rgba(197,160,40,.35);
-}
-.portal-view h2{
-  font-size:24px;margin-bottom:6px;text-align:center;
-  color:#0A1C3A !important;
-  font-family:'Playfair Display',serif;font-weight:700;
-}
-.portal-view .portal-sub{
-  font-size:13.5px;color:#666666 !important;
-  text-align:center;margin-bottom:22px;line-height:1.6;
-}
-
+.portal-icon{width:64px;height:64px;border-radius:50%;background:#FBF5E1 !important;color:#A07F1F !important;display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px;border:1px solid rgba(197,160,40,.35)}
+.portal-view h2{font-size:24px;margin-bottom:6px;text-align:center;color:#0A1C3A !important;font-family:'Playfair Display',serif;font-weight:700}
+.portal-view .portal-sub{font-size:13.5px;color:#666666 !important;text-align:center;margin-bottom:22px;line-height:1.6}
 .portal-field{margin-bottom:16px;text-align:left}
-.portal-field label{
-  display:block;font-size:12px;font-weight:700;
-  color:#0A1C3A !important;
-  text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;
-}
-.portal-field input{
-  width:100%;padding:12px 14px;
-  border:2px solid #E0E0E0 !important;
-  border-radius:8px;font-size:14px;font-family:inherit;
-  color:#0A1C3A !important;
-  background:#FFFFFF !important;
-  transition:var(--transition);
-  -webkit-text-fill-color:#0A1C3A !important;
-  color-scheme:light only;
-}
+.portal-field label{display:block;font-size:12px;font-weight:700;color:#0A1C3A !important;text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
+.portal-field input{width:100%;padding:12px 14px;border:2px solid #E0E0E0 !important;border-radius:8px;font-size:14px;font-family:inherit;color:#0A1C3A !important;background:#FFFFFF !important;transition:var(--transition);-webkit-text-fill-color:#0A1C3A !important;color-scheme:light only}
 .portal-field input::placeholder{color:#94a3b8 !important;opacity:1}
-.portal-field input:focus{
-  outline:none;border-color:#C5A028 !important;
-  box-shadow:0 0 0 3px rgba(197,160,40,.12);
-  background:#FFFFFF !important;
-}
+.portal-field input:focus{outline:none;border-color:#C5A028 !important;box-shadow:0 0 0 3px rgba(197,160,40,.12);background:#FFFFFF !important}
 .portal-field input.err{border-color:#DC3545 !important;background:#FFF5F5 !important}
-
 .portal-pw-wrap{position:relative}
 .portal-pw-wrap input{padding-right:46px}
-.portal-pw-toggle{
-  position:absolute;right:8px;top:50%;transform:translateY(-50%);
-  width:34px;height:34px;border-radius:8px;border:none;
-  background:transparent !important;
-  color:#666666 !important;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;
-}
+.portal-pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:8px;border:none;background:transparent !important;color:#666666 !important;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
 .portal-pw-toggle:hover{background:#F5F5F5 !important;color:#0A1C3A !important}
-
 .portal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
-.portal-row label{
-  font-size:12.5px;color:#333333 !important;
-  display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:500;
-}
-.portal-row input[type="checkbox"]{
-  width:16px;height:16px;
-  accent-color:#A07F1F !important;
-  cursor:pointer;
-}
-.portal-row a{
-  font-size:12.5px;color:#A07F1F !important;
-  font-weight:600;cursor:pointer;
-}
+.portal-row label{font-size:12.5px;color:#333333 !important;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:500}
+.portal-row input[type="checkbox"]{width:16px;height:16px;accent-color:#A07F1F !important;cursor:pointer}
+.portal-row a{font-size:12.5px;color:#A07F1F !important;font-weight:600;cursor:pointer}
 .portal-row a:hover{color:#C5A028 !important;text-decoration:underline}
-
-.portal-error{
-  background:#FDECEC !important;
-  color:#B5202E !important;
-  font-size:12.5px;padding:10px 14px;border-radius:8px;
-  margin-bottom:16px;border-left:3px solid #DC3545;
-  display:none;line-height:1.5;font-weight:500;
-}
+.portal-error{background:#FDECEC !important;color:#B5202E !important;font-size:12.5px;padding:10px 14px;border-radius:8px;margin-bottom:16px;border-left:3px solid #DC3545;display:none;line-height:1.5;font-weight:500}
 .portal-error.show{display:block;animation:fadeIn .25s ease}
-
-.portal-success{
-  background:#EAF7EE !important;
-  color:#1A7A3F !important;
-  font-size:12.5px;padding:10px 14px;border-radius:8px;
-  margin-bottom:16px;border-left:3px solid #28A745;
-  display:none;line-height:1.5;font-weight:500;
-}
+.portal-success{background:#EAF7EE !important;color:#1A7A3F !important;font-size:12.5px;padding:10px 14px;border-radius:8px;margin-bottom:16px;border-left:3px solid #28A745;display:none;line-height:1.5;font-weight:500}
 .portal-success.show{display:block;animation:fadeIn .25s ease}
-
-.portal-submit{
-  background:#0A1C3A !important;
-  color:#FFFFFF !important;
-  border:2px solid #0A1C3A !important;
-  width:100%;padding:13px 24px;border-radius:8px;
-  font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;
-  transition:var(--transition);
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-}
-.portal-submit:hover{
-  background:#1A2D4D !important;border-color:#1A2D4D !important;
-  transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,28,58,.25);
-}
+.portal-submit{background:#0A1C3A !important;color:#FFFFFF !important;border:2px solid #0A1C3A !important;width:100%;padding:13px 24px;border-radius:8px;font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.portal-submit:hover{background:#1A2D4D !important;border-color:#1A2D4D !important;transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,28,58,.25)}
 .portal-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;box-shadow:none}
-
-.portal-footer{
-  text-align:center;margin-top:22px;padding-top:20px;
-  border-top:1px solid #E0E0E0;
-  background:#FFFFFF !important;
-}
+.portal-footer{text-align:center;margin-top:22px;padding-top:20px;border-top:1px solid #E0E0E0;background:#FFFFFF !important}
 .portal-footer p{font-size:13px;color:#666666 !important}
 .portal-footer a{color:#A07F1F !important;font-weight:700;cursor:pointer}
 .portal-footer a:hover{color:#C5A028 !important;text-decoration:underline}
-
-.portal-back{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:13px;color:#666666 !important;
-  cursor:pointer;margin-top:6px;
-  background:none !important;border:none;font-family:inherit;font-weight:600;
-  padding:8px 12px;border-radius:8px;
-}
+.portal-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#666666 !important;cursor:pointer;margin-top:6px;background:none !important;border:none;font-family:inherit;font-weight:600;padding:8px 12px;border-radius:8px}
 .portal-back:hover{color:#A07F1F !important;background:#F5F5F5 !important}
-
-.portal-hint{
-  background:#FBF5E1 !important;
-  border:1px dashed rgba(197,160,40,.55) !important;
-  color:#0A1C3A !important;
-  font-size:12px;padding:10px 14px;border-radius:8px;
-  margin-bottom:18px;line-height:1.55;text-align:left;
-}
+.portal-hint{background:#FBF5E1 !important;border:1px dashed rgba(197,160,40,.55) !important;color:#0A1C3A !important;font-size:12px;padding:10px 14px;border-radius:8px;margin-bottom:18px;line-height:1.55;text-align:left}
 .portal-hint strong{color:#A07F1F !important}
-.portal-hint code{
-  background:rgba(197,160,40,.18) !important;
-  padding:1px 6px;border-radius:4px;
-  font-family:monospace;font-size:12px;color:#0A1C3A !important;
-}
-
-/* Dashboard view */
-.portal-dashboard{
-  padding:34px 30px;
-  background:#FFFFFF !important;
-}
+.portal-hint code{background:rgba(197,160,40,.18) !important;padding:1px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:#0A1C3A !important}
+.portal-dashboard{padding:34px 30px;background:#FFFFFF !important}
 .portal-dashboard-head{text-align:center;margin-bottom:22px}
-.portal-dashboard-head .portal-icon{
-  background:#EAF7EE !important;
-  color:#1A7A3F !important;
-  border:1px solid rgba(40,167,69,.35);
-}
+.portal-dashboard-head .portal-icon{background:#EAF7EE !important;color:#1A7A3F !important;border:1px solid rgba(40,167,69,.35)}
 .portal-dashboard-head h2{font-size:22px;margin-bottom:6px;color:#0A1C3A !important}
 .portal-dashboard-head .portal-sub{font-size:13px;color:#666666 !important;margin:0}
-
-.portal-user-info{
-  background:#FBF5E1 !important;
-  border-left:3px solid #C5A028;
-  padding:12px 16px;border-radius:8px;margin-bottom:20px;
-  font-size:12.5px;color:#0A1C3A !important;
-  text-align:left;line-height:1.6;
-}
+.portal-user-info{background:#FBF5E1 !important;border-left:3px solid #C5A028;padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:12.5px;color:#0A1C3A !important;text-align:left;line-height:1.6}
 .portal-user-info strong{color:#A07F1F !important}
-
 .portal-dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
-.portal-dash-card{
-  background:#FAFAF8 !important;
-  border:1px solid #E0E0E0 !important;
-  border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;
-  transition:var(--transition);font-family:inherit;color:#0A1C3A !important;
-}
-.portal-dash-card:hover{
-  border-color:#C5A028 !important;
-  background:#FFFFFF !important;
-  transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.06);
-}
+.portal-dash-card{background:#FAFAF8 !important;border:1px solid #E0E0E0 !important;border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;transition:var(--transition);font-family:inherit;color:#0A1C3A !important}
+.portal-dash-card:hover{border-color:#C5A028 !important;background:#FFFFFF !important;transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
 .portal-dash-card i{font-size:20px;color:#A07F1F !important;margin-bottom:10px;display:block}
-.portal-dash-card h4{
-  font-family:'Inter',sans-serif;font-size:13px;font-weight:800;
-  color:#0A1C3A !important;margin-bottom:4px;
-}
+.portal-dash-card h4{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#0A1C3A !important;margin-bottom:4px}
 .portal-dash-card p{font-size:11.5px;color:#666666 !important;line-height:1.5}
-
-.portal-signout{
-  background:transparent !important;
-  border:2px solid #E0E0E0 !important;
-  color:#333333 !important;
-  width:100%;padding:12px 24px;border-radius:8px;
-  font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer;
-  transition:var(--transition);
-}
-.portal-signout:hover{
-  border-color:#0A1C3A !important;
-  color:#0A1C3A !important;
-  background:#F5F5F5 !important;
-}
+.portal-signout{background:transparent !important;border:2px solid #E0E0E0 !important;color:#333333 !important;width:100%;padding:12px 24px;border-radius:8px;font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer;transition:var(--transition)}
+.portal-signout:hover{border-color:#0A1C3A !important;color:#0A1C3A !important;background:#F5F5F5 !important}
 
 .toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);width:max-content;box-shadow:var(--shadow-lg);pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}
@@ -643,7 +495,6 @@ input,select,textarea{color-scheme:light only}
 @media(hover:none){
   .prog-card:hover,.subject-card:hover,.path-card:hover,.format-card:hover,.why-card:hover,.leave-card:hover,.career-card:hover,.step-card:hover{transform:none}
 }
-/* Ensure portal inputs never get auto-dark-inverted */
 @media (prefers-color-scheme: dark){
   .portal-modal,.portal-view,.portal-view *,.modal-card,.modal-card *{color-scheme:light only}
   .portal-view,.portal-modal,.modal-card{background:#FFFFFF !important}
@@ -781,11 +632,11 @@ input,select,textarea{color-scheme:light only}
   <div class="container">
     <div class="section-head"><span class="section-tag">Choose How You Want to Learn</span><h2>Five Learning Formats</h2><p>Click any format to instantly show every programme offered in that format.</p></div>
     <div class="formats-grid">
-      <div class="format-card"><h3>Short Courses</h3><div class="format-duration">8–12 Weeks</div><p class="format-desc">Learn a focused practical skill you can apply right away.</p><div class="format-award"><strong>Certificate</strong>Certificate of Completion</div><div class="format-price">From K4,500<small>Investment</small></div><div class="format-count" id="count-short"></div><button type="button" class="btn btn-outline btn-block" data-format="Short Course">Explore Short Courses <i class="fas fa-arrow-right"></i></button></div>
-      <div class="format-card"><h3>Certificates</h3><div class="format-duration">16 Weeks</div><p class="format-desc">Build structured knowledge and demonstrate your professional development.</p><div class="format-award"><strong>Award</strong>Professional Certificate</div><div class="format-price">From K8,500<small>Investment</small></div><div class="format-count" id="count-cert"></div><button type="button" class="btn btn-outline btn-block" data-format="Certificate">Explore Certificates <i class="fas fa-arrow-right"></i></button></div>
-      <div class="format-card"><h3>Professional Programmes</h3><div class="format-duration">24 Weeks</div><p class="format-desc">Develop deeper professional capability and substantial expertise.</p><div class="format-award"><strong>Award</strong>Professional Programme Certificate</div><div class="format-price">From K12,500<small>Investment</small></div><div class="format-count" id="count-prof"></div><button type="button" class="btn btn-outline btn-block" data-format="Professional Programme">Explore Professional Programmes <i class="fas fa-arrow-right"></i></button></div>
-      <div class="format-card"><h3>Bootcamps</h3><div class="format-duration">2–6 Weeks</div><p class="format-desc">Intensive. Practical. Application-focused. Learn by doing.</p><div class="format-award"><strong>Award</strong>Bootcamp Certificate of Completion</div><div class="format-price">From K5,500<small>Investment</small></div><div class="format-count" id="count-boot"></div><button type="button" class="btn btn-outline btn-block" data-format="Bootcamp">Explore Bootcamps <i class="fas fa-arrow-right"></i></button></div>
-      <div class="format-card"><h3>Advanced Programmes</h3><div class="format-duration">24–36 Weeks</div><p class="format-desc">Develop higher-level professional expertise and leadership capability.</p><div class="format-award"><strong>Award</strong>Advanced Professional Certificate</div><div class="format-price">From K22,500<small>Investment</small></div><div class="format-count" id="count-adv"></div><button type="button" class="btn btn-outline btn-block" data-format="Advanced Programme">Explore Advanced Programmes <i class="fas fa-arrow-right"></i></button></div>
+      <div class="format-card"><h3>Short Courses</h3><div class="format-duration">8–12 Weeks</div><p class="format-desc">Learn a focused practical skill you can apply right away.</p><div class="format-award"><strong>Certificate</strong>Certificate of Completion</div><div class="format-price">From K4,500<small>Investment</small><span class="usd">≈ US$225</span></div><div class="format-count" id="count-short"></div><button type="button" class="btn btn-outline btn-block" data-format="Short Course">Explore Short Courses <i class="fas fa-arrow-right"></i></button></div>
+      <div class="format-card"><h3>Certificates</h3><div class="format-duration">16 Weeks</div><p class="format-desc">Build structured knowledge and demonstrate your professional development.</p><div class="format-award"><strong>Award</strong>Professional Certificate</div><div class="format-price">From K8,500<small>Investment</small><span class="usd">≈ US$425</span></div><div class="format-count" id="count-cert"></div><button type="button" class="btn btn-outline btn-block" data-format="Certificate">Explore Certificates <i class="fas fa-arrow-right"></i></button></div>
+      <div class="format-card"><h3>Professional Programmes</h3><div class="format-duration">24 Weeks</div><p class="format-desc">Develop deeper professional capability and substantial expertise.</p><div class="format-award"><strong>Award</strong>Professional Programme Certificate</div><div class="format-price">From K12,500<small>Investment</small><span class="usd">≈ US$625</span></div><div class="format-count" id="count-prof"></div><button type="button" class="btn btn-outline btn-block" data-format="Professional Programme">Explore Professional Programmes <i class="fas fa-arrow-right"></i></button></div>
+      <div class="format-card"><h3>Bootcamps</h3><div class="format-duration">2–6 Weeks</div><p class="format-desc">Intensive. Practical. Application-focused. Learn by doing.</p><div class="format-award"><strong>Award</strong>Bootcamp Certificate of Completion</div><div class="format-price">From K5,500<small>Investment</small><span class="usd">≈ US$275</span></div><div class="format-count" id="count-boot"></div><button type="button" class="btn btn-outline btn-block" data-format="Bootcamp">Explore Bootcamps <i class="fas fa-arrow-right"></i></button></div>
+      <div class="format-card"><h3>Advanced Programmes</h3><div class="format-duration">24–36 Weeks</div><p class="format-desc">Develop higher-level professional expertise and leadership capability.</p><div class="format-award"><strong>Award</strong>Advanced Professional Certificate</div><div class="format-price">From K22,500<small>Investment</small><span class="usd">≈ US$1,125</span></div><div class="format-count" id="count-adv"></div><button type="button" class="btn btn-outline btn-block" data-format="Advanced Programme">Explore Advanced Programmes <i class="fas fa-arrow-right"></i></button></div>
     </div>
   </div>
 </section>
@@ -872,17 +723,18 @@ input,select,textarea{color-scheme:light only}
     <div class="payment-inner">
       <div class="payment-options">
         <div class="pay-option"><h4>Pay in Full</h4><p>Pay the full programme fee at once — simple, immediate and confirmed.</p><div class="pay-example">Full fee upfront</div></div>
-        <div class="pay-option"><h4>Payment Plan</h4><p>For longer programmes, choose an approved payment plan and pay in monthly instalments.</p><div class="pay-example">From K3,500 / month</div></div>
+        <div class="pay-option"><h4>Payment Plan</h4><p>For longer programmes, choose an approved payment plan and pay in monthly instalments.</p><div class="pay-example">From K3,500 / month · ≈ US$175</div></div>
       </div>
       <div style="background:var(--gold-10);border-radius:12px;padding:18px 20px;margin-bottom:22px;border-left:4px solid var(--gold)">
-        <p style="margin:0;font-size:13.5px;color:var(--navy);line-height:1.7"><strong>Example:</strong> Professional Programme — K12,500 · From <strong>K3,500/month</strong> with a payment plan.</p>
+        <p style="margin:0 0 6px;font-size:13.5px;color:var(--navy);line-height:1.7"><strong>Example:</strong> Professional Programme — <strong>K12,500</strong> · From <strong>K3,500/month</strong> with a payment plan.</p>
+        <p style="margin:0;font-size:13px;color:var(--gray-dark);line-height:1.7"><em>International equivalent:</em> ≈ <strong>US$625</strong> · From <strong>US$175/month</strong> with a payment plan.</p>
       </div>
       <div class="pay-methods">
-        <span class="pay-method"><i class="fas fa-mobile-alt"></i> Mobile Money</span>
-        <span class="pay-method"><i class="far fa-credit-card"></i> Card</span>
+        <span class="pay-method"><i class="fas fa-mobile-alt"></i> Mobile Money (ZMW)</span>
+        <span class="pay-method"><i class="far fa-credit-card"></i> Card (ZMW / USD)</span>
         <span class="pay-method"><i class="fas fa-university"></i> Bank Transfer</span>
         <span class="pay-method"><i class="fas fa-money-bill-wave"></i> Local Payment</span>
-        <span class="pay-method"><i class="fas fa-globe"></i> International</span>
+        <span class="pay-method"><i class="fas fa-globe"></i> International Payments</span>
       </div>
     </div>
   </div>
@@ -909,10 +761,10 @@ input,select,textarea{color-scheme:light only}
         <div class="brand-tag">Learn. Innovate. Lead.</div>
         <p>Technology-enabled education for the global economy. Part of the Nolan University digital platform.</p>
         <div class="footer-social">
-  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-  <a href="https://www.facebook.com/NolanInstituteof" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/NolanInstituteof" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
       <div class="footer-col"><h4>Learn</h4><ul><li><a href="#subjects" data-scroll>All Subjects</a></li><li><a href="#catalogue" data-scroll>Catalogue</a></li><li><a href="#formats" data-scroll>Learning Formats</a></li><li><a href="#finder" data-scroll>Programme Finder</a></li></ul></div>
@@ -1064,21 +916,38 @@ input,select,textarea{color-scheme:light only}
 const APPLY_URL = 'admissions-apply.html';
 
 /* =========================================================
-   HERO SLIDES — 12 slides
+   CURRENCY CONVERSION
+   Reference rate: 1 USD ≈ 20 ZMW. Adjust here if the rate changes.
+   ========================================================= */
+const USD_RATE = 20; // ZMW per 1 USD
+function toUSD(zmw){
+  const raw = zmw / USD_RATE;
+  // Round neatly: if >= 100, round to nearest 5; if >= 1000, round to nearest 25
+  if(raw >= 1000) return Math.round(raw / 25) * 25;
+  if(raw >= 100)  return Math.round(raw / 5) * 5;
+  return Math.round(raw);
+}
+function fmtZMW(n){ return 'K' + n.toLocaleString(); }
+function fmtUSD(zmw){ return 'US$' + toUSD(zmw).toLocaleString(); }
+function priceBoth(zmw){ return fmtZMW(zmw); } // main display
+function priceBothSmall(zmw){ return '≈ ' + fmtUSD(zmw); } // secondary display
+
+/* =========================================================
+   HERO SLIDES
    ========================================================= */
 const HERO_SLIDES = [
-  { src: '85fd7197-bc0f-41ec-b22a-930c3b3f7294.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500' },
-  { src: '7de14444-a94c-4c84-8841-c59b21f9163f.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · From K8,500' },
-  { src: '6e6ce8d3-0632-41cf-885b-70af0e9cb711.png', format: 'Professional Programme',  badge: 'Professional Programmes',  sub: '24 Weeks · From K12,500' },
-  { src: '6915e9bd-3d97-4cf4-bc79-4a935457c72d.png', format: 'Bootcamp',                badge: 'Bootcamps',                sub: '2–6 Weeks · From K5,500' },
-  { src: '5acffc06-1d4d-40d0-a252-1764cf1f041a.png', format: 'Advanced Programme',      badge: 'Advanced Programmes',      sub: '24–36 Weeks · From K22,500' },
-  { src: '58c7bf5e-6e17-4a0a-a133-fa7286998c44.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500' },
-  { src: '563e800c-af71-48b6-8c72-1917aea805c0.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · From K8,500' },
-  { src: '3025792b-67f1-4946-93ee-cf9a2faf8639.png', format: 'Professional Programme',  badge: 'Professional Programmes',  sub: '24 Weeks · From K12,500' },
-  { src: '2bda3548-2e9a-4c5a-9d25-fdcc1ab8f11f.png', format: 'Bootcamp',                badge: 'Bootcamps',                sub: '2–6 Weeks · From K5,500' },
-  { src: '1ae9217d-9217-45ed-a4a8-bf53dbe66c2f.png', format: 'Advanced Programme',      badge: 'Advanced Programmes',      sub: '24–36 Weeks · From K22,500' },
-  { src: '0f5f319b-8ba2-4398-b776-8707752875e4.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500' },
-  { src: '075d5e9a-6b4e-4618-af99-b2a4ef0d7165.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · From K8,500' }
+  { src: '85fd7197-bc0f-41ec-b22a-930c3b3f7294.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500 (≈ US$225)' },
+  { src: '7de14444-a94c-4c84-8841-c59b21f9163f.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · From K8,500 (≈ US$425)' },
+  { src: '6e6ce8d3-0632-41cf-885b-70af0e9cb711.png', format: 'Professional Programme',  badge: 'Professional Programmes',  sub: '24 Weeks · From K12,500 (≈ US$625)' },
+  { src: '6915e9bd-3d97-4cf4-bc79-4a935457c72d.png', format: 'Bootcamp',                badge: 'Bootcamps',                sub: '2–6 Weeks · From K5,500 (≈ US$275)' },
+  { src: '5acffc06-1d4d-40d0-a252-1764cf1f041a.png', format: 'Advanced Programme',      badge: 'Advanced Programmes',      sub: '24–36 Weeks · From K22,500 (≈ US$1,125)' },
+  { src: '58c7bf5e-6e17-4a0a-a133-fa7286998c44.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500 (≈ US$225)' },
+  { src: '563e800c-af71-48b6-8c72-1917aea805c0.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · From K8,500 (≈ US$425)' },
+  { src: '3025792b-67f1-4946-93ee-cf9a2faf8639.png', format: 'Professional Programme',  badge: 'Professional Programmes',  sub: '24 Weeks · From K12,500 (≈ US$625)' },
+  { src: '2bda3548-2e9a-4c5a-9d25-fdcc1ab8f11f.png', format: 'Bootcamp',                badge: 'Bootcamps',                sub: '2–6 Weeks · From K5,500 (≈ US$275)' },
+  { src: '1ae9217d-9217-45ed-a4a8-bf53dbe66c2f.png', format: 'Advanced Programme',      badge: 'Advanced Programmes',      sub: '24–36 Weeks · From K22,500 (≈ US$1,125)' },
+  { src: '0f5f319b-8ba2-4398-b776-8707752875e4.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · From K4,500 (≈ US$225)' },
+  { src: '075d5e9a-6b4e-4618-af99-b2a4ef0d7165.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · From K8,500 (≈ US$425)' }
 ];
 const HERO_ROTATE_MS = 5500;
 
@@ -1092,7 +961,6 @@ const PORTAL_ACCOUNTS_KEY = 'nolanPortalAccounts';
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function fmtPrice(n){return 'K'+n.toLocaleString()}
 function categoryForSubject(subject){
   const map = {'Accounting & Finance':'Finance & Investment','Banking & Financial Services':'Finance & Investment','Investment & Capital Markets':'Finance & Investment','Financial Modelling':'Finance & Investment','Corporate Finance':'Finance & Investment','Risk Management':'Finance & Investment','Business Intelligence':'Technology & Digital Skills','Data Analytics':'Technology & Digital Skills','Artificial Intelligence':'Technology & Digital Skills','Digital Transformation':'Technology & Digital Skills','AI for Business':'Technology & Digital Skills','Leadership':'Executive Education','Business Management':'Professional Education','Project Management':'Professional Education','Entrepreneurship':'Professional Education'};
   return map[subject] || 'Professional Education';
@@ -1272,7 +1140,24 @@ function updateFormatCounts(){
 function getFilteredProgrammes(){ let list = PROGRAMMES.slice(); if(state.subject) list = list.filter(p=>p.subject===state.subject); if(state.format) list = list.filter(p=>p.format===state.format); return list; }
 function getFeatured(){ return PROGRAMMES.filter(p=>p.featured); }
 function progCardHTML(p){
-  return `<button type="button" class="prog-card" data-id="${p.id}" aria-label="View ${esc(p.name)}"><div class="prog-top"><span class="prog-badge">${esc(p.format)}</span><h3>${esc(p.name)}</h3><div class="prog-meta"><span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span><span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span></div></div><div class="prog-body"><p>${esc(p.description)}</p><div class="prog-price-row"><div class="prog-price">${fmtPrice(p.price)}<small>Payment plans available</small></div><div class="prog-duration"><strong>${p.weeks} Wks</strong>Online</div></div><div class="prog-cta"><span>View full details</span><i class="fas fa-arrow-right"></i></div></div></button>`;
+  return `<button type="button" class="prog-card" data-id="${p.id}" aria-label="View ${esc(p.name)}">
+    <div class="prog-top">
+      <span class="prog-badge">${esc(p.format)}</span>
+      <h3>${esc(p.name)}</h3>
+      <div class="prog-meta">
+        <span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span>
+        <span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span>
+      </div>
+    </div>
+    <div class="prog-body">
+      <p>${esc(p.description)}</p>
+      <div class="prog-price-row">
+        <div class="prog-price">${fmtZMW(p.price)}<small>Payment plans available</small><span class="usd">≈ ${fmtUSD(p.price)}</span></div>
+        <div class="prog-duration"><strong>${p.weeks} Wks</strong>Online</div>
+      </div>
+      <div class="prog-cta"><span>View full details</span><i class="fas fa-arrow-right"></i></div>
+    </div>
+  </button>`;
 }
 function renderCatalogue(){
   const grid = $('#catalogueGrid'), bar = $('#catalogueBar'), tag = $('#catalogueTag'), title = $('#catalogueTitle'), sub = $('#catalogueSub'), label = $('#catalogueBarLabel');
@@ -1312,7 +1197,24 @@ function openProgramme(id){
   const p = PROGRAMMES.find(x=>x.id===id); if(!p) return;
   state.currentProgrammeId = id;
   const award = p.format==='Short Course'?'Certificate of Completion':p.format==='Certificate'?'Professional Certificate':p.format==='Professional Programme'?'Professional Programme Certificate':p.format==='Bootcamp'?'Bootcamp Certificate of Completion':'Advanced Professional Certificate';
-  $('#programmeContent').innerHTML = `<span class="pm-badge">${esc(p.format)}</span><h2 class="pm-title">${esc(p.name)}</h2><div class="pm-subject">${esc(p.subject)}</div><div class="pm-meta-row"><div class="pm-meta-item"><div class="pm-label">Duration</div><div class="pm-value">${p.weeks} <span style="font-size:12px;font-weight:600">Weeks</span></div></div><div class="pm-meta-item"><div class="pm-label">Delivery</div><div class="pm-value small">Online</div></div><div class="pm-meta-item"><div class="pm-label">Format</div><div class="pm-value small">${esc(p.format)}</div></div><div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtPrice(p.price)}</div></div></div><p class="pm-desc">${esc(p.description)}</p><div class="pm-section"><h4>What You'll Learn</h4><ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div><div class="pm-section"><h4>Who Is It For</h4><p class="pm-audience">${esc(p.audience)}</p></div><div class="pm-award"><i class="fas fa-certificate"></i><div><div class="label">On Successful Completion</div><div class="value">${award}</div></div></div><div class="pm-actions"><button type="button" class="btn btn-primary btn-lg" onclick="applyFromModal()">Apply Now <i class="fas fa-arrow-right"></i></button><button type="button" class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button></div>`;
+  $('#programmeContent').innerHTML = `
+    <span class="pm-badge">${esc(p.format)}</span>
+    <h2 class="pm-title">${esc(p.name)}</h2>
+    <div class="pm-subject">${esc(p.subject)}</div>
+    <div class="pm-meta-row">
+      <div class="pm-meta-item"><div class="pm-label">Duration</div><div class="pm-value">${p.weeks} <span style="font-size:12px;font-weight:600">Weeks</span></div></div>
+      <div class="pm-meta-item"><div class="pm-label">Delivery</div><div class="pm-value small">Online</div></div>
+      <div class="pm-meta-item"><div class="pm-label">Format</div><div class="pm-value small">${esc(p.format)}</div></div>
+      <div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtZMW(p.price)}<span class="usd">≈ ${fmtUSD(p.price)}</span></div></div>
+    </div>
+    <p class="pm-desc">${esc(p.description)}</p>
+    <div class="pm-section"><h4>What You'll Learn</h4><ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>
+    <div class="pm-section"><h4>Who Is It For</h4><p class="pm-audience">${esc(p.audience)}</p></div>
+    <div class="pm-award"><i class="fas fa-certificate"></i><div><div class="label">On Successful Completion</div><div class="value">${award}</div></div></div>
+    <div class="pm-actions">
+      <button type="button" class="btn btn-primary btn-lg" onclick="applyFromModal()">Apply Now <i class="fas fa-arrow-right"></i></button>
+      <button type="button" class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button>
+    </div>`;
   $('#programmeModal').classList.add('show'); document.body.style.overflow='hidden';
 }
 function applyFromModal(){ const p = PROGRAMMES.find(x=>x.id===state.currentProgrammeId); closeProgramme(); if(p) goToApply(p); else goToApply(); }
@@ -1331,7 +1233,7 @@ function renderSearchResults(q){
   const matches = PROGRAMMES.filter(p=>{ const hay = (p.name+' '+p.subject+' '+p.format+' '+p.description+' '+p.learn.join(' ')).toLowerCase(); return hay.includes(query); });
   searchHint.innerHTML = `<strong>${matches.length}</strong> programme${matches.length!==1?'s':''} found for "<strong>${esc(q.trim())}</strong>"`;
   if(matches.length===0){ searchResults.innerHTML = `<div class="search-empty"><i class="fas fa-search-minus"></i>No programmes match that search. Try a different keyword.</div>`; return; }
-  searchResults.innerHTML = matches.map(p=>`<div class="search-result" data-id="${p.id}"><div class="search-result-info"><h5>${esc(p.name)}</h5><div class="search-meta"><span>${esc(p.format)}</span><span>${esc(p.subject)}</span><span><strong>${fmtPrice(p.price)}</strong></span><span>${p.weeks} Weeks</span></div></div><i class="fas fa-arrow-right search-result-arrow"></i></div>`).join('');
+  searchResults.innerHTML = matches.map(p=>`<div class="search-result" data-id="${p.id}"><div class="search-result-info"><h5>${esc(p.name)}</h5><div class="search-meta"><span>${esc(p.format)}</span><span>${esc(p.subject)}</span><span><strong>${fmtZMW(p.price)}</strong> · ${fmtUSD(p.price)}</span><span>${p.weeks} Weeks</span></div></div><i class="fas fa-arrow-right search-result-arrow"></i></div>`).join('');
   searchResults.querySelectorAll('.search-result').forEach(el=>el.addEventListener('click',()=>{ const id = el.dataset.id; closeSearch(); setTimeout(()=>openProgramme(id),200); }));
 }
 $('#searchOpenBtn').addEventListener('click',openSearch);
@@ -1350,7 +1252,7 @@ function runFinder(){
   wrap.classList.add('show');
   count.textContent = results.length + ' programme' + (results.length!==1?'s':'') + ' found';
   if(results.length===0){ list.innerHTML = `<div class="finder-empty"><i class="fas fa-search-minus"></i>No programmes match your filters. Try broadening your search.</div>`; return; }
-  list.innerHTML = results.map(p=>`<div class="finder-item" data-id="${p.id}"><h5>${esc(p.name)}</h5><div class="finder-meta"><span><i class="fas fa-clock" style="color:var(--gold)"></i> ${p.weeks} Wks</span><span><strong>${fmtPrice(p.price)}</strong></span><span>${esc(p.format)}</span></div></div>`).join('');
+  list.innerHTML = results.map(p=>`<div class="finder-item" data-id="${p.id}"><h5>${esc(p.name)}</h5><div class="finder-meta"><span><i class="fas fa-clock" style="color:var(--gold)"></i> ${p.weeks} Wks</span><span><strong>${fmtZMW(p.price)}</strong> · ${fmtUSD(p.price)}</span><span>${esc(p.format)}</span></div></div>`).join('');
   list.querySelectorAll('.finder-item').forEach(el=>el.addEventListener('click',()=>openProgramme(el.dataset.id)));
   wrap.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -1369,21 +1271,9 @@ document.addEventListener('click', function(e){ const link = e.target.closest('#
    ========================================================= */
 const portalModal = document.getElementById('portalModal');
 const portalViews = { login: document.getElementById('portalLoginView'), forgot: document.getElementById('portalForgotView'), create: document.getElementById('portalCreateView'), dashboard: document.getElementById('portalDashboardView') };
-
-function showPortalView(name){
-  Object.values(portalViews).forEach(v => v && v.classList.remove('active'));
-  if(portalViews[name]) portalViews[name].classList.add('active');
-  ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => { const el = document.getElementById(id); if(el){ el.classList.remove('show'); el.textContent=''; } });
-}
-function openPortal(view){
-  if(!portalModal) return;
-  portalModal.classList.add('show'); document.body.style.overflow='hidden';
-  const session = loadSession();
-  if(session && (!view || view === 'login')){ setDashboardUser(session); showPortalView('dashboard'); }
-  else { showPortalView(view || 'login'); setTimeout(()=>{ const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100); }
-}
+function showPortalView(name){ Object.values(portalViews).forEach(v => v && v.classList.remove('active')); if(portalViews[name]) portalViews[name].classList.add('active'); ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => { const el = document.getElementById(id); if(el){ el.classList.remove('show'); el.textContent=''; } }); }
+function openPortal(view){ if(!portalModal) return; portalModal.classList.add('show'); document.body.style.overflow='hidden'; const session = loadSession(); if(session && (!view || view === 'login')){ setDashboardUser(session); showPortalView('dashboard'); } else { showPortalView(view || 'login'); setTimeout(()=>{ const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100); } }
 function closePortal(){ if(!portalModal) return; portalModal.classList.remove('show'); document.body.style.overflow=''; }
-
 function saveSession(session, remember){ const payload = JSON.stringify(session); if(remember){ try{ localStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } else { try{ sessionStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } }
 function loadSession(){ try{ const s = sessionStorage.getItem(PORTAL_STORAGE_KEY) || localStorage.getItem(PORTAL_STORAGE_KEY); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
 function clearSession(){ try{ sessionStorage.removeItem(PORTAL_STORAGE_KEY); localStorage.removeItem(PORTAL_STORAGE_KEY); }catch(e){} }
@@ -1391,7 +1281,6 @@ function loadAccounts(){ try{ return JSON.parse(localStorage.getItem(PORTAL_ACCO
 function saveAccount(account){ const accounts = loadAccounts(); accounts.push(account); try{ localStorage.setItem(PORTAL_ACCOUNTS_KEY, JSON.stringify(accounts)); }catch(e){} }
 function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email||'').trim()); }
 function setPortalMessage(elId, message, isError){ const el = document.getElementById(elId); if(!el) return; el.textContent = message; el.classList.toggle('show', !!message); }
-
 function setupPwToggle(btnId, inputId){ const btn = document.getElementById(btnId), inp = document.getElementById(inputId); if(!btn || !inp) return; btn.addEventListener('click', () => { const isPw = inp.type === 'password'; inp.type = isPw ? 'text' : 'password'; btn.innerHTML = isPw ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>'; btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password'); }); }
 setupPwToggle('portalPwToggle','portalPassword');
 setupPwToggle('portalNewPwToggle','portalNewPassword');
@@ -1403,14 +1292,12 @@ document.getElementById('portalLoginForm').addEventListener('submit', function(e
   const password = document.getElementById('portalPassword').value;
   const remember = document.getElementById('portalRemember').checked;
   const btn = document.getElementById('portalLoginBtn');
-
   if(!email){ setPortalMessage('portalLoginError','Please enter your email address.',true); document.getElementById('portalEmail').classList.add('err'); return; }
   document.getElementById('portalEmail').classList.remove('err');
   if(!isValidEmail(email)){ setPortalMessage('portalLoginError','Please enter a valid email address.',true); document.getElementById('portalEmail').classList.add('err'); return; }
   if(!password){ setPortalMessage('portalLoginError','Please enter your password.',true); document.getElementById('portalPassword').classList.add('err'); return; }
   document.getElementById('portalPassword').classList.remove('err');
   if(password.length < 6){ setPortalMessage('portalLoginError','Password must be at least 6 characters.',true); document.getElementById('portalPassword').classList.add('err'); return; }
-
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
   setTimeout(() => {
     const lowerEmail = email.toLowerCase();
@@ -1475,24 +1362,9 @@ document.getElementById('portalCreateForm').addEventListener('submit', function(
 });
 
 document.getElementById('portalSignOut').addEventListener('click', () => { clearSession(); showToast('Signed out successfully'); showPortalView('login'); });
-
-function setDashboardUser(session){
-  document.getElementById('portalUserName').textContent = session.name || 'Student';
-  document.getElementById('portalUserEmail').textContent = session.email || '';
-  const infoEl = document.getElementById('portalSessionInfo');
-  if(infoEl){ const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now'; infoEl.textContent = 'Session started ' + when; }
-}
-
-document.querySelectorAll('.portal-dash-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const what = card.dataset.dash;
-    const messages = { courses: 'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.', grades: 'Grades — no assessment results available yet.', resources: 'Resources — learning materials will appear here once enrolled.', timetable: 'Timetable — your class schedule will appear here once enrolled.' };
-    showToast(messages[what] || 'Coming soon');
-  });
-});
-
+function setDashboardUser(session){ document.getElementById('portalUserName').textContent = session.name || 'Student'; document.getElementById('portalUserEmail').textContent = session.email || ''; const infoEl = document.getElementById('portalSessionInfo'); if(infoEl){ const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now'; infoEl.textContent = 'Session started ' + when; } }
+document.querySelectorAll('.portal-dash-card').forEach(card => { card.addEventListener('click', () => { const what = card.dataset.dash; const messages = { courses: 'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.', grades: 'Grades — no assessment results available yet.', resources: 'Resources — learning materials will appear here once enrolled.', timetable: 'Timetable — your class schedule will appear here once enrolled.' }; showToast(messages[what] || 'Coming soon'); }); });
 document.addEventListener('click', e => { const trigger = e.target.closest('.open-portal'); if(trigger){ e.preventDefault(); const view = trigger.dataset.portal || 'login'; openPortal(view); } });
-
 document.getElementById('portalForgotLink').addEventListener('click', () => showPortalView('forgot'));
 document.getElementById('portalCreateLink').addEventListener('click', () => showPortalView('create'));
 document.getElementById('portalBack1').addEventListener('click', () => showPortalView('login'));
@@ -1502,26 +1374,8 @@ document.getElementById('portalBack2').addEventListener('click', () => showPorta
    GLOBAL UI
    ========================================================= */
 window.addEventListener('scroll',()=>{ const h = $('#mainHeader'); if(h) h.classList.toggle('scrolled',window.scrollY>30); },{ passive:true });
-
-$$('[data-scroll]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const href=a.getAttribute('href');
-    if(!href||!href.startsWith('#'))return;
-    const t=document.querySelector(href);
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-    const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show');
-  });
-});
-
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    if($('#programmeModal').classList.contains('show')) closeProgramme();
-    if(searchModal.classList.contains('show')) closeSearch();
-    if(portalModal.classList.contains('show')) closePortal();
-    const nav = document.getElementById('mobileNav');
-    if(nav && nav.classList.contains('show')) toggleMobileMenu(false);
-  }
-});
+$$('[data-scroll]').forEach(a=>{ a.addEventListener('click',e=>{ const href=a.getAttribute('href'); if(!href||!href.startsWith('#'))return; const t=document.querySelector(href); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});} const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show'); }); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('#programmeModal').classList.contains('show')) closeProgramme(); if(searchModal.classList.contains('show')) closeSearch(); if(portalModal.classList.contains('show')) closePortal(); const nav = document.getElementById('mobileNav'); if(nav && nav.classList.contains('show')) toggleMobileMenu(false); } });
 $('#programmeModal').addEventListener('click',e=>{if(e.target.id==='programmeModal')closeProgramme();});
 searchModal.addEventListener('click',e=>{if(e.target.id==='searchModal')closeSearch();});
 portalModal.addEventListener('click',e=>{if(e.target.id==='portalModal')closePortal();});
@@ -1536,7 +1390,7 @@ buildSearchTags();
 updateFormatCounts();
 renderCatalogue();
 
-console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · ${HERO_SLIDES.length} hero slides · Portal active`);
+console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · ${HERO_SLIDES.length} hero slides · Portal active · USD rate: 1 USD = ${USD_RATE} ZMW`);
 </script>
 </body>
 </html>
