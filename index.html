@@ -2999,17 +2999,29 @@ function showPortalView(name){
     if(el){ el.classList.remove('show'); el.textContent = ''; }
   });
 }
-function openPortal(view){
+async function openPortal(view){
   if(!portalModal) return;
   portalModal.classList.add('show');
   document.body.style.overflow = 'hidden';
-  if(portalCurrentUser){
-    setPortalUser(portalCurrentUser);
+
+  // If the user explicitly requested a non-login view, honor it — don't auto-jump.
+  if(view === 'create' || view === 'forgot'){
+    showPortalView(view);
+    return;
+  }
+
+  // Otherwise, check the actual Firebase auth state before deciding what to show.
+  const fb = await firebaseReady;
+  const user = (fb && fbAuth) ? fbAuth.currentUser : null;
+  portalCurrentUser = user;
+
+  if(user){
+    setPortalUser(user);
     showPortalView('dashboard');
     loadDashboardData();
   } else {
-    showPortalView(view || 'login');
-    setTimeout(() => { const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100);
+    showPortalView('login');
+    setTimeout(() => { const f = document.getElementById('portalEmail'); if(f) f.focus(); }, 100);
   }
 }
 function closePortal(){
@@ -3043,21 +3055,35 @@ function setPortalUser(user){
   const eEl = document.getElementById('portalUserEmail'); if(eEl) eEl.textContent = user.email || '';
 }
 
-/* Attach auth state listener */
-(async function attachAuthListener(){
-  const fb = await firebaseReady;
-  if(!fb || !FB || !FB.onAuthStateChanged || !fbAuth) return;
-  FB.onAuthStateChanged(fbAuth, (user) => {
-    portalCurrentUser = user;
-    if(user){
+/* Attach auth state listener — only react to real transitions, not the initial fire */
+(function attachAuthListener(){
+  (async function(){
+    const fb = await firebaseReady;
+    if(!fb || !FB || !FB.onAuthStateChanged || !fbAuth) return;
+    let authInitialized = false;
+    FB.onAuthStateChanged(fbAuth, (user) => {
+      const wasSignedIn = !!portalCurrentUser;
+      portalCurrentUser = user;
+
+      // The very first fire just tells us the starting state. Do not switch views here —
+      // openPortal() already decides what to show based on the actual current state.
+      if(!authInitialized){ authInitialized = true; return; }
+
+      // Subsequent fires mean a real change of state (sign in / sign out).
       const modalShown = portalModal && portalModal.classList.contains('show');
-      if(modalShown){
+      if(!modalShown) return;
+
+      if(user && !wasSignedIn){
+        // User just signed in (e.g. via another tab or after a form submit).
         setPortalUser(user);
         showPortalView('dashboard');
         loadDashboardData();
+      } else if(!user && wasSignedIn){
+        // User just signed out — return to login.
+        showPortalView('login');
       }
-    }
-  });
+    });
+  })();
 })();
 
 /* Login */
@@ -3157,11 +3183,22 @@ document.getElementById('portalCreateForm').addEventListener('submit', async fun
         uid: user.uid, name: name, email: user.email, createdAt: FB.serverTimestamp()
       }, { merge: true });
     } catch(e){ console.warn('[Nolan] Profile save failed:', e); }
-    portalCurrentUser = user;
-    setPortalMessage('portalCreateSuccess','Account created! Loading your dashboard…');
-    showToast('Account created successfully', 'success');
-    setPortalUser(user);
-    setTimeout(() => { showPortalView('dashboard'); loadDashboardData(); document.getElementById('portalCreateForm').reset(); }, 700);
+        // Sign them out so they explicitly go through the Login step.
+    try { if(FB.signOut) await FB.signOut(fbAuth); } catch(e){}
+    portalCurrentUser = null;
+
+    setPortalMessage('portalCreateSuccess', 'Account created successfully. Please sign in with your new credentials.');
+    showToast('Account created — please sign in', 'success');
+
+    // Pre-fill the login email so they don't have to retype it.
+    setTimeout(() => {
+      showPortalView('login');
+      const emailInput = document.getElementById('portalEmail');
+      if(emailInput) emailInput.value = email;
+      const pwInput = document.getElementById('portalPassword');
+      if(pwInput){ pwInput.value = ''; pwInput.focus(); }
+      document.getElementById('portalCreateForm').reset();
+    }, 900);
   } catch(err){
     console.warn('[Nolan] Create error:', err);
     let msg = 'We could not create your account. Please try again.';
