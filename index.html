@@ -9,13 +9,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Receipt generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<!-- QR code -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" defer></script>
+<!-- EmailJS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+<!-- Cloudflare Turnstile (optional) -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5T7SGGC8LF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5T7SGGC8LF');
+</script>
+
 <style>
 :root{
   color-scheme: light only;
   --navy:#0A1C3A;--navy-light:#1A2D4D;--navy-dark:#05122A;
   --gold:#C5A028;--gold-light:#D4B84A;--gold-dark:#A07F1F;--gold-10:rgba(197,160,40,0.1);
   --white:#fff;--off-white:#FAFAF8;--gray-light:#F5F5F5;--gray-mid:#E0E0E0;--gray-dark:#666;--gray-darker:#333;
-  --success:#28A745;--error:#DC3545;
+  --success:#28A745;--error:#DC3545;--warning:#FFC107;
+  --whatsapp:#25D366;--whatsapp-dark:#1EBE5A;--whatsapp-deep:#075E54;
+  --info:#009CDE;--info-deep:#0A4D6E;
   --shadow-sm:0 2px 8px rgba(0,0,0,.05);--shadow-md:0 4px 12px rgba(0,0,0,.08);
   --shadow-lg:0 12px 32px rgba(0,0,0,.12);--shadow-xl:0 24px 48px rgba(10,28,58,.18);
   --transition:all .3s cubic-bezier(.4,0,.2,1);--radius:16px;--radius-sm:10px;
@@ -36,6 +57,7 @@ input,select,textarea{color-scheme:light only}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--gold);color:var(--navy-dark);border-color:var(--gold)}
 .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(197,160,40,.35)}
+.btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
 .btn-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
 .btn-navy:hover{background:var(--navy-light);border-color:var(--navy-light);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
@@ -84,7 +106,7 @@ input,select,textarea{color-scheme:light only}
 .hero .container{position:relative;z-index:2}
 .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center}
 .hero-inner{max-width:640px;width:100%}
-.hero-badge{display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);color:var(--gold-light);padding:8px 16px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:22px;max-width:100%;white-space:normal;line-height:1.5;word-wrap:break-word}
+.hero-badge{display:inline-block;background:rgba(197,160,40,.15);border:1px solid rgba(197,160,40,.4);color:var(--gold-light);padding:8px 16px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:22px;max-width:100%;white-space:normal;line-height:1.5}
 .hero h1{font-size:clamp(1.9rem,4.4vw,3.3rem);color:#fff;margin-bottom:18px;letter-spacing:-.5px;line-height:1.15}
 .hero h1 .gold{color:var(--gold)}
 .hero-sub{font-size:clamp(0.98rem,1.7vw,1.1rem);color:rgba(255,255,255,.85);margin-bottom:26px;max-width:560px;line-height:1.65}
@@ -325,7 +347,7 @@ input,select,textarea{color-scheme:light only}
 
 .search-top{padding:20px 22px;border-bottom:1px solid var(--gray-mid);display:flex;align-items:center;gap:12px;background:var(--off-white)}
 .search-top i{color:var(--gold-dark);font-size:17px}
-.search-top input{flex:1;border:none;background:transparent;font-size:15.5px;outline:none;color:var(--navy);font-family:inherit;font-weight:500;min-width:0;background:#fff;color-scheme:light only}
+.search-top input{flex:1;border:none;background:#fff;font-size:15.5px;outline:none;color:var(--navy);font-family:inherit;font-weight:500;min-width:0;color-scheme:light only}
 .search-top input::placeholder{color:#94a3b8}
 .search-hint{padding:10px 22px;font-size:11.5px;color:var(--gray-dark);background:var(--off-white);border-bottom:1px solid var(--gray-mid);letter-spacing:.3px}
 .search-hint strong{color:var(--navy)}
@@ -400,8 +422,317 @@ input,select,textarea{color-scheme:light only}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.success{background:var(--success)}
 .toast.error{background:var(--error)}
+.toast.info{background:var(--info)}
 .toast i{color:#fff;font-size:14px;flex-shrink:0}
 
+/* =====================================================
+   APPLICATION OVERLAY (embedded flagship system)
+   ===================================================== */
+.app-overlay{position:fixed;inset:0;background:rgba(5,18,42,.9);z-index:2500;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.app-overlay.show{display:flex;animation:fadeIn .25s ease}
+.app-shell{background:#ffffff !important;color:var(--gray-darker);border-radius:20px;max-width:920px;width:100%;margin:auto;position:relative;box-shadow:var(--shadow-xl);overflow:hidden;display:flex;flex-direction:column;max-height:calc(100vh - 60px);color-scheme:light only}
+.app-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,.12);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);z-index:5;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.app-close:hover{background:var(--gold);color:var(--navy-dark);transform:rotate(90deg)}
+.app-head{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 100%);color:#fff;padding:24px 28px 22px;position:relative;overflow:hidden;flex-shrink:0}
+.app-head::before{content:'';position:absolute;top:-40%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(197,160,40,.18) 0%,rgba(197,160,40,0) 70%);border-radius:50%;pointer-events:none}
+.app-head-inner{position:relative;z-index:2}
+.app-head-label{font-size:10.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
+.app-head-title{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);color:#fff;font-weight:800;line-height:1.2;margin-bottom:6px;padding-right:50px}
+.app-head-meta{font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.6}
+.app-head-meta strong{color:var(--gold);font-weight:700}
+.app-progress{padding:16px 24px 14px;background:#fff;border-bottom:1px solid var(--gray-mid);flex-shrink:0;overflow-x:auto}
+.app-progress-inner{display:flex;justify-content:space-between;gap:8px;max-width:820px;margin:0 auto;position:relative;min-width:640px}
+.app-progress-inner::before{content:'';position:absolute;top:15px;left:16px;right:16px;height:2px;background:var(--gray-mid);z-index:1}
+.app-step{flex:1;text-align:center;position:relative;z-index:2;cursor:pointer;min-width:56px}
+.app-step-circle{width:32px;height:32px;background:#fff;border:2px solid var(--gray-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:12px;color:var(--gray-dark);transition:var(--transition);font-family:'Inter',sans-serif}
+.app-step.active .app-step-circle{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
+.app-step.completed .app-step-circle{background:var(--success);border-color:var(--success);color:#fff}
+.app-step-label{font-size:10px;color:var(--gray-dark);font-weight:600;letter-spacing:.2px}
+.app-step.active .app-step-label{color:var(--navy);font-weight:700}
+.app-body{padding:32px 32px 26px;overflow-y:auto;flex:1;background:#fff}
+.app-section{display:none}
+.app-section.active{display:block;animation:fadeIn .3s ease}
+.app-section h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);margin-bottom:6px}
+.app-section .as-sub{font-size:13px;color:var(--gray-dark);margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--gray-mid);line-height:1.6}
+.app-programme-locked{background:linear-gradient(135deg,var(--gold-10) 0%,#fff 100%);border:2px solid var(--gold);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.app-programme-locked i{font-size:28px;color:var(--gold-dark);flex-shrink:0}
+.app-programme-locked .pl-text{flex:1;min-width:0}
+.app-programme-locked .pl-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dark);font-weight:800;margin-bottom:4px}
+.app-programme-locked .pl-name{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);font-weight:700;line-height:1.3;word-break:break-word}
+.app-programme-locked .pl-meta{font-size:12px;color:var(--gray-dark);margin-top:4px}
+.app-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.app-form-group{margin-bottom:16px}
+.app-form-group.full{grid-column:span 2}
+.app-form-group label{display:block;font-size:12.5px;font-weight:700;color:var(--navy);letter-spacing:.3px;margin-bottom:6px}
+.app-form-group label .req{color:var(--error);margin-left:3px}
+.app-form-group input,.app-form-group select,.app-form-group textarea{width:100%;padding:11px 13px;border:2px solid var(--gray-mid);border-radius:8px;font-family:inherit;font-size:14px;color:var(--navy);background:#fff;transition:var(--transition);-webkit-text-fill-color:var(--navy)}
+.app-form-group input:focus,.app-form-group select:focus,.app-form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-10)}
+.app-form-group input.err,.app-form-group select.err,.app-form-group textarea.err{border-color:var(--error);background:#FFF5F5}
+.app-form-group.has-error label{color:var(--error)}
+.app-helper{font-size:11.5px;color:var(--gray-dark);margin-top:5px;font-style:italic}
+.app-inline-error{display:none;color:var(--error);font-size:11.5px;font-weight:600;margin-top:5px;align-items:center;gap:6px}
+.app-inline-error.show{display:flex}
+.app-inline-error i{font-size:12px}
+
+.app-radio-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.app-radio{background:var(--off-white);border:2px solid var(--gray-mid);border-radius:10px;padding:14px 18px;cursor:pointer;transition:var(--transition);display:flex;align-items:flex-start;gap:14px;font-family:inherit;text-align:left;width:100%}
+.app-radio:hover{border-color:var(--gold)}
+.app-radio.selected{border-color:var(--gold);background:var(--gold-10)}
+.app-radio .ar-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--gray-mid);flex-shrink:0;margin-top:2px;transition:var(--transition)}
+.app-radio.selected .ar-check{background:var(--gold);border-color:var(--gold)}
+.app-radio.selected .ar-check::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--navy-dark);font-size:10px;display:flex;align-items:center;justify-content:center;height:100%}
+.app-radio .ar-content{flex:1;min-width:0}
+.app-radio .ar-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.app-radio .ar-desc{font-size:12.5px;color:var(--gray-dark);line-height:1.5}
+
+.app-fee-tier-note{background:linear-gradient(135deg,#E7F4FF 0%,#F0F9FF 100%);border-left:4px solid var(--info);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start;font-size:12.5px;color:var(--info-deep);line-height:1.65}
+.app-fee-tier-note i{color:var(--info);font-size:16px;flex-shrink:0;margin-top:2px}
+.app-fee-tier-note strong{color:#0A4D6E}
+
+.app-pay-amount-banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;position:relative;overflow:hidden}
+.app-pay-amount-banner::before{content:'';position:absolute;top:-50%;right:-10%;width:280px;height:280px;background:radial-gradient(circle,rgba(197,160,40,.2) 0%,rgba(197,160,40,0) 70%);border-radius:50%;pointer-events:none}
+.app-pay-amount-banner .pab-label{font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px;position:relative;z-index:2}
+.app-pay-amount-banner .pab-amount{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;color:var(--gold);line-height:1;position:relative;z-index:2}
+.app-pay-amount-banner .pab-context{font-size:12.5px;color:rgba(255,255,255,.75);margin-top:8px;position:relative;z-index:2;max-width:380px;line-height:1.6}
+.app-pay-amount-banner .pab-icon{font-size:40px;color:var(--gold);opacity:.65;position:relative;z-index:2;flex-shrink:0}
+
+.app-pay-methods-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.app-pay-method-card{background:#fff;border:2px solid var(--gray-mid);border-radius:14px;padding:16px 10px 14px;cursor:pointer;transition:var(--transition);display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;font-family:inherit;position:relative;overflow:hidden}
+.app-pay-method-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.app-pay-method-card.selected{border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-10);transform:translateY(-3px)}
+.app-pay-method-card.selected::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:8px;right:8px;width:22px;height:22px;background:var(--gold);color:var(--navy-dark);border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center}
+.app-pay-method-card .pm-logo{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:Arial,Helvetica,sans-serif;letter-spacing:-.5px;flex-shrink:0}
+.app-pay-method-card .pm-name{font-size:12px;font-weight:800;color:var(--navy);line-height:1.25;letter-spacing:.2px}
+.app-pay-method-card .pm-desc{font-size:10px;color:var(--gray-dark);font-weight:500;line-height:1.35}
+.pm-airtel .pm-logo{background:#E40000;color:#fff;font-size:14px;font-style:italic;text-transform:lowercase;letter-spacing:-1px;padding-bottom:2px}
+.pm-mtn .pm-logo{background:#FFCC00;color:#000;font-size:13px;letter-spacing:-.5px}
+.pm-bank .pm-logo{background:linear-gradient(135deg,#1B5E8C 0%,#0D3D5E 100%);color:#fff;font-size:20px}
+.pm-paypal .pm-logo{background:linear-gradient(135deg,#003087 0%,#009CDE 100%);color:#fff;font-size:18px}
+.pm-crypto .pm-logo{background:linear-gradient(135deg,#F7931A 0%,#E2761B 100%);color:#fff;font-size:20px}
+
+.app-pay-details-panel{margin-top:16px;background:#fff;border:2px solid var(--gray-mid);border-radius:16px;overflow:hidden;animation:fadeIn .35s ease}
+.app-pay-details-panel.brand-airtel{border-color:#E40000}
+.app-pay-details-panel.brand-mtn{border-color:#FFCC00}
+.app-pay-details-panel.brand-bank{border-color:#1B5E8C}
+.app-pay-details-panel.brand-paypal{border-color:#003087}
+.app-pay-details-panel.brand-crypto{border-color:#F7931A}
+.app-pdp-header{padding:16px 20px;display:flex;align-items:center;gap:12px;color:#fff}
+.brand-airtel .app-pdp-header{background:#E40000}
+.brand-mtn .app-pdp-header{background:#FFCC00;color:#000}
+.brand-bank .app-pdp-header{background:linear-gradient(135deg,#1B5E8C 0%,#0D3D5E 100%)}
+.brand-paypal .app-pdp-header{background:linear-gradient(135deg,#003087 0%,#009CDE 100%)}
+.brand-crypto .app-pdp-header{background:linear-gradient(135deg,#F7931A 0%,#E2761B 100%)}
+.app-pdp-header .app-pdp-icon{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.brand-mtn .app-pdp-header .app-pdp-icon{background:rgba(0,0,0,.12)}
+.app-pdp-header .app-pdp-title{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:800;letter-spacing:.3px;line-height:1.25}
+.app-pdp-header .app-pdp-sub{font-size:11.5px;opacity:.88;margin-top:2px;font-weight:500}
+.app-pdp-body{padding:20px}
+.app-pdp-amount-banner{background:linear-gradient(135deg,var(--gold-10) 0%,#FFF9E6 100%);border:1px solid rgba(197,160,40,.35);border-radius:10px;padding:13px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.app-pdp-amount-banner .pab-l{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dark)}
+.app-pdp-amount-banner .pab-v{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--navy);line-height:1}
+.app-pdp-rows{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.app-pay-detail-row{background:var(--off-white);border:1px solid var(--gray-mid);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.app-pay-detail-row .pdr-info{flex:1;min-width:0}
+.app-pay-detail-row .pdr-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dark);font-weight:800;margin-bottom:3px}
+.app-pay-detail-row .pdr-value{font-size:14.5px;font-weight:700;color:var(--navy);font-family:'SFMono-Regular',Consolas,'Courier New',monospace;word-break:break-all;line-height:1.35}
+.app-pay-detail-row .pdr-value.plain{font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.2px}
+.app-pay-detail-row .pdr-copy{background:var(--gold-10);border:none;color:var(--gold-dark);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:13px;transition:var(--transition);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.app-pay-detail-row .pdr-copy:hover{background:var(--gold);color:var(--navy-dark);transform:scale(1.05)}
+.app-pay-detail-row .pdr-copy.copied{background:var(--success);color:#fff}
+.app-pdp-steps{background:#fff;border:1px solid var(--gray-mid);border-radius:10px;padding:18px 20px 18px 44px;margin-bottom:12px}
+.app-pdp-steps .pds-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:12px;margin-left:-22px;display:flex;align-items:center;gap:8px}
+.app-pdp-steps .pds-title i{color:var(--gold-dark)}
+.app-pdp-steps ol{list-style:none;padding:0;margin:0;counter-reset:stepc}
+.app-pdp-steps ol li{position:relative;padding:0 0 12px 0;font-size:12.5px;color:var(--gray-darker);line-height:1.55;counter-increment:stepc}
+.app-pdp-steps ol li::before{content:counter(stepc);position:absolute;left:-30px;top:0;width:20px;height:20px;border-radius:50%;background:var(--gold-10);color:var(--gold-dark);font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif}
+.app-pdp-steps ol li:last-child{padding-bottom:0}
+.app-pdp-warning{background:#FFF4E5;border-left:3px solid var(--warning);border-radius:8px;padding:12px 16px;font-size:12px;color:#7A5C10;line-height:1.6;margin-top:6px;display:flex;gap:10px;align-items:flex-start}
+.app-pdp-warning i{color:#D89400;font-size:15px;flex-shrink:0;margin-top:2px}
+
+.app-ussd-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.app-ussd-link{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;padding:9px 13px;border-radius:8px;font-size:11.5px;font-weight:700;transition:var(--transition);text-decoration:none;border:1px solid var(--navy);cursor:pointer}
+.app-ussd-link:hover{background:var(--navy-light);transform:translateY(-1px)}
+.app-ussd-link.ussd-airtel{background:#E40000;border-color:#E40000}
+.app-ussd-link.ussd-airtel:hover{background:#C20000}
+.app-ussd-link.ussd-mtn{background:#FFCC00;border-color:#FFCC00;color:#000}
+.app-ussd-link.ussd-mtn:hover{background:#E6B800}
+
+.app-pay-confirm-form{margin-top:20px;padding-top:20px;border-top:1px dashed var(--gray-mid)}
+.app-pay-confirm-form h4{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.app-pay-confirm-form h4 i{color:var(--gold-dark)}
+.app-checks{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+.app-checks label{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--gray-darker);cursor:pointer;line-height:1.55;font-weight:500}
+.app-checks input[type="checkbox"]{width:18px;height:18px;accent-color:var(--gold);flex-shrink:0;margin-top:2px;cursor:pointer}
+
+.app-payment-success{background:linear-gradient(135deg,#EAF7EE 0%,#F0FBF4 100%);border:2px solid var(--success);border-radius:14px;padding:24px 22px;text-align:center;margin-top:8px}
+.app-payment-success i.ps-icon{font-size:52px;color:var(--success);margin-bottom:10px;display:block}
+.app-payment-success h4{font-family:'Playfair Display',serif;font-size:21px;color:var(--navy);margin-bottom:8px}
+.app-payment-success > p{font-size:13px;color:var(--gray-dark);margin-bottom:6px;line-height:1.65}
+.app-payment-success > p strong{color:var(--navy);font-weight:700}
+.app-ps-whatsapp-block{background:#fff;border:1px dashed var(--whatsapp);border-radius:12px;padding:16px;margin-top:18px;text-align:left}
+.app-ps-whatsapp-block .psw-title{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.6px;color:var(--whatsapp-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px;text-transform:uppercase}
+.app-ps-whatsapp-block .psw-title i{color:var(--whatsapp);font-size:15px}
+.app-ps-whatsapp-block p{font-size:12px;color:var(--gray-dark);line-height:1.6;margin-bottom:12px}
+.app-btn-whatsapp{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--whatsapp);color:#fff;padding:12px 20px;border-radius:10px;font-size:13.5px;font-weight:700;width:100%;transition:var(--transition);border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.app-btn-whatsapp:hover{background:var(--whatsapp-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.35)}
+.app-btn-whatsapp i{font-size:17px}
+.app-psw-note{font-size:11.5px;color:var(--gray-dark);margin-top:10px;font-style:italic;line-height:1.55;text-align:center}
+.app-psw-sent{background:#E7F7EC;border:1px solid var(--whatsapp);color:var(--whatsapp-deep);font-size:12px;font-weight:600;padding:10px 14px;border-radius:8px;margin-top:12px;display:none;align-items:center;gap:8px}
+.app-psw-sent.show{display:flex}
+
+.app-receipt-section{margin-top:20px;text-align:left}
+.app-receipt-section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;padding:0 4px}
+.app-receipt-section-head h5{font-family:'Playfair Display',serif;font-size:15.5px;color:var(--navy);font-weight:700}
+.app-receipt-section-head .rsh-sub{font-size:11.5px;color:var(--gray-dark);margin-top:2px}
+.app-receipt-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.app-receipt-btn{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:#fff;padding:9px 16px;border-radius:8px;font-size:12.5px;font-weight:700;border:none;cursor:pointer;transition:var(--transition);font-family:inherit}
+.app-receipt-btn:hover{background:var(--navy-light);transform:translateY(-1px)}
+.app-receipt-btn.receipt-btn-gold{background:var(--gold);color:var(--navy-dark)}
+.app-receipt-btn.receipt-btn-gold:hover{background:var(--gold-light)}
+.app-receipt-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.app-receipt-btn i{font-size:13px}
+
+.nolan-receipt{background:#ffffff;border:1px solid #D0D0D0;border-radius:6px;padding:26px 28px;font-family:'Inter', Arial, sans-serif;color:#222222;font-size:12.5px;line-height:1.55;margin-top:10px;max-width:640px}
+.nolan-receipt *{box-sizing:border-box}
+.nolan-receipt .nr-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:14px;border-bottom:3px solid #0A1C3A;margin-bottom:14px;flex-wrap:wrap}
+.nolan-receipt .nr-brand{font-family:'Playfair Display', Georgia, serif;font-size:18px;font-weight:800;color:#0A1C3A;letter-spacing:1px;line-height:1.1}
+.nolan-receipt .nr-brand-sub{font-size:9.5px;color:#A07F1F;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-top:4px}
+.nolan-receipt .nr-doc-type{font-family:'Playfair Display', Georgia, serif;font-size:13px;font-weight:800;color:#C5A028;letter-spacing:1.5px;text-align:right;line-height:1.2}
+.nolan-receipt .nr-status{display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.2px;padding:4px 10px;border-radius:50px;margin-top:6px;background:#FFF3CD;color:#856404;border:1px solid #FFE69C}
+.nolan-receipt .nr-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;padding:12px 14px;background:#FAFAF8;border-radius:6px;margin-bottom:14px}
+.nolan-receipt .nr-meta > div{flex:1;min-width:140px}
+.nolan-receipt .nr-lbl{color:#666666;font-weight:600}
+.nolan-receipt .nr-meta strong,.nolan-receipt .nr-grid-2 strong{color:#0A1C3A;font-weight:700}
+.nolan-receipt .nr-section{padding:12px 0;border-bottom:1px dashed #E0E0E0}
+.nolan-receipt .nr-section:last-of-type{border-bottom:none}
+.nolan-receipt .nr-section-title{font-size:9.5px;font-weight:800;letter-spacing:1.5px;color:#A07F1F;text-transform:uppercase;margin-bottom:8px}
+.nolan-receipt .nr-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:5px 24px;font-size:12px}
+.nolan-receipt .nr-footer{margin-top:14px;padding-top:12px;border-top:2px solid #0A1C3A;font-size:10.5px;color:#666666}
+.nolan-receipt .nr-footer-note{font-style:italic;margin-bottom:8px;line-height:1.5}
+.nolan-receipt .nr-footer-contact{font-size:10.5px;color:#333333}
+.nolan-receipt .nr-footer-contact strong{color:#0A1C3A;font-weight:700}
+.nolan-receipt .nr-highlight-amount{background:#FFF9E6;border:1px solid #F0E0A0;border-radius:8px;padding:12px 16px;margin:14px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.nolan-receipt .nr-highlight-amount .nr-ha-lbl{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#A07F1F;font-weight:800}
+.nolan-receipt .nr-highlight-amount .nr-ha-val{font-family:'Playfair Display', Georgia, serif;font-size:22px;font-weight:800;color:#0A1C3A;line-height:1}
+.nolan-receipt .nr-amount-words{font-size:10.5px;color:#555;font-style:italic;margin-top:6px;width:100%}
+.nr-qr-block{display:flex;gap:16px;align-items:center;padding:12px 14px;background:#F7F9FB;border-radius:8px;margin:14px 0;border:1px solid #E8EEF3}
+.nr-qr-canvas-wrap{background:#fff;padding:6px;border-radius:6px;border:1px solid #E0E0E0;flex-shrink:0}
+.nr-qr-canvas-wrap canvas{display:block;width:92px!important;height:92px!important}
+.nr-qr-text{flex:1;font-size:10.5px;color:#555;line-height:1.55}
+.nr-qr-text strong{color:#0A1C3A;display:block;margin-bottom:3px;font-size:11px}
+.nr-qr-text code{background:#fff;padding:2px 6px;border-radius:4px;font-size:10px;color:#0A1C3A;border:1px solid #E0E0E0;display:inline-block;margin-top:4px;word-break:break-all}
+.nr-signature{margin-top:16px;padding-top:12px;border-top:1px solid #E0E0E0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.nr-signature .nr-sig-block{flex:1;min-width:180px}
+.nr-signature .nr-sig-line{border-bottom:1px solid #333;height:32px;margin-bottom:6px}
+.nr-signature .nr-sig-lbl{font-size:10px;color:#666;font-weight:600}
+
+.app-receipt-check{background:linear-gradient(135deg,#F3F0FF 0%,#FAF7FF 100%);border:1px solid #D6CCF0;border-radius:12px;padding:16px 18px;margin-top:16px;text-align:left}
+.app-receipt-check h6{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.6px;color:#4A3580;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.app-receipt-check h6 i{font-size:13px}
+.app-receipt-check-row{display:flex;gap:8px;flex-wrap:wrap}
+.app-receipt-check-row input{flex:1;min-width:160px;padding:10px 14px;border:2px solid #D6CCF0;border-radius:8px;font-family:inherit;font-size:13px;color:#4A3580;background:#fff}
+.app-receipt-check-row input:focus{outline:none;border-color:#7C5FCC;box-shadow:0 0 0 3px rgba(124,95,204,.15)}
+.app-receipt-check-result{font-size:12px;color:#4A3580;margin-top:10px;padding:10px 14px;border-radius:8px;background:#fff;border-left:3px solid #7C5FCC;display:none}
+.app-receipt-check-result.show{display:block}
+
+.app-upload-drop{position:relative;border:2px dashed var(--gray-mid);border-radius:12px;padding:20px 18px;text-align:center;cursor:pointer;transition:var(--transition);background:var(--off-white)}
+.app-upload-drop:hover{border-color:var(--gold);background:#fff}
+.app-upload-drop.dragover{border-color:var(--gold);background:var(--gold-10)}
+.app-upload-drop.has-file{border-style:solid;border-color:var(--gold);background:#fff;text-align:left;padding:13px 15px}
+.app-upload-drop input[type="file"]{display:none}
+.app-upload-empty{display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none}
+.app-upload-empty i{font-size:24px;color:var(--gold-dark);margin-bottom:4px}
+.app-upload-text{font-size:13px;font-weight:600;color:var(--navy)}
+.app-upload-hint{font-size:11.5px;color:var(--gray-dark)}
+.app-upload-filled{display:flex;align-items:center;gap:12px}
+.app-upload-filled > i{font-size:24px;color:var(--gold-dark);flex-shrink:0;width:26px;text-align:center}
+.app-upload-meta{flex:1;min-width:0}
+.app-upload-name{font-size:13px;font-weight:700;color:var(--navy);word-break:break-all;line-height:1.4}
+.app-upload-size{font-size:11.5px;color:var(--gray-dark);margin-top:2px}
+.app-upload-remove{background:transparent;border:none;color:var(--gray-dark);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);flex-shrink:0}
+.app-upload-remove:hover{background:var(--gray-light);color:var(--error)}
+
+.app-review{background:var(--off-white);border-radius:12px;padding:22px 24px;margin-bottom:16px}
+.app-review h4{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.app-review h4 i{color:var(--gold-dark)}
+.app-review-item{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--gray-mid);gap:12px;font-size:13px;flex-wrap:wrap}
+.app-review-item:last-child{border-bottom:none}
+.app-review-item .arl{font-weight:700;color:var(--gray-dark);min-width:140px}
+.app-review-item .arv{color:var(--navy);font-weight:500;text-align:right;word-break:break-word;flex:1}
+
+.app-turnstile-wrap{margin:18px 0;display:flex;justify-content:center;min-height:65px}
+.app-turnstile-fallback{background:#FFF4E5;border-left:3px solid var(--warning);border-radius:8px;padding:12px 16px;font-size:12px;color:#7A5C10;line-height:1.55;text-align:left;display:none}
+.app-turnstile-fallback.show{display:block}
+.app-turnstile-fallback code{background:#fff;padding:1px 6px;border-radius:4px;font-size:11px}
+
+.app-submit-success{display:none;text-align:center;padding:22px 18px}
+.app-submit-success.show{display:block;animation:fadeIn .5s ease}
+.app-submit-success .ssp-icon{font-size:60px;color:var(--success);margin-bottom:14px;display:block}
+.app-submit-success h3{font-family:'Playfair Display',serif;font-size:clamp(1.35rem,2.5vw,1.7rem);color:var(--navy);margin-bottom:12px}
+.app-submit-success p{font-size:14px;color:var(--gray-dark);line-height:1.75;max-width:560px;margin:0 auto 14px}
+.app-submit-success .ssp-ref{display:inline-block;background:#fff;border:1px dashed var(--success);padding:8px 16px;border-radius:8px;font-family:'SFMono-Regular',Consolas,monospace;font-size:13px;color:var(--navy);margin:10px 0;letter-spacing:1.5px;font-weight:700}
+.app-submit-success .ssp-note{background:#FFF4E5;border-left:3px solid var(--warning);border-radius:8px;padding:12px 16px;font-size:12.5px;color:#7A5C10;line-height:1.6;text-align:left;max-width:560px;margin:14px auto;display:none}
+.app-submit-success .ssp-note.show{display:block}
+.app-submit-success .ssp-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+
+.app-draft-banner{background:linear-gradient(135deg,#E7F4FF 0%,#F0F9FF 100%);border-left:4px solid var(--info);border-radius:10px;padding:14px 18px;margin-bottom:18px;display:none;gap:12px;align-items:flex-start;font-size:12.5px;color:var(--info-deep);line-height:1.6}
+.app-draft-banner.show{display:flex}
+.app-draft-banner > i{color:var(--info);font-size:16px;flex-shrink:0;margin-top:1px}
+.app-draft-banner .draft-text{flex:1}
+.app-draft-banner .draft-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.app-draft-banner button{font-size:11.5px;font-weight:700;color:var(--info-deep);background:none;border:1px solid var(--info);padding:5px 12px;border-radius:6px;cursor:pointer;font-family:inherit;transition:var(--transition)}
+.app-draft-banner button:hover{background:var(--info);color:#fff}
+
+.app-foot{padding:16px 28px 20px;background:#fff;border-top:1px solid var(--gray-mid);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.app-foot .btn{flex:1;min-width:120px;max-width:220px}
+.app-foot .btn-block{flex:1;max-width:none}
+
+@media print{
+  body.print-receipt-mode *{visibility:hidden!important}
+  body.print-receipt-mode #apReceipt,body.print-receipt-mode #apReceipt *{visibility:visible!important}
+  body.print-receipt-mode #apReceipt{position:absolute;left:0;top:0;width:100%;padding:20px;box-shadow:none}
+}
+
+@media(max-width:900px){
+  .app-shell{max-height:calc(100vh - 30px);border-radius:16px}
+  .app-head{padding:20px 22px 18px}
+  .app-progress{padding:14px 18px 12px}
+  .app-body{padding:24px 22px 20px}
+  .app-foot{padding:14px 22px 18px}
+  .app-form-grid{grid-template-columns:1fr}
+  .app-form-group.full{grid-column:span 1}
+}
+@media(max-width:600px){
+  .app-overlay{padding:0}
+  .app-shell{max-height:100vh;border-radius:0;margin:0}
+  .app-head{padding:18px 18px 16px}
+  .app-head-title{font-size:1.15rem;padding-right:44px}
+  .app-progress{padding:12px 14px 10px}
+  .app-progress-inner{min-width:520px}
+  .app-step-circle{width:28px;height:28px;font-size:11px}
+  .app-step-label{font-size:9px}
+  .app-body{padding:20px 18px 16px}
+  .app-section h3{font-size:18px}
+  .app-pay-methods-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .app-pay-method-card{padding:13px 8px 12px}
+  .app-pay-method-card .pm-logo{width:46px;height:46px;font-size:11px}
+  .app-pay-method-card .pm-name{font-size:11.5px}
+  .app-pay-method-card .pm-desc{font-size:9.5px}
+  .app-foot{padding:12px 18px 16px}
+  .app-foot .btn{flex:1;min-width:0;padding:11px 16px;font-size:13px}
+  .nolan-receipt{padding:18px 16px;font-size:11.5px}
+  .nolan-receipt .nr-grid-2{grid-template-columns:1fr}
+  .app-review{padding:18px 16px}
+  .app-receipt-section-head{flex-direction:column;align-items:stretch}
+  .app-receipt-buttons{width:100%}
+  .app-receipt-btn{flex:1;justify-content:center}
+}
+@media(max-width:400px){
+  .app-progress-inner{min-width:440px}
+  .app-step{min-width:44px}
+}
+
+/* Marketplace responsive (unchanged from your original) */
 @media(max-width:1100px){.hero-grid{gap:40px}.hero-slider{max-width:440px}}
 @media(max-width:992px){
   .main-nav{display:none}
@@ -430,7 +761,6 @@ input,select,textarea{color-scheme:light only}
 @media(max-width:600px){
   .container{padding:0 16px}
   .main-header .container{padding:10px 16px;gap:8px;flex-wrap:nowrap}
-  .logo{flex-shrink:1;min-width:0}
   .logo-name{font-size:14px;letter-spacing:1px}
   .logo-tag{font-size:8px;letter-spacing:1.2px}
   .header-actions{gap:6px}
@@ -439,38 +769,17 @@ input,select,textarea{color-scheme:light only}
   .mobile-menu-btn{font-size:20px;padding:5px}
   .hero{padding:48px 0 44px}
   .hero-grid{gap:32px}
-  .hero-badge{font-size:10px;padding:7px 13px;letter-spacing:.8px}
   .hero h1{font-size:clamp(1.7rem,7vw,2.3rem)}
-  .hero-sub{font-size:.94rem;margin-bottom:20px}
-  .format-pill{padding:7px 13px;font-size:11.5px}
-  .hero-subjects-list{font-size:11px;gap:5px 11px}
-  .hero-actions{gap:10px}
-  .hero-actions .btn{padding:12px 20px;font-size:13.5px}
   .hero-slider{max-width:100%}
   .hero-slider-frame{aspect-ratio:1 / 1;border-radius:16px}
   .hero-slide img{padding:8px;border-radius:16px}
   .hero-slide-caption{left:10px;right:10px;bottom:10px;padding:11px 14px;border-radius:12px}
-  .hero-slide-badge{font-size:9.5px;letter-spacing:1.6px}
-  .hero-slide-sub{font-size:11px}
-  .hero-slide-cta{font-size:10.5px;margin-top:4px}
-  .hero-slider-arrow{width:34px;height:34px;font-size:11px}
-  .hero-slider-arrow.prev{left:8px}
-  .hero-slider-arrow.next{right:8px}
-  .hero-slider-hint{top:10px;left:10px;font-size:9.5px;padding:5px 10px;letter-spacing:.4px}
-  .hero-slider-dots{margin-top:14px;gap:6px}
-  .hero-slider-dot{width:8px;height:8px}
-  .hero-slider-dot.active{width:22px}
   .section-head{margin-bottom:36px}
   .section-head h2{font-size:clamp(1.4rem,5.5vw,1.9rem)}
   .section-head p{font-size:14px}
-  .path-card,.subject-card,.prog-card,.format-card,.why-card,.leave-card,.career-card,.step-card,.pay-option{padding:20px 18px}
   .footer{padding:44px 0 20px}
   .footer-grid{gap:28px;margin-bottom:32px}
   .toast{right:12px;bottom:12px;font-size:12.5px;padding:10px 16px;max-width:calc(100vw - 24px)}
-  .portal-view{padding:32px 24px 26px}
-  .portal-view h2{font-size:20px}
-  .portal-dashboard{padding:28px 22px}
-  .portal-dashboard-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:400px){
   .container{padding:0 12px}
@@ -496,12 +805,9 @@ input,select,textarea{color-scheme:light only}
   .prog-card:hover,.subject-card:hover,.path-card:hover,.format-card:hover,.why-card:hover,.leave-card:hover,.career-card:hover,.step-card:hover{transform:none}
 }
 @media (prefers-color-scheme: dark){
-  .portal-modal,.portal-view,.portal-view *,.modal-card,.modal-card *{color-scheme:light only}
-  .portal-view,.portal-modal,.modal-card{background:#FFFFFF !important}
-  .portal-field input{background:#FFFFFF !important;color:#0A1C3A !important;-webkit-text-fill-color:#0A1C3A !important}
-  .portal-field input::placeholder{color:#94a3b8 !important}
-  .portal-view h2,.portal-field label,.portal-view .portal-sub{color:#0A1C3A !important}
-  .portal-view .portal-sub,.portal-footer p{color:#666666 !important}
+  .portal-modal,.portal-view,.portal-view *,.modal-card,.modal-card *,.app-overlay,.app-shell,.app-shell *{color-scheme:light only}
+  .portal-view,.portal-modal,.modal-card,.app-shell{background:#FFFFFF !important}
+  .portal-field input,.app-form-group input,.app-form-group select,.app-form-group textarea{background:#FFFFFF !important;color:#0A1C3A !important;-webkit-text-fill-color:#0A1C3A !important}
 }
 </style>
 </head>
@@ -538,7 +844,7 @@ input,select,textarea{color-scheme:light only}
     </nav>
     <div class="header-actions">
       <button type="button" class="icon-btn" id="searchOpenBtn" aria-label="Search programmes" title="Search"><i class="fas fa-search"></i></button>
-      <a href="admissions-apply.html" class="btn btn-primary btn-sm">Apply Now</a>
+      <button type="button" class="btn btn-primary btn-sm js-apply-now">Apply Now</button>
       <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav"><i class="fas fa-bars"></i></button>
     </div>
   </div>
@@ -553,7 +859,7 @@ input,select,textarea{color-scheme:light only}
     <li><a href="#apply" data-scroll>Apply</a></li>
     <li><button type="button" class="open-portal" data-portal="login"><i class="fas fa-user" style="margin-right:8px;color:var(--gold)"></i> Student Portal</button></li>
     <li><button type="button" class="btn btn-primary btn-block" onclick="openSearch()">Search Programmes</button></li>
-    <li><a href="admissions-apply.html" class="btn btn-primary btn-block">Apply Now</a></li>
+    <li><button type="button" class="btn btn-primary btn-block js-apply-now">Apply Now</button></li>
   </ul>
 </div>
 
@@ -583,7 +889,7 @@ input,select,textarea{color-scheme:light only}
         </div>
         <div class="hero-actions">
           <button type="button" class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
-          <a href="admissions-apply.html" class="btn btn-outline-white btn-lg">Apply Now</a>
+          <button type="button" class="btn btn-outline-white btn-lg js-apply-now">Apply Now</button>
         </div>
       </div>
       <div class="hero-slider" id="heroSlider" aria-label="Featured programme formats">
@@ -713,7 +1019,7 @@ input,select,textarea{color-scheme:light only}
       <div class="step-card"><div class="step-num">02</div><h3>Apply Online</h3><p>Complete your application and select your payment option — full or payment plan.</p></div>
       <div class="step-card"><div class="step-num">03</div><h3>Start Learning</h3><p>Receive your enrolment information and begin your programme.</p></div>
     </div>
-    <div class="center-cta"><a href="admissions-apply.html" class="btn btn-primary btn-lg">Start Your Application <i class="fas fa-arrow-right"></i></a></div>
+    <div class="center-cta"><button type="button" class="btn btn-primary btn-lg js-apply-now">Start Your Application <i class="fas fa-arrow-right"></i></button></div>
   </div>
 </section>
 
@@ -747,7 +1053,7 @@ input,select,textarea{color-scheme:light only}
     <p style="font-size:14px;color:var(--gold-light);font-weight:500">Learn. Innovate. Lead.</p>
     <div class="final-actions">
       <button type="button" class="btn btn-primary btn-lg" onclick="scrollToCatalogue()">Explore Programmes <i class="fas fa-arrow-right"></i></button>
-      <a href="admissions-apply.html" class="btn btn-outline-white btn-lg">Apply Now</a>
+      <button type="button" class="btn btn-outline-white btn-lg js-apply-now">Apply Now</button>
     </div>
     <div class="final-tagline">Nolan Institute<small>Learn. Innovate. Lead.</small></div>
   </div>
@@ -768,7 +1074,7 @@ input,select,textarea{color-scheme:light only}
         </div>
       </div>
       <div class="footer-col"><h4>Learn</h4><ul><li><a href="#subjects" data-scroll>All Subjects</a></li><li><a href="#catalogue" data-scroll>Catalogue</a></li><li><a href="#formats" data-scroll>Learning Formats</a></li><li><a href="#finder" data-scroll>Programme Finder</a></li></ul></div>
-      <div class="footer-col"><h4>Apply</h4><ul><li><a href="admissions-apply.html">Start Application</a></li><li><a href="#apply" data-scroll>How to Apply</a></li><li><a href="#" data-scroll>Payment Options</a></li><li><a href="#">Scholarships</a></li><li><a href="#">Corporate Training</a></li></ul></div>
+      <div class="footer-col"><h4>Apply</h4><ul><li><a href="#" class="js-apply-now">Start Application</a></li><li><a href="#apply" data-scroll>How to Apply</a></li><li><a href="#apply" data-scroll>Payment Options</a></li><li><a href="#">Scholarships</a></li><li><a href="#">Corporate Training</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +260 768 526 191</li><li><i class="fas fa-envelope"></i> info@nolaninstitute.org</li><li><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -777,6 +1083,428 @@ input,select,textarea{color-scheme:light only}
     </div>
   </div>
 </footer>
+
+<!-- =====================================================
+     APPLICATION OVERLAY (embedded from flagship system)
+     ===================================================== -->
+<div class="app-overlay" id="appOverlay" role="dialog" aria-modal="true" aria-label="Programme application">
+  <div class="app-shell">
+    <button type="button" class="app-close" id="appClose" aria-label="Close application"><i class="fas fa-times"></i></button>
+
+    <div class="app-head">
+      <div class="app-head-inner">
+        <div class="app-head-label">Application · Nolan Institute</div>
+        <div class="app-head-title" id="appProgrammeName">— Select a programme —</div>
+        <div class="app-head-meta" id="appProgrammeMeta">Choose a programme from the catalogue to begin your application.</div>
+      </div>
+    </div>
+
+    <div class="app-progress" id="appProgress" role="tablist" aria-label="Application steps">
+      <div class="app-progress-inner">
+        <div class="app-step active" data-apply-step="1"><div class="app-step-circle">1</div><div class="app-step-label">Personal</div></div>
+        <div class="app-step" data-apply-step="2"><div class="app-step-circle">2</div><div class="app-step-label">Payment</div></div>
+        <div class="app-step" data-apply-step="3"><div class="app-step-circle">3</div><div class="app-step-label">Background</div></div>
+        <div class="app-step" data-apply-step="4"><div class="app-step-circle">4</div><div class="app-step-label">Fit</div></div>
+        <div class="app-step" data-apply-step="5"><div class="app-step-circle">5</div><div class="app-step-label">Essay</div></div>
+        <div class="app-step" data-apply-step="6"><div class="app-step-circle">6</div><div class="app-step-label">Documents</div></div>
+        <div class="app-step" data-apply-step="7"><div class="app-step-circle">7</div><div class="app-step-label">Review</div></div>
+      </div>
+    </div>
+
+    <div class="app-body">
+      <form id="applyForm" novalidate>
+
+        <div class="app-draft-banner" id="draftBanner" role="status">
+          <i class="fas fa-info-circle"></i>
+          <div class="draft-text"><strong>We found a saved draft of your application.</strong> Continue where you left off, or start fresh.</div>
+          <div class="draft-actions">
+            <button type="button" id="draftKeep">Continue draft</button>
+            <button type="button" id="draftDiscard">Start fresh</button>
+          </div>
+        </div>
+
+        <!-- STEP 1 · PERSONAL -->
+        <div class="app-section active" data-apply-form="1">
+          <h3>Personal Information</h3>
+          <p class="as-sub">Tell us a little about yourself. All fields marked * are required.</p>
+
+          <div class="app-programme-locked">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="pl-text">
+              <div class="pl-label">Programme (Locked)</div>
+              <div class="pl-name" id="lockedProgrammeName">—</div>
+              <div class="pl-meta" id="lockedProgrammeMeta">—</div>
+            </div>
+          </div>
+
+          <div class="app-form-grid" style="margin-top:22px;">
+            <div class="app-form-group" data-field="apFirstName"><label for="apFirstName">First Name <span class="req">*</span></label><input type="text" id="apFirstName" autocomplete="given-name" required><div class="app-inline-error" data-error-for="apFirstName"><i class="fas fa-exclamation-circle"></i><span>Please enter your first name.</span></div></div>
+            <div class="app-form-group" data-field="apLastName"><label for="apLastName">Last Name <span class="req">*</span></label><input type="text" id="apLastName" autocomplete="family-name" required><div class="app-inline-error" data-error-for="apLastName"><i class="fas fa-exclamation-circle"></i><span>Please enter your last name.</span></div></div>
+            <div class="app-form-group" data-field="apEmail"><label for="apEmail">Email Address <span class="req">*</span></label><input type="email" id="apEmail" autocomplete="email" required><div class="app-inline-error" data-error-for="apEmail"><i class="fas fa-exclamation-circle"></i><span>Please enter a valid email address.</span></div></div>
+            <div class="app-form-group" data-field="apPhone"><label for="apPhone">Phone Number <span class="req">*</span></label><input type="tel" id="apPhone" autocomplete="tel" required><div class="app-inline-error" data-error-for="apPhone"><i class="fas fa-exclamation-circle"></i><span>Please enter your phone number.</span></div></div>
+            <div class="app-form-group" data-field="apDob"><label for="apDob">Date of Birth <span class="req">*</span></label><input type="date" id="apDob" required><div class="app-inline-error" data-error-for="apDob"><i class="fas fa-exclamation-circle"></i><span>Please enter your date of birth.</span></div></div>
+            <div class="app-form-group" data-field="apCountry">
+              <label for="apCountry">Country of Residence <span class="req">*</span></label>
+              <select id="apCountry" required>
+                <option value="">Select Country</option>
+                <option>Zambia</option><option>Zimbabwe</option><option>South Africa</option>
+                <option>Nigeria</option><option>Kenya</option><option>Ghana</option>
+                <option>Tanzania</option><option>Uganda</option><option>Rwanda</option>
+                <option>Botswana</option><option>Namibia</option><option>Mozambique</option>
+                <option>United States</option><option>United Kingdom</option>
+                <option>Canada</option><option>Australia</option>
+                <option>UAE / Dubai</option><option>Other</option>
+              </select>
+              <div class="app-inline-error" data-error-for="apCountry"><i class="fas fa-exclamation-circle"></i><span>Please select your country.</span></div>
+            </div>
+            <div class="app-form-group full"><label for="apAddress">Current Address</label><input type="text" id="apAddress" autocomplete="street-address"></div>
+          </div>
+        </div>
+
+        <!-- STEP 2 · PAYMENT -->
+        <div class="app-section" data-apply-form="2">
+          <h3>Application Deposit</h3>
+          <p class="as-sub">A non-refundable application deposit secures your place and is credited towards your programme fee. Choose your payment method, complete the transfer, then confirm below. A receipt is generated for you, and you will be asked to send proof to admissions on WhatsApp.</p>
+
+          <div class="app-pay-amount-banner">
+            <div>
+              <div class="pab-label">Amount Due</div>
+              <div class="pab-amount" id="apPayAmount">K120</div>
+              <div class="pab-context" id="apPayContext">For applicants resident in Zambia. Non-refundable application deposit.</div>
+            </div>
+            <i class="fas fa-shield-alt pab-icon"></i>
+          </div>
+
+          <div class="app-fee-tier-note" role="note">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Fee tiers:</strong> Applicants resident in <strong>Zambia</strong> pay <strong>K120</strong>.
+              Applicants in <strong>all other countries</strong> pay <strong>US$10</strong> equivalent.
+              Your deposit is set automatically by the country you selected in Step 1, and is credited towards your programme fee.
+            </div>
+          </div>
+
+          <div class="app-pay-methods-grid" id="apPayMethods" role="radiogroup" aria-label="Payment method">
+            <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-airtel" data-pm="airtel"><div class="pm-logo">airtel</div><div class="pm-name">Airtel Money</div><div class="pm-desc">Fastest for Zambian applicants</div></button>
+            <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-mtn" data-pm="mtn"><div class="pm-logo">MTN</div><div class="pm-name">MTN MoMo</div><div class="pm-desc">Mobile money</div></button>
+            <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-bank" data-pm="bank"><div class="pm-logo"><i class="fas fa-university"></i></div><div class="pm-name">Bank / Visa</div><div class="pm-desc">Standard Chartered</div></button>
+            <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-paypal" data-pm="paypal"><div class="pm-logo"><i class="fab fa-paypal"></i></div><div class="pm-name">PayPal</div><div class="pm-desc">For international applicants</div></button>
+            <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-crypto" data-pm="crypto"><div class="pm-logo"><i class="fab fa-bitcoin"></i></div><div class="pm-name">Crypto</div><div class="pm-desc">BTC · ETH · USDT</div></button>
+          </div>
+
+          <div id="apPayDetails" style="display:none;"></div>
+
+          <div class="app-pay-confirm-form" id="apPayConfirm" style="display:none;">
+            <h4><i class="fas fa-clipboard-check"></i> Confirm You Have Paid</h4>
+            <div class="app-form-grid">
+              <div class="app-form-group" data-field="apPaySenderName"><label for="apPaySenderName">Your Name (as on the payment) <span class="req">*</span></label><input type="text" id="apPaySenderName" placeholder="e.g. Mulenga Katyala"><div class="app-inline-error" data-error-for="apPaySenderName"><i class="fas fa-exclamation-circle"></i><span>Please enter the name on the payment.</span></div></div>
+              <div class="app-form-group" data-field="apPaySenderContact"><label for="apPaySenderContact">Phone / Email used to pay <span class="req">*</span></label><input type="text" id="apPaySenderContact" placeholder="e.g. 076 304 9144 or you@example.com"><div class="app-inline-error" data-error-for="apPaySenderContact"><i class="fas fa-exclamation-circle"></i><span>Please enter the phone or email used to pay.</span></div></div>
+              <div class="app-form-group full" data-field="apPayRef"><label for="apPayRef">Transaction Reference / Transaction ID <span class="req">*</span></label><input type="text" id="apPayRef" placeholder="e.g. 10683000119"><div class="app-helper">From your SMS confirmation, bank receipt, PayPal receipt, or blockchain TxID. <strong>Required</strong> — shown on your receipt.</div><div class="app-inline-error" data-error-for="apPayRef"><i class="fas fa-exclamation-circle"></i><span>Please enter your transaction reference.</span></div></div>
+            </div>
+            <div class="app-checks">
+              <label><input type="checkbox" id="apPayConfirmed"> I confirm I have sent <strong id="apPayConfirmAmount">K120</strong> to the account shown above, and I agree my details will be shared with the admissions team via WhatsApp for verification.</label>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="apPaySubmit"><i class="fas fa-check-circle"></i> I Have Paid — Generate My Receipt</button>
+          </div>
+
+          <div id="apPaymentSuccess" style="display:none;">
+            <div class="app-payment-success">
+              <i class="fas fa-check-circle ps-icon"></i>
+              <h4>Payment Recorded</h4>
+              <p>Receipt Reference: <strong id="apPaymentRef">NOL-XXXX-XXXXXX</strong></p>
+              <p style="font-size:12.5px;color:var(--gray-dark);margin-top:6px;">Your receipt has been generated below. Download it for your records.</p>
+
+              <div class="app-ps-whatsapp-block" id="apWhatsappBlock">
+                <div class="psw-title"><i class="fab fa-whatsapp"></i> Step 1 — Send Proof to Admissions</div>
+                <p>To confirm your payment, please send the confirmation below to our admissions team on WhatsApp <strong>+260 762 499 581</strong>. They will compare your details against our records and confirm receipt.</p>
+                <a href="#" class="app-btn-whatsapp" id="apWhatsappBtn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span>Send Proof to WhatsApp</span></a>
+                <div class="app-psw-note">If WhatsApp does not open automatically, tap the button above.</div>
+                <div class="app-psw-sent" id="apWhatsappSent"><i class="fas fa-check-circle"></i> Confirmation ready — please tap <strong>Send</strong> in WhatsApp.</div>
+              </div>
+
+              <div class="app-receipt-section">
+                <div class="app-receipt-section-head">
+                  <div>
+                    <h5><i class="fas fa-file-invoice" style="color:var(--gold-dark);margin-right:6px;"></i> Your Receipt</h5>
+                    <div class="rsh-sub">Download or print for your records</div>
+                  </div>
+                  <div class="app-receipt-buttons">
+                    <button type="button" class="app-receipt-btn receipt-btn-gold" id="apDownloadReceiptBtn"><i class="fas fa-download"></i> Download PDF</button>
+                    <button type="button" class="app-receipt-btn" id="apPrintReceiptBtn"><i class="fas fa-print"></i> Print</button>
+                  </div>
+                </div>
+
+                <div id="apReceipt" class="nolan-receipt">
+                  <div class="nr-header">
+                    <div>
+                      <div class="nr-brand">NOLAN INSTITUTE</div>
+                      <div class="nr-brand-sub">Learn. Innovate. Lead.</div>
+                    </div>
+                    <div>
+                      <div class="nr-doc-type">PROVISIONAL PAYMENT RECEIPT</div>
+                      <div class="nr-status" id="nrStatus">PENDING VERIFICATION</div>
+                    </div>
+                  </div>
+                  <div class="nr-meta">
+                    <div><span class="nr-lbl">Receipt No:</span> <strong id="nrRef">—</strong></div>
+                    <div><span class="nr-lbl">Date &amp; Time:</span> <strong id="nrDate">—</strong></div>
+                  </div>
+                  <div class="nr-highlight-amount">
+                    <div class="nr-ha-lbl">Amount Received</div>
+                    <div class="nr-ha-val" id="nrAmount">—</div>
+                    <div class="nr-amount-words" id="nrAmountWords">—</div>
+                  </div>
+                  <div class="nr-section">
+                    <div class="nr-section-title">From — Payer / Sender</div>
+                    <div class="nr-grid-2">
+                      <div><span class="nr-lbl">Name:</span> <strong id="nrSenderName">—</strong></div>
+                      <div><span class="nr-lbl">Contact:</span> <strong id="nrSenderContact">—</strong></div>
+                    </div>
+                  </div>
+                  <div class="nr-section">
+                    <div class="nr-section-title">To — Recipient</div>
+                    <div class="nr-grid-2">
+                      <div><span class="nr-lbl">Recipient Name:</span> <strong>Mwaba Lewis</strong></div>
+                      <div><span class="nr-lbl">On behalf of:</span> <strong>Nolan Institute</strong></div>
+                      <div><span class="nr-lbl">Account / Channel:</span> <strong id="nrRecipientAccount">—</strong></div>
+                    </div>
+                  </div>
+                  <div class="nr-section">
+                    <div class="nr-section-title">Payment Details</div>
+                    <div class="nr-grid-2">
+                      <div><span class="nr-lbl">Method:</span> <strong id="nrMethod">—</strong></div>
+                      <div><span class="nr-lbl">Transaction ID:</span> <strong id="nrTxId">—</strong></div>
+                      <div><span class="nr-lbl">Reference:</span> <strong id="nrUserRef">—</strong></div>
+                      <div><span class="nr-lbl">Status:</span> <strong style="color:#856404;">Pending Verification</strong></div>
+                    </div>
+                  </div>
+                  <div class="nr-section">
+                    <div class="nr-section-title">Application</div>
+                    <div class="nr-grid-2">
+                      <div><span class="nr-lbl">Applicant:</span> <strong id="nrApplicant">—</strong></div>
+                      <div><span class="nr-lbl">Email:</span> <strong id="nrEmail">—</strong></div>
+                      <div><span class="nr-lbl">Programme:</span> <strong id="nrProgramme">—</strong></div>
+                      <div><span class="nr-lbl">Intake:</span> <strong>Nolan Institute 2026</strong></div>
+                    </div>
+                  </div>
+                  <div class="nr-qr-block">
+                    <div class="nr-qr-canvas-wrap"><canvas id="nrQrCanvas" width="184" height="184" aria-label="Receipt verification QR code"></canvas></div>
+                    <div class="nr-qr-text">
+                      <strong><i class="fas fa-qrcode"></i> Verify this receipt</strong>
+                      Scan the code, or visit the URL below, to check this receipt's status.
+                      <code id="nrVerifyUrl">https://nolaninstitute.org/verify/…</code>
+                    </div>
+                  </div>
+                  <div class="nr-footer">
+                    <div class="nr-footer-note"><strong>This is a PROVISIONAL receipt.</strong> It acknowledges the applicant's submission of payment details to Nolan Institute. A final receipt will be issued once the payment has been verified against our records. This receipt is subject to actual receipt of funds into the nominated account.</div>
+                    <div class="nr-signature">
+                      <div class="nr-sig-block"><div class="nr-sig-line"></div><div class="nr-sig-lbl">Authorised Signature</div></div>
+                      <div class="nr-sig-block"><div class="nr-sig-line"></div><div class="nr-sig-lbl">Date</div></div>
+                    </div>
+                    <div class="nr-footer-contact" style="margin-top:12px;">
+                      <strong>Nolan Institute of Global Business &amp; Technology</strong><br>
+                      Lusaka, Zambia · info@nolaninstitute.org · +260 768 526 191
+                    </div>
+                  </div>
+                </div>
+
+                <div class="app-receipt-check">
+                  <h6><i class="fas fa-search"></i> Check receipt status later</h6>
+                  <div class="app-receipt-check-row">
+                    <input type="text" id="receiptCheckInput" placeholder="Enter your Receipt No (e.g. NOL-2026-000123)">
+                    <button type="button" class="btn btn-primary btn-sm" id="receiptCheckBtn">Check</button>
+                  </div>
+                  <div class="app-receipt-check-result" id="receiptCheckResult"></div>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-outline btn-sm" id="apPayReset" style="margin-top:16px;"><i class="fas fa-redo"></i> Change payment method</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 · BACKGROUND -->
+        <div class="app-section" data-apply-form="3">
+          <h3>Your Background</h3>
+          <p class="as-sub">Tell us about your education and professional experience. This helps us tailor your learning experience.</p>
+          <div class="app-form-grid">
+            <div class="app-form-group full" data-field="apSchool"><label for="apSchool">Most Recent Institution <span class="req">*</span></label><input type="text" id="apSchool" placeholder="e.g. University of Zambia"><div class="app-inline-error" data-error-for="apSchool"><i class="fas fa-exclamation-circle"></i><span>Please enter your institution.</span></div></div>
+            <div class="app-form-group" data-field="apDegree">
+              <label for="apDegree">Highest Qualification <span class="req">*</span></label>
+              <select id="apDegree">
+                <option value="">Select</option>
+                <option>Completed Secondary School</option>
+                <option>Completed Diploma</option>
+                <option>Partially Completed Degree</option>
+                <option>Completed Bachelor's Degree</option>
+                <option>Completed Master's Degree</option>
+                <option>Professional Qualification</option>
+                <option>Other</option>
+              </select>
+              <div class="app-inline-error" data-error-for="apDegree"><i class="fas fa-exclamation-circle"></i><span>Please select your qualification.</span></div>
+            </div>
+            <div class="app-form-group"><label for="apField">Field of Study</label><input type="text" id="apField" placeholder="e.g. Business, Engineering, Arts"></div>
+            <div class="app-form-group" data-field="apYear"><label for="apYear">Year Completed / Expected <span class="req">*</span></label><input type="number" id="apYear" min="1970" max="2030"><div class="app-inline-error" data-error-for="apYear"><i class="fas fa-exclamation-circle"></i><span>Please enter a valid year.</span></div></div>
+            <div class="app-form-group"><label for="apCurrentRole">Current Role / Position</label><input type="text" id="apCurrentRole" placeholder="e.g. Financial Analyst"></div>
+            <div class="app-form-group"><label for="apIndustry">Industry</label><input type="text" id="apIndustry" placeholder="e.g. Banking, Technology, Retail"></div>
+            <div class="app-form-group"><label for="apExperience">Years of Professional Experience</label><input type="number" id="apExperience" min="0" max="60" placeholder="e.g. 3"></div>
+            <div class="app-form-group"><label for="apStart">Preferred Start</label>
+              <select id="apStart">
+                <option value="">Select</option>
+                <option>As soon as possible</option>
+                <option>Within 1 month</option>
+                <option>Within 3 months</option>
+                <option>Within 6 months</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 · FIT -->
+        <div class="app-section" data-apply-form="4">
+          <h3>Programme Fit</h3>
+          <p class="as-sub">Help us understand why this programme is right for you.</p>
+
+          <div class="app-form-group">
+            <label>How did you hear about this programme? <span class="req">*</span></label>
+            <div class="app-radio-grid" id="apReferral" role="radiogroup" aria-label="Referral source">
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="search"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Internet search</div><div class="ar-desc">Found Nolan Institute through Google or another search engine.</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="social"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Social media</div><div class="ar-desc">LinkedIn, Facebook, Instagram, or another social platform.</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="referral"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Colleague or friend</div><div class="ar-desc">Someone recommended Nolan Institute to me.</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="employer"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Employer or organisation</div><div class="ar-desc">My employer or an organisation I belong to recommended this.</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="other"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Other</div><div class="ar-desc">Another source.</div></div></button>
+            </div>
+          </div>
+
+          <div class="app-form-group">
+            <label>What is your primary goal for this programme? <span class="req">*</span></label>
+            <div class="app-radio-grid" id="apGoal" role="radiogroup" aria-label="Primary goal">
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="new-role"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Move into a new role or industry</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="advance"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Advance in my current career</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="build"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Build my own business or venture</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="skills"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Learn specific practical skills</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="explore"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Explore a new subject area</div></div></button>
+            </div>
+          </div>
+
+          <div class="app-form-group">
+            <label>How much time can you dedicate each week? <span class="req">*</span></label>
+            <div class="app-radio-grid" id="apTime" role="radiogroup" aria-label="Weekly time commitment">
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="lt5"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Less than 5 hours per week</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="5to10"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">5 – 10 hours per week</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="10to20"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">10 – 20 hours per week</div></div></button>
+              <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="gt20"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">More than 20 hours per week</div></div></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5 · ESSAY -->
+        <div class="app-section" data-apply-form="5">
+          <h3>Your Goals</h3>
+          <p class="as-sub">Tell us what you want to achieve. This is your space to be specific and honest.</p>
+          <div class="app-form-group" data-field="apEssay1">
+            <label for="apEssay1">What do you want to achieve in the next 2 years, and how will this programme help? <span class="req">*</span></label>
+            <textarea id="apEssay1" rows="7" placeholder="Describe your goals and how this programme fits into them. Minimum 100 words."></textarea>
+            <div class="app-helper">Minimum 100 words.</div>
+            <div class="app-inline-error" data-error-for="apEssay1"><i class="fas fa-exclamation-circle"></i><span>Please write at least 100 words.</span></div>
+          </div>
+        </div>
+
+        <!-- STEP 6 · DOCUMENTS -->
+        <div class="app-section" data-apply-form="6">
+          <h3>Supporting Documents</h3>
+          <p class="as-sub">Upload your CV and any supporting documents. PDF preferred. Files are validated before being accepted.</p>
+
+          <div id="documentUploadNote" class="app-fee-tier-note" role="note" style="display:none;">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Heads up:</strong> online uploads aren't currently enabled on this page.
+              You can still submit your application — simply email your CV and any supporting documents to
+              <strong>info@nolaninstitute.org</strong> with your full name and application reference in the subject line.
+            </div>
+          </div>
+
+          <div class="app-form-group">
+            <label>Resume / CV <span class="req">*</span></label>
+            <div class="app-upload-drop" data-upload-for="apResume">
+              <input type="file" id="apResume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+              <div class="app-upload-empty"><i class="fas fa-cloud-upload-alt"></i><div class="app-upload-text">Tap to browse or drag &amp; drop</div><div class="app-upload-hint">PDF or DOC · max 5MB</div></div>
+              <div class="app-upload-filled" style="display:none;"><i class="fas fa-file-alt"></i><div class="app-upload-meta"><div class="app-upload-name"></div><div class="app-upload-size"></div></div><button type="button" class="app-upload-remove" aria-label="Remove file"><i class="fas fa-times"></i></button></div>
+            </div>
+            <div class="app-helper">PDF or DOC · max 5MB</div>
+          </div>
+          <div class="app-form-group">
+            <label>Highest Education Certificate (Optional)</label>
+            <div class="app-upload-drop" data-upload-for="apTranscript">
+              <input type="file" id="apTranscript" accept=".pdf,application/pdf">
+              <div class="app-upload-empty"><i class="fas fa-cloud-upload-alt"></i><div class="app-upload-text">Tap to browse or drag &amp; drop</div><div class="app-upload-hint">PDF · max 10MB</div></div>
+              <div class="app-upload-filled" style="display:none;"><i class="fas fa-file-pdf"></i><div class="app-upload-meta"><div class="app-upload-name"></div><div class="app-upload-size"></div></div><button type="button" class="app-upload-remove" aria-label="Remove file"><i class="fas fa-times"></i></button></div>
+            </div>
+            <div class="app-helper">PDF · max 10MB</div>
+          </div>
+          <div class="app-form-group">
+            <label>Other Supporting Document (Optional)</label>
+            <div class="app-upload-drop" data-upload-for="apScholarshipDoc">
+              <input type="file" id="apScholarshipDoc" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+              <div class="app-upload-empty"><i class="fas fa-cloud-upload-alt"></i><div class="app-upload-text">Tap to browse or drag &amp; drop</div><div class="app-upload-hint">PDF, JPG or PNG · max 5MB</div></div>
+              <div class="app-upload-filled" style="display:none;"><i class="fas fa-file-image"></i><div class="app-upload-meta"><div class="app-upload-name"></div><div class="app-upload-size"></div></div><button type="button" class="app-upload-remove" aria-label="Remove file"><i class="fas fa-times"></i></button></div>
+            </div>
+            <div class="app-helper">Optional — recommendation letter, portfolio, certifications.</div>
+          </div>
+        </div>
+
+        <!-- STEP 7 · REVIEW -->
+        <div class="app-section" data-apply-form="7">
+          <h3>Review &amp; Submit</h3>
+          <p class="as-sub">Check everything is correct before submitting.</p>
+
+          <div style="background:linear-gradient(135deg,var(--gold-10) 0%,#FFF9E6 100%);border:1px solid rgba(197,160,40,.35);border-radius:12px;padding:20px 22px;margin-bottom:20px;">
+            <h4 style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;"><i class="fas fa-receipt" style="color:var(--gold-dark)"></i> Payment Confirmation</h4>
+            <p id="applyFeePaidLine" style="font-size:13px;color:var(--gray-dark);line-height:1.7;margin-bottom:6px">Payment status: <strong>Pending</strong></p>
+            <p id="applyFeeDetailLine" style="font-size:13px;color:var(--gray-dark);line-height:1.7">Please return to Step 2 to complete payment.</p>
+          </div>
+
+          <div id="applyReview"></div>
+
+          <div class="app-turnstile-wrap">
+            <div id="turnstileWidget" class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="light" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>
+          </div>
+          <div class="app-turnstile-fallback" id="turnstileFallback">
+            <strong>Spam protection not loaded.</strong> If this keeps happening, please make sure JavaScript is enabled.
+          </div>
+
+          <div class="app-checks">
+            <label><input type="checkbox" id="apAgreeTerms"> I certify that all information I have provided is complete and accurate.</label>
+            <label><input type="checkbox" id="apAgreeSubmit"> I understand that submitting false information may result in revocation of admission.</label>
+            <label><input type="checkbox" id="apAgreeUpdates"> Send me updates about Nolan Institute news and events.</label>
+          </div>
+
+          <div id="applySuccess" class="app-submit-success">
+            <i class="fas fa-check-circle ssp-icon"></i>
+            <h3>Application Submitted</h3>
+            <p>Thank you. Your application has been received by Nolan Institute. A confirmation email has been sent to you.</p>
+            <div class="ssp-ref" id="applySuccessRef">APP-XXXX-XXXXXX</div>
+            <div class="ssp-note" id="applySuccessDocsNote">
+              <strong><i class="fas fa-envelope"></i> One more step:</strong> please email your CV and any supporting documents to <strong>info@nolaninstitute.org</strong> with your application reference in the subject line. We'll attach them to your file.
+            </div>
+            <p style="font-size:13px;color:var(--gray-dark);">You may now close this window. Our admissions team will be in touch.</p>
+            <div class="ssp-actions">
+              <button type="button" class="btn btn-primary btn-lg" onclick="closeApplication()">Return to Nolan Institute <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="app-foot" id="applyNav">
+      <button type="button" class="btn btn-outline" id="apPrev" style="display:none;">← Previous</button>
+      <button type="button" class="btn btn-primary" id="apNext">Next →</button>
+      <button type="submit" class="btn btn-gold" id="apSubmit" form="applyForm" style="display:none;background:var(--gold);color:var(--navy-dark);">Submit Application <i class="fas fa-check"></i></button>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="programmeModal">
   <div class="modal-card" role="dialog" aria-modal="true">
@@ -814,10 +1542,7 @@ input,select,textarea{color-scheme:light only}
       </div>
       <div class="portal-error" id="portalLoginError"></div>
       <form id="portalLoginForm" novalidate>
-        <div class="portal-field">
-          <label for="portalEmail">Email or Student ID</label>
-          <input type="email" id="portalEmail" placeholder="you@example.com" autocomplete="email">
-        </div>
+        <div class="portal-field"><label for="portalEmail">Email or Student ID</label><input type="email" id="portalEmail" placeholder="you@example.com" autocomplete="email"></div>
         <div class="portal-field">
           <label for="portalPassword">Password</label>
           <div class="portal-pw-wrap">
@@ -825,52 +1550,30 @@ input,select,textarea{color-scheme:light only}
             <button type="button" class="portal-pw-toggle" id="portalPwToggle" aria-label="Show password"><i class="fas fa-eye"></i></button>
           </div>
         </div>
-        <div class="portal-row">
-          <label><input type="checkbox" id="portalRemember"> Remember me</label>
-          <a id="portalForgotLink">Forgot password?</a>
-        </div>
+        <div class="portal-row"><label><input type="checkbox" id="portalRemember"> Remember me</label><a id="portalForgotLink">Forgot password?</a></div>
         <button type="submit" class="portal-submit" id="portalLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
       </form>
       <div class="portal-footer"><p>Don't have an account? <a id="portalCreateLink">Create one</a></p></div>
     </div>
 
     <div class="portal-view" id="portalForgotView">
-      <div class="portal-header">
-        <div class="portal-icon"><i class="fas fa-key"></i></div>
-        <h2>Reset Password</h2>
-        <p class="portal-sub">Enter your email and we'll send a reset link.</p>
-      </div>
+      <div class="portal-header"><div class="portal-icon"><i class="fas fa-key"></i></div><h2>Reset Password</h2><p class="portal-sub">Enter your email and we'll send a reset link.</p></div>
       <div class="portal-error" id="portalForgotError"></div>
       <div class="portal-success" id="portalForgotSuccess"></div>
       <form id="portalForgotForm" novalidate>
-        <div class="portal-field">
-          <label for="portalForgotEmail">Email Address</label>
-          <input type="email" id="portalForgotEmail" placeholder="you@example.com" autocomplete="email">
-        </div>
+        <div class="portal-field"><label for="portalForgotEmail">Email Address</label><input type="email" id="portalForgotEmail" placeholder="you@example.com" autocomplete="email"></div>
         <button type="submit" class="portal-submit" id="portalForgotBtn"><i class="fas fa-paper-plane"></i> Send Reset Link</button>
       </form>
-      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
-        <button type="button" class="portal-back" id="portalBack1"><i class="fas fa-arrow-left"></i> Back to Sign In</button>
-      </div>
+      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px"><button type="button" class="portal-back" id="portalBack1"><i class="fas fa-arrow-left"></i> Back to Sign In</button></div>
     </div>
 
     <div class="portal-view" id="portalCreateView">
-      <div class="portal-header">
-        <div class="portal-icon"><i class="fas fa-user-plus"></i></div>
-        <h2>Create Account</h2>
-        <p class="portal-sub">Set up your Nolan Institute student account.</p>
-      </div>
+      <div class="portal-header"><div class="portal-icon"><i class="fas fa-user-plus"></i></div><h2>Create Account</h2><p class="portal-sub">Set up your Nolan Institute student account.</p></div>
       <div class="portal-error" id="portalCreateError"></div>
       <div class="portal-success" id="portalCreateSuccess"></div>
       <form id="portalCreateForm" novalidate>
-        <div class="portal-field">
-          <label for="portalNewName">Full Name</label>
-          <input type="text" id="portalNewName" placeholder="Jane Doe" autocomplete="name">
-        </div>
-        <div class="portal-field">
-          <label for="portalNewEmail">Email Address</label>
-          <input type="email" id="portalNewEmail" placeholder="you@example.com" autocomplete="email">
-        </div>
+        <div class="portal-field"><label for="portalNewName">Full Name</label><input type="text" id="portalNewName" placeholder="Jane Doe" autocomplete="name"></div>
+        <div class="portal-field"><label for="portalNewEmail">Email Address</label><input type="email" id="portalNewEmail" placeholder="you@example.com" autocomplete="email"></div>
         <div class="portal-field">
           <label for="portalNewPassword">Password</label>
           <div class="portal-pw-wrap">
@@ -880,9 +1583,7 @@ input,select,textarea{color-scheme:light only}
         </div>
         <button type="submit" class="portal-submit" id="portalCreateBtn"><i class="fas fa-user-plus"></i> Create Account</button>
       </form>
-      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
-        <button type="button" class="portal-back" id="portalBack2"><i class="fas fa-arrow-left"></i> Back to Sign In</button>
-      </div>
+      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px"><button type="button" class="portal-back" id="portalBack2"><i class="fas fa-arrow-left"></i> Back to Sign In</button></div>
     </div>
 
     <div class="portal-view portal-dashboard" id="portalDashboardView">
@@ -891,10 +1592,7 @@ input,select,textarea{color-scheme:light only}
         <h2>Welcome back, <span id="portalUserName">Student</span></h2>
         <p class="portal-sub">You're signed in to the Nolan Institute Student Portal.</p>
       </div>
-      <div class="portal-user-info">
-        Signed in as <strong id="portalUserEmail">—</strong><br>
-        <span id="portalSessionInfo" style="color:#666">Session active</span>
-      </div>
+      <div class="portal-user-info">Signed in as <strong id="portalUserEmail">—</strong><br><span id="portalSessionInfo" style="color:#666">Session active</span></div>
       <div class="portal-dashboard-grid">
         <button type="button" class="portal-dash-card" data-dash="courses"><i class="fas fa-book-open"></i><h4>My Courses</h4><p>View your enrolled programmes</p></button>
         <button type="button" class="portal-dash-card" data-dash="grades"><i class="fas fa-award"></i><h4>Grades</h4><p>See your assessments and results</p></button>
@@ -910,27 +1608,66 @@ input,select,textarea{color-scheme:light only}
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Message</span></div>
 
 <script>
-/* =========================================================
+/* ============================================================
    CONFIG
-   ========================================================= */
-const APPLY_URL = 'admissions-apply.html';
+   ============================================================ */
+const ADMIN_WHATSAPP = '260762499581';
 
-/* =========================================================
-   CURRENCY CONVERSION
-   ========================================================= */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyA_ocl1c1-zg4FQep1IpcC6cZLoMkeytGM",
+  authDomain: "nolanuniversity-c1e7a.firebaseapp.com",
+  projectId: "nolanuniversity-c1e7a",
+  storageBucket: "nolanuniversity-c1e7a.firebasestorage.app",
+  messagingSenderId: "423278769509",
+  appId: "1:423278769509:web:847a299a3b825049cb9d8c",
+  measurementId: "G-5T7SGGC8LF"
+};
+
+const CLOUDINARY_CONFIG = {
+  cloudName: "YOUR_CLOUDINARY_CLOUD_NAME",
+  uploadPreset: "YOUR_UNSIGNED_UPLOAD_PRESET"
+};
+const IS_CLOUDINARY_CONFIGURED = !!(CLOUDINARY_CONFIG.cloudName && CLOUDINARY_CONFIG.cloudName.indexOf('YOUR_') !== 0 &&
+                                    CLOUDINARY_CONFIG.uploadPreset && CLOUDINARY_CONFIG.uploadPreset.indexOf('YOUR_') !== 0);
+
+const EMAILJS_CONFIG = {
+  publicKey: "1GuyWccqX6p3b2_9T",
+  serviceId: "service_nolan_university",
+  templateId: "template_confirm"
+};
+
+const TURNSTILE_SITE_KEY = "YOUR_TURNSTILE_SITE_KEY";
+const VERIFY_BASE_URL = "https://nolaninstitute.org/verify";
+const DRAFT_KEY = 'nolan_marketplace_draft_v1';
+
+const IS_FIREBASE_CONFIGURED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('YOUR_') !== 0);
+const IS_EMAILJS_CONFIGURED = !!(EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.publicKey.indexOf('YOUR_') !== 0);
+const IS_TURNSTILE_CONFIGURED = !!(TURNSTILE_SITE_KEY && TURNSTILE_SITE_KEY.indexOf('YOUR_') !== 0);
+
 const USD_RATE = 20;
-function toUSD(zmw){
-  const raw = zmw / USD_RATE;
-  if(raw >= 1000) return Math.round(raw / 25) * 25;
-  if(raw >= 100)  return Math.round(raw / 5) * 5;
-  return Math.round(raw);
-}
+function toUSD(zmw){ const raw = zmw / USD_RATE; if(raw >= 1000) return Math.round(raw / 25) * 25; if(raw >= 100) return Math.round(raw / 5) * 5; return Math.round(raw); }
 function fmtZMW(n){ return 'K' + n.toLocaleString(); }
 function fmtUSD(zmw){ return 'US$' + toUSD(zmw).toLocaleString(); }
 
-/* =========================================================
-   HERO SLIDES
-   ========================================================= */
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function trackEvent(name, params){ try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){} }
+let toastTimer;
+function showToast(msg, type){
+  const t = $('#toast'); if(!t) return;
+  $('#toastMsg').textContent = msg;
+  t.className = 'toast show' + (type === 'error' ? ' error' : type === 'success' ? ' success' : type === 'info' ? ' info' : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.className = 'toast'; }, 3200);
+}
+
+/* ============================================================
+   DATA — Subjects, Programmes, Hero slides, pricing
+   ============================================================ */
 const HERO_SLIDES = [
   { src: '85fd7197-bc0f-41ec-b22a-930c3b3f7294.png', format: 'Short Course',            badge: 'Short Courses',            sub: '8–12 Weeks · K1,500 (≈ US$75)' },
   { src: '7de14444-a94c-4c84-8841-c59b21f9163f.png', format: 'Certificate',             badge: 'Certificates',             sub: '16 Weeks · K2,000 (≈ US$100)' },
@@ -951,36 +1688,6 @@ const PORTAL_DEMO = { email: 'student@nolaninstitute.org', password: 'nolan2026'
 const PORTAL_STORAGE_KEY = 'nolanPortalSession';
 const PORTAL_ACCOUNTS_KEY = 'nolanPortalAccounts';
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function categoryForSubject(subject){
-  const map = {'Accounting & Finance':'Finance & Investment','Banking & Financial Services':'Finance & Investment','Investment & Capital Markets':'Finance & Investment','Financial Modelling':'Finance & Investment','Corporate Finance':'Finance & Investment','Risk Management':'Finance & Investment','Business Intelligence':'Technology & Digital Skills','Data Analytics':'Technology & Digital Skills','Artificial Intelligence':'Technology & Digital Skills','Digital Transformation':'Technology & Digital Skills','AI for Business':'Technology & Digital Skills','Leadership':'Executive Education','Business Management':'Professional Education','Project Management':'Professional Education','Entrepreneurship':'Professional Education'};
-  return map[subject] || 'Professional Education';
-}
-function goToApply(programme){
-  try{
-    if(programme){
-      sessionStorage.setItem('nolanSelectedProgramme', JSON.stringify({ id: programme.id, name: programme.name, subject: programme.subject, format: programme.format, weeks: programme.weeks, price: programme.price, category: categoryForSubject(programme.subject) }));
-    } else sessionStorage.removeItem('nolanSelectedProgramme');
-  }catch(e){}
-  window.location.href = APPLY_URL;
-}
-let toastTimer;
-function showToast(msg, type){
-  const t=$('#toast'); if(!t) return;
-  $('#toastMsg').textContent = msg;
-  t.className = 'toast show' + (type === 'error' ? ' error' : type === 'success' ? ' success' : '');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>{ t.className='toast'; }, 2800);
-}
-
-/* =========================================================
-   SUBJECTS
-   ========================================================= */
 const SUBJECTS = [
   {name:'Accounting & Finance',     icon:'fa-calculator',           blurb:'Build financial knowledge and decision-making capability.'},
   {name:'Banking & Financial Services', icon:'fa-building-columns',  blurb:'Understand modern banking, financial services and risk.'},
@@ -999,11 +1706,6 @@ const SUBJECTS = [
   {name:'Risk Management',          icon:'fa-shield-halved',        blurb:'Identify, assess and manage professional and financial risk.'}
 ];
 
-/* =========================================================
-   FORMAT PRICING
-   Short Course K1,500 | Certificate K2,000 | Professional Certificate K2,500
-   Bootcamp K3,000 | Advanced Programme K3,500
-   ========================================================= */
 const FORMAT_PRICES = {
   'Short Course':            1500,
   'Certificate':             2000,
@@ -1012,9 +1714,6 @@ const FORMAT_PRICES = {
   'Advanced Programme':      3500
 };
 
-/* =========================================================
-   PROGRAMMES  (format keys use canonical names; renamed below)
-   ========================================================= */
 const PROGRAMMES = [
   {id:'af-sc',name:'Finance Fundamentals',subject:'Accounting & Finance',format:'Short Course',weeks:10,description:'A focused, practical introduction to finance — from reading financial statements to making better financial decisions.',learn:['Reading financial statements','Budgeting and cashflow basics','Financial decision frameworks','Practical spreadsheet work'],audience:'Professionals needing a solid, practical finance foundation.'},
   {id:'af-c',name:'Certificate in Accounting & Finance',subject:'Accounting & Finance',format:'Certificate',weeks:16,featured:true,description:'Structured professional certificate covering accounting principles, financial reporting and financial analysis.',learn:['Financial accounting','Management accounting','Financial reporting','Ratio analysis'],audience:'Aspiring accountants, finance officers and professionals moving into finance.'},
@@ -1106,20 +1805,14 @@ const PROGRAMMES = [
   {id:'rm-bc',name:'Risk Management Bootcamp',subject:'Risk Management',format:'Bootcamp',weeks:5,description:'Intensive bootcamp applying risk management frameworks to real scenarios.',learn:['Risk identification','Risk registers','Scenario analysis','Practical risk response'],audience:'Professionals needing fast, practical risk skill.'},
   {id:'rm-adv',name:'Advanced Risk Management',subject:'Risk Management',format:'Advanced Programme',weeks:28,description:'Advanced programme covering enterprise risk, governance and risk leadership.',learn:['Enterprise risk management','Risk governance','Regulatory frameworks','Risk leadership'],audience:'Senior risk professionals and executives.'}
 ];
+PROGRAMMES.forEach(p => { p.price = FORMAT_PRICES[p.format] || 0; });
 
-/* =========================================================
-   APPLY FORMAT PRICES — every programme gets its format price
-   ========================================================= */
-PROGRAMMES.forEach(p => {
-  p.price = FORMAT_PRICES[p.format] || 0;
-});
-
+/* ============================================================
+   MARKETPLACE STATE + HERO SLIDER
+   ============================================================ */
 const state = { subject:null, format:null, currentProgrammeId:null };
-
-/* =========================================================
-   HERO SLIDER
-   ========================================================= */
 let heroSlideIndex = 0, heroSlideTimer = null;
+
 function buildHeroSlider(){
   const track = document.getElementById('heroTrack'), dots = document.getElementById('heroDots');
   if(!track || !dots) return;
@@ -1127,12 +1820,10 @@ function buildHeroSlider(){
   dots.innerHTML = HERO_SLIDES.map((_, i) => `<button type="button" class="hero-slider-dot ${i===0?'active':''}" data-index="${i}" aria-label="Go to slide ${i+1}"></button>`).join('');
   track.querySelectorAll('.hero-slide').forEach(slide => {
     slide.addEventListener('click', () => {
-      state.subject = null;
-      state.format = slide.dataset.format;
+      state.subject = null; state.format = slide.dataset.format;
       renderCatalogue(); scrollToCatalogue();
       showToast(`Showing ${slide.dataset.format}s (${getFilteredProgrammes().length})`);
-      goToHeroSlide(parseInt(slide.dataset.index, 10));
-      resetHeroRotation();
+      goToHeroSlide(parseInt(slide.dataset.index, 10)); resetHeroRotation();
     });
   });
   dots.querySelectorAll('.hero-slider-dot').forEach(dot => dot.addEventListener('click', e => { e.stopPropagation(); goToHeroSlide(parseInt(dot.dataset.index, 10)); resetHeroRotation(); }));
@@ -1150,26 +1841,26 @@ function startHeroRotation(){ stopHeroRotation(); if(HERO_SLIDES.length<2) retur
 function stopHeroRotation(){ if(heroSlideTimer){ clearInterval(heroSlideTimer); heroSlideTimer=null; } }
 function resetHeroRotation(){ stopHeroRotation(); startHeroRotation(); }
 
-/* =========================================================
-   SUBJECTS GRID
-   ========================================================= */
+/* ============================================================
+   SUBJECTS GRID + FINDER SUBJECTS + FORMAT COUNTS
+   ============================================================ */
 function buildSubjectsGrid(){
-  const grid = $('#subjectsGrid');
-  grid.innerHTML = SUBJECTS.map(s=>{ const count = PROGRAMMES.filter(p=>p.subject===s.name).length; return `<button type="button" class="subject-card" data-subject="${esc(s.name)}"><div class="subject-icon"><i class="fas ${s.icon}"></i></div><h3>${esc(s.name)}</h3><p>${esc(s.blurb)}</p><span class="subject-count">${count} programmes · 5 formats</span></button>`; }).join('');
-  grid.querySelectorAll('.subject-card').forEach(c=>c.addEventListener('click',()=>applySubjectFilter(c.dataset.subject)));
+  const grid = $('#subjectsGrid'); if(!grid) return;
+  grid.innerHTML = SUBJECTS.map(s => { const count = PROGRAMMES.filter(p=>p.subject===s.name).length; return `<button type="button" class="subject-card" data-subject="${esc(s.name)}"><div class="subject-icon"><i class="fas ${s.icon}"></i></div><h3>${esc(s.name)}</h3><p>${esc(s.blurb)}</p><span class="subject-count">${count} programmes · 5 formats</span></button>`; }).join('');
+  grid.querySelectorAll('.subject-card').forEach(c => c.addEventListener('click', () => applySubjectFilter(c.dataset.subject)));
 }
-function buildFinderSubjects(){ const sel = $('#finderSubject'); SUBJECTS.forEach(s=>{ const o=document.createElement('option'); o.value=s.name; o.textContent=s.name; sel.appendChild(o); }); }
+function buildFinderSubjects(){ const sel = $('#finderSubject'); if(!sel) return; SUBJECTS.forEach(s => { const o = document.createElement('option'); o.value = s.name; o.textContent = s.name; sel.appendChild(o); }); }
 function updateFormatCounts(){
-  $('#count-short').textContent = PROGRAMMES.filter(p=>p.format==='Short Course').length + ' programmes';
-  $('#count-cert').textContent  = PROGRAMMES.filter(p=>p.format==='Certificate').length + ' programmes';
-  $('#count-prof').textContent  = PROGRAMMES.filter(p=>p.format==='Professional Certificate').length + ' programmes';
-  $('#count-boot').textContent  = PROGRAMMES.filter(p=>p.format==='Bootcamp').length + ' programmes';
-  $('#count-adv').textContent   = PROGRAMMES.filter(p=>p.format==='Advanced Programme').length + ' programmes';
+  $('#count-short').textContent = PROGRAMMES.filter(p => p.format === 'Short Course').length + ' programmes';
+  $('#count-cert').textContent  = PROGRAMMES.filter(p => p.format === 'Certificate').length + ' programmes';
+  $('#count-prof').textContent  = PROGRAMMES.filter(p => p.format === 'Professional Certificate').length + ' programmes';
+  $('#count-boot').textContent  = PROGRAMMES.filter(p => p.format === 'Bootcamp').length + ' programmes';
+  $('#count-adv').textContent   = PROGRAMMES.filter(p => p.format === 'Advanced Programme').length + ' programmes';
 }
 
-/* =========================================================
+/* ============================================================
    CATALOGUE
-   ========================================================= */
+   ============================================================ */
 function getFilteredProgrammes(){ let list = PROGRAMMES.slice(); if(state.subject) list = list.filter(p=>p.subject===state.subject); if(state.format) list = list.filter(p=>p.format===state.format); return list; }
 function getFeatured(){ return PROGRAMMES.filter(p=>p.featured); }
 function progCardHTML(p){
@@ -1177,10 +1868,7 @@ function progCardHTML(p){
     <div class="prog-top">
       <span class="prog-badge">${esc(p.format)}</span>
       <h3>${esc(p.name)}</h3>
-      <div class="prog-meta">
-        <span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span>
-        <span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span>
-      </div>
+      <div class="prog-meta"><span><i class="fas fa-clock"></i> ${p.weeks} Weeks</span><span><i class="fas fa-layer-group"></i> ${esc(p.subject)}</span></div>
     </div>
     <div class="prog-body">
       <p>${esc(p.description)}</p>
@@ -1194,42 +1882,39 @@ function progCardHTML(p){
 }
 function renderCatalogue(){
   const grid = $('#catalogueGrid'), bar = $('#catalogueBar'), tag = $('#catalogueTag'), title = $('#catalogueTitle'), sub = $('#catalogueSub'), label = $('#catalogueBarLabel');
+  if(!grid) return;
   const filtering = state.subject || state.format;
   if(filtering){
     const list = getFilteredProgrammes();
     tag.textContent = 'Filtered Results';
     title.textContent = state.subject && state.format ? `${state.subject} · ${state.format}` : (state.subject ? state.subject : state.format + 's');
     sub.textContent = `${list.length} programme${list.length!==1?'s':''} match your selection. Click any card to see full details.`;
-    bar.style.display='flex';
-    let parts=[]; if(state.subject) parts.push(`Subject: <strong>${esc(state.subject)}</strong>`); if(state.format) parts.push(`Format: <strong>${esc(state.format)}</strong>`);
+    bar.style.display = 'flex';
+    let parts = []; if(state.subject) parts.push(`Subject: <strong>${esc(state.subject)}</strong>`); if(state.format) parts.push(`Format: <strong>${esc(state.format)}</strong>`);
     label.innerHTML = 'Showing ' + parts.join(' &nbsp;·&nbsp; ');
-    grid.innerHTML = list.length===0 ? `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try a different subject or format.</p></div>` : list.map(progCardHTML).join('');
+    grid.innerHTML = list.length === 0 ? `<div class="empty-state"><i class="fas fa-search"></i><h4>No programmes match that filter</h4><p>Try a different subject or format.</p></div>` : list.map(progCardHTML).join('');
   } else {
     const list = getFeatured();
     tag.textContent = 'Featured Programmes'; title.textContent = 'Popular Programmes Right Now'; sub.textContent = 'A selection across subjects and formats. Click any card to see full details.';
-    bar.style.display='none'; grid.innerHTML = list.map(progCardHTML).join('');
+    bar.style.display = 'none'; grid.innerHTML = list.map(progCardHTML).join('');
   }
-  grid.querySelectorAll('.prog-card').forEach(card=>card.addEventListener('click',()=>openProgramme(card.dataset.id)));
-  document.querySelectorAll('.subject-card').forEach(c=>c.classList.toggle('active', c.dataset.subject===state.subject));
-  document.querySelectorAll('.format-pill').forEach(c=>c.classList.toggle('active', c.dataset.format===state.format));
-  document.querySelectorAll('.path-card').forEach(c=>c.classList.toggle('active', c.dataset.format===state.format));
+  grid.querySelectorAll('.prog-card').forEach(card => card.addEventListener('click', () => openProgramme(card.dataset.id)));
+  document.querySelectorAll('.subject-card').forEach(c => c.classList.toggle('active', c.dataset.subject === state.subject));
+  document.querySelectorAll('.format-pill').forEach(c => c.classList.toggle('active', c.dataset.format === state.format));
+  document.querySelectorAll('.path-card').forEach(c => c.classList.toggle('active', c.dataset.format === state.format));
 }
 function scrollToCatalogue(){ const el = document.getElementById('catalogue'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
-function applyFormatFilter(format){ state.subject = null; state.format = (state.format===format) ? null : format; renderCatalogue(); scrollToCatalogue(); showToast(state.format ? `Showing ${state.format}s (${getFilteredProgrammes().length})` : 'Filter cleared'); }
-function applySubjectFilter(subject){ state.format = null; state.subject = (state.subject===subject) ? null : subject; renderCatalogue(); scrollToCatalogue(); showToast(state.subject ? `Showing ${subject} (${getFilteredProgrammes().length})` : 'Filter cleared'); }
-function clearFilters(){ state.subject=null; state.format=null; renderCatalogue(); showToast('Filters cleared'); }
-$('#catalogueClear').addEventListener('click', clearFilters);
-$$('#heroFormats .format-pill').forEach(p=>p.addEventListener('click',()=>applyFormatFilter(p.dataset.format)));
-$$('#pathsGrid .path-card').forEach(p=>p.addEventListener('click',()=>applyFormatFilter(p.dataset.format)));
-$$('.format-card .btn[data-format]').forEach(b=>b.addEventListener('click',()=>applyFormatFilter(b.dataset.format)));
+function applyFormatFilter(format){ state.subject = null; state.format = (state.format === format) ? null : format; renderCatalogue(); scrollToCatalogue(); showToast(state.format ? `Showing ${state.format}s (${getFilteredProgrammes().length})` : 'Filter cleared'); }
+function applySubjectFilter(subject){ state.format = null; state.subject = (state.subject === subject) ? null : subject; renderCatalogue(); scrollToCatalogue(); showToast(state.subject ? `Showing ${subject} (${getFilteredProgrammes().length})` : 'Filter cleared'); }
+function clearFilters(){ state.subject = null; state.format = null; renderCatalogue(); showToast('Filters cleared'); }
 
-/* =========================================================
+/* ============================================================
    PROGRAMME MODAL
-   ========================================================= */
+   ============================================================ */
 function openProgramme(id){
-  const p = PROGRAMMES.find(x=>x.id===id); if(!p) return;
+  const p = PROGRAMMES.find(x => x.id === id); if(!p) return;
   state.currentProgrammeId = id;
-  const award = p.format==='Short Course'?'Certificate of Completion':p.format==='Certificate'?'Professional Certificate':p.format==='Professional Certificate'?'Professional Programme Certificate':p.format==='Bootcamp'?'Bootcamp Certificate of Completion':'Advanced Professional Certificate';
+  const award = p.format === 'Short Course' ? 'Certificate of Completion' : p.format === 'Certificate' ? 'Professional Certificate' : p.format === 'Professional Certificate' ? 'Professional Programme Certificate' : p.format === 'Bootcamp' ? 'Bootcamp Certificate of Completion' : 'Advanced Professional Certificate';
   $('#programmeContent').innerHTML = `
     <span class="pm-badge">${esc(p.format)}</span>
     <h2 class="pm-title">${esc(p.name)}</h2>
@@ -1241,72 +1926,70 @@ function openProgramme(id){
       <div class="pm-meta-item"><div class="pm-label">Investment</div><div class="pm-value">${fmtZMW(p.price)}<span class="usd">≈ ${fmtUSD(p.price)}</span></div></div>
     </div>
     <p class="pm-desc">${esc(p.description)}</p>
-    <div class="pm-section"><h4>What You'll Learn</h4><ul class="pm-learn">${p.learn.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>
+    <div class="pm-section"><h4>What You'll Learn</h4><ul class="pm-learn">${p.learn.map(l => `<li>${esc(l)}</li>`).join('')}</ul></div>
     <div class="pm-section"><h4>Who Is It For</h4><p class="pm-audience">${esc(p.audience)}</p></div>
     <div class="pm-award"><i class="fas fa-certificate"></i><div><div class="label">On Successful Completion</div><div class="value">${award}</div></div></div>
     <div class="pm-actions">
       <button type="button" class="btn btn-primary btn-lg" onclick="applyFromModal()">Apply Now <i class="fas fa-arrow-right"></i></button>
       <button type="button" class="btn btn-outline btn-lg" onclick="closeProgramme()">Close</button>
     </div>`;
-  $('#programmeModal').classList.add('show'); document.body.style.overflow='hidden';
+  $('#programmeModal').classList.add('show'); document.body.style.overflow = 'hidden';
 }
-function applyFromModal(){ const p = PROGRAMMES.find(x=>x.id===state.currentProgrammeId); closeProgramme(); if(p) goToApply(p); else goToApply(); }
-function closeProgramme(){ $('#programmeModal').classList.remove('show'); document.body.style.overflow=''; }
+function applyFromModal(){ const p = PROGRAMMES.find(x => x.id === state.currentProgrammeId); closeProgramme(); if(p){ setSelectedProgramme(p); openApplication(); } }
+function closeProgramme(){ $('#programmeModal').classList.remove('show'); document.body.style.overflow = ''; }
 
-/* =========================================================
+/* ============================================================
    SEARCH
-   ========================================================= */
-const searchModal=$('#searchModal'), searchInput=$('#searchInput'), searchResults=$('#searchResults'), searchHint=$('#searchHint');
-function buildSearchTags(){ const tags = ['Finance','AI','Bootcamp','Certificate','Data Analytics','Risk Management','Advanced','Short Course','Leadership']; $('#searchTags').innerHTML = tags.map(t=>`<button type="button" class="search-tag" data-tag="${esc(t)}">${esc(t)}</button>`).join(''); $$('#searchTags .search-tag').forEach(b=>b.addEventListener('click',()=>{ searchInput.value = b.dataset.tag; renderSearchResults(b.dataset.tag); searchInput.focus(); })); }
-function openSearch(){ searchModal.classList.add('show'); document.body.style.overflow='hidden'; setTimeout(()=>searchInput.focus(),80); renderSearchResults(searchInput.value); }
-function closeSearch(){ searchModal.classList.remove('show'); document.body.style.overflow=''; searchInput.value=''; }
+   ============================================================ */
+const searchModal = $('#searchModal'), searchInput = $('#searchInput'), searchResults = $('#searchResults'), searchHint = $('#searchHint');
+function buildSearchTags(){ const tags = ['Finance','AI','Bootcamp','Certificate','Data Analytics','Risk Management','Advanced','Short Course','Leadership']; const el = $('#searchTags'); if(!el) return; el.innerHTML = tags.map(t => `<button type="button" class="search-tag" data-tag="${esc(t)}">${esc(t)}</button>`).join(''); el.querySelectorAll('.search-tag').forEach(b => b.addEventListener('click', () => { searchInput.value = b.dataset.tag; renderSearchResults(b.dataset.tag); searchInput.focus(); })); }
+function openSearch(){ searchModal.classList.add('show'); document.body.style.overflow = 'hidden'; setTimeout(()=>searchInput.focus(),80); renderSearchResults(searchInput.value); }
+function closeSearch(){ searchModal.classList.remove('show'); document.body.style.overflow = ''; searchInput.value = ''; }
 function renderSearchResults(q){
   const query = q.trim().toLowerCase();
   if(!query){ searchHint.innerHTML = 'Type to search — try <strong>"finance"</strong>, <strong>"AI"</strong>, or <strong>"bootcamp"</strong>.'; searchResults.innerHTML = `<div class="search-empty"><i class="fas fa-search"></i>Start typing to search across ${PROGRAMMES.length} programmes.</div>`; return; }
-  const matches = PROGRAMMES.filter(p=>{ const hay = (p.name+' '+p.subject+' '+p.format+' '+p.description+' '+p.learn.join(' ')).toLowerCase(); return hay.includes(query); });
+  const matches = PROGRAMMES.filter(p => { const hay = (p.name + ' ' + p.subject + ' ' + p.format + ' ' + p.description + ' ' + p.learn.join(' ')).toLowerCase(); return hay.includes(query); });
   searchHint.innerHTML = `<strong>${matches.length}</strong> programme${matches.length!==1?'s':''} found for "<strong>${esc(q.trim())}</strong>"`;
-  if(matches.length===0){ searchResults.innerHTML = `<div class="search-empty"><i class="fas fa-search-minus"></i>No programmes match that search. Try a different keyword.</div>`; return; }
-  searchResults.innerHTML = matches.map(p=>`<div class="search-result" data-id="${p.id}"><div class="search-result-info"><h5>${esc(p.name)}</h5><div class="search-meta"><span>${esc(p.format)}</span><span>${esc(p.subject)}</span><span><strong>${fmtZMW(p.price)}</strong> · ${fmtUSD(p.price)}</span><span>${p.weeks} Weeks</span></div></div><i class="fas fa-arrow-right search-result-arrow"></i></div>`).join('');
-  searchResults.querySelectorAll('.search-result').forEach(el=>el.addEventListener('click',()=>{ const id = el.dataset.id; closeSearch(); setTimeout(()=>openProgramme(id),200); }));
+  if(matches.length === 0){ searchResults.innerHTML = `<div class="search-empty"><i class="fas fa-search-minus"></i>No programmes match that search. Try a different keyword.</div>`; return; }
+  searchResults.innerHTML = matches.map(p => `<div class="search-result" data-id="${p.id}"><div class="search-result-info"><h5>${esc(p.name)}</h5><div class="search-meta"><span>${esc(p.format)}</span><span>${esc(p.subject)}</span><span><strong>${fmtZMW(p.price)}</strong> · ${fmtUSD(p.price)}</span><span>${p.weeks} Weeks</span></div></div><i class="fas fa-arrow-right search-result-arrow"></i></div>`).join('');
+  searchResults.querySelectorAll('.search-result').forEach(el => el.addEventListener('click', () => { const id = el.dataset.id; closeSearch(); setTimeout(() => openProgramme(id), 200); }));
 }
-$('#searchOpenBtn').addEventListener('click',openSearch);
-searchInput.addEventListener('input',e=>renderSearchResults(e.target.value));
 
-/* =========================================================
-   FINDER
-   ========================================================= */
-const finderSubject=$('#finderSubject'), finderFormat=$('#finderFormat'), finderDuration=$('#finderDuration'), finderBudget=$('#finderBudget');
+/* ============================================================
+   PROGRAMME FINDER
+   ============================================================ */
+const finderSubject = $('#finderSubject'), finderFormat = $('#finderFormat'), finderDuration = $('#finderDuration'), finderBudget = $('#finderBudget');
 function matchesDuration(w,f){ if(!f) return true; if(f==='short') return w<=12; if(f==='medium') return w>=13 && w<=24; if(f==='long') return w>=25; return true; }
 function matchesBudget(pr,f){ if(!f) return true; if(f==='under2') return pr<2000; if(f==='2to3') return pr>=2000 && pr<=3000; if(f==='3to4') return pr>3000 && pr<=4000; if(f==='over4') return pr>4000; return true; }
 function runFinder(){
-  const subj=finderSubject.value, fmt=finderFormat.value, dur=finderDuration.value, bud=finderBudget.value;
-  const results = PROGRAMMES.filter(p=>{ if(subj && p.subject!==subj) return false; if(fmt && p.format!==fmt) return false; if(!matchesDuration(p.weeks,dur)) return false; if(!matchesBudget(p.price,bud)) return false; return true; });
-  const wrap=$('#finderResults'), list=$('#finderList'), count=$('#finderCount');
+  const subj = finderSubject.value, fmt = finderFormat.value, dur = finderDuration.value, bud = finderBudget.value;
+  const results = PROGRAMMES.filter(p => { if(subj && p.subject !== subj) return false; if(fmt && p.format !== fmt) return false; if(!matchesDuration(p.weeks, dur)) return false; if(!matchesBudget(p.price, bud)) return false; return true; });
+  const wrap = $('#finderResults'), list = $('#finderList'), count = $('#finderCount');
   wrap.classList.add('show');
-  count.textContent = results.length + ' programme' + (results.length!==1?'s':'') + ' found';
-  if(results.length===0){ list.innerHTML = `<div class="finder-empty"><i class="fas fa-search-minus"></i>No programmes match your filters. Try broadening your search.</div>`; return; }
-  list.innerHTML = results.map(p=>`<div class="finder-item" data-id="${p.id}"><h5>${esc(p.name)}</h5><div class="finder-meta"><span><i class="fas fa-clock" style="color:var(--gold)"></i> ${p.weeks} Wks</span><span><strong>${fmtZMW(p.price)}</strong> · ${fmtUSD(p.price)}</span><span>${esc(p.format)}</span></div></div>`).join('');
-  list.querySelectorAll('.finder-item').forEach(el=>el.addEventListener('click',()=>openProgramme(el.dataset.id)));
+  count.textContent = results.length + ' programme' + (results.length !== 1 ? 's' : '') + ' found';
+  if(results.length === 0){ list.innerHTML = `<div class="finder-empty"><i class="fas fa-search-minus"></i>No programmes match your filters. Try broadening your search.</div>`; return; }
+  list.innerHTML = results.map(p => `<div class="finder-item" data-id="${p.id}"><h5>${esc(p.name)}</h5><div class="finder-meta"><span><i class="fas fa-clock" style="color:var(--gold)"></i> ${p.weeks} Wks</span><span><strong>${fmtZMW(p.price)}</strong> · ${fmtUSD(p.price)}</span><span>${esc(p.format)}</span></div></div>`).join('');
+  list.querySelectorAll('.finder-item').forEach(el => el.addEventListener('click', () => openProgramme(el.dataset.id)));
   wrap.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-$('#finderBtn').addEventListener('click',runFinder);
-$('#finderReset').addEventListener('click',()=>{ finderSubject.value=''; finderFormat.value=''; finderDuration.value=''; finderBudget.value=''; $('#finderResults').classList.remove('show'); $('#finderList').innerHTML=''; });
 
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
+/* ============================================================
+   MOBILE MENU + GLOBAL UI
+   ============================================================ */
 function toggleMobileMenu(force){ const nav = document.getElementById('mobileNav'), btn = document.getElementById('mobileMenuBtn'); if(!nav || !btn) return; const willShow = (typeof force === 'boolean') ? force : !nav.classList.contains('show'); nav.classList.toggle('show', willShow); btn.setAttribute('aria-expanded', willShow ? 'true' : 'false'); }
 document.addEventListener('click', function(e){ const btn = e.target.closest('#mobileMenuBtn, .mobile-menu-btn'); if(btn){ e.preventDefault(); e.stopPropagation(); toggleMobileMenu(); } }, true);
 document.addEventListener('click', function(e){ const link = e.target.closest('#mobileNav a, #mobileNav button'); if(link){ const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show'); const btn = document.getElementById('mobileMenuBtn'); if(btn) btn.setAttribute('aria-expanded','false'); } });
+window.addEventListener('scroll', () => { const h = $('#mainHeader'); if(h) h.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+$$('[data-scroll]').forEach(a => { a.addEventListener('click', e => { const href = a.getAttribute('href'); if(!href || !href.startsWith('#')) return; const t = document.querySelector(href); if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show'); } }); });
 
-/* =========================================================
+/* ============================================================
    STUDENT PORTAL
-   ========================================================= */
+   ============================================================ */
 const portalModal = document.getElementById('portalModal');
 const portalViews = { login: document.getElementById('portalLoginView'), forgot: document.getElementById('portalForgotView'), create: document.getElementById('portalCreateView'), dashboard: document.getElementById('portalDashboardView') };
-function showPortalView(name){ Object.values(portalViews).forEach(v => v && v.classList.remove('active')); if(portalViews[name]) portalViews[name].classList.add('active'); ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => { const el = document.getElementById(id); if(el){ el.classList.remove('show'); el.textContent=''; } }); }
-function openPortal(view){ if(!portalModal) return; portalModal.classList.add('show'); document.body.style.overflow='hidden'; const session = loadSession(); if(session && (!view || view === 'login')){ setDashboardUser(session); showPortalView('dashboard'); } else { showPortalView(view || 'login'); setTimeout(()=>{ const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100); } }
-function closePortal(){ if(!portalModal) return; portalModal.classList.remove('show'); document.body.style.overflow=''; }
+function showPortalView(name){ Object.values(portalViews).forEach(v => v && v.classList.remove('active')); if(portalViews[name]) portalViews[name].classList.add('active'); ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => { const el = document.getElementById(id); if(el){ el.classList.remove('show'); el.textContent = ''; } }); }
+function openPortal(view){ if(!portalModal) return; portalModal.classList.add('show'); document.body.style.overflow = 'hidden'; const session = loadSession(); if(session && (!view || view === 'login')){ setDashboardUser(session); showPortalView('dashboard'); } else { showPortalView(view || 'login'); setTimeout(()=>{ const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100); } }
+function closePortal(){ if(!portalModal) return; portalModal.classList.remove('show'); document.body.style.overflow = ''; }
 function saveSession(session, remember){ const payload = JSON.stringify(session); if(remember){ try{ localStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } else { try{ sessionStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } }
 function loadSession(){ try{ const s = sessionStorage.getItem(PORTAL_STORAGE_KEY) || localStorage.getItem(PORTAL_STORAGE_KEY); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
 function clearSession(){ try{ sessionStorage.removeItem(PORTAL_STORAGE_KEY); localStorage.removeItem(PORTAL_STORAGE_KEY); }catch(e){} }
@@ -1315,9 +1998,963 @@ function saveAccount(account){ const accounts = loadAccounts(); accounts.push(ac
 function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email||'').trim()); }
 function setPortalMessage(elId, message){ const el = document.getElementById(elId); if(!el) return; el.textContent = message; el.classList.toggle('show', !!message); }
 function setupPwToggle(btnId, inputId){ const btn = document.getElementById(btnId), inp = document.getElementById(inputId); if(!btn || !inp) return; btn.addEventListener('click', () => { const isPw = inp.type === 'password'; inp.type = isPw ? 'text' : 'password'; btn.innerHTML = isPw ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>'; btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password'); }); }
+function setDashboardUser(session){ const n = document.getElementById('portalUserName'); if(n) n.textContent = session.name || 'Student'; const e = document.getElementById('portalUserEmail'); if(e) e.textContent = session.email || ''; const infoEl = document.getElementById('portalSessionInfo'); if(infoEl){ const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now'; infoEl.textContent = 'Session started ' + when; } }
+
+/* ============================================================
+   FIREBASE + EMAILJS + CLOUDINARY
+   ============================================================ */
+let fbDb = null, FB = null;
+const firebaseReady = (async function initFirebase(){
+  if(!IS_FIREBASE_CONFIGURED) return null;
+  try {
+    const [appMod, fsMod] = await Promise.all([
+      import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),
+      import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js')
+    ]);
+    const app = appMod.initializeApp(FIREBASE_CONFIG);
+    fbDb = fsMod.getFirestore(app);
+    FB = { doc: fsMod.doc, getDoc: fsMod.getDoc, setDoc: fsMod.setDoc, runTransaction: fsMod.runTransaction, serverTimestamp: fsMod.serverTimestamp };
+    return FB;
+  } catch(e) { console.error('[Nolan] Firebase init error:', e); return null; }
+})();
+(function initEmailJS(){ if(!IS_EMAILJS_CONFIGURED) return; if(typeof emailjs === 'undefined') return; try{ emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey }); }catch(e){} })();
+async function uploadToCloudinary(file, folder){
+  if(!IS_CLOUDINARY_CONFIGURED) return null;
+  const url = 'https://api.cloudinary.com/v1_1/' + CLOUDINARY_CONFIG.cloudName + '/auto/upload';
+  const fd = new FormData(); fd.append('file', file); fd.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset); if(folder) fd.append('folder', folder);
+  const res = await fetch(url, { method: 'POST', body: fd });
+  if(!res.ok) throw new Error('Cloudinary upload failed: ' + res.status);
+  const data = await res.json();
+  return data.secure_url || null;
+}
+
+/* ============================================================
+   TURNSTILE
+   ============================================================ */
+window.__turnstileToken = null;
+window.onTurnstileSuccess = function(token){ window.__turnstileToken = token; };
+window.onTurnstileExpired = function(){ window.__turnstileToken = null; };
+window.onTurnstileError = function(){ window.__turnstileToken = null; };
+setTimeout(function(){
+  const widget = document.getElementById('turnstileWidget');
+  const fallback = document.getElementById('turnstileFallback');
+  if(!IS_TURNSTILE_CONFIGURED){ if(fallback) fallback.classList.add('show'); if(widget) widget.style.display = 'none'; }
+}, 4000);
+
+/* ============================================================
+   AMOUNT-IN-WORDS
+   ============================================================ */
+function numberToWords(num){
+  const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+  const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+  if(num === 0) return 'Zero';
+  function chunk(n){ if(n<20) return ones[n]; if(n<100) return tens[Math.floor(n/10)] + (n%10 ? ' ' + ones[n%10] : ''); if(n<1000) return ones[Math.floor(n/100)] + ' Hundred' + (n%100 ? ' ' + chunk(n%100) : ''); if(n<1000000) return chunk(Math.floor(n/1000)) + ' Thousand' + (n%1000 ? ' ' + chunk(n%1000) : ''); return chunk(Math.floor(n/1000000)) + ' Million' + (n%1000000 ? ' ' + chunk(n%1000000) : ''); }
+  return chunk(num);
+}
+function amountInWords(amountStr, currency){ const num = parseFloat(String(amountStr).replace(/[^\d.]/g, '')) || 0; const words = numberToWords(Math.round(num)); if(currency === 'USD') return 'US Dollars ' + words + ' Only'; return words + ' Kwacha Only'; }
+
+/* ============================================================
+   SEQUENTIAL RECEIPT NUMBER + RECEIPT LOOKUP
+   ============================================================ */
+async function generateReceiptNumber(){
+  const year = new Date().getFullYear();
+  const fb = await firebaseReady;
+  if(fb){
+    try {
+      const counterRef = FB.doc(fbDb, 'counters', 'receipts_' + year);
+      const result = await FB.runTransaction(fbDb, async (tx) => {
+        const snap = await tx.get(counterRef);
+        const next = (snap.exists() && snap.data().value ? snap.data().value : 0) + 1;
+        tx.set(counterRef, { value: next, updatedAt: FB.serverTimestamp() }, { merge: true });
+        return next;
+      });
+      return 'NOL-' + year + '-' + String(result).padStart(6, '0');
+    } catch(e) { console.warn('[Nolan] Receipt counter failed:', e); }
+  }
+  return 'NOL-' + year + '-' + String(Math.floor(Math.random() * 900000) + 100000);
+}
+async function lookupReceiptStatus(receiptNo){
+  const resultEl = document.getElementById('receiptCheckResult');
+  if(!resultEl) return;
+  if(!receiptNo || !receiptNo.trim()){ resultEl.className = 'app-receipt-check-result show'; resultEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter your receipt number.'; return; }
+  const fb = await firebaseReady;
+  if(!fb){ resultEl.className = 'app-receipt-check-result show'; resultEl.innerHTML = '<i class="fas fa-info-circle"></i> Verification service is not yet online. Please contact info@nolaninstitute.org.'; return; }
+  resultEl.className = 'app-receipt-check-result show'; resultEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking…';
+  try {
+    const snap = await FB.getDoc(FB.doc(fbDb, 'receipts', receiptNo.trim().toUpperCase()));
+    if(!snap.exists()){ resultEl.innerHTML = '<i class="fas fa-times-circle"></i> Receipt not found. Check the number, or contact info@nolaninstitute.org.'; return; }
+    const data = snap.data();
+    const status = (data.status || 'pending').toLowerCase();
+    const statusHtml = status === 'verified' ? '<strong style="color:#155724;">VERIFIED</strong> — your payment has been confirmed.' : '<strong style="color:#856404;">PENDING</strong> — awaiting verification by our admissions team.';
+    resultEl.innerHTML = '<i class="fas fa-check-circle"></i> Receipt ' + receiptNo.toUpperCase() + ': ' + statusHtml;
+  } catch(e){ resultEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Could not check right now. Please try again later.'; }
+}
+
+/* ============================================================
+   PAYMENT METHOD DATA
+   ============================================================ */
+const PAYMENT_METHODS = {
+  airtel: {
+    label: 'Airtel Money', brandClass: 'brand-airtel', icon: 'fa-mobile-alt', title: 'Airtel Money', sub: 'Pay via Airtel Money in Zambian Kwacha',
+    amountZMW: 'K120', amountUSD: 'K120', recipientAccount: '+260 975 914 001 (Airtel)', ussdCode: '*115#', ussdLabel: 'Open Airtel Menu',
+    rows: [
+      { label: 'Recipient Name', value: 'Mwaba Lewis', plain: true },
+      { label: 'Recipient Note', value: 'Receiving on behalf of Nolan Institute', plain: true },
+      { label: 'Airtel Number', value: '+260 975 914 001', copy: true, copyValue: '+260975914001' }
+    ],
+    steps: ['On your Airtel line, dial <strong>*115#</strong>','Select <strong>Send Money</strong> → <strong>Airtel Money</strong>','Enter the recipient number <strong>+260 975 914 001</strong>','Enter the amount <strong>K120.00</strong>','Confirm — recipient will display as <strong>Mwaba Lewis</strong>','Save the transaction ID from your SMS confirmation'],
+    note: 'Airtel Money is available to all applicants. The recipient number is Zambian — if you are outside Zambia, use PayPal or Crypto instead.'
+  },
+  mtn: {
+    label: 'MTN MoMo', brandClass: 'brand-mtn', icon: 'fa-mobile-alt', title: 'MTN Mobile Money (MoMo)', sub: 'Pay via MTN MoMo in Zambian Kwacha',
+    amountZMW: 'K120', amountUSD: 'K120', recipientAccount: '076 852 6191 (MTN MoMo)', ussdCode: '*303#', ussdLabel: 'Open MTN Menu',
+    rows: [
+      { label: 'Recipient Name', value: 'Mwaba Lewis', plain: true },
+      { label: 'Recipient Note', value: 'Receiving on behalf of Nolan Institute', plain: true },
+      { label: 'MTN MoMo Number', value: '076 852 6191', copy: true, copyValue: '0768526191' }
+    ],
+    steps: ['On your MTN line, dial <strong>*303#</strong>','Select <strong>Send Money</strong> → <strong>MTN Mobile Money</strong>','Enter the recipient number <strong>076 852 6191</strong>','Enter the amount <strong>K120.00</strong>','Confirm — recipient will display as <strong>Mwaba Lewis</strong>','Save the transaction ID from your SMS confirmation'],
+    note: 'MTN MoMo is available to all applicants. The recipient number is Zambian — if you are outside Zambia, use PayPal or Crypto instead.'
+  },
+  bank: {
+    label: 'Bank / Visa', brandClass: 'brand-bank', icon: 'fa-university', title: 'Bank Transfer or Visa Card', sub: 'Standard Chartered Bank',
+    amountZMW: 'K120', amountUSD: 'US$10', recipientAccount: 'Standard Chartered · 0152502166700',
+    rows: [
+      { label: 'Bank', value: 'Standard Chartered Bank', plain: true },
+      { label: 'Account Name', value: 'Nolan Institute (Mwaba Lewis)', plain: true },
+      { label: 'Account Number', value: '0152502166700', copy: true, copyValue: '0152502166700' },
+      { label: 'Branch', value: 'Lusaka Main Branch, Zambia', plain: true },
+      { label: 'Reference', value: 'Your Full Name + "Nolan"', plain: true }
+    ],
+    steps: ['Log into your online banking, or visit any Standard Chartered branch','Use the account details shown above','Transfer the applicable amount for your country','Use your <strong>full name + "Nolan"</strong> as the transfer reference','Save your receipt or transaction confirmation'],
+    note: 'For Visa card payments, use your bank\'s online card-to-account service to send to the Standard Chartered account above.'
+  },
+  paypal: {
+    label: 'PayPal', brandClass: 'brand-paypal', icon: 'fa-paypal', iconSet: 'fab', title: 'PayPal', sub: 'Send to our verified PayPal account',
+    amountZMW: 'US$10', amountUSD: 'US$10', recipientAccount: 'lewismwaba@gmail.com (PayPal)',
+    rows: [
+      { label: 'Recipient Email', value: 'lewismwaba@gmail.com', copy: true, copyValue: 'lewismwaba@gmail.com' },
+      { label: 'Recipient Name', value: 'Mwaba Lewis', plain: true },
+      { label: 'Payment Type', value: 'Send to a friend (to avoid fees)', plain: true }
+    ],
+    steps: ['Log into your PayPal account','Choose <strong>Send &amp; Request</strong> → <strong>Send to a friend</strong>','Enter <strong>lewismwaba@gmail.com</strong> as the recipient','Enter amount <strong>US$10.00</strong> and select USD currency','In the note, add <strong>your full name + "Nolan Application"</strong>','Save your PayPal transaction ID'],
+    note: 'PayPal is ideal for international applicants. Please always send in USD.'
+  },
+  crypto: {
+    label: 'Crypto', brandClass: 'brand-crypto', icon: 'fa-bitcoin', iconSet: 'fab', title: 'Cryptocurrency', sub: 'For international applicants',
+    amountZMW: 'US$10 equivalent', amountUSD: 'US$10 equivalent', recipientAccount: 'User ID: 809423171',
+    rows: [
+      { label: 'Accepted Coins', value: 'BTC · ETH · USDT (TRC20 / ERC20)', plain: true },
+      { label: 'User ID / Pay ID', value: '809423171', copy: true, copyValue: '809423171' },
+      { label: 'Recipient Name', value: 'Mwaba Lewis', plain: true }
+    ],
+    steps: ['Open your crypto wallet or exchange app (Binance, Bybit, Trust Wallet, etc.)','Choose the coin you wish to use — <strong>BTC, ETH, or USDT</strong>','Send the <strong>US$10 equivalent</strong> to our User ID <strong>809423171</strong>','Add a note with <strong>your full name + "Nolan"</strong> if your wallet allows','Save the transaction hash (TxID) from your wallet','Return here and paste the TxID as your reference'],
+    note: 'Crypto is offered as an option for international applicants. Please send the US$10 equivalent at the time of transfer.'
+  }
+};
+
+/* ============================================================
+   FILE UPLOAD VALIDATION
+   ============================================================ */
+(function fileUploads(){
+  const LIMITS = {
+    apResume: { max: 5*1024*1024, exts: ['.pdf','.doc','.docx'], mimes: ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'], label: 'Resume / CV' },
+    apTranscript: { max: 10*1024*1024, exts: ['.pdf'], mimes: ['application/pdf'], label: 'Education Certificate', optional: true },
+    apScholarshipDoc: { max: 5*1024*1024, exts: ['.pdf','.jpg','.jpeg','.png'], mimes: ['application/pdf','image/jpeg','image/png'], label: 'Supporting Document', optional: true }
+  };
+  function fmtSize(bytes){ if(bytes < 1024) return bytes + ' B'; if(bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB'; return (bytes/(1024*1024)).toFixed(2) + ' MB'; }
+  function getExt(name){ const i = name.lastIndexOf('.'); return i >= 0 ? name.slice(i).toLowerCase() : ''; }
+  function iconFor(name){ const ext = getExt(name); if(ext === '.pdf') return 'fas fa-file-pdf'; if(ext === '.doc' || ext === '.docx') return 'fas fa-file-word'; if(['.jpg','.jpeg','.png'].includes(ext)) return 'fas fa-file-image'; return 'fas fa-file-alt'; }
+  document.querySelectorAll('.app-upload-drop').forEach(function(drop){
+    const inputId = drop.dataset.uploadFor;
+    const input = document.getElementById(inputId);
+    if(!input) return;
+    const limits = LIMITS[inputId] || { max: 5*1024*1024, exts: [], mimes: [], label: 'File' };
+    const emptyView = drop.querySelector('.app-upload-empty');
+    const filledView = drop.querySelector('.app-upload-filled');
+    const nameEl = drop.querySelector('.app-upload-name');
+    const sizeEl = drop.querySelector('.app-upload-size');
+    const iconEl = filledView ? filledView.querySelector('i') : null;
+    const removeBtn = drop.querySelector('.app-upload-remove');
+    function render(){
+      const f = input.files && input.files[0];
+      if(f){
+        drop.classList.add('has-file');
+        if(emptyView) emptyView.style.display = 'none';
+        if(filledView) filledView.style.display = 'flex';
+        if(nameEl) nameEl.textContent = f.name;
+        if(sizeEl) sizeEl.textContent = fmtSize(f.size) + (limits.max ? ' · max ' + fmtSize(limits.max) : '');
+        if(iconEl) iconEl.className = iconFor(f.name);
+      } else {
+        drop.classList.remove('has-file');
+        if(emptyView) emptyView.style.display = 'flex';
+        if(filledView) filledView.style.display = 'none';
+        if(nameEl) nameEl.textContent = '';
+        if(sizeEl) sizeEl.textContent = '';
+      }
+    }
+    function validate(f){
+      if(!f) return true;
+      if(f.size === 0){ showToast('That file appears to be empty. Please choose a different file.', 'error'); return false; }
+      if(f.size > limits.max){ showToast(limits.label + ' is too large (' + fmtSize(f.size) + '). Maximum is ' + fmtSize(limits.max) + '.', 'error'); return false; }
+      const ext = getExt(f.name);
+      const allowedByExt = limits.exts.length && limits.exts.includes(ext);
+      const allowedByMime = limits.mimes.length && f.type && limits.mimes.includes(f.type);
+      if(limits.exts.length && !allowedByExt && !allowedByMime){ showToast('Unsupported file type for ' + limits.label + '. Allowed: ' + limits.exts.join(', '), 'error'); return false; }
+      return true;
+    }
+    drop.addEventListener('click', function(e){ if(e.target.closest('.app-upload-remove')) return; input.click(); });
+    ['dragenter','dragover'].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); e.stopPropagation(); drop.classList.add('dragover'); }); });
+    ['dragleave','drop'].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); e.stopPropagation(); drop.classList.remove('dragover'); }); });
+    drop.addEventListener('drop', function(e){
+      const dt = e.dataTransfer; if(!dt || !dt.files || !dt.files.length) return;
+      const f = dt.files[0]; if(!validate(f)) return;
+      try { const bag = new DataTransfer(); bag.items.add(f); input.files = bag.files; } catch(err){ showToast('Please use the browse button to select files on this device.', 'error'); return; }
+      render();
+    });
+    input.addEventListener('change', function(){
+      const f = input.files && input.files[0];
+      if(!f){ render(); return; }
+      if(!validate(f)){ input.value = ''; render(); return; }
+      render();
+    });
+    if(removeBtn){ removeBtn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); input.value = ''; render(); }); }
+  });
+  if(!IS_CLOUDINARY_CONFIGURED){ const note = document.getElementById('documentUploadNote'); if(note) note.style.display = 'flex'; }
+})();
+
+/* ============================================================
+   APPLICATION — bridge between catalogue and overlay
+   ============================================================ */
+function setSelectedProgramme(p){
+  try { sessionStorage.setItem('nolanSelectedProgramme', JSON.stringify({ id: p.id, name: p.name, subject: p.subject, format: p.format, weeks: p.weeks, price: p.price })); } catch(e){}
+  state.currentProgrammeId = p.id;
+}
+function getSelectedProgramme(){
+  const id = state.currentProgrammeId;
+  if(id){ const p = PROGRAMMES.find(x => x.id === id); if(p) return p; }
+  try {
+    const raw = sessionStorage.getItem('nolanSelectedProgramme');
+    if(raw){ const data = JSON.parse(raw); const p = PROGRAMMES.find(x => x.id === data.id); if(p) return p; }
+  } catch(e){}
+  return null;
+}
+function openApplication(){
+  const p = getSelectedProgramme();
+  if(!p){
+    showToast('Please choose a programme first — click any card in the catalogue.', 'info');
+    scrollToCatalogue();
+    return;
+  }
+  // Populate programme labels
+  $('#appProgrammeName').textContent = p.name;
+  $('#appProgrammeMeta').innerHTML = `<strong>${esc(p.format)}</strong> · ${p.weeks} weeks · ${fmtZMW(p.price)} (≈ ${fmtUSD(p.price)}) · ${esc(p.subject)}`;
+  $('#lockedProgrammeName').textContent = p.name;
+  $('#lockedProgrammeMeta').textContent = `${p.format} · ${p.weeks} weeks · ${fmtZMW(p.price)} (≈ ${fmtUSD(p.price)})`;
+  const nrProg = document.getElementById('nrProgramme'); if(nrProg) nrProg.textContent = p.name;
+
+  // Reset form state on open
+  appState.current = 1;
+  appUpdateUI(false);
+  $('#appOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+  trackEvent('application_opened', { programme: p.name, format: p.format });
+}
+function closeApplication(){
+  $('#appOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  // If the success panel is visible, reset for next open
+  if($('#applySuccess').classList.contains('show')){
+    setTimeout(() => resetApplicationForNextTime(), 400);
+  }
+}
+
+/* ============================================================
+   APPLICATION LOGIC
+   ============================================================ */
+const appState = {
+  current: 1,
+  paymentStatus: 'pending',
+  paymentMethod: null,
+  paymentRef: null,
+  userRef: null,
+  paidAmount: null,
+  senderName: null,
+  senderContact: null,
+  whatsappUrl: null,
+  receiptDate: null,
+  applicantTimezone: null,
+  referral: null,
+  goal: null,
+  timeCommitment: null
+};
+
+function appIsZambian(){ const c = document.getElementById('apCountry'); return c && (c.value || '').trim() === 'Zambia'; }
+function appFeeAmount(){ return appIsZambian() ? 'K120' : 'US$10'; }
+function appFeeCurrency(){ return appIsZambian() ? 'ZMW' : 'USD'; }
+function appFeeContext(){ return appIsZambian() ? 'For applicants resident in Zambia. Non-refundable application deposit.' : 'For applicants outside Zambia. Non-refundable application deposit.'; }
+function appMethodLabel(v){ return { airtel:'Airtel Money', mtn:'MTN MoMo', bank:'Bank / Visa', paypal:'PayPal', crypto:'Crypto' }[v] || '—'; }
+
+function appSetInlineError(fieldId, show){
+  const input = document.getElementById(fieldId);
+  const group = document.querySelector('.app-form-group[data-field="' + fieldId + '"]');
+  const errEl = document.querySelector('.app-inline-error[data-error-for="' + fieldId + '"]');
+  if(show){
+    if(input) input.classList.add('err');
+    if(group) group.classList.add('has-error');
+    if(errEl) errEl.classList.add('show');
+  } else {
+    if(input) input.classList.remove('err');
+    if(group) group.classList.remove('has-error');
+    if(errEl) errEl.classList.remove('show');
+  }
+}
+function appClearErrors(){
+  document.querySelectorAll('.app-form-group.has-error').forEach(g => g.classList.remove('has-error'));
+  document.querySelectorAll('.app-inline-error.show').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.app-form-group input.err, .app-form-group select.err, .app-form-group textarea.err').forEach(el => el.classList.remove('err'));
+}
+
+/* ---------- Draft autosave ---------- */
+function appCollectState(){
+  const fields = {};
+  ['apFirstName','apLastName','apEmail','apPhone','apDob','apCountry','apAddress',
+   'apSchool','apDegree','apField','apYear','apCurrentRole','apIndustry','apExperience','apStart',
+   'apEssay1'].forEach(id => { const el = document.getElementById(id); if(el) fields[id] = el.value; });
+  return { fields, radio: { referral: appState.referral, goal: appState.goal, timeCommitment: appState.timeCommitment }, current: appState.current, savedAt: Date.now() };
+}
+function appSaveDraft(){ try { localStorage.setItem(DRAFT_KEY, JSON.stringify(appCollectState())); } catch(e){} }
+function appClearDraft(){ try { localStorage.removeItem(DRAFT_KEY); } catch(e){} }
+function appRestoreDraft(){
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY); if(!raw) return null;
+    const data = JSON.parse(raw);
+    if(data.savedAt && (Date.now() - data.savedAt) > 1000 * 60 * 60 * 24 * 30){ appClearDraft(); return null; }
+    return data;
+  } catch(e){ return null; }
+}
+function appApplyDraft(data){
+  if(!data) return;
+  if(data.fields){ Object.keys(data.fields).forEach(id => { const el = document.getElementById(id); if(el) el.value = data.fields[id]; }); }
+  if(data.radio){
+    if(data.radio.referral){ appState.referral = data.radio.referral; appMarkRadio('apReferral', data.radio.referral); }
+    if(data.radio.goal){ appState.goal = data.radio.goal; appMarkRadio('apGoal', data.radio.goal); }
+    if(data.radio.timeCommitment){ appState.timeCommitment = data.radio.timeCommitment; appMarkRadio('apTime', data.radio.timeCommitment); }
+  }
+}
+function appMarkRadio(groupId, value){
+  const group = document.getElementById(groupId); if(!group) return;
+  group.querySelectorAll('.app-radio').forEach(r => { const sel = r.dataset.value === value; r.classList.toggle('selected', sel); r.setAttribute('aria-checked', sel ? 'true' : 'false'); });
+}
+let appSaveTimer = null;
+document.getElementById('applyForm').addEventListener('input', () => { clearTimeout(appSaveTimer); appSaveTimer = setTimeout(appSaveDraft, 2000); });
+document.getElementById('applyForm').addEventListener('change', () => { clearTimeout(appSaveTimer); appSaveTimer = setTimeout(appSaveDraft, 800); });
+document.getElementById('draftKeep').addEventListener('click', () => { appApplyDraft(appRestoreDraft()); $('#draftBanner').classList.remove('show'); showToast('Draft restored. Continue where you left off.', 'info'); });
+document.getElementById('draftDiscard').addEventListener('click', () => { appClearDraft(); $('#draftBanner').classList.remove('show'); showToast('Draft discarded. Starting fresh.', 'info'); });
+
+/* ---------- Render payment details panel ---------- */
+function appRenderPaymentDetails(){
+  const panel = document.getElementById('apPayDetails');
+  if(!appState.paymentMethod){ panel.style.display = 'none'; document.getElementById('apPayConfirm').style.display = 'none'; return; }
+  const m = PAYMENT_METHODS[appState.paymentMethod]; if(!m) return;
+  const amount = appIsZambian() ? m.amountZMW : m.amountUSD;
+  const iconLib = m.iconSet || 'fas';
+
+  let rowsHtml = '';
+  m.rows.forEach(r => {
+    const valueClass = r.plain ? 'pdr-value plain' : 'pdr-value';
+    rowsHtml += `<div class="app-pay-detail-row"><div class="pdr-info"><div class="pdr-label">${r.label}</div><div class="${valueClass}">${r.value}</div></div>${r.copy ? `<button type="button" class="pdr-copy" data-copy="${(r.copyValue || r.value).replace(/"/g,'&quot;')}" aria-label="Copy ${r.label}"><i class="fas fa-copy"></i></button>` : ''}</div>`;
+  });
+  let stepsHtml = ''; m.steps.forEach(s => { stepsHtml += `<li>${s}</li>`; });
+  let ussdHtml = '';
+  if(m.ussdCode){
+    const cls = appState.paymentMethod === 'airtel' ? 'ussd-airtel' : (appState.paymentMethod === 'mtn' ? 'ussd-mtn' : '');
+    ussdHtml = `<div class="app-ussd-links"><a class="app-ussd-link ${cls}" href="tel:${encodeURIComponent(m.ussdCode)}"><i class="fas fa-mobile-alt"></i> ${m.ussdLabel} (${m.ussdCode})</a></div>`;
+  }
+  panel.innerHTML = `
+    <div class="app-pay-details-panel ${m.brandClass}">
+      <div class="app-pdp-header">
+        <div class="app-pdp-icon"><i class="${iconLib} ${m.icon}"></i></div>
+        <div><div class="app-pdp-title">${m.title}</div><div class="app-pdp-sub">${m.sub}</div></div>
+      </div>
+      <div class="app-pdp-body">
+        <div class="app-pdp-amount-banner"><div class="pab-l">Amount to Send</div><div class="pab-v">${amount}</div></div>
+        ${ussdHtml}
+        <div class="app-pdp-rows" style="margin-top:14px;">${rowsHtml}</div>
+        <div class="app-pdp-steps"><div class="pds-title"><i class="fas fa-list-ol"></i> How to Pay — Step by Step</div><ol>${stepsHtml}</ol></div>
+        ${m.note ? `<div class="app-pdp-warning"><i class="fas fa-info-circle"></i><div>${m.note}</div></div>` : ''}
+      </div>
+    </div>`;
+  panel.style.display = 'block';
+  document.getElementById('apPayConfirm').style.display = 'block';
+  panel.querySelectorAll('.pdr-copy').forEach(btn => btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); appCopy(this.dataset.copy, this); }));
+  const confirmAmount = document.getElementById('apPayConfirmAmount'); if(confirmAmount) confirmAmount.textContent = amount;
+  if(appState.paymentStatus !== 'confirmed') document.getElementById('apPaymentSuccess').style.display = 'none';
+}
+function appCopy(text, btn){
+  const done = () => { if(btn){ const o = btn.innerHTML; btn.classList.add('copied'); btn.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = o; }, 1600); } };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(() => appFallbackCopy(text, done)); } else { appFallbackCopy(text, done); }
+}
+function appFallbackCopy(text, done){
+  const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta);
+}
+
+/* ---------- Payment method card selection ---------- */
+document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(card => {
+  card.addEventListener('click', function(){
+    if(appState.paymentStatus === 'confirmed') return;
+    document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-checked','false'); });
+    this.classList.add('selected'); this.setAttribute('aria-checked','true');
+    appState.paymentMethod = this.dataset.pm;
+    appRenderPaymentDetails();
+    trackEvent('payment_method_selected', { method: appState.paymentMethod });
+    setTimeout(() => { const panel = document.querySelector('#apPayDetails .app-pay-details-panel'); if(panel) panel.scrollIntoView({ behavior:'smooth', block:'center' }); }, 80);
+  });
+});
+
+/* ---------- Populate receipt ---------- */
+function appPopulateReceipt(){
+  const p = getSelectedProgramme() || {};
+  const fn = (document.getElementById('apFirstName').value || '').trim();
+  const ln = (document.getElementById('apLastName').value || '').trim();
+  const em = (document.getElementById('apEmail').value || '').trim();
+  const m = PAYMENT_METHODS[appState.paymentMethod] || {};
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val || '—'; };
+  set('nrRef', appState.paymentRef);
+  set('nrDate', appState.receiptDate);
+  set('nrSenderName', appState.senderName);
+  set('nrSenderContact', appState.senderContact);
+  set('nrAmount', appState.paidAmount);
+  set('nrMethod', appMethodLabel(appState.paymentMethod));
+  set('nrUserRef', appState.userRef);
+  set('nrTxId', appState.userRef);
+  set('nrRecipientAccount', m.recipientAccount || '—');
+  set('nrApplicant', (fn + ' ' + ln).trim());
+  set('nrEmail', em);
+  set('nrProgramme', p.name || '—');
+  const wordsEl = document.getElementById('nrAmountWords'); if(wordsEl) wordsEl.textContent = amountInWords(appState.paidAmount, appFeeCurrency());
+  const vurl = document.getElementById('nrVerifyUrl'); const verifyUrl = VERIFY_BASE_URL + '/' + (appState.paymentRef || ''); if(vurl) vurl.textContent = verifyUrl;
+  const canvas = document.getElementById('nrQrCanvas');
+  if(canvas && typeof QRCode !== 'undefined'){
+    QRCode.toCanvas(canvas, verifyUrl, { width: 184, margin: 1, color: { dark: '#0A1C3A', light: '#FFFFFF' } }, function(err){ if(err) console.warn('QR failed', err); });
+  }
+}
+
+/* ---------- Build WhatsApp message ---------- */
+function appBuildWhatsappMessage(){
+  const p = getSelectedProgramme() || {};
+  const fn = (document.getElementById('apFirstName').value || '').trim();
+  const ln = (document.getElementById('apLastName').value || '').trim();
+  const em = (document.getElementById('apEmail').value || '').trim();
+  const ph = (document.getElementById('apPhone').value || '').trim();
+  const country = document.getElementById('apCountry').value;
+  const lines = [
+    '*NOLAN INSTITUTE — APPLICATION PAYMENT PROOF*', '',
+    '*Receipt No:* ' + appState.paymentRef,
+    '*Date & Time:* ' + appState.receiptDate + (appState.applicantTimezone ? ' (' + appState.applicantTimezone + ')' : ''),
+    '', '*APPLICANT*',
+    'Name: ' + fn + ' ' + ln,
+    'Email: ' + em,
+    'Phone: ' + ph,
+    'Country: ' + country,
+    '', '*PROGRAMME*',
+    p.name + ' · ' + p.format + ' · ' + p.weeks + ' weeks',
+    'Programme Fee: ' + fmtZMW(p.price) + ' (≈ ' + fmtUSD(p.price) + ')',
+    '', '*PAYMENT DETAILS*',
+    'Method: ' + appMethodLabel(appState.paymentMethod),
+    'Amount Paid: ' + appState.paidAmount + ' (application deposit)',
+    'Sender Name: ' + appState.senderName,
+    'Sender Contact: ' + appState.senderContact,
+    'Transaction ID / Ref: ' + (appState.userRef || '(not provided)'),
+    '', '_Please verify this payment against our records and confirm receipt. A receipt has been auto-generated for the applicant._'
+  ];
+  return lines.join('\n');
+}
+
+/* ---------- Confirm payment ---------- */
+async function appConfirmPayment(){
+  if(appState.paymentStatus === 'confirmed') return;
+  if(!appState.paymentMethod){ showToast('Please select a payment method first.', 'error'); return; }
+
+  const name = document.getElementById('apPaySenderName').value.trim();
+  const contact = document.getElementById('apPaySenderContact').value.trim();
+  const refInput = document.getElementById('apPayRef');
+  const ref = refInput.value.trim();
+  const agree = document.getElementById('apPayConfirmed');
+
+  appClearErrors();
+  let ok = true;
+  if(!name){ appSetInlineError('apPaySenderName', true); ok = false; }
+  if(!contact){ appSetInlineError('apPaySenderContact', true); ok = false; }
+  if(!ref){ appSetInlineError('apPayRef', true); ok = false; }
+  if(!ok){ showToast('Please complete the required fields highlighted above.', 'error'); return; }
+  if(!agree.checked){ showToast('Please tick the confirmation checkbox.', 'error'); return; }
+
+  appState.paymentStatus = 'confirmed';
+  appState.senderName = name;
+  appState.senderContact = contact;
+  appState.userRef = ref;
+  appState.paidAmount = appFeeAmount();
+  try { appState.paymentRef = await generateReceiptNumber(); }
+  catch(e) { appState.paymentRef = 'NOL-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*900000)+100000); }
+  const now = new Date();
+  try { appState.applicantTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || null; } catch(e){ appState.applicantTimezone = null; }
+  appState.receiptDate = now.toLocaleString('en-GB', { year:'numeric', month:'short', day:'2-digit', hour:'2-digit', minute:'2-digit' });
+
+  document.getElementById('apPaymentRef').textContent = appState.paymentRef;
+  appPopulateReceipt();
+
+  const msg = appBuildWhatsappMessage();
+  const waUrl = 'https://wa.me/' + ADMIN_WHATSAPP + '?text=' + encodeURIComponent(msg);
+  appState.whatsappUrl = waUrl;
+  document.getElementById('apWhatsappBtn').href = waUrl;
+
+  const fb = await firebaseReady;
+  if(fb){
+    try {
+      await FB.setDoc(FB.doc(fbDb, 'receipts', appState.paymentRef), {
+        receiptNo: appState.paymentRef,
+        applicantName: document.getElementById('apFirstName').value.trim() + ' ' + document.getElementById('apLastName').value.trim(),
+        applicantEmail: document.getElementById('apEmail').value.trim(),
+        applicantPhone: document.getElementById('apPhone').value.trim(),
+        applicantCountry: document.getElementById('apCountry').value,
+        method: appState.paymentMethod,
+        amount: appState.paidAmount,
+        currency: appFeeCurrency(),
+        senderName: appState.senderName,
+        senderContact: appState.senderContact,
+        transactionRef: appState.userRef,
+        status: 'pending',
+        applicantTimezone: appState.applicantTimezone,
+        createdAt: FB.serverTimestamp()
+      }, { merge: true });
+    } catch(e){ console.warn('[Nolan] Could not save receipt:', e); }
+  }
+
+  document.getElementById('apPayDetails').style.display = 'none';
+  document.getElementById('apPayConfirm').style.display = 'none';
+  document.getElementById('apPaymentSuccess').style.display = 'block';
+  document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(c => { c.style.opacity = '0.55'; c.style.pointerEvents = 'none'; });
+
+  showToast('Payment recorded. Receipt generated.', 'success');
+  trackEvent('payment_confirmed', { method: appState.paymentMethod, amount: appState.paidAmount });
+  appSaveDraft();
+
+  setTimeout(() => {
+    try { window.open(waUrl, '_blank'); } catch(e){}
+    const ws = document.getElementById('apWhatsappSent'); if(ws) ws.classList.add('show');
+    const ps = document.getElementById('apPaymentSuccess'); if(ps) ps.scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 350);
+}
+
+/* ---------- Download receipt PDF + print ---------- */
+async function appDownloadReceiptPDF(){
+  const el = document.getElementById('apReceipt');
+  const btn = document.getElementById('apDownloadReceiptBtn');
+  if(!el || !btn) return;
+  if(typeof html2canvas === 'undefined' || typeof window.jspdf === 'undefined'){ showToast('PDF generator not ready. Use Print instead.', 'error'); return; }
+  const original = btn.innerHTML; btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+  try {
+    const canvas = await html2canvas(el, { scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false });
+    const imgData = canvas.toDataURL('image/png');
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit:'mm', format:'a4', orientation:'portrait' });
+    const pdfW = pdf.internal.pageSize.getWidth(); const pdfH = pdf.internal.pageSize.getHeight(); const margin = 10;
+    const usableW = pdfW - margin * 2; const ratio = canvas.height / canvas.width;
+    let dispW = usableW; let dispH = dispW * ratio;
+    if(dispH > pdfH - margin * 2){ dispH = pdfH - margin * 2; dispW = dispH / ratio; }
+    const xOffset = (pdfW - dispW) / 2;
+    pdf.addImage(imgData, 'PNG', xOffset, margin, dispW, dispH);
+    pdf.save('Nolan-Receipt-' + (appState.paymentRef || 'application') + '.pdf');
+    showToast('Receipt downloaded as PDF.', 'success');
+  } catch(err){ console.error(err); showToast('Could not generate PDF. Please try Print instead.', 'error'); }
+  finally { btn.disabled = false; btn.innerHTML = original; }
+}
+function appPrintReceipt(){
+  document.body.classList.add('print-receipt-mode');
+  setTimeout(() => { window.print(); setTimeout(() => document.body.classList.remove('print-receipt-mode'), 200); }, 100);
+}
+
+/* ---------- Step navigation + validation ---------- */
+function appUpdateUI(scroll){
+  const sections = document.querySelectorAll('.app-section');
+  const total = sections.length;
+  sections.forEach((s, i) => s.classList.toggle('active', i + 1 === appState.current));
+  document.querySelectorAll('.app-step').forEach((s, i) => {
+    s.classList.toggle('active', i + 1 === appState.current);
+    if(i + 1 < appState.current) s.classList.add('completed');
+  });
+  const prevBtn = document.getElementById('apPrev'), nextBtn = document.getElementById('apNext'), submitBtn = document.getElementById('apSubmit');
+  prevBtn.style.display = appState.current === 1 ? 'none' : 'inline-flex';
+  if(appState.current === total){ nextBtn.style.display = 'none'; submitBtn.style.display = 'inline-flex'; appRenderReview(); }
+  else { nextBtn.style.display = 'inline-flex'; submitBtn.style.display = 'none'; }
+  if(scroll){
+    const body = document.querySelector('.app-body'); if(body) body.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  trackEvent('application_step_viewed', { step: appState.current });
+}
+function appValidate(n){
+  appClearErrors();
+  if(n === 1){
+    const req = ['apFirstName','apLastName','apEmail','apPhone','apDob','apCountry'];
+    let ok = true;
+    for(const id of req){ const el = document.getElementById(id); if(!el.value.trim()){ appSetInlineError(id, true); ok = false; } }
+    if(!ok){ showToast('Please complete the fields highlighted above.', 'error'); return false; }
+    const email = document.getElementById('apEmail').value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ appSetInlineError('apEmail', true); showToast('Please enter a valid email address.', 'error'); return false; }
+  }
+  if(n === 2){
+    if(appState.paymentStatus !== 'confirmed'){ showToast('Please complete the application deposit and confirm it via WhatsApp before continuing.', 'error'); return false; }
+  }
+  if(n === 3){
+    const req = ['apSchool','apDegree','apYear'];
+    let ok = true;
+    for(const id of req){ const el = document.getElementById(id); if(!el.value.trim()){ appSetInlineError(id, true); ok = false; } }
+    if(!ok){ showToast('Please complete the fields highlighted above.', 'error'); return false; }
+  }
+  if(n === 4){
+    if(!appState.referral){ showToast('Please tell us how you heard about this programme.', 'error'); return false; }
+    if(!appState.goal){ showToast('Please select your primary goal.', 'error'); return false; }
+    if(!appState.timeCommitment){ showToast('Please select how much time you can dedicate.', 'error'); return false; }
+  }
+  if(n === 5){
+    const e1 = document.getElementById('apEssay1').value.trim();
+    if(e1.split(/\s+/).filter(Boolean).length < 100){ appSetInlineError('apEssay1', true); showToast('Please write at least 100 words.', 'error'); return false; }
+  }
+  if(n === 6){
+    const r = document.getElementById('apResume');
+    if(IS_CLOUDINARY_CONFIGURED){
+      if(!r.files.length){ showToast('Please upload your CV.', 'error'); return false; }
+    }
+  }
+  return true;
+}
+function appRenderReview(){
+  const p = getSelectedProgramme() || {};
+  const fn = document.getElementById('apFirstName').value;
+  const ln = document.getElementById('apLastName').value;
+  const em = document.getElementById('apEmail').value;
+  const ph = document.getElementById('apPhone').value;
+  const country = document.getElementById('apCountry').value;
+  const school = document.getElementById('apSchool').value;
+  const degree = document.getElementById('apDegree').value;
+  const year = document.getElementById('apYear').value;
+  const role = document.getElementById('apCurrentRole').value;
+  const industry = document.getElementById('apIndustry').value;
+  const experience = document.getElementById('apExperience').value;
+  const start = document.getElementById('apStart').value;
+
+  const refLabel = { search:'Internet search', social:'Social media', referral:'Colleague or friend', employer:'Employer or organisation', other:'Other' }[appState.referral] || '—';
+  const goalLabel = { 'new-role':'Move into a new role or industry', advance:'Advance in current career', build:'Build a business or venture', skills:'Learn specific practical skills', explore:'Explore a new subject area' }[appState.goal] || '—';
+  const timeLabel = { lt5:'Less than 5 hours/week', '5to10':'5–10 hours/week', '10to20':'10–20 hours/week', gt20:'More than 20 hours/week' }[appState.timeCommitment] || '—';
+
+  const resumeName = (document.getElementById('apResume').files[0] || {}).name || '—';
+  const transName = (document.getElementById('apTranscript').files[0] || {}).name || '—';
+
+  const feePaidLine = document.getElementById('applyFeePaidLine');
+  const feeDetailLine = document.getElementById('applyFeeDetailLine');
+  if(appState.paymentStatus === 'confirmed'){
+    feePaidLine.innerHTML = 'Payment status: <strong style="color:var(--success);">Confirmed — proof sent to WhatsApp</strong>';
+    feeDetailLine.innerHTML = 'Amount: <strong>' + appState.paidAmount + '</strong> · Method: <strong>' + appMethodLabel(appState.paymentMethod) + '</strong> · Receipt: <strong>' + appState.paymentRef + '</strong> · TxID: <strong>' + (appState.userRef || '—') + '</strong>';
+  } else {
+    feePaidLine.innerHTML = 'Payment status: <strong style="color:var(--error);">Pending</strong>';
+    feeDetailLine.innerHTML = 'Please return to Step 2 to complete the application deposit.';
+  }
+
+  document.getElementById('applyReview').innerHTML = `
+    <div class="app-review">
+      <h4><i class="fas fa-graduation-cap"></i> Programme</h4>
+      <div class="app-review-item"><span class="arl">Programme:</span><span class="arv">${esc(p.name || '—')}</span></div>
+      <div class="app-review-item"><span class="arl">Format:</span><span class="arv">${esc(p.format || '—')}</span></div>
+      <div class="app-review-item"><span class="arl">Duration:</span><span class="arv">${p.weeks || '—'} Weeks</span></div>
+      <div class="app-review-item"><span class="arl">Programme Fee:</span><span class="arv">${p.price ? fmtZMW(p.price) + ' (≈ ' + fmtUSD(p.price) + ')' : '—'}</span></div>
+    </div>
+    <div class="app-review">
+      <h4><i class="fas fa-user"></i> Personal Information</h4>
+      <div class="app-review-item"><span class="arl">Name:</span><span class="arv">${esc(fn)} ${esc(ln)}</span></div>
+      <div class="app-review-item"><span class="arl">Email:</span><span class="arv">${esc(em)}</span></div>
+      <div class="app-review-item"><span class="arl">Phone:</span><span class="arv">${esc(ph)}</span></div>
+      <div class="app-review-item"><span class="arl">Country:</span><span class="arv">${esc(country)}</span></div>
+    </div>
+    <div class="app-review">
+      <h4><i class="fas fa-receipt"></i> Payment Confirmation</h4>
+      <div class="app-review-item"><span class="arl">Status:</span><span class="arv" style="color:var(--success);font-weight:700;">Confirmed — WhatsApp sent</span></div>
+      <div class="app-review-item"><span class="arl">Amount:</span><span class="arv">${appState.paidAmount || '—'}</span></div>
+      <div class="app-review-item"><span class="arl">Method:</span><span class="arv">${appMethodLabel(appState.paymentMethod)}</span></div>
+      <div class="app-review-item"><span class="arl">Sender:</span><span class="arv">${esc(appState.senderName || '—')}</span></div>
+      <div class="app-review-item"><span class="arl">Contact Used:</span><span class="arv">${esc(appState.senderContact || '—')}</span></div>
+      <div class="app-review-item"><span class="arl">Receipt No:</span><span class="arv">${appState.paymentRef || '—'}</span></div>
+      <div class="app-review-item"><span class="arl">Your TxID:</span><span class="arv">${esc(appState.userRef || '—')}</span></div>
+    </div>
+    <div class="app-review">
+      <h4><i class="fas fa-book"></i> Background</h4>
+      <div class="app-review-item"><span class="arl">Institution:</span><span class="arv">${esc(school)}</span></div>
+      <div class="app-review-item"><span class="arl">Qualification:</span><span class="arv">${esc(degree)}</span></div>
+      <div class="app-review-item"><span class="arl">Year:</span><span class="arv">${esc(year)}</span></div>
+      ${role ? `<div class="app-review-item"><span class="arl">Current Role:</span><span class="arv">${esc(role)}</span></div>` : ''}
+      ${industry ? `<div class="app-review-item"><span class="arl">Industry:</span><span class="arv">${esc(industry)}</span></div>` : ''}
+      ${experience ? `<div class="app-review-item"><span class="arl">Experience:</span><span class="arv">${esc(experience)} years</span></div>` : ''}
+      ${start ? `<div class="app-review-item"><span class="arl">Preferred Start:</span><span class="arv">${esc(start)}</span></div>` : ''}
+    </div>
+    <div class="app-review">
+      <h4><i class="fas fa-bullseye"></i> Programme Fit</h4>
+      <div class="app-review-item"><span class="arl">Heard via:</span><span class="arv">${refLabel}</span></div>
+      <div class="app-review-item"><span class="arl">Primary Goal:</span><span class="arv">${goalLabel}</span></div>
+      <div class="app-review-item"><span class="arl">Weekly Time:</span><span class="arv">${timeLabel}</span></div>
+    </div>
+    <div class="app-review">
+      <h4><i class="fas fa-paperclip"></i> Documents</h4>
+      <div class="app-review-item"><span class="arl">Resume / CV:</span><span class="arv">${esc(resumeName)}</span></div>
+      <div class="app-review-item"><span class="arl">Education Certificate:</span><span class="arv">${esc(transName)}</span></div>
+      ${!IS_CLOUDINARY_CONFIGURED ? '<div class="app-review-item"><span class="arl">Note:</span><span class="arv">Email documents to info@nolaninstitute.org after submitting.</span></div>' : ''}
+    </div>
+  `;
+}
+async function appSubmit(){
+  if(appState.paymentStatus !== 'confirmed'){
+    showToast('Your application deposit must be confirmed before submitting.', 'error');
+    appState.current = 2; appUpdateUI(true); return;
+  }
+  if(!document.getElementById('apAgreeTerms').checked || !document.getElementById('apAgreeSubmit').checked){
+    showToast('Please agree to the terms before submitting.', 'error'); return;
+  }
+  if(IS_TURNSTILE_CONFIGURED && !window.__turnstileToken){
+    showToast('Please complete the spam protection check above.', 'error'); return;
+  }
+
+  const submitBtn = document.getElementById('apSubmit');
+  submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+  const p = getSelectedProgramme() || {};
+  const applicationId = 'APP-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*900000)+100000);
+  const files = [];
+  ['apResume','apTranscript','apScholarshipDoc'].forEach(id => { const f = document.getElementById(id).files[0]; if(f) files.push({ id, name: f.name, size: f.size, type: f.type, url: null }); });
+
+  const payload = {
+    applicationId,
+    receiptNo: appState.paymentRef,
+    submittedAt: new Date().toISOString(),
+    programme: { id: p.id, name: p.name, subject: p.subject, format: p.format, weeks: p.weeks, price: p.price, currency: 'ZMW' },
+    personal: {
+      firstName: document.getElementById('apFirstName').value.trim(),
+      lastName: document.getElementById('apLastName').value.trim(),
+      email: document.getElementById('apEmail').value.trim(),
+      phone: document.getElementById('apPhone').value.trim(),
+      dob: document.getElementById('apDob').value,
+      country: document.getElementById('apCountry').value,
+      address: document.getElementById('apAddress').value.trim()
+    },
+    payment: {
+      status: 'confirmed',
+      method: appState.paymentMethod,
+      amount: appState.paidAmount,
+      currency: appFeeCurrency(),
+      senderName: appState.senderName,
+      senderContact: appState.senderContact,
+      transactionRef: appState.userRef,
+      receiptNo: appState.paymentRef
+    },
+    background: {
+      school: document.getElementById('apSchool').value.trim(),
+      degree: document.getElementById('apDegree').value,
+      field: document.getElementById('apField').value.trim(),
+      year: document.getElementById('apYear').value,
+      currentRole: document.getElementById('apCurrentRole').value.trim(),
+      industry: document.getElementById('apIndustry').value.trim(),
+      experience: document.getElementById('apExperience').value,
+      start: document.getElementById('apStart').value
+    },
+    fit: {
+      referral: appState.referral,
+      goal: appState.goal,
+      timeCommitment: appState.timeCommitment
+    },
+    essay1: document.getElementById('apEssay1').value.trim(),
+    files,
+    filesUploaded: false,
+    marketingOptIn: document.getElementById('apAgreeUpdates').checked
+  };
+
+  let savedToBackend = false;
+  const fb = await firebaseReady;
+  if(fb){
+    try {
+      if(IS_CLOUDINARY_CONFIGURED && files.length){
+        for(const f of files){
+          const fileInput = document.getElementById(f.id); const file = fileInput.files[0];
+          if(!file) continue;
+          try { const url = await uploadToCloudinary(file, 'nolan-applications/' + applicationId); if(url) f.url = url; } catch(err){ console.warn('[Nolan] Cloudinary upload failed:', err); }
+        }
+        payload.filesUploaded = files.every(f => f.url);
+      }
+      await FB.setDoc(FB.doc(fbDb, 'applications', applicationId), { ...payload, turnstileToken: window.__turnstileToken || null, userAgent: navigator.userAgent });
+      savedToBackend = true;
+    } catch(e){ console.warn('[Nolan] Firestore save failed:', e); }
+  }
+
+  if(IS_EMAILJS_CONFIGURED && typeof emailjs !== 'undefined'){
+    try {
+      await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+        to_name: payload.personal.firstName + ' ' + payload.personal.lastName,
+        to_email: payload.personal.email,
+        application_id: applicationId,
+        receipt_no: appState.paymentRef,
+        amount: appState.paidAmount,
+        method: appMethodLabel(appState.paymentMethod),
+        programme: p.name || 'Nolan Institute Programme'
+      });
+    } catch(e){ console.warn('[Nolan] Email send failed:', e); }
+  }
+
+  setTimeout(() => {
+    document.getElementById('applySuccessRef').textContent = applicationId;
+    if(!IS_CLOUDINARY_CONFIGURED || !payload.filesUploaded){
+      const note = document.getElementById('applySuccessDocsNote'); if(note) note.classList.add('show');
+    }
+    document.getElementById('applySuccess').classList.add('show');
+    document.getElementById('applyNav').style.display = 'none';
+    document.querySelectorAll('.app-section').forEach(s => s.classList.remove('active'));
+    appClearDraft();
+    trackEvent('application_submitted', { saved_to_backend: savedToBackend, programme: p.name, format: p.format, method: appState.paymentMethod });
+    showToast('Application submitted. Confirmation sent to your email.', 'success');
+    document.getElementById('applySuccess').scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 600);
+}
+function resetApplicationForNextTime(){
+  // Reset state, form, payment panels, success
+  appState.current = 1;
+  appState.paymentStatus = 'pending';
+  appState.paymentMethod = null;
+  appState.paymentRef = null;
+  appState.userRef = null;
+  appState.paidAmount = null;
+  appState.senderName = null;
+  appState.senderContact = null;
+  appState.referral = null;
+  appState.goal = null;
+  appState.timeCommitment = null;
+  const form = document.getElementById('applyForm');
+  if(form){ try { form.reset(); } catch(e){} }
+  document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(c => { c.classList.remove('selected'); c.style.opacity = ''; c.style.pointerEvents = ''; c.setAttribute('aria-checked','false'); });
+  document.querySelectorAll('.app-radio-grid .app-radio').forEach(r => { r.classList.remove('selected'); r.setAttribute('aria-checked','false'); });
+  document.getElementById('apPayDetails').style.display = 'none';
+  document.getElementById('apPayConfirm').style.display = 'none';
+  document.getElementById('apPaymentSuccess').style.display = 'none';
+  document.getElementById('applySuccess').classList.remove('show');
+  document.getElementById('applyNav').style.display = 'flex';
+  document.getElementById('apSubmit').style.display = 'none';
+  document.getElementById('apNext').style.display = 'inline-flex';
+  document.getElementById('applySuccessDocsNote').classList.remove('show');
+  document.querySelectorAll('.app-upload-drop').forEach(d => { d.classList.remove('has-file'); const e = d.querySelector('.app-upload-empty'); if(e) e.style.display='flex'; const f = d.querySelector('.app-upload-filled'); if(f) f.style.display='none'; });
+  appUpdateUI(false);
+}
+
+/* ---------- Wire application controls ---------- */
+$('#appClose').addEventListener('click', closeApplication);
+$('#appOverlay').addEventListener('click', e => { if(e.target.id === 'appOverlay') closeApplication(); });
+$('#apPrev').addEventListener('click', () => { if(appState.current > 1){ appState.current--; appUpdateUI(true); } });
+$('#apNext').addEventListener('click', () => { if(!appValidate(appState.current)) return; if(appState.current < 7){ appState.current++; appUpdateUI(true); appSaveDraft(); } });
+$('#apSubmit').addEventListener('click', appSubmit);
+document.getElementById('applyForm').addEventListener('submit', e => { e.preventDefault(); appSubmit(); });
+document.getElementById('apPaySubmit').addEventListener('click', appConfirmPayment);
+document.getElementById('apDownloadReceiptBtn').addEventListener('click', appDownloadReceiptPDF);
+document.getElementById('apPrintReceiptBtn').addEventListener('click', appPrintReceipt);
+document.getElementById('apWhatsappBtn').addEventListener('click', () => { const ws = document.getElementById('apWhatsappSent'); if(ws) ws.classList.add('show'); });
+document.getElementById('apPayReset').addEventListener('click', () => {
+  appState.paymentStatus = 'pending';
+  appState.paymentMethod = null;
+  appState.paymentRef = null; appState.userRef = null; appState.paidAmount = null;
+  appState.senderName = null; appState.senderContact = null;
+  document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(c => { c.classList.remove('selected'); c.style.opacity = ''; c.style.pointerEvents = ''; c.setAttribute('aria-checked','false'); });
+  document.getElementById('apPaySenderName').value = '';
+  document.getElementById('apPaySenderContact').value = '';
+  document.getElementById('apPayRef').value = '';
+  document.getElementById('apPayConfirmed').checked = false;
+  const ws = document.getElementById('apWhatsappSent'); if(ws) ws.classList.remove('show');
+  document.getElementById('apPaymentSuccess').style.display = 'none';
+  document.getElementById('apPayDetails').style.display = 'none';
+  document.getElementById('apPayConfirm').style.display = 'none';
+  appClearErrors();
+  showToast('You can now choose a different payment method.', 'success');
+});
+document.querySelectorAll('.app-step').forEach(step => {
+  step.addEventListener('click', () => {
+    const target = parseInt(step.dataset.applyStep, 10);
+    if(target < appState.current){ appState.current = target; appUpdateUI(true); }
+    else if(target > appState.current){
+      for(let i = appState.current; i < target; i++){ if(!appValidate(i)) return; }
+      appState.current = target; appUpdateUI(true); appSaveDraft();
+    }
+  });
+});
+document.querySelectorAll('.app-radio-grid').forEach(group => {
+  group.querySelectorAll('.app-radio').forEach(radio => {
+    radio.addEventListener('click', () => {
+      group.querySelectorAll('.app-radio').forEach(r => { r.classList.remove('selected'); r.setAttribute('aria-checked','false'); });
+      radio.classList.add('selected'); radio.setAttribute('aria-checked','true');
+      const gid = group.id, val = radio.dataset.value;
+      if(gid === 'apReferral') appState.referral = val;
+      if(gid === 'apGoal') appState.goal = val;
+      if(gid === 'apTime') appState.timeCommitment = val;
+      appSaveDraft();
+    });
+  });
+});
+document.getElementById('apCountry').addEventListener('change', () => {
+  const payAmountEl = document.getElementById('apPayAmount');
+  const payContextEl = document.getElementById('apPayContext');
+  if(payAmountEl) payAmountEl.textContent = appFeeAmount();
+  if(payContextEl) payContextEl.textContent = appFeeContext();
+  if(appState.paymentStatus === 'confirmed'){
+    appState.paymentStatus = 'pending'; appState.paymentRef = null; appState.userRef = null; appState.paidAmount = null;
+    document.getElementById('apPaymentSuccess').style.display = 'none';
+    const ws = document.getElementById('apWhatsappSent'); if(ws) ws.classList.remove('show');
+    document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(c => { c.style.opacity = ''; c.style.pointerEvents = ''; });
+    if(appState.paymentMethod) appRenderPaymentDetails();
+    showToast('Country changed. Please complete the payment again for the correct amount.', 'error');
+  } else if(appState.paymentMethod){ appRenderPaymentDetails(); }
+});
+document.getElementById('receiptCheckBtn').addEventListener('click', () => lookupReceiptStatus(document.getElementById('receiptCheckInput').value));
+document.getElementById('receiptCheckInput').addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); lookupReceiptStatus(e.target.value); } });
+
+/* ---------- Open application via .js-apply-now ---------- */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.js-apply-now');
+  if(btn){ e.preventDefault(); openApplication(); }
+});
+
+/* ---------- Check draft on overlay open ---------- */
+const _originalOpenApplication = openApplication;
+openApplication = function(){
+  _originalOpenApplication();
+  const draft = appRestoreDraft();
+  const banner = document.getElementById('draftBanner');
+  if(draft && banner && !banner.classList.contains('dismissed')){ banner.classList.add('show'); }
+};
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+buildHeroSlider();
+buildSubjectsGrid();
+buildFinderSubjects();
+buildSearchTags();
+updateFormatCounts();
+renderCatalogue();
+
+$('#searchOpenBtn').addEventListener('click', openSearch);
+searchInput.addEventListener('input', e => renderSearchResults(e.target.value));
+$('#finderBtn').addEventListener('click', runFinder);
+$('#finderReset').addEventListener('click', () => { finderSubject.value = ''; finderFormat.value = ''; finderDuration.value = ''; finderBudget.value = ''; $('#finderResults').classList.remove('show'); $('#finderList').innerHTML = ''; });
+$('#catalogueClear').addEventListener('click', clearFilters);
+$$('#heroFormats .format-pill').forEach(p => p.addEventListener('click', () => applyFormatFilter(p.dataset.format)));
+$$('#pathsGrid .path-card').forEach(p => p.addEventListener('click', () => applyFormatFilter(p.dataset.format)));
+$$('.format-card .btn[data-format]').forEach(b => b.addEventListener('click', () => applyFormatFilter(b.dataset.format)));
+
+document.querySelectorAll('.open-portal').forEach(el => el.addEventListener('click', e => { e.preventDefault(); openPortal(el.dataset.portal || 'login'); }));
 setupPwToggle('portalPwToggle','portalPassword');
 setupPwToggle('portalNewPwToggle','portalNewPassword');
-
 document.getElementById('portalLoginForm').addEventListener('submit', function(e){
   e.preventDefault();
   const errEl = document.getElementById('portalLoginError'); errEl.classList.remove('show');
@@ -1325,12 +2962,10 @@ document.getElementById('portalLoginForm').addEventListener('submit', function(e
   const password = document.getElementById('portalPassword').value;
   const remember = document.getElementById('portalRemember').checked;
   const btn = document.getElementById('portalLoginBtn');
-  if(!email){ setPortalMessage('portalLoginError','Please enter your email address.'); document.getElementById('portalEmail').classList.add('err'); return; }
-  document.getElementById('portalEmail').classList.remove('err');
-  if(!isValidEmail(email)){ setPortalMessage('portalLoginError','Please enter a valid email address.'); document.getElementById('portalEmail').classList.add('err'); return; }
-  if(!password){ setPortalMessage('portalLoginError','Please enter your password.'); document.getElementById('portalPassword').classList.add('err'); return; }
-  document.getElementById('portalPassword').classList.remove('err');
-  if(password.length < 6){ setPortalMessage('portalLoginError','Password must be at least 6 characters.'); document.getElementById('portalPassword').classList.add('err'); return; }
+  if(!email){ setPortalMessage('portalLoginError','Please enter your email address.'); return; }
+  if(!isValidEmail(email)){ setPortalMessage('portalLoginError','Please enter a valid email address.'); return; }
+  if(!password){ setPortalMessage('portalLoginError','Please enter your password.'); return; }
+  if(password.length < 6){ setPortalMessage('portalLoginError','Password must be at least 6 characters.'); return; }
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
   setTimeout(() => {
     const lowerEmail = email.toLowerCase();
@@ -1340,7 +2975,7 @@ document.getElementById('portalLoginForm').addEventListener('submit', function(e
     if(lowerEmail === PORTAL_DEMO.email.toLowerCase() && password === PORTAL_DEMO.password){ name = PORTAL_DEMO.name; }
     else if(localAccount){ name = localAccount.name; }
     else { name = lowerEmail.split('@')[0].replace(/[._-]+/g,' ').replace(/\b\w/g, c => c.toUpperCase()); }
-    const session = { email: lowerEmail, name: name, signedInAt: Date.now() };
+    const session = { email: lowerEmail, name, signedInAt: Date.now() };
     saveSession(session, remember);
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
     setDashboardUser(session); showPortalView('dashboard');
@@ -1348,13 +2983,12 @@ document.getElementById('portalLoginForm').addEventListener('submit', function(e
     document.getElementById('portalLoginForm').reset();
   }, 900);
 });
-
 document.getElementById('portalForgotForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const errEl = document.getElementById('portalForgotError'), sucEl = document.getElementById('portalForgotSuccess');
-  errEl.classList.remove('show'); sucEl.classList.remove('show');
   const email = document.getElementById('portalForgotEmail').value.trim();
   const btn = document.getElementById('portalForgotBtn');
+  document.getElementById('portalForgotError').classList.remove('show');
+  document.getElementById('portalForgotSuccess').classList.remove('show');
   if(!email){ setPortalMessage('portalForgotError','Please enter your email address.'); return; }
   if(!isValidEmail(email)){ setPortalMessage('portalForgotError','Please enter a valid email address.'); return; }
   btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -1365,15 +2999,14 @@ document.getElementById('portalForgotForm').addEventListener('submit', function(
     document.getElementById('portalForgotForm').reset();
   }, 1000);
 });
-
 document.getElementById('portalCreateForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const errEl = document.getElementById('portalCreateError'), sucEl = document.getElementById('portalCreateSuccess');
-  errEl.classList.remove('show'); sucEl.classList.remove('show');
   const name = document.getElementById('portalNewName').value.trim();
   const email = document.getElementById('portalNewEmail').value.trim();
   const password = document.getElementById('portalNewPassword').value;
   const btn = document.getElementById('portalCreateBtn');
+  document.getElementById('portalCreateError').classList.remove('show');
+  document.getElementById('portalCreateSuccess').classList.remove('show');
   if(!name){ setPortalMessage('portalCreateError','Please enter your full name.'); return; }
   if(!email){ setPortalMessage('portalCreateError','Please enter your email address.'); return; }
   if(!isValidEmail(email)){ setPortalMessage('portalCreateError','Please enter a valid email address.'); return; }
@@ -1382,48 +3015,38 @@ document.getElementById('portalCreateForm').addEventListener('submit', function(
   if(accounts.some(a => a.email.toLowerCase() === email.toLowerCase()) || email.toLowerCase() === PORTAL_DEMO.email.toLowerCase()){
     setPortalMessage('portalCreateError','An account with that email already exists. Try signing in instead.'); return;
   }
-  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
   setTimeout(() => {
     saveAccount({ name, email: email.toLowerCase(), password, createdAt: Date.now() });
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
     setPortalMessage('portalCreateSuccess','Account created! Signing you in...');
     showToast('Account created successfully', 'success');
-    const session = { email: email.toLowerCase(), name: name, signedInAt: Date.now() };
+    const session = { email: email.toLowerCase(), name, signedInAt: Date.now() };
     saveSession(session, true);
     setTimeout(() => { setDashboardUser(session); showPortalView('dashboard'); document.getElementById('portalCreateForm').reset(); }, 900);
   }, 1100);
 });
-
 document.getElementById('portalSignOut').addEventListener('click', () => { clearSession(); showToast('Signed out successfully'); showPortalView('login'); });
-function setDashboardUser(session){ document.getElementById('portalUserName').textContent = session.name || 'Student'; document.getElementById('portalUserEmail').textContent = session.email || ''; const infoEl = document.getElementById('portalSessionInfo'); if(infoEl){ const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now'; infoEl.textContent = 'Session started ' + when; } }
-document.querySelectorAll('.portal-dash-card').forEach(card => { card.addEventListener('click', () => { const what = card.dataset.dash; const messages = { courses: 'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.', grades: 'Grades — no assessment results available yet.', resources: 'Resources — learning materials will appear here once enrolled.', timetable: 'Timetable — your class schedule will appear here once enrolled.' }; showToast(messages[what] || 'Coming soon'); }); });
-document.addEventListener('click', e => { const trigger = e.target.closest('.open-portal'); if(trigger){ e.preventDefault(); const view = trigger.dataset.portal || 'login'; openPortal(view); } });
+document.querySelectorAll('.portal-dash-card').forEach(card => { card.addEventListener('click', () => { const what = card.dataset.dash; const messages = { courses:'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.', grades:'Grades — no assessment results available yet.', resources:'Resources — learning materials will appear here once enrolled.', timetable:'Timetable — your class schedule will appear here once enrolled.' }; showToast(messages[what] || 'Coming soon'); }); });
 document.getElementById('portalForgotLink').addEventListener('click', () => showPortalView('forgot'));
 document.getElementById('portalCreateLink').addEventListener('click', () => showPortalView('create'));
 document.getElementById('portalBack1').addEventListener('click', () => showPortalView('login'));
 document.getElementById('portalBack2').addEventListener('click', () => showPortalView('login'));
 
-/* =========================================================
-   GLOBAL UI
-   ========================================================= */
-window.addEventListener('scroll',()=>{ const h = $('#mainHeader'); if(h) h.classList.toggle('scrolled',window.scrollY>30); },{ passive:true });
-$$('[data-scroll]').forEach(a=>{ a.addEventListener('click',e=>{ const href=a.getAttribute('href'); if(!href||!href.startsWith('#'))return; const t=document.querySelector(href); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});} const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show'); }); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('#programmeModal').classList.contains('show')) closeProgramme(); if(searchModal.classList.contains('show')) closeSearch(); if(portalModal.classList.contains('show')) closePortal(); const nav = document.getElementById('mobileNav'); if(nav && nav.classList.contains('show')) toggleMobileMenu(false); } });
-$('#programmeModal').addEventListener('click',e=>{if(e.target.id==='programmeModal')closeProgramme();});
-searchModal.addEventListener('click',e=>{if(e.target.id==='searchModal')closeSearch();});
-portalModal.addEventListener('click',e=>{if(e.target.id==='portalModal')closePortal();});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    if($('#appOverlay').classList.contains('show')) closeApplication();
+    if($('#programmeModal').classList.contains('show')) closeProgramme();
+    if(searchModal.classList.contains('show')) closeSearch();
+    if(portalModal.classList.contains('show')) closePortal();
+    const nav = document.getElementById('mobileNav'); if(nav && nav.classList.contains('show')) toggleMobileMenu(false);
+  }
+});
+$('#programmeModal').addEventListener('click', e => { if(e.target.id === 'programmeModal') closeProgramme(); });
+searchModal.addEventListener('click', e => { if(e.target.id === 'searchModal') closeSearch(); });
+portalModal.addEventListener('click', e => { if(e.target.id === 'portalModal') closePortal(); });
 
-/* =========================================================
-   INIT
-   ========================================================= */
-buildHeroSlider();
-buildSubjectsGrid();
-buildFinderSubjects();
-buildSearchTags();
-updateFormatCounts();
-renderCatalogue();
-
-console.log(`Nolan Institute ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · ${HERO_SLIDES.length} hero slides · Portal active · 1 USD = ${USD_RATE} ZMW`);
+console.log(`[Nolan] Marketplace ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · Application overlay active · Firebase: ${IS_FIREBASE_CONFIGURED ? 'configured' : 'NOT configured'} · EmailJS: ${IS_EMAILJS_CONFIGURED ? 'configured' : 'NOT configured'} · Cloudinary: ${IS_CLOUDINARY_CONFIGURED ? 'configured' : 'NOT configured'}`);
 </script>
 </body>
 </html>
