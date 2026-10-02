@@ -319,7 +319,7 @@ input,select,textarea{color-scheme:light only}
 .modal-overlay.show{display:flex;animation:fadeIn .2s ease}
 .modal-card{background:#ffffff !important;border-radius:20px;max-width:720px;width:100%;padding:36px;position:relative;animation:modalIn .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-xl);color:var(--gray-darker);color-scheme:light only}
 .modal-card.search-modal{padding:0;max-width:680px;overflow:hidden}
-.modal-card.portal-modal{padding:0;max-width:460px;overflow:hidden;background:#ffffff !important}
+.modal-card.portal-modal{padding:0;max-width:520px;overflow:hidden;background:#ffffff !important}
 @keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:none;background:var(--gray-light);color:var(--navy);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:2}
 .modal-close:hover{background:var(--gold);color:var(--navy-dark);transform:rotate(90deg)}
@@ -364,6 +364,9 @@ input,select,textarea{color-scheme:light only}
 .search-tag{background:#fff;border:1px solid var(--gray-mid);padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;color:var(--navy);cursor:pointer;transition:var(--transition)}
 .search-tag:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
 
+/* ===============================
+   STUDENT PORTAL
+   =============================== */
 .portal-modal, .portal-modal *{color-scheme:light only}
 .portal-view{display:none;padding:40px 34px 32px;background:#ffffff !important;color:#333333 !important;border-radius:20px}
 .portal-view.active{display:block;animation:fadeIn .28s ease}
@@ -377,6 +380,7 @@ input,select,textarea{color-scheme:light only}
 .portal-field input::placeholder{color:#94a3b8 !important;opacity:1}
 .portal-field input:focus{outline:none;border-color:#C5A028 !important;box-shadow:0 0 0 3px rgba(197,160,40,.12);background:#FFFFFF !important}
 .portal-field input.err{border-color:#DC3545 !important;background:#FFF5F5 !important}
+.portal-field input:disabled{background:#F5F5F5 !important;color:#999 !important;-webkit-text-fill-color:#999 !important;cursor:not-allowed}
 .portal-pw-wrap{position:relative}
 .portal-pw-wrap input{padding-right:46px}
 .portal-pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:8px;border:none;background:transparent !important;color:#666666 !important;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
@@ -402,20 +406,52 @@ input,select,textarea{color-scheme:light only}
 .portal-hint{background:#FBF5E1 !important;border:1px dashed rgba(197,160,40,.55) !important;color:#0A1C3A !important;font-size:12px;padding:10px 14px;border-radius:8px;margin-bottom:18px;line-height:1.55;text-align:left}
 .portal-hint strong{color:#A07F1F !important}
 .portal-hint code{background:rgba(197,160,40,.18) !important;padding:1px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:#0A1C3A !important}
+.portal-hint-inline{font-size:11px;color:#999 !important;margin-top:5px;line-height:1.5;font-style:italic}
+
 .portal-dashboard{padding:34px 30px;background:#FFFFFF !important}
 .portal-dashboard-head{text-align:center;margin-bottom:22px}
 .portal-dashboard-head .portal-icon{background:#EAF7EE !important;color:#1A7A3F !important;border:1px solid rgba(40,167,69,.35)}
 .portal-dashboard-head h2{font-size:22px;margin-bottom:6px;color:#0A1C3A !important}
 .portal-dashboard-head .portal-sub{font-size:13px;color:#666666 !important;margin:0}
-.portal-user-info{background:#FBF5E1 !important;border-left:3px solid #C5A028;padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:12.5px;color:#0A1C3A !important;text-align:left;line-height:1.6}
-.portal-user-info strong{color:#A07F1F !important}
-.portal-dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
-.portal-dash-card{background:#FAFAF8 !important;border:1px solid #E0E0E0 !important;border-radius:12px;padding:18px 16px;text-align:left;cursor:pointer;transition:var(--transition);font-family:inherit;color:#0A1C3A !important}
-.portal-dash-card:hover{border-color:#C5A028 !important;background:#FFFFFF !important;transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.portal-dash-card i{font-size:20px;color:#A07F1F !important;margin-bottom:10px;display:block}
-.portal-dash-card h4{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#0A1C3A !important;margin-bottom:4px}
-.portal-dash-card p{font-size:11.5px;color:#666666 !important;line-height:1.5}
-.portal-signout{background:transparent !important;border:2px solid #E0E0E0 !important;color:#333333 !important;width:100%;padding:12px 24px;border-radius:8px;font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer;transition:var(--transition)}
+
+.portal-stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:22px}
+.portal-stat{background:#FAFAF8 !important;border:1px solid #E0E0E0 !important;border-radius:12px;padding:16px 12px;text-align:center}
+.portal-stat-value{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:#0A1C3A !important;line-height:1}
+.portal-stat-label{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;color:#666 !important;font-weight:700;margin-top:6px}
+
+.portal-section{margin-bottom:24px}
+.portal-section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.portal-section-head h3{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#0A1C3A !important;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:8px;margin:0}
+.portal-section-head h3 i{color:#A07F1F !important;font-size:14px}
+.portal-refresh-btn{background:transparent !important;border:none;color:#A07F1F !important;cursor:pointer;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all .2s ease}
+.portal-refresh-btn:hover{background:#F5F5F5 !important;transform:rotate(90deg)}
+
+.portal-list{display:flex;flex-direction:column;gap:10px}
+.portal-loading,.portal-empty{text-align:center;padding:28px 20px;background:#FAFAF8 !important;border:1px dashed #E0E0E0 !important;border-radius:12px;color:#666 !important;font-size:12.5px;line-height:1.6}
+.portal-loading i,.portal-empty i{font-size:22px;color:#A07F1F !important;display:block;margin-bottom:10px}
+.portal-empty h4{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#0A1C3A !important;margin-bottom:6px}
+.portal-empty p{font-size:12px;color:#666 !important;margin-bottom:12px}
+
+.portal-item{background:#FAFAF8 !important;border:1px solid #E0E0E0 !important;border-radius:12px;padding:14px 16px;text-align:left;transition:all .2s ease}
+.portal-item:hover{border-color:#C5A028 !important;background:#FFFFFF !important}
+.portal-item-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+.portal-item-title{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;color:#0A1C3A !important;line-height:1.35;margin:0;word-break:break-word}
+.portal-item-meta{font-size:11.5px;color:#666 !important;line-height:1.55;display:flex;flex-wrap:wrap;gap:6px 14px}
+.portal-item-meta strong{color:#0A1C3A !important;font-weight:700}
+.portal-item-foot{font-size:11px;color:#999 !important;margin-top:8px;padding-top:8px;border-top:1px dashed #E0E0E0;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.portal-item-foot strong{color:#0A1C3A !important;font-weight:700}
+
+.portal-status{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:4px 10px;border-radius:50px;white-space:nowrap;flex-shrink:0}
+.portal-status.pending{background:#FFF3CD;color:#856404;border:1px solid #FFE69C}
+.portal-status.verified,.portal-status.accepted{background:#D4EDDA;color:#155724;border:1px solid #C3E6CB}
+.portal-status.review{background:#CCE5FF;color:#004085;border:1px solid #B8DAFF}
+.portal-status.rejected{background:#F8D7DA;color:#721C24;border:1px solid #F5C6CB}
+
+.portal-footer-actions{display:flex;flex-direction:column;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid #E0E0E0}
+.portal-dashboard-action{background:#FAFAF8 !important;border:2px solid #E0E0E0 !important;color:#0A1C3A !important;width:100%;padding:12px 20px;border-radius:8px;font-weight:700;font-size:13px;font-family:inherit;cursor:pointer;transition:all .2s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.portal-dashboard-action:hover{border-color:#C5A028 !important;background:#FFFFFF !important;transform:translateY(-2px)}
+.portal-dashboard-action i{color:#A07F1F !important;font-size:14px}
+.portal-signout{background:transparent !important;border:2px solid #E0E0E0 !important;color:#333333 !important;width:100%;padding:12px 24px;border-radius:8px;font-weight:700;font-size:13.5px;font-family:inherit;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .portal-signout:hover{border-color:#0A1C3A !important;color:#0A1C3A !important;background:#F5F5F5 !important}
 
 .toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);width:max-content;box-shadow:var(--shadow-lg);pointer-events:none}
@@ -426,7 +462,7 @@ input,select,textarea{color-scheme:light only}
 .toast i{color:#fff;font-size:14px;flex-shrink:0}
 
 /* =====================================================
-   APPLICATION OVERLAY (embedded flagship system)
+   APPLICATION OVERLAY
    ===================================================== */
 .app-overlay{position:fixed;inset:0;background:rgba(5,18,42,.9);z-index:2500;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .app-overlay.show{display:flex;animation:fadeIn .25s ease}
@@ -732,7 +768,6 @@ input,select,textarea{color-scheme:light only}
   .app-step{min-width:44px}
 }
 
-/* Marketplace responsive (unchanged from your original) */
 @media(max-width:1100px){.hero-grid{gap:40px}.hero-slider{max-width:440px}}
 @media(max-width:992px){
   .main-nav{display:none}
@@ -780,6 +815,10 @@ input,select,textarea{color-scheme:light only}
   .footer{padding:44px 0 20px}
   .footer-grid{gap:28px;margin-bottom:32px}
   .toast{right:12px;bottom:12px;font-size:12.5px;padding:10px 16px;max-width:calc(100vw - 24px)}
+  .portal-stats-row{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .portal-stat{padding:12px 8px}
+  .portal-stat-value{font-size:20px}
+  .portal-stat-label{font-size:9px}
 }
 @media(max-width:400px){
   .container{padding:0 12px}
@@ -800,6 +839,8 @@ input,select,textarea{color-scheme:light only}
   .subjects-grid,.featured-grid,.formats-grid,.why-grid,.leave-grid,.career-grid,.steps-grid,.payment-options,.paths-grid{grid-template-columns:1fr}
   .footer-social{justify-content:center}
   .portal-dashboard-grid{grid-template-columns:1fr}
+  .portal-stats-row{grid-template-columns:1fr 1fr}
+  .portal-stats-row .portal-stat:last-child{grid-column:span 2}
 }
 @media(hover:none){
   .prog-card:hover,.subject-card:hover,.path-card:hover,.format-card:hover,.why-card:hover,.leave-card:hover,.career-card:hover,.step-card:hover{transform:none}
@@ -1084,9 +1125,7 @@ input,select,textarea{color-scheme:light only}
   </div>
 </footer>
 
-<!-- =====================================================
-     APPLICATION OVERLAY (embedded from flagship system)
-     ===================================================== -->
+<!-- APPLICATION OVERLAY -->
 <div class="app-overlay" id="appOverlay" role="dialog" aria-modal="true" aria-label="Programme application">
   <div class="app-shell">
     <button type="button" class="app-close" id="appClose" aria-label="Close application"><i class="fas fa-times"></i></button>
@@ -1123,11 +1162,10 @@ input,select,textarea{color-scheme:light only}
           </div>
         </div>
 
-        <!-- STEP 1 · PERSONAL -->
+        <!-- STEP 1 -->
         <div class="app-section active" data-apply-form="1">
           <h3>Personal Information</h3>
           <p class="as-sub">Tell us a little about yourself. All fields marked * are required.</p>
-
           <div class="app-programme-locked">
             <i class="fas fa-graduation-cap"></i>
             <div class="pl-text">
@@ -1136,7 +1174,6 @@ input,select,textarea{color-scheme:light only}
               <div class="pl-meta" id="lockedProgrammeMeta">—</div>
             </div>
           </div>
-
           <div class="app-form-grid" style="margin-top:22px;">
             <div class="app-form-group" data-field="apFirstName"><label for="apFirstName">First Name <span class="req">*</span></label><input type="text" id="apFirstName" autocomplete="given-name" required><div class="app-inline-error" data-error-for="apFirstName"><i class="fas fa-exclamation-circle"></i><span>Please enter your first name.</span></div></div>
             <div class="app-form-group" data-field="apLastName"><label for="apLastName">Last Name <span class="req">*</span></label><input type="text" id="apLastName" autocomplete="family-name" required><div class="app-inline-error" data-error-for="apLastName"><i class="fas fa-exclamation-circle"></i><span>Please enter your last name.</span></div></div>
@@ -1161,11 +1198,10 @@ input,select,textarea{color-scheme:light only}
           </div>
         </div>
 
-        <!-- STEP 2 · PAYMENT -->
+        <!-- STEP 2 -->
         <div class="app-section" data-apply-form="2">
           <h3>Application Deposit</h3>
           <p class="as-sub">A non-refundable application deposit secures your place and is credited towards your programme fee. Choose your payment method, complete the transfer, then confirm below. A receipt is generated for you, and you will be asked to send proof to admissions on WhatsApp.</p>
-
           <div class="app-pay-amount-banner">
             <div>
               <div class="pab-label">Amount Due</div>
@@ -1174,7 +1210,6 @@ input,select,textarea{color-scheme:light only}
             </div>
             <i class="fas fa-shield-alt pab-icon"></i>
           </div>
-
           <div class="app-fee-tier-note" role="note">
             <i class="fas fa-info-circle"></i>
             <div>
@@ -1183,7 +1218,6 @@ input,select,textarea{color-scheme:light only}
               Your deposit is set automatically by the country you selected in Step 1, and is credited towards your programme fee.
             </div>
           </div>
-
           <div class="app-pay-methods-grid" id="apPayMethods" role="radiogroup" aria-label="Payment method">
             <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-airtel" data-pm="airtel"><div class="pm-logo">airtel</div><div class="pm-name">Airtel Money</div><div class="pm-desc">Fastest for Zambian applicants</div></button>
             <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-mtn" data-pm="mtn"><div class="pm-logo">MTN</div><div class="pm-name">MTN MoMo</div><div class="pm-desc">Mobile money</div></button>
@@ -1191,9 +1225,7 @@ input,select,textarea{color-scheme:light only}
             <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-paypal" data-pm="paypal"><div class="pm-logo"><i class="fab fa-paypal"></i></div><div class="pm-name">PayPal</div><div class="pm-desc">For international applicants</div></button>
             <button type="button" role="radio" aria-checked="false" class="app-pay-method-card pm-crypto" data-pm="crypto"><div class="pm-logo"><i class="fab fa-bitcoin"></i></div><div class="pm-name">Crypto</div><div class="pm-desc">BTC · ETH · USDT</div></button>
           </div>
-
           <div id="apPayDetails" style="display:none;"></div>
-
           <div class="app-pay-confirm-form" id="apPayConfirm" style="display:none;">
             <h4><i class="fas fa-clipboard-check"></i> Confirm You Have Paid</h4>
             <div class="app-form-grid">
@@ -1206,14 +1238,12 @@ input,select,textarea{color-scheme:light only}
             </div>
             <button type="button" class="btn btn-primary btn-lg btn-block" id="apPaySubmit"><i class="fas fa-check-circle"></i> I Have Paid — Generate My Receipt</button>
           </div>
-
           <div id="apPaymentSuccess" style="display:none;">
             <div class="app-payment-success">
               <i class="fas fa-check-circle ps-icon"></i>
               <h4>Payment Recorded</h4>
               <p>Receipt Reference: <strong id="apPaymentRef">NOL-XXXX-XXXXXX</strong></p>
               <p style="font-size:12.5px;color:var(--gray-dark);margin-top:6px;">Your receipt has been generated below. Download it for your records.</p>
-
               <div class="app-ps-whatsapp-block" id="apWhatsappBlock">
                 <div class="psw-title"><i class="fab fa-whatsapp"></i> Step 1 — Send Proof to Admissions</div>
                 <p>To confirm your payment, please send the confirmation below to our admissions team on WhatsApp <strong>+260 762 499 581</strong>. They will compare your details against our records and confirm receipt.</p>
@@ -1221,7 +1251,6 @@ input,select,textarea{color-scheme:light only}
                 <div class="app-psw-note">If WhatsApp does not open automatically, tap the button above.</div>
                 <div class="app-psw-sent" id="apWhatsappSent"><i class="fas fa-check-circle"></i> Confirmation ready — please tap <strong>Send</strong> in WhatsApp.</div>
               </div>
-
               <div class="app-receipt-section">
                 <div class="app-receipt-section-head">
                   <div>
@@ -1233,7 +1262,6 @@ input,select,textarea{color-scheme:light only}
                     <button type="button" class="app-receipt-btn" id="apPrintReceiptBtn"><i class="fas fa-print"></i> Print</button>
                   </div>
                 </div>
-
                 <div id="apReceipt" class="nolan-receipt">
                   <div class="nr-header">
                     <div>
@@ -1296,7 +1324,7 @@ input,select,textarea{color-scheme:light only}
                     </div>
                   </div>
                   <div class="nr-footer">
-                    <div class="nr-footer-note"><strong>This is a PROVISIONAL receipt.</strong> It acknowledges the applicant's submission of payment details to Nolan Institute. A final receipt will be issued once the payment has been verified against our records. This receipt is subject to actual receipt of funds into the nominated account.</div>
+                    <div class="nr-footer-note"><strong>This is a PROVISIONAL receipt.</strong> It acknowledges the applicant's submission of payment details to Nolan Institute. A final receipt will be issued once the payment has been verified against our records.</div>
                     <div class="nr-signature">
                       <div class="nr-sig-block"><div class="nr-sig-line"></div><div class="nr-sig-lbl">Authorised Signature</div></div>
                       <div class="nr-sig-block"><div class="nr-sig-line"></div><div class="nr-sig-lbl">Date</div></div>
@@ -1307,7 +1335,6 @@ input,select,textarea{color-scheme:light only}
                     </div>
                   </div>
                 </div>
-
                 <div class="app-receipt-check">
                   <h6><i class="fas fa-search"></i> Check receipt status later</h6>
                   <div class="app-receipt-check-row">
@@ -1317,13 +1344,12 @@ input,select,textarea{color-scheme:light only}
                   <div class="app-receipt-check-result" id="receiptCheckResult"></div>
                 </div>
               </div>
-
               <button type="button" class="btn btn-outline btn-sm" id="apPayReset" style="margin-top:16px;"><i class="fas fa-redo"></i> Change payment method</button>
             </div>
           </div>
         </div>
 
-        <!-- STEP 3 · BACKGROUND -->
+        <!-- STEP 3 -->
         <div class="app-section" data-apply-form="3">
           <h3>Your Background</h3>
           <p class="as-sub">Tell us about your education and professional experience. This helps us tailor your learning experience.</p>
@@ -1361,11 +1387,10 @@ input,select,textarea{color-scheme:light only}
           </div>
         </div>
 
-        <!-- STEP 4 · FIT -->
+        <!-- STEP 4 -->
         <div class="app-section" data-apply-form="4">
           <h3>Programme Fit</h3>
           <p class="as-sub">Help us understand why this programme is right for you.</p>
-
           <div class="app-form-group">
             <label>How did you hear about this programme? <span class="req">*</span></label>
             <div class="app-radio-grid" id="apReferral" role="radiogroup" aria-label="Referral source">
@@ -1376,7 +1401,6 @@ input,select,textarea{color-scheme:light only}
               <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="other"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Other</div><div class="ar-desc">Another source.</div></div></button>
             </div>
           </div>
-
           <div class="app-form-group">
             <label>What is your primary goal for this programme? <span class="req">*</span></label>
             <div class="app-radio-grid" id="apGoal" role="radiogroup" aria-label="Primary goal">
@@ -1387,7 +1411,6 @@ input,select,textarea{color-scheme:light only}
               <button type="button" role="radio" aria-checked="false" class="app-radio" data-value="explore"><span class="ar-check"></span><div class="ar-content"><div class="ar-title">Explore a new subject area</div></div></button>
             </div>
           </div>
-
           <div class="app-form-group">
             <label>How much time can you dedicate each week? <span class="req">*</span></label>
             <div class="app-radio-grid" id="apTime" role="radiogroup" aria-label="Weekly time commitment">
@@ -1399,7 +1422,7 @@ input,select,textarea{color-scheme:light only}
           </div>
         </div>
 
-        <!-- STEP 5 · ESSAY -->
+        <!-- STEP 5 -->
         <div class="app-section" data-apply-form="5">
           <h3>Your Goals</h3>
           <p class="as-sub">Tell us what you want to achieve. This is your space to be specific and honest.</p>
@@ -1411,11 +1434,10 @@ input,select,textarea{color-scheme:light only}
           </div>
         </div>
 
-        <!-- STEP 6 · DOCUMENTS -->
+        <!-- STEP 6 -->
         <div class="app-section" data-apply-form="6">
           <h3>Supporting Documents</h3>
           <p class="as-sub">Upload your CV and any supporting documents. PDF preferred. Files are validated before being accepted.</p>
-
           <div id="documentUploadNote" class="app-fee-tier-note" role="note" style="display:none;">
             <i class="fas fa-envelope"></i>
             <div>
@@ -1424,7 +1446,6 @@ input,select,textarea{color-scheme:light only}
               <strong>info@nolaninstitute.org</strong> with your full name and application reference in the subject line.
             </div>
           </div>
-
           <div class="app-form-group">
             <label>Resume / CV <span class="req">*</span></label>
             <div class="app-upload-drop" data-upload-for="apResume">
@@ -1454,32 +1475,27 @@ input,select,textarea{color-scheme:light only}
           </div>
         </div>
 
-        <!-- STEP 7 · REVIEW -->
+        <!-- STEP 7 -->
         <div class="app-section" data-apply-form="7">
           <h3>Review &amp; Submit</h3>
           <p class="as-sub">Check everything is correct before submitting.</p>
-
           <div style="background:linear-gradient(135deg,var(--gold-10) 0%,#FFF9E6 100%);border:1px solid rgba(197,160,40,.35);border-radius:12px;padding:20px 22px;margin-bottom:20px;">
             <h4 style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;"><i class="fas fa-receipt" style="color:var(--gold-dark)"></i> Payment Confirmation</h4>
             <p id="applyFeePaidLine" style="font-size:13px;color:var(--gray-dark);line-height:1.7;margin-bottom:6px">Payment status: <strong>Pending</strong></p>
             <p id="applyFeeDetailLine" style="font-size:13px;color:var(--gray-dark);line-height:1.7">Please return to Step 2 to complete payment.</p>
           </div>
-
           <div id="applyReview"></div>
-
           <div class="app-turnstile-wrap">
             <div id="turnstileWidget" class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="light" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>
           </div>
           <div class="app-turnstile-fallback" id="turnstileFallback">
             <strong>Spam protection not loaded.</strong> If this keeps happening, please make sure JavaScript is enabled.
           </div>
-
           <div class="app-checks">
             <label><input type="checkbox" id="apAgreeTerms"> I certify that all information I have provided is complete and accurate.</label>
             <label><input type="checkbox" id="apAgreeSubmit"> I understand that submitting false information may result in revocation of admission.</label>
             <label><input type="checkbox" id="apAgreeUpdates"> Send me updates about Nolan Institute news and events.</label>
           </div>
-
           <div id="applySuccess" class="app-submit-success">
             <i class="fas fa-check-circle ssp-icon"></i>
             <h3>Application Submitted</h3>
@@ -1530,19 +1546,19 @@ input,select,textarea{color-scheme:light only}
   <div class="modal-card portal-modal" role="dialog" aria-modal="true">
     <button type="button" class="modal-close" onclick="closePortal()" aria-label="Close"><i class="fas fa-times"></i></button>
 
+    <!-- LOGIN -->
     <div class="portal-view active" id="portalLoginView">
       <div class="portal-header">
         <div class="portal-icon"><i class="fas fa-user-graduate"></i></div>
         <h2>Student Portal</h2>
-        <p class="portal-sub">Sign in to access your courses, grades and resources.</p>
-      </div>
-      <div class="portal-hint">
-        <strong>Demo login:</strong> use any valid email + a password of at least 6 characters. Or try the sample account:<br>
-        <code>student@nolaninstitute.org</code> / <code>nolan2026</code>
+        <p class="portal-sub">Sign in to track your applications, payments and enrolment.</p>
       </div>
       <div class="portal-error" id="portalLoginError"></div>
       <form id="portalLoginForm" novalidate>
-        <div class="portal-field"><label for="portalEmail">Email or Student ID</label><input type="email" id="portalEmail" placeholder="you@example.com" autocomplete="email"></div>
+        <div class="portal-field">
+          <label for="portalEmail">Email Address</label>
+          <input type="email" id="portalEmail" placeholder="you@example.com" autocomplete="email">
+        </div>
         <div class="portal-field">
           <label for="portalPassword">Password</label>
           <div class="portal-pw-wrap">
@@ -1550,30 +1566,55 @@ input,select,textarea{color-scheme:light only}
             <button type="button" class="portal-pw-toggle" id="portalPwToggle" aria-label="Show password"><i class="fas fa-eye"></i></button>
           </div>
         </div>
-        <div class="portal-row"><label><input type="checkbox" id="portalRemember"> Remember me</label><a id="portalForgotLink">Forgot password?</a></div>
+        <div class="portal-row">
+          <label><input type="checkbox" id="portalRemember" checked> Remember me</label>
+          <a id="portalForgotLink">Forgot password?</a>
+        </div>
         <button type="submit" class="portal-submit" id="portalLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
       </form>
       <div class="portal-footer"><p>Don't have an account? <a id="portalCreateLink">Create one</a></p></div>
     </div>
 
+    <!-- FORGOT -->
     <div class="portal-view" id="portalForgotView">
-      <div class="portal-header"><div class="portal-icon"><i class="fas fa-key"></i></div><h2>Reset Password</h2><p class="portal-sub">Enter your email and we'll send a reset link.</p></div>
+      <div class="portal-header">
+        <div class="portal-icon"><i class="fas fa-key"></i></div>
+        <h2>Reset Password</h2>
+        <p class="portal-sub">Enter your email and we'll send a secure reset link.</p>
+      </div>
       <div class="portal-error" id="portalForgotError"></div>
       <div class="portal-success" id="portalForgotSuccess"></div>
       <form id="portalForgotForm" novalidate>
-        <div class="portal-field"><label for="portalForgotEmail">Email Address</label><input type="email" id="portalForgotEmail" placeholder="you@example.com" autocomplete="email"></div>
+        <div class="portal-field">
+          <label for="portalForgotEmail">Email Address</label>
+          <input type="email" id="portalForgotEmail" placeholder="you@example.com" autocomplete="email">
+        </div>
         <button type="submit" class="portal-submit" id="portalForgotBtn"><i class="fas fa-paper-plane"></i> Send Reset Link</button>
       </form>
-      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px"><button type="button" class="portal-back" id="portalBack1"><i class="fas fa-arrow-left"></i> Back to Sign In</button></div>
+      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
+        <button type="button" class="portal-back" id="portalBack1"><i class="fas fa-arrow-left"></i> Back to Sign In</button>
+      </div>
     </div>
 
+    <!-- CREATE -->
     <div class="portal-view" id="portalCreateView">
-      <div class="portal-header"><div class="portal-icon"><i class="fas fa-user-plus"></i></div><h2>Create Account</h2><p class="portal-sub">Set up your Nolan Institute student account.</p></div>
+      <div class="portal-header">
+        <div class="portal-icon"><i class="fas fa-user-plus"></i></div>
+        <h2>Create Account</h2>
+        <p class="portal-sub">Set up your Nolan Institute student account.</p>
+      </div>
       <div class="portal-error" id="portalCreateError"></div>
       <div class="portal-success" id="portalCreateSuccess"></div>
       <form id="portalCreateForm" novalidate>
-        <div class="portal-field"><label for="portalNewName">Full Name</label><input type="text" id="portalNewName" placeholder="Jane Doe" autocomplete="name"></div>
-        <div class="portal-field"><label for="portalNewEmail">Email Address</label><input type="email" id="portalNewEmail" placeholder="you@example.com" autocomplete="email"></div>
+        <div class="portal-field">
+          <label for="portalNewName">Full Name</label>
+          <input type="text" id="portalNewName" placeholder="Jane Doe" autocomplete="name">
+        </div>
+        <div class="portal-field">
+          <label for="portalNewEmail">Email Address</label>
+          <input type="email" id="portalNewEmail" placeholder="you@example.com" autocomplete="email">
+          <p class="portal-hint-inline">Use the same email you applied with to see your applications.</p>
+        </div>
         <div class="portal-field">
           <label for="portalNewPassword">Password</label>
           <div class="portal-pw-wrap">
@@ -1583,23 +1624,81 @@ input,select,textarea{color-scheme:light only}
         </div>
         <button type="submit" class="portal-submit" id="portalCreateBtn"><i class="fas fa-user-plus"></i> Create Account</button>
       </form>
-      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px"><button type="button" class="portal-back" id="portalBack2"><i class="fas fa-arrow-left"></i> Back to Sign In</button></div>
+      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
+        <button type="button" class="portal-back" id="portalBack2"><i class="fas fa-arrow-left"></i> Back to Sign In</button>
+      </div>
     </div>
 
+    <!-- DASHBOARD -->
     <div class="portal-view portal-dashboard" id="portalDashboardView">
       <div class="portal-dashboard-head">
-        <div class="portal-icon"><i class="fas fa-check-circle"></i></div>
-        <h2>Welcome back, <span id="portalUserName">Student</span></h2>
-        <p class="portal-sub">You're signed in to the Nolan Institute Student Portal.</p>
+        <div class="portal-icon"><i class="fas fa-user-circle"></i></div>
+        <h2>Welcome, <span id="portalUserName">Student</span></h2>
+        <p class="portal-sub" id="portalUserEmail">—</p>
       </div>
-      <div class="portal-user-info">Signed in as <strong id="portalUserEmail">—</strong><br><span id="portalSessionInfo" style="color:#666">Session active</span></div>
-      <div class="portal-dashboard-grid">
-        <button type="button" class="portal-dash-card" data-dash="courses"><i class="fas fa-book-open"></i><h4>My Courses</h4><p>View your enrolled programmes</p></button>
-        <button type="button" class="portal-dash-card" data-dash="grades"><i class="fas fa-award"></i><h4>Grades</h4><p>See your assessments and results</p></button>
-        <button type="button" class="portal-dash-card" data-dash="resources"><i class="fas fa-folder-open"></i><h4>Resources</h4><p>Download learning materials</p></button>
-        <button type="button" class="portal-dash-card" data-dash="timetable"><i class="fas fa-calendar-alt"></i><h4>Timetable</h4><p>Check upcoming classes</p></button>
+      <div class="portal-stats-row">
+        <div class="portal-stat">
+          <div class="portal-stat-value" id="portalAppCount">—</div>
+          <div class="portal-stat-label">Applications</div>
+        </div>
+        <div class="portal-stat">
+          <div class="portal-stat-value" id="portalReceiptCount">—</div>
+          <div class="portal-stat-label">Payments</div>
+        </div>
+        <div class="portal-stat">
+          <div class="portal-stat-value" id="portalEnrolledCount">0</div>
+          <div class="portal-stat-label">Enrolled</div>
+        </div>
       </div>
-      <button type="button" class="portal-signout" id="portalSignOut"><i class="fas fa-sign-out-alt" style="margin-right:6px"></i> Sign Out</button>
+      <div class="portal-section">
+        <div class="portal-section-head">
+          <h3><i class="fas fa-file-signature"></i> My Applications</h3>
+          <button type="button" class="portal-refresh-btn" id="portalRefreshApps" aria-label="Refresh"><i class="fas fa-sync-alt"></i></button>
+        </div>
+        <div id="portalApplicationsList" class="portal-list">
+          <div class="portal-loading"><i class="fas fa-spinner fa-spin"></i> Loading your applications…</div>
+        </div>
+      </div>
+      <div class="portal-section">
+        <div class="portal-section-head">
+          <h3><i class="fas fa-receipt"></i> Payment Receipts</h3>
+          <button type="button" class="portal-refresh-btn" id="portalRefreshReceipts" aria-label="Refresh"><i class="fas fa-sync-alt"></i></button>
+        </div>
+        <div id="portalReceiptsList" class="portal-list">
+          <div class="portal-loading"><i class="fas fa-spinner fa-spin"></i> Loading your receipts…</div>
+        </div>
+      </div>
+      <div class="portal-footer-actions">
+        <button type="button" class="portal-dashboard-action" id="portalGoCatalogue"><i class="fas fa-plus-circle"></i> Apply to Another Programme</button>
+        <button type="button" class="portal-dashboard-action" id="portalAccountSettings"><i class="fas fa-cog"></i> Account Settings</button>
+        <button type="button" class="portal-signout" id="portalSignOut"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="portal-view" id="portalSettingsView">
+      <div class="portal-header">
+        <div class="portal-icon"><i class="fas fa-cog"></i></div>
+        <h2>Account Settings</h2>
+        <p class="portal-sub">Update your name. Your email cannot be changed here.</p>
+      </div>
+      <div class="portal-error" id="portalSettingsError"></div>
+      <div class="portal-success" id="portalSettingsSuccess"></div>
+      <form id="portalSettingsForm" novalidate>
+        <div class="portal-field">
+          <label for="portalSettingsName">Full Name</label>
+          <input type="text" id="portalSettingsName" autocomplete="name">
+        </div>
+        <div class="portal-field">
+          <label>Email Address</label>
+          <input type="email" id="portalSettingsEmail" disabled>
+          <p class="portal-hint-inline">Contact info@nolaninstitute.org if you need to change your email.</p>
+        </div>
+        <button type="submit" class="portal-submit" id="portalSettingsBtn"><i class="fas fa-check"></i> Save Changes</button>
+      </form>
+      <div class="portal-footer" style="border-top:none;padding-top:0;margin-top:14px">
+        <button type="button" class="portal-back" id="portalBackToDashboard"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
+      </div>
     </div>
 
   </div>
@@ -1684,10 +1783,6 @@ const HERO_SLIDES = [
 ];
 const HERO_ROTATE_MS = 5500;
 
-const PORTAL_DEMO = { email: 'student@nolaninstitute.org', password: 'nolan2026', name: 'Nolan Student' };
-const PORTAL_STORAGE_KEY = 'nolanPortalSession';
-const PORTAL_ACCOUNTS_KEY = 'nolanPortalAccounts';
-
 const SUBJECTS = [
   {name:'Accounting & Finance',     icon:'fa-calculator',           blurb:'Build financial knowledge and decision-making capability.'},
   {name:'Banking & Financial Services', icon:'fa-building-columns',  blurb:'Understand modern banking, financial services and risk.'},
@@ -1720,85 +1815,71 @@ const PROGRAMMES = [
   {id:'af-pp',name:'Professional Certificate in Accounting & Finance',subject:'Accounting & Finance',format:'Professional Certificate',weeks:24,description:'Develop professional-level capability across accounting, finance and financial analysis.',learn:['Advanced accounting','Financial analysis','Planning and control','Professional reporting'],audience:'Finance professionals seeking deeper capability.'},
   {id:'af-bc',name:'Accounting & Finance Bootcamp',subject:'Accounting & Finance',format:'Bootcamp',weeks:5,description:'Intensive, hands-on accounting and finance bootcamp — learn by doing in a short, focused sprint.',learn:['Financial statement basics','Budgeting and forecasting','Cashflow','Practical exercises'],audience:'Professionals who need rapid, practical accounting and finance skill.'},
   {id:'af-adv',name:'Advanced Accounting & Reporting',subject:'Accounting & Finance',format:'Advanced Programme',weeks:28,description:'Advanced capability in financial reporting, consolidation and strategic financial management.',learn:['Advanced financial reporting','Group accounts','IFRS frameworks','Strategic financial management'],audience:'Senior finance professionals and controllers.'},
-
   {id:'bk-sc',name:'Banking Operations Essentials',subject:'Banking & Financial Services',format:'Short Course',weeks:10,description:'Understand modern banking operations — from retail and commercial banking to payments and compliance.',learn:['Retail and commercial banking','Payments and settlement','Compliance basics','Banking products'],audience:'Bank staff and those entering banking.'},
   {id:'bk-c',name:'Certificate in Banking & Financial Services',subject:'Banking & Financial Services',format:'Certificate',weeks:16,description:'Structured certificate covering banking, financial services, credit and regulation.',learn:['Banking models and services','Financial services landscape','Credit fundamentals','Regulatory environment'],audience:'Banking professionals and those entering financial services.'},
   {id:'bk-pp',name:'Professional Certificate in Banking',subject:'Banking & Financial Services',format:'Professional Certificate',weeks:24,description:'Professional-level programme developing banking, financial services and risk capability.',learn:['Advanced banking','Credit and lending','Banking risk','Regulatory frameworks'],audience:'Banking professionals moving into senior roles.'},
   {id:'bk-bc',name:'Banking & Financial Services Bootcamp',subject:'Banking & Financial Services',format:'Bootcamp',weeks:5,description:'Intensive, practical banking bootcamp focused on real banking operations and decisions.',learn:['Banking products','Customer operations','Credit basics','Compliance overview'],audience:'Professionals needing rapid, practical banking skill.'},
   {id:'bk-adv',name:'Advanced Banking & Financial Services',subject:'Banking & Financial Services',format:'Advanced Programme',weeks:28,description:'Advanced programme for senior banking professionals across strategy, risk and regulation.',learn:['Banking strategy','Advanced credit','Banking regulation','Treasury and capital'],audience:'Senior banking professionals and executives.'},
-
   {id:'iv-sc',name:'Capital Markets Essentials',subject:'Investment & Capital Markets',format:'Short Course',weeks:10,description:'Focused introduction to capital markets, instruments and how investment markets work.',learn:['Capital market structure','Equities and bonds','Market participants','Investment basics'],audience:'Professionals and investors new to capital markets.'},
   {id:'iv-c',name:'Certificate in Investment Analysis',subject:'Investment & Capital Markets',format:'Certificate',weeks:16,description:'Structured certificate covering investment analysis, valuation and market fundamentals.',learn:['Fundamental analysis','Valuation techniques','Equity research basics','Investment reporting'],audience:'Analysts and finance professionals building investment capability.'},
   {id:'iv-pp',name:'Investment & Capital Markets',subject:'Investment & Capital Markets',format:'Professional Certificate',weeks:24,featured:true,description:'Develop deeper expertise in investment analysis, valuation, capital markets and financial decision-making.',learn:['Investment analysis','Asset valuation','Portfolio construction','Capital market structures'],audience:'Finance professionals, analysts and investors.'},
   {id:'iv-bc',name:'Investment Analysis Bootcamp',subject:'Investment & Capital Markets',format:'Bootcamp',weeks:5,description:'Intensive, practical bootcamp on investment analysis and valuation.',learn:['Analysis frameworks','Valuation practice','Comparables','Investment memo writing'],audience:'Analysts and professionals needing fast investment analysis skill.'},
   {id:'iv-adv',name:'Advanced Capital Markets',subject:'Investment & Capital Markets',format:'Advanced Programme',weeks:30,description:'Advanced programme in capital markets, structured products and institutional investing.',learn:['Advanced capital markets','Structured products','Derivatives overview','Institutional investing'],audience:'Senior investment professionals and treasurers.'},
-
   {id:'fm-sc',name:'Financial Modelling Essentials',subject:'Financial Modelling',format:'Short Course',weeks:10,description:'Focused, practical introduction to building financial models for analysis and decisions.',learn:['Model structure','Basic forecasting','Scenario analysis','Spreadsheet discipline'],audience:'Professionals who need a focused introduction to modelling.'},
   {id:'fm-c',name:'Certificate in Financial Modelling',subject:'Financial Modelling',format:'Certificate',weeks:16,description:'Structured certificate building mastery of financial modelling for analysis, forecasting and decision-making.',learn:['Model design and structure','Forecasting and sensitivity','Integrated models','Valuation modelling'],audience:'Finance professionals, analysts and consultants.'},
   {id:'fm-pp',name:'Professional Certificate in Financial Modelling',subject:'Financial Modelling',format:'Professional Certificate',weeks:24,description:'Professional-level modelling programme covering forecasting, valuation and decision-support models.',learn:['Advanced modelling','Valuation models','Scenario & sensitivity','Model audit'],audience:'Analysts and finance professionals building deeper modelling capability.'},
   {id:'fm-bc',name:'Financial Modelling Bootcamp',subject:'Financial Modelling',format:'Bootcamp',weeks:4,featured:true,description:'Learn by building practical financial models — from forecasting to valuation and decision support.',learn:['Three-statement modelling','Forecasting techniques','Cashflow modelling','Valuation basics'],audience:'Analysts, finance professionals and entrepreneurs needing hands-on modelling skill fast.'},
   {id:'fm-adv',name:'Advanced Financial Modelling',subject:'Financial Modelling',format:'Advanced Programme',weeks:30,featured:true,description:'Develop higher-level capability in integrated modelling, valuation and decision-support analysis.',learn:['Integrated financial modelling','Advanced valuation','M&A modelling','Decision-support modelling'],audience:'Experienced analysts and corporate finance professionals.'},
-
   {id:'bm-sc',name:'Business Essentials',subject:'Business Management',format:'Short Course',weeks:10,description:'Focused introduction to business management covering strategy, operations and performance.',learn:['Business strategy basics','Operations overview','People and performance','Business planning'],audience:'Managers and professionals stepping into management.'},
   {id:'bm-c',name:'Certificate in Business Management',subject:'Business Management',format:'Certificate',weeks:16,description:'Structured certificate developing practical business management capability.',learn:['Business strategy','Operations management','Financial management','Business planning'],audience:'Managers and professionals building structured management capability.'},
   {id:'bm-pp',name:'Professional Certificate in Business Management',subject:'Business Management',format:'Professional Certificate',weeks:24,description:'Professional-level management programme covering advanced strategy, operations and performance.',learn:['Advanced strategy','Organisational management','Financial performance','Change management'],audience:'Senior managers and business leaders.'},
   {id:'bm-bc',name:'Business Management Bootcamp',subject:'Business Management',format:'Bootcamp',weeks:5,description:'Intensive, practical business management bootcamp for managers and team leads.',learn:['Strategic thinking','Team management','Performance tracking','Business decisions'],audience:'New managers and professionals needing rapid management skill.'},
   {id:'bm-adv',name:'Advanced Business Management',subject:'Business Management',format:'Advanced Programme',weeks:28,description:'Advanced programme for senior managers and business leaders building enterprise capability.',learn:['Enterprise strategy','Advanced operations','Leadership in business','Organisational performance'],audience:'Senior managers and organisational leaders.'},
-
   {id:'pm-sc',name:'Project Essentials',subject:'Project Management',format:'Short Course',weeks:10,description:'Focused, practical introduction to project management principles and delivery.',learn:['Project lifecycle','Scheduling basics','Risk basics','Stakeholder basics'],audience:'Professionals starting to manage projects.'},
   {id:'pm-c',name:'Certificate in Project Management',subject:'Project Management',format:'Certificate',weeks:16,description:'Structured certificate covering planning, delivery, control and stakeholder management.',learn:['Project planning','Scheduling and budgeting','Risk management','Stakeholder management'],audience:'Project managers and coordinators.'},
   {id:'pm-pp',name:'Professional Certificate in Project Management',subject:'Project Management',format:'Professional Certificate',weeks:24,description:'Professional-level programme developing project and programme management capability.',learn:['Advanced planning','Programme management','Complex stakeholder environments','Project governance'],audience:'Experienced project managers.'},
   {id:'pm-bc',name:'Project Delivery Bootcamp',subject:'Project Management',format:'Bootcamp',weeks:5,description:'Intensive, practical bootcamp focused on delivering projects end-to-end.',learn:['Project setup','Work breakdown','Scheduling','Delivery and closure'],audience:'Professionals who need to deliver projects with confidence.'},
   {id:'pm-adv',name:'Advanced Project & Programme Management',subject:'Project Management',format:'Advanced Programme',weeks:28,description:'Advanced programme for experienced project and programme managers leading strategic initiatives.',learn:['Portfolio management','Programme management','Advanced risk','Strategic delivery'],audience:'Senior project and programme managers.'},
-
   {id:'da-sc',name:'Data Analytics Essentials',subject:'Data Analytics',format:'Short Course',weeks:10,description:'Focused, practical introduction to data analysis and data-driven decision-making.',learn:['Data fundamentals','Analysis basics','Visualisation basics','Reporting basics'],audience:'Professionals working with data.'},
   {id:'da-c',name:'Certificate in Data Analytics',subject:'Data Analytics',format:'Certificate',weeks:16,featured:true,description:'Build practical capability in data analysis, visualisation and data-driven decision-making.',learn:['Data fundamentals','Analysis techniques','Data visualisation','Business insight'],audience:'Analysts, business professionals and anyone working with data.'},
   {id:'da-pp',name:'Professional Certificate in Data Analytics',subject:'Data Analytics',format:'Professional Certificate',weeks:24,description:'Professional-level analytics programme covering advanced analysis and data-driven strategy.',learn:['Advanced analysis','Data modelling','Analytics strategy','Data storytelling'],audience:'Analysts and professionals building professional analytics capability.'},
   {id:'da-bc',name:'Data Analytics Bootcamp',subject:'Data Analytics',format:'Bootcamp',weeks:5,description:'Intensive, hands-on bootcamp to build data analytics skill fast.',learn:['Data preparation','Analysis with spreadsheets','Visualisation','Dashboards'],audience:'Professionals needing rapid, practical data skills.'},
   {id:'da-adv',name:'Advanced Data Analytics',subject:'Data Analytics',format:'Advanced Programme',weeks:30,description:'Advanced programme developing professional-level analytics and data strategy capability.',learn:['Advanced analytics','Predictive analytics basics','Data strategy','Analytics leadership'],audience:'Senior analysts and data professionals.'},
-
   {id:'ai-sc',name:'AI Foundations',subject:'Artificial Intelligence',format:'Short Course',weeks:10,description:'A focused, practical introduction to artificial intelligence for professionals.',learn:["What AI is (and isn't)",'Key AI capabilities','Practical AI tools','AI ethics and risks'],audience:'Professionals new to AI who need practical foundations.'},
   {id:'ai-c',name:'Certificate in Artificial Intelligence',subject:'Artificial Intelligence',format:'Certificate',weeks:16,description:'Structured certificate covering artificial intelligence concepts, tools and applications.',learn:['AI concepts','AI applications','AI tools','AI governance basics'],audience:'Professionals building structured AI capability.'},
   {id:'ai-pp',name:'AI Innovation Management',subject:'Artificial Intelligence',format:'Professional Certificate',weeks:24,description:'Develop professional capability to manage AI-driven innovation and transformation projects.',learn:['AI strategy','Innovation management','AI project delivery','AI governance'],audience:'Innovation leaders and professionals driving AI adoption.'},
   {id:'ai-bc',name:'AI Applications Bootcamp',subject:'Artificial Intelligence',format:'Bootcamp',weeks:5,description:'Intensive, practical bootcamp applying AI tools to real professional tasks.',learn:['AI tools in practice','Prompting and workflows','AI use-case design','Practical AI projects'],audience:'Professionals wanting fast, practical AI application skill.'},
   {id:'ai-adv',name:'Advanced AI Programme',subject:'Artificial Intelligence',format:'Advanced Programme',weeks:32,description:'Advanced programme developing higher-level capability in applied AI and AI leadership.',learn:['Advanced AI applications','Applied machine learning','AI governance & risk','AI leadership'],audience:'Senior professionals leading AI initiatives.'},
-
   {id:'dt-sc',name:'Digital Transformation Essentials',subject:'Digital Transformation',format:'Short Course',weeks:10,description:'A focused introduction to digital transformation for professionals and managers.',learn:['What digital transformation means','Digital trends','Change management basics','Practical case studies'],audience:'Professionals and managers new to digital transformation.'},
   {id:'dt-c',name:'Certificate in Digital Transformation',subject:'Digital Transformation',format:'Certificate',weeks:16,description:'Structured certificate covering digital strategy, change and technology foundations.',learn:['Digital strategy','Technology foundations','Change management','Digital operating models'],audience:'Managers and professionals leading digital initiatives.'},
   {id:'dt-pp',name:'Digital Transformation',subject:'Digital Transformation',format:'Professional Certificate',weeks:24,description:'Develop professional capability to lead technology-driven organisational change.',learn:['Digital strategy','Change leadership','Operating model design','Digital execution'],audience:'Managers and leaders driving digital change.'},
   {id:'dt-bc',name:'Digital Transformation Bootcamp',subject:'Digital Transformation',format:'Bootcamp',weeks:6,description:'Intensive bootcamp building practical digital transformation capability.',learn:['Digital diagnosis','Customer and process mapping','Digital solutions','Change planning'],audience:'Managers and professionals leading digital initiatives.'},
   {id:'dt-adv',name:'Advanced Digital Transformation',subject:'Digital Transformation',format:'Advanced Programme',weeks:28,description:'Advanced programme for leaders driving large-scale digital transformation.',learn:['Enterprise digital strategy','Advanced change leadership','Digital ecosystems','Transformation governance'],audience:'Senior leaders driving organisational transformation.'},
-
   {id:'en-sc',name:'Entrepreneurship Essentials',subject:'Entrepreneurship',format:'Short Course',weeks:10,description:'Focused, practical introduction to entrepreneurship and venture building.',learn:['Opportunity identification','Business model basics','Customer discovery','Go-to-market basics'],audience:'Aspiring founders and professionals exploring entrepreneurship.'},
   {id:'en-c',name:'Certificate in Entrepreneurship',subject:'Entrepreneurship',format:'Certificate',weeks:16,description:'Build structured entrepreneurial capability — from idea to viable venture.',learn:['Opportunity identification','Business models','Customer discovery','Financial basics for founders'],audience:'Aspiring founders and professionals building ventures.'},
   {id:'en-pp',name:'Venture Creation Professional Certificate',subject:'Entrepreneurship',format:'Professional Certificate',weeks:24,description:'Professional-level programme for founders building scalable ventures.',learn:['Venture strategy','Business model design','Startup finance','Investor readiness'],audience:'Founders and entrepreneurs building scalable businesses.'},
   {id:'en-bc',name:'Startup Builder Bootcamp',subject:'Entrepreneurship',format:'Bootcamp',weeks:6,featured:true,description:'Intensive bootcamp for founders — build, test and refine your venture idea.',learn:['Problem and customer','MVP design','Business model','Pitch basics'],audience:'Founders and aspiring entrepreneurs ready to build fast.'},
   {id:'en-adv',name:'Advanced Entrepreneurship',subject:'Entrepreneurship',format:'Advanced Programme',weeks:28,description:'Advanced programme for experienced entrepreneurs and business builders.',learn:['Advanced venture strategy','Funding and capital','Scaling operations','Enterprise building'],audience:'Experienced founders scaling ventures.'},
-
   {id:'ld-sc',name:'Leadership Essentials',subject:'Leadership',format:'Short Course',weeks:8,description:'Focused introduction to leadership essentials for professionals.',learn:['Leadership basics','Self-leadership','Team communication','Feedback and coaching'],audience:'Professionals new to leadership or seeking a refresher.'},
   {id:'ld-c',name:'Certificate in Leadership Development',subject:'Leadership',format:'Certificate',weeks:16,description:'Structured certificate developing practical leadership capability.',learn:['Leadership foundations','Leading teams','Communication and influence','Leading change'],audience:'Emerging leaders and professionals stepping into leadership.'},
   {id:'ld-pp',name:'Professional Certificate in Leadership',subject:'Leadership',format:'Professional Certificate',weeks:24,description:'Professional programme developing substantial leadership capability for managers.',learn:['Advanced leadership','Leading teams at scale','Strategic thinking','Leadership presence'],audience:'Managers and professionals seeking professional-level leadership.'},
   {id:'ld-bc',name:'Leadership Impact Bootcamp',subject:'Leadership',format:'Bootcamp',weeks:4,description:'Intensive leadership bootcamp focused on practical leadership impact.',learn:['Leadership presence','Team motivation','Difficult conversations','Leading change'],audience:'Managers and team leads needing rapid leadership impact.'},
   {id:'ld-adv',name:'Executive Leadership Programme',subject:'Leadership',format:'Advanced Programme',weeks:28,description:'Advanced leadership programme for senior executives and organisational leaders.',learn:['Executive leadership','Strategic leadership','Organisational development','Leading transformation'],audience:'Senior executives and organisational leaders.'},
-
   {id:'cf-sc',name:'Corporate Finance Essentials',subject:'Corporate Finance',format:'Short Course',weeks:10,featured:true,description:'Build working knowledge of corporate finance — valuation, capital structure and financial decisions.',learn:['Financial statement analysis','Time value of money','Capital budgeting basics','Cost of capital'],audience:'Professionals, managers and business owners needing corporate finance foundations.'},
   {id:'cf-c',name:'Certificate in Corporate Finance',subject:'Corporate Finance',format:'Certificate',weeks:16,description:'Structured certificate covering corporate finance, valuation and financial decision-making.',learn:['Corporate finance frameworks','Valuation methods','Capital structure','Financial decision-making'],audience:'Finance professionals and analysts building corporate finance capability.'},
   {id:'cf-pp',name:'Professional Certificate in Corporate Finance',subject:'Corporate Finance',format:'Professional Certificate',weeks:24,description:'Professional-level programme developing corporate finance and financial strategy capability.',learn:['Advanced corporate finance','Valuation and M&A','Capital raising','Financial strategy'],audience:'Corporate finance professionals and finance leaders.'},
   {id:'cf-bc',name:'Corporate Finance Bootcamp',subject:'Corporate Finance',format:'Bootcamp',weeks:5,description:'Intensive, practical corporate finance bootcamp focused on real decisions.',learn:['Valuation practice','Capital budgeting','Financing decisions','Practical analysis'],audience:'Professionals needing rapid corporate finance skill.'},
   {id:'cf-adv',name:'Advanced Corporate Finance',subject:'Corporate Finance',format:'Advanced Programme',weeks:28,description:'Advanced programme covering corporate finance, M&A and capital markets strategy.',learn:['Advanced valuation','M&A and deal structuring','Capital markets','Corporate strategy'],audience:'Senior finance professionals and corporate finance leaders.'},
-
   {id:'bi-sc',name:'Business Intelligence Essentials',subject:'Business Intelligence',format:'Short Course',weeks:10,description:'Focused introduction to business intelligence, reporting and dashboards.',learn:['BI concepts','Reporting basics','KPI and metrics','Dashboard basics'],audience:'Analysts and professionals responsible for reporting.'},
   {id:'bi-c',name:'Certificate in Business Intelligence',subject:'Business Intelligence',format:'Certificate',weeks:16,description:'Structured certificate covering business intelligence, reporting and analytics.',learn:['BI frameworks','Reporting and dashboards','Data storytelling','BI tools overview'],audience:'Analysts and professionals building BI capability.'},
   {id:'bi-pp',name:'Professional Certificate in Business Intelligence',subject:'Business Intelligence',format:'Professional Certificate',weeks:24,description:'Professional-level BI programme developing analytics and reporting capability at scale.',learn:['Advanced BI','Data modelling for BI','Enterprise reporting','BI strategy'],audience:'Senior analysts and BI professionals.'},
   {id:'bi-bc',name:'BI & Dashboarding Bootcamp',subject:'Business Intelligence',format:'Bootcamp',weeks:5,description:'Intensive bootcamp focused on building practical BI dashboards.',learn:['Dashboard design','Data preparation','Interactive reporting','Business insight'],audience:'Professionals needing fast, practical dashboard skills.'},
   {id:'bi-adv',name:'Advanced Business Intelligence',subject:'Business Intelligence',format:'Advanced Programme',weeks:28,description:'Advanced programme covering enterprise BI, data governance and analytics strategy.',learn:['Enterprise BI','Data governance','Advanced analytics','BI leadership'],audience:'BI leaders and senior analytics professionals.'},
-
   {id:'ab-sc',name:'AI for Business Essentials',subject:'AI for Business',format:'Short Course',weeks:10,description:'Focused, practical introduction to using AI in business settings.',learn:['AI concepts for business','AI tools overview','Practical AI use cases','AI risk awareness'],audience:'Business professionals exploring AI for their work.'},
   {id:'ab-c',name:'AI for Business',subject:'AI for Business',format:'Certificate',weeks:16,featured:true,description:'Identify, scope and apply AI opportunities inside real organisations — no coding background required.',learn:['AI concepts for business','Identifying AI opportunities','AI project scoping','Practical AI tools'],audience:'Managers and professionals who want to apply AI in their organisations.'},
   {id:'ab-pp',name:'Professional Certificate in AI for Business',subject:'AI for Business',format:'Professional Certificate',weeks:24,description:'Professional-level programme developing capability to lead AI adoption in organisations.',learn:['AI strategy','AI project delivery','AI governance','Organisational AI adoption'],audience:'Managers and professionals leading AI adoption.'},
   {id:'ab-bc',name:'AI for Business Bootcamp',subject:'AI for Business',format:'Bootcamp',weeks:5,description:'Intensive bootcamp applying AI tools directly to business workflows.',learn:['Practical AI tools','AI in workflows','Use-case design','Rapid AI prototypes'],audience:'Business professionals needing rapid AI application skills.'},
   {id:'ab-adv',name:'Advanced AI for Business',subject:'AI for Business',format:'Advanced Programme',weeks:28,description:'Advanced programme developing senior capability in AI strategy and enterprise AI.',learn:['Enterprise AI strategy','AI operating models','AI governance and risk','AI leadership'],audience:'Senior leaders driving enterprise AI.'},
-
   {id:'rm-sc',name:'Risk Management Essentials',subject:'Risk Management',format:'Short Course',weeks:10,description:'Focused introduction to risk management principles and frameworks.',learn:['Risk concepts','Risk identification','Risk assessment basics','Risk frameworks'],audience:'Professionals new to risk management.'},
   {id:'rm-c',name:'Certificate in Risk Management',subject:'Risk Management',format:'Certificate',weeks:16,description:'Structured certificate covering risk identification, assessment and management.',learn:['Risk frameworks','Risk assessment','Operational risk','Risk reporting'],audience:'Professionals building structured risk capability.'},
   {id:'rm-pp',name:'Professional Certificate in Risk Management',subject:'Risk Management',format:'Professional Certificate',weeks:24,description:'Professional-level programme developing advanced risk management capability.',learn:['Advanced risk management','Credit and market risk','Risk governance','Risk strategy'],audience:'Risk professionals and managers.'},
@@ -1983,37 +2064,35 @@ window.addEventListener('scroll', () => { const h = $('#mainHeader'); if(h) h.cl
 $$('[data-scroll]').forEach(a => { a.addEventListener('click', e => { const href = a.getAttribute('href'); if(!href || !href.startsWith('#')) return; const t = document.querySelector(href); if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); const nav = document.getElementById('mobileNav'); if(nav) nav.classList.remove('show'); } }); });
 
 /* ============================================================
-   STUDENT PORTAL
-   ============================================================ */
-const portalModal = document.getElementById('portalModal');
-const portalViews = { login: document.getElementById('portalLoginView'), forgot: document.getElementById('portalForgotView'), create: document.getElementById('portalCreateView'), dashboard: document.getElementById('portalDashboardView') };
-function showPortalView(name){ Object.values(portalViews).forEach(v => v && v.classList.remove('active')); if(portalViews[name]) portalViews[name].classList.add('active'); ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess'].forEach(id => { const el = document.getElementById(id); if(el){ el.classList.remove('show'); el.textContent = ''; } }); }
-function openPortal(view){ if(!portalModal) return; portalModal.classList.add('show'); document.body.style.overflow = 'hidden'; const session = loadSession(); if(session && (!view || view === 'login')){ setDashboardUser(session); showPortalView('dashboard'); } else { showPortalView(view || 'login'); setTimeout(()=>{ const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100); } }
-function closePortal(){ if(!portalModal) return; portalModal.classList.remove('show'); document.body.style.overflow = ''; }
-function saveSession(session, remember){ const payload = JSON.stringify(session); if(remember){ try{ localStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } else { try{ sessionStorage.setItem(PORTAL_STORAGE_KEY, payload); }catch(e){} } }
-function loadSession(){ try{ const s = sessionStorage.getItem(PORTAL_STORAGE_KEY) || localStorage.getItem(PORTAL_STORAGE_KEY); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
-function clearSession(){ try{ sessionStorage.removeItem(PORTAL_STORAGE_KEY); localStorage.removeItem(PORTAL_STORAGE_KEY); }catch(e){} }
-function loadAccounts(){ try{ return JSON.parse(localStorage.getItem(PORTAL_ACCOUNTS_KEY) || '[]'); }catch(e){ return []; } }
-function saveAccount(account){ const accounts = loadAccounts(); accounts.push(account); try{ localStorage.setItem(PORTAL_ACCOUNTS_KEY, JSON.stringify(accounts)); }catch(e){} }
-function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email||'').trim()); }
-function setPortalMessage(elId, message){ const el = document.getElementById(elId); if(!el) return; el.textContent = message; el.classList.toggle('show', !!message); }
-function setupPwToggle(btnId, inputId){ const btn = document.getElementById(btnId), inp = document.getElementById(inputId); if(!btn || !inp) return; btn.addEventListener('click', () => { const isPw = inp.type === 'password'; inp.type = isPw ? 'text' : 'password'; btn.innerHTML = isPw ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>'; btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password'); }); }
-function setDashboardUser(session){ const n = document.getElementById('portalUserName'); if(n) n.textContent = session.name || 'Student'; const e = document.getElementById('portalUserEmail'); if(e) e.textContent = session.email || ''; const infoEl = document.getElementById('portalSessionInfo'); if(infoEl){ const when = session.signedInAt ? new Date(session.signedInAt).toLocaleString() : 'just now'; infoEl.textContent = 'Session started ' + when; } }
-
-/* ============================================================
    FIREBASE + EMAILJS + CLOUDINARY
    ============================================================ */
-let fbDb = null, FB = null;
+let fbDb = null, fbAuth = null, FB = null;
 const firebaseReady = (async function initFirebase(){
   if(!IS_FIREBASE_CONFIGURED) return null;
   try {
-    const [appMod, fsMod] = await Promise.all([
+    const [appMod, fsMod, authMod] = await Promise.all([
       import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),
-      import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js')
+      import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'),
+      import('https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js')
     ]);
     const app = appMod.initializeApp(FIREBASE_CONFIG);
     fbDb = fsMod.getFirestore(app);
-    FB = { doc: fsMod.doc, getDoc: fsMod.getDoc, setDoc: fsMod.setDoc, runTransaction: fsMod.runTransaction, serverTimestamp: fsMod.serverTimestamp };
+    fbAuth = authMod.getAuth(app);
+    FB = {
+      doc: fsMod.doc, collection: fsMod.collection, getDoc: fsMod.getDoc, getDocs: fsMod.getDocs,
+      query: fsMod.query, where: fsMod.where, setDoc: fsMod.setDoc,
+      runTransaction: fsMod.runTransaction, serverTimestamp: fsMod.serverTimestamp,
+      createUserWithEmailAndPassword: authMod.createUserWithEmailAndPassword,
+      signInWithEmailAndPassword: authMod.signInWithEmailAndPassword,
+      signOut: authMod.signOut,
+      onAuthStateChanged: authMod.onAuthStateChanged,
+      sendPasswordResetEmail: authMod.sendPasswordResetEmail,
+      updateProfile: authMod.updateProfile,
+      setPersistence: authMod.setPersistence,
+      browserLocalPersistence: authMod.browserLocalPersistence,
+      browserSessionPersistence: authMod.browserSessionPersistence
+    };
+    console.log('[Nolan] Firebase ready (Firestore + Auth)');
     return FB;
   } catch(e) { console.error('[Nolan] Firebase init error:', e); return null; }
 })();
@@ -2246,14 +2325,11 @@ function openApplication(){
     scrollToCatalogue();
     return;
   }
-  // Populate programme labels
   $('#appProgrammeName').textContent = p.name;
   $('#appProgrammeMeta').innerHTML = `<strong>${esc(p.format)}</strong> · ${p.weeks} weeks · ${fmtZMW(p.price)} (≈ ${fmtUSD(p.price)}) · ${esc(p.subject)}`;
   $('#lockedProgrammeName').textContent = p.name;
   $('#lockedProgrammeMeta').textContent = `${p.format} · ${p.weeks} weeks · ${fmtZMW(p.price)} (≈ ${fmtUSD(p.price)})`;
   const nrProg = document.getElementById('nrProgramme'); if(nrProg) nrProg.textContent = p.name;
-
-  // Reset form state on open
   appState.current = 1;
   appUpdateUI(false);
   $('#appOverlay').classList.add('show');
@@ -2263,7 +2339,6 @@ function openApplication(){
 function closeApplication(){
   $('#appOverlay').classList.remove('show');
   document.body.style.overflow = '';
-  // If the success panel is visible, reset for next open
   if($('#applySuccess').classList.contains('show')){
     setTimeout(() => resetApplicationForNextTime(), 400);
   }
@@ -2315,7 +2390,6 @@ function appClearErrors(){
   document.querySelectorAll('.app-form-group input.err, .app-form-group select.err, .app-form-group textarea.err').forEach(el => el.classList.remove('err'));
 }
 
-/* ---------- Draft autosave ---------- */
 function appCollectState(){
   const fields = {};
   ['apFirstName','apLastName','apEmail','apPhone','apDob','apCountry','apAddress',
@@ -2352,14 +2426,12 @@ document.getElementById('applyForm').addEventListener('change', () => { clearTim
 document.getElementById('draftKeep').addEventListener('click', () => { appApplyDraft(appRestoreDraft()); $('#draftBanner').classList.remove('show'); showToast('Draft restored. Continue where you left off.', 'info'); });
 document.getElementById('draftDiscard').addEventListener('click', () => { appClearDraft(); $('#draftBanner').classList.remove('show'); showToast('Draft discarded. Starting fresh.', 'info'); });
 
-/* ---------- Render payment details panel ---------- */
 function appRenderPaymentDetails(){
   const panel = document.getElementById('apPayDetails');
   if(!appState.paymentMethod){ panel.style.display = 'none'; document.getElementById('apPayConfirm').style.display = 'none'; return; }
   const m = PAYMENT_METHODS[appState.paymentMethod]; if(!m) return;
   const amount = appIsZambian() ? m.amountZMW : m.amountUSD;
   const iconLib = m.iconSet || 'fas';
-
   let rowsHtml = '';
   m.rows.forEach(r => {
     const valueClass = r.plain ? 'pdr-value plain' : 'pdr-value';
@@ -2400,7 +2472,6 @@ function appFallbackCopy(text, done){
   document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta);
 }
 
-/* ---------- Payment method card selection ---------- */
 document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(card => {
   card.addEventListener('click', function(){
     if(appState.paymentStatus === 'confirmed') return;
@@ -2413,7 +2484,6 @@ document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(card => 
   });
 });
 
-/* ---------- Populate receipt ---------- */
 function appPopulateReceipt(){
   const p = getSelectedProgramme() || {};
   const fn = (document.getElementById('apFirstName').value || '').trim();
@@ -2441,7 +2511,6 @@ function appPopulateReceipt(){
   }
 }
 
-/* ---------- Build WhatsApp message ---------- */
 function appBuildWhatsappMessage(){
   const p = getSelectedProgramme() || {};
   const fn = (document.getElementById('apFirstName').value || '').trim();
@@ -2472,17 +2541,14 @@ function appBuildWhatsappMessage(){
   return lines.join('\n');
 }
 
-/* ---------- Confirm payment ---------- */
 async function appConfirmPayment(){
   if(appState.paymentStatus === 'confirmed') return;
   if(!appState.paymentMethod){ showToast('Please select a payment method first.', 'error'); return; }
-
   const name = document.getElementById('apPaySenderName').value.trim();
   const contact = document.getElementById('apPaySenderContact').value.trim();
   const refInput = document.getElementById('apPayRef');
   const ref = refInput.value.trim();
   const agree = document.getElementById('apPayConfirmed');
-
   appClearErrors();
   let ok = true;
   if(!name){ appSetInlineError('apPaySenderName', true); ok = false; }
@@ -2490,7 +2556,6 @@ async function appConfirmPayment(){
   if(!ref){ appSetInlineError('apPayRef', true); ok = false; }
   if(!ok){ showToast('Please complete the required fields highlighted above.', 'error'); return; }
   if(!agree.checked){ showToast('Please tick the confirmation checkbox.', 'error'); return; }
-
   appState.paymentStatus = 'confirmed';
   appState.senderName = name;
   appState.senderContact = contact;
@@ -2501,22 +2566,19 @@ async function appConfirmPayment(){
   const now = new Date();
   try { appState.applicantTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || null; } catch(e){ appState.applicantTimezone = null; }
   appState.receiptDate = now.toLocaleString('en-GB', { year:'numeric', month:'short', day:'2-digit', hour:'2-digit', minute:'2-digit' });
-
   document.getElementById('apPaymentRef').textContent = appState.paymentRef;
   appPopulateReceipt();
-
   const msg = appBuildWhatsappMessage();
   const waUrl = 'https://wa.me/' + ADMIN_WHATSAPP + '?text=' + encodeURIComponent(msg);
   appState.whatsappUrl = waUrl;
   document.getElementById('apWhatsappBtn').href = waUrl;
-
   const fb = await firebaseReady;
   if(fb){
     try {
       await FB.setDoc(FB.doc(fbDb, 'receipts', appState.paymentRef), {
         receiptNo: appState.paymentRef,
         applicantName: document.getElementById('apFirstName').value.trim() + ' ' + document.getElementById('apLastName').value.trim(),
-        applicantEmail: document.getElementById('apEmail').value.trim(),
+        applicantEmail: document.getElementById('apEmail').value.trim().toLowerCase(),
         applicantPhone: document.getElementById('apPhone').value.trim(),
         applicantCountry: document.getElementById('apCountry').value,
         method: appState.paymentMethod,
@@ -2531,16 +2593,13 @@ async function appConfirmPayment(){
       }, { merge: true });
     } catch(e){ console.warn('[Nolan] Could not save receipt:', e); }
   }
-
   document.getElementById('apPayDetails').style.display = 'none';
   document.getElementById('apPayConfirm').style.display = 'none';
   document.getElementById('apPaymentSuccess').style.display = 'block';
   document.querySelectorAll('#apPayMethods .app-pay-method-card').forEach(c => { c.style.opacity = '0.55'; c.style.pointerEvents = 'none'; });
-
   showToast('Payment recorded. Receipt generated.', 'success');
   trackEvent('payment_confirmed', { method: appState.paymentMethod, amount: appState.paidAmount });
   appSaveDraft();
-
   setTimeout(() => {
     try { window.open(waUrl, '_blank'); } catch(e){}
     const ws = document.getElementById('apWhatsappSent'); if(ws) ws.classList.add('show');
@@ -2548,7 +2607,6 @@ async function appConfirmPayment(){
   }, 350);
 }
 
-/* ---------- Download receipt PDF + print ---------- */
 async function appDownloadReceiptPDF(){
   const el = document.getElementById('apReceipt');
   const btn = document.getElementById('apDownloadReceiptBtn');
@@ -2576,7 +2634,6 @@ function appPrintReceipt(){
   setTimeout(() => { window.print(); setTimeout(() => document.body.classList.remove('print-receipt-mode'), 200); }, 100);
 }
 
-/* ---------- Step navigation + validation ---------- */
 function appUpdateUI(scroll){
   const sections = document.querySelectorAll('.app-section');
   const total = sections.length;
@@ -2644,14 +2701,11 @@ function appRenderReview(){
   const industry = document.getElementById('apIndustry').value;
   const experience = document.getElementById('apExperience').value;
   const start = document.getElementById('apStart').value;
-
   const refLabel = { search:'Internet search', social:'Social media', referral:'Colleague or friend', employer:'Employer or organisation', other:'Other' }[appState.referral] || '—';
   const goalLabel = { 'new-role':'Move into a new role or industry', advance:'Advance in current career', build:'Build a business or venture', skills:'Learn specific practical skills', explore:'Explore a new subject area' }[appState.goal] || '—';
   const timeLabel = { lt5:'Less than 5 hours/week', '5to10':'5–10 hours/week', '10to20':'10–20 hours/week', gt20:'More than 20 hours/week' }[appState.timeCommitment] || '—';
-
   const resumeName = (document.getElementById('apResume').files[0] || {}).name || '—';
   const transName = (document.getElementById('apTranscript').files[0] || {}).name || '—';
-
   const feePaidLine = document.getElementById('applyFeePaidLine');
   const feeDetailLine = document.getElementById('applyFeeDetailLine');
   if(appState.paymentStatus === 'confirmed'){
@@ -2661,7 +2715,6 @@ function appRenderReview(){
     feePaidLine.innerHTML = 'Payment status: <strong style="color:var(--error);">Pending</strong>';
     feeDetailLine.innerHTML = 'Please return to Step 2 to complete the application deposit.';
   }
-
   document.getElementById('applyReview').innerHTML = `
     <div class="app-review">
       <h4><i class="fas fa-graduation-cap"></i> Programme</h4>
@@ -2722,24 +2775,23 @@ async function appSubmit(){
   if(IS_TURNSTILE_CONFIGURED && !window.__turnstileToken){
     showToast('Please complete the spam protection check above.', 'error'); return;
   }
-
   const submitBtn = document.getElementById('apSubmit');
   submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-
   const p = getSelectedProgramme() || {};
   const applicationId = 'APP-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*900000)+100000);
   const files = [];
   ['apResume','apTranscript','apScholarshipDoc'].forEach(id => { const f = document.getElementById(id).files[0]; if(f) files.push({ id, name: f.name, size: f.size, type: f.type, url: null }); });
-
+  const applicantEmail = document.getElementById('apEmail').value.trim().toLowerCase();
   const payload = {
     applicationId,
     receiptNo: appState.paymentRef,
     submittedAt: new Date().toISOString(),
+    status: 'pending',
     programme: { id: p.id, name: p.name, subject: p.subject, format: p.format, weeks: p.weeks, price: p.price, currency: 'ZMW' },
     personal: {
       firstName: document.getElementById('apFirstName').value.trim(),
       lastName: document.getElementById('apLastName').value.trim(),
-      email: document.getElementById('apEmail').value.trim(),
+      email: applicantEmail,
       phone: document.getElementById('apPhone').value.trim(),
       dob: document.getElementById('apDob').value,
       country: document.getElementById('apCountry').value,
@@ -2775,7 +2827,6 @@ async function appSubmit(){
     filesUploaded: false,
     marketingOptIn: document.getElementById('apAgreeUpdates').checked
   };
-
   let savedToBackend = false;
   const fb = await firebaseReady;
   if(fb){
@@ -2792,7 +2843,6 @@ async function appSubmit(){
       savedToBackend = true;
     } catch(e){ console.warn('[Nolan] Firestore save failed:', e); }
   }
-
   if(IS_EMAILJS_CONFIGURED && typeof emailjs !== 'undefined'){
     try {
       await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
@@ -2806,7 +2856,6 @@ async function appSubmit(){
       });
     } catch(e){ console.warn('[Nolan] Email send failed:', e); }
   }
-
   setTimeout(() => {
     document.getElementById('applySuccessRef').textContent = applicationId;
     if(!IS_CLOUDINARY_CONFIGURED || !payload.filesUploaded){
@@ -2822,7 +2871,6 @@ async function appSubmit(){
   }, 600);
 }
 function resetApplicationForNextTime(){
-  // Reset state, form, payment panels, success
   appState.current = 1;
   appState.paymentStatus = 'pending';
   appState.paymentMethod = null;
@@ -2850,7 +2898,6 @@ function resetApplicationForNextTime(){
   appUpdateUI(false);
 }
 
-/* ---------- Wire application controls ---------- */
 $('#appClose').addEventListener('click', closeApplication);
 $('#appOverlay').addEventListener('click', e => { if(e.target.id === 'appOverlay') closeApplication(); });
 $('#apPrev').addEventListener('click', () => { if(appState.current > 1){ appState.current--; appUpdateUI(true); } });
@@ -2918,13 +2965,11 @@ document.getElementById('apCountry').addEventListener('change', () => {
 document.getElementById('receiptCheckBtn').addEventListener('click', () => lookupReceiptStatus(document.getElementById('receiptCheckInput').value));
 document.getElementById('receiptCheckInput').addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); lookupReceiptStatus(e.target.value); } });
 
-/* ---------- Open application via .js-apply-now ---------- */
 document.addEventListener('click', e => {
   const btn = e.target.closest('.js-apply-now');
   if(btn){ e.preventDefault(); openApplication(); }
 });
 
-/* ---------- Check draft on overlay open ---------- */
 const _originalOpenApplication = openApplication;
 openApplication = function(){
   _originalOpenApplication();
@@ -2932,6 +2977,382 @@ openApplication = function(){
   const banner = document.getElementById('draftBanner');
   if(draft && banner && !banner.classList.contains('dismissed')){ banner.classList.add('show'); }
 };
+
+/* ============================================================
+   STUDENT PORTAL — LIVE (Firebase Auth + Firestore)
+   ============================================================ */
+const portalModal = document.getElementById('portalModal');
+const portalViews = {
+  login: document.getElementById('portalLoginView'),
+  forgot: document.getElementById('portalForgotView'),
+  create: document.getElementById('portalCreateView'),
+  dashboard: document.getElementById('portalDashboardView'),
+  settings: document.getElementById('portalSettingsView')
+};
+let portalCurrentUser = null;
+
+function showPortalView(name){
+  Object.values(portalViews).forEach(v => v && v.classList.remove('active'));
+  if(portalViews[name]) portalViews[name].classList.add('active');
+  ['portalLoginError','portalForgotError','portalForgotSuccess','portalCreateError','portalCreateSuccess','portalSettingsError','portalSettingsSuccess'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el){ el.classList.remove('show'); el.textContent = ''; }
+  });
+}
+function openPortal(view){
+  if(!portalModal) return;
+  portalModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  if(portalCurrentUser){
+    setPortalUser(portalCurrentUser);
+    showPortalView('dashboard');
+    loadDashboardData();
+  } else {
+    showPortalView(view || 'login');
+    setTimeout(() => { const f = document.getElementById('portalEmail'); if(f && view !== 'forgot' && view !== 'create') f.focus(); }, 100);
+  }
+}
+function closePortal(){
+  if(!portalModal) return;
+  portalModal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+function setPortalMessage(elId, message){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  el.textContent = message;
+  el.classList.toggle('show', !!message);
+}
+function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email||'').trim()); }
+function setupPwToggle(btnId, inputId){
+  const btn = document.getElementById(btnId), inp = document.getElementById(inputId);
+  if(!btn || !inp) return;
+  btn.addEventListener('click', () => {
+    const isPw = inp.type === 'password';
+    inp.type = isPw ? 'text' : 'password';
+    btn.innerHTML = isPw ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+    btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
+  });
+}
+setupPwToggle('portalPwToggle','portalPassword');
+setupPwToggle('portalNewPwToggle','portalNewPassword');
+
+function setPortalUser(user){
+  const name = (user.displayName && user.displayName.trim()) || (user.email ? user.email.split('@')[0].replace(/[._-]+/g,' ').replace(/\b\w/g, c => c.toUpperCase()) : 'Student');
+  const nEl = document.getElementById('portalUserName'); if(nEl) nEl.textContent = name;
+  const eEl = document.getElementById('portalUserEmail'); if(eEl) eEl.textContent = user.email || '';
+}
+
+/* Attach auth state listener */
+(async function attachAuthListener(){
+  const fb = await firebaseReady;
+  if(!fb || !FB || !FB.onAuthStateChanged || !fbAuth) return;
+  FB.onAuthStateChanged(fbAuth, (user) => {
+    portalCurrentUser = user;
+    if(user){
+      const modalShown = portalModal && portalModal.classList.contains('show');
+      if(modalShown){
+        setPortalUser(user);
+        showPortalView('dashboard');
+        loadDashboardData();
+      }
+    }
+  });
+})();
+
+/* Login */
+document.getElementById('portalLoginForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const errEl = document.getElementById('portalLoginError'); errEl.classList.remove('show');
+  const email = document.getElementById('portalEmail').value.trim();
+  const password = document.getElementById('portalPassword').value;
+  const remember = document.getElementById('portalRemember').checked;
+  const btn = document.getElementById('portalLoginBtn');
+  if(!email){ setPortalMessage('portalLoginError','Please enter your email address.'); return; }
+  if(!isValidEmail(email)){ setPortalMessage('portalLoginError','Please enter a valid email address.'); return; }
+  if(!password){ setPortalMessage('portalLoginError','Please enter your password.'); return; }
+  const fb = await firebaseReady;
+  if(!fb || !FB || !FB.signInWithEmailAndPassword){
+    setPortalMessage('portalLoginError','Sign-in is temporarily unavailable. Please try again shortly.'); return;
+  }
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+  try {
+    if(FB.setPersistence && FB.browserLocalPersistence && FB.browserSessionPersistence){
+      try { await FB.setPersistence(fbAuth, remember ? FB.browserLocalPersistence : FB.browserSessionPersistence); } catch(e){}
+    }
+    const cred = await FB.signInWithEmailAndPassword(fbAuth, email, password);
+    portalCurrentUser = cred.user;
+    setPortalUser(cred.user);
+    showPortalView('dashboard');
+    loadDashboardData();
+    showToast('Welcome back, ' + (cred.user.displayName || cred.user.email), 'success');
+    document.getElementById('portalLoginForm').reset();
+  } catch(err){
+    console.warn('[Nolan] Login error:', err);
+    let msg = 'We could not sign you in. Please check your email and password.';
+    if(err && err.code === 'auth/user-not-found'){ msg = 'No account found for that email. Create one first.'; }
+    else if(err && err.code === 'auth/wrong-password'){ msg = 'Incorrect password. Try again, or reset it.'; }
+    else if(err && err.code === 'auth/invalid-credential'){ msg = 'Incorrect email or password. Try again.'; }
+    else if(err && err.code === 'auth/too-many-requests'){ msg = 'Too many attempts. Please wait a moment and try again.'; }
+    else if(err && err.code === 'auth/invalid-email'){ msg = 'That email address is not valid.'; }
+    setPortalMessage('portalLoginError', msg);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+  }
+});
+
+/* Forgot */
+document.getElementById('portalForgotForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const email = document.getElementById('portalForgotEmail').value.trim();
+  const btn = document.getElementById('portalForgotBtn');
+  document.getElementById('portalForgotError').classList.remove('show');
+  document.getElementById('portalForgotSuccess').classList.remove('show');
+  if(!email){ setPortalMessage('portalForgotError','Please enter your email address.'); return; }
+  if(!isValidEmail(email)){ setPortalMessage('portalForgotError','Please enter a valid email address.'); return; }
+  const fb = await firebaseReady;
+  if(!fb || !FB || !FB.sendPasswordResetEmail){
+    setPortalMessage('portalForgotError','Password reset is temporarily unavailable.'); return;
+  }
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  try {
+    await FB.sendPasswordResetEmail(fbAuth, email);
+    setPortalMessage('portalForgotSuccess', 'If an account exists for ' + email + ', a password reset link has been sent. Check your inbox and spam folder.');
+    showToast('Reset link sent', 'success');
+    document.getElementById('portalForgotForm').reset();
+  } catch(err){
+    console.warn('[Nolan] Reset error:', err);
+    let msg = 'We could not send the reset link. Please try again.';
+    if(err && err.code === 'auth/invalid-email'){ msg = 'That email address is not valid.'; }
+    setPortalMessage('portalForgotError', msg);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Reset Link';
+  }
+});
+
+/* Create */
+document.getElementById('portalCreateForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const name = document.getElementById('portalNewName').value.trim();
+  const email = document.getElementById('portalNewEmail').value.trim();
+  const password = document.getElementById('portalNewPassword').value;
+  const btn = document.getElementById('portalCreateBtn');
+  document.getElementById('portalCreateError').classList.remove('show');
+  document.getElementById('portalCreateSuccess').classList.remove('show');
+  if(!name){ setPortalMessage('portalCreateError','Please enter your full name.'); return; }
+  if(!email){ setPortalMessage('portalCreateError','Please enter your email address.'); return; }
+  if(!isValidEmail(email)){ setPortalMessage('portalCreateError','Please enter a valid email address.'); return; }
+  if(password.length < 6){ setPortalMessage('portalCreateError','Password must be at least 6 characters.'); return; }
+  const fb = await firebaseReady;
+  if(!fb || !FB || !FB.createUserWithEmailAndPassword){
+    setPortalMessage('portalCreateError','Account creation is temporarily unavailable.'); return;
+  }
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+  try {
+    const cred = await FB.createUserWithEmailAndPassword(fbAuth, email, password);
+    const user = cred.user;
+    try { if(FB.updateProfile){ await FB.updateProfile(user, { displayName: name }); } } catch(e){}
+    try {
+      await FB.setDoc(FB.doc(fbDb, 'students', user.uid), {
+        uid: user.uid, name: name, email: user.email, createdAt: FB.serverTimestamp()
+      }, { merge: true });
+    } catch(e){ console.warn('[Nolan] Profile save failed:', e); }
+    portalCurrentUser = user;
+    setPortalMessage('portalCreateSuccess','Account created! Loading your dashboard…');
+    showToast('Account created successfully', 'success');
+    setPortalUser(user);
+    setTimeout(() => { showPortalView('dashboard'); loadDashboardData(); document.getElementById('portalCreateForm').reset(); }, 700);
+  } catch(err){
+    console.warn('[Nolan] Create error:', err);
+    let msg = 'We could not create your account. Please try again.';
+    if(err && err.code === 'auth/email-already-in-use'){ msg = 'An account with that email already exists. Try signing in instead.'; }
+    else if(err && err.code === 'auth/weak-password'){ msg = 'Please choose a stronger password (at least 6 characters).'; }
+    else if(err && err.code === 'auth/invalid-email'){ msg = 'That email address is not valid.'; }
+    setPortalMessage('portalCreateError', msg);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+  }
+});
+
+/* Sign out */
+document.getElementById('portalSignOut').addEventListener('click', async () => {
+  const fb = await firebaseReady;
+  try { if(fb && FB && FB.signOut) await FB.signOut(fbAuth); } catch(e){ console.warn(e); }
+  portalCurrentUser = null;
+  showToast('Signed out successfully');
+  showPortalView('login');
+});
+
+/* Dashboard load */
+async function loadDashboardData(){
+  if(!portalCurrentUser) return;
+  const email = (portalCurrentUser.email || '').toLowerCase();
+  if(!email) return;
+  const fb = await firebaseReady;
+  if(!fb || !FB || !FB.getDocs){
+    document.getElementById('portalApplicationsList').innerHTML = '<div class="portal-empty"><i class="fas fa-plug"></i><h4>Service unavailable</h4><p>Please try again shortly.</p></div>';
+    return;
+  }
+  loadApplications(email);
+  loadReceipts(email);
+}
+async function loadApplications(email){
+  const listEl = document.getElementById('portalApplicationsList');
+  const countEl = document.getElementById('portalAppCount');
+  if(!listEl) return;
+  listEl.innerHTML = '<div class="portal-loading"><i class="fas fa-spinner fa-spin"></i> Loading your applications…</div>';
+  try {
+    const q = FB.query(FB.collection(fbDb, 'applications'), FB.where('personal.email', '==', email));
+    const snap = await FB.getDocs(q);
+    const items = [];
+    snap.forEach(doc => items.push({ id: doc.id, data: doc.data() }));
+    items.sort((a,b) => (b.data.submittedAt || '').localeCompare(a.data.submittedAt || ''));
+    if(countEl) countEl.textContent = items.length;
+    if(items.length === 0){
+      listEl.innerHTML = `
+        <div class="portal-empty">
+          <i class="fas fa-file-circle-plus"></i>
+          <h4>No applications yet</h4>
+          <p>When you apply to a Nolan programme, it will appear here.</p>
+          <button type="button" class="btn btn-primary btn-sm" onclick="closePortal();document.getElementById('catalogue').scrollIntoView({behavior:'smooth'});">Browse Programmes <i class="fas fa-arrow-right"></i></button>
+        </div>`;
+      return;
+    }
+    listEl.innerHTML = items.map(item => {
+      const d = item.data;
+      const p = d.programme || {};
+      const status = (d.status || 'pending').toLowerCase();
+      const statusLabel = { pending:'Pending Review', review:'Under Review', accepted:'Accepted', verified:'Verified', rejected:'Not Successful' }[status] || 'Pending Review';
+      const statusClass = { pending:'pending', review:'review', accepted:'accepted', verified:'verified', rejected:'rejected' }[status] || 'pending';
+      const when = d.submittedAt ? new Date(d.submittedAt).toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }) : '—';
+      const fee = p.price ? 'K' + p.price.toLocaleString() : '—';
+      return `
+        <div class="portal-item">
+          <div class="portal-item-head">
+            <h4 class="portal-item-title">${esc(p.name || 'Programme')}</h4>
+            <span class="portal-status ${statusClass}">${statusLabel}</span>
+          </div>
+          <div class="portal-item-meta">
+            <span><strong>Format:</strong> ${esc(p.format || '—')}</span>
+            <span><strong>Fee:</strong> ${fee}</span>
+            <span><strong>App ID:</strong> ${esc(item.id)}</span>
+          </div>
+          <div class="portal-item-foot">
+            <span>Submitted ${when}</span>
+            <span>Receipt: <strong>${esc(d.receiptNo || '—')}</strong></span>
+          </div>
+        </div>`;
+    }).join('');
+  } catch(err){
+    console.warn('[Nolan] Load applications failed:', err);
+    listEl.innerHTML = '<div class="portal-empty"><i class="fas fa-exclamation-triangle"></i><h4>Could not load applications</h4><p>Please check your connection and refresh.</p></div>';
+  }
+}
+async function loadReceipts(email){
+  const listEl = document.getElementById('portalReceiptsList');
+  const countEl = document.getElementById('portalReceiptCount');
+  if(!listEl) return;
+  listEl.innerHTML = '<div class="portal-loading"><i class="fas fa-spinner fa-spin"></i> Loading your receipts…</div>';
+  try {
+    const q = FB.query(FB.collection(fbDb, 'receipts'), FB.where('applicantEmail', '==', email));
+    const snap = await FB.getDocs(q);
+    const items = [];
+    snap.forEach(doc => items.push({ id: doc.id, data: doc.data() }));
+    items.sort((a,b) => {
+      const ta = a.data.createdAt && a.data.createdAt.toMillis ? a.data.createdAt.toMillis() : 0;
+      const tb = b.data.createdAt && b.data.createdAt.toMillis ? b.data.createdAt.toMillis() : 0;
+      return tb - ta;
+    });
+    if(countEl) countEl.textContent = items.length;
+    if(items.length === 0){
+      listEl.innerHTML = `
+        <div class="portal-empty">
+          <i class="fas fa-receipt"></i>
+          <h4>No receipts yet</h4>
+          <p>Your payment receipts will appear here after you submit an application.</p>
+        </div>`;
+      return;
+    }
+    listEl.innerHTML = items.map(item => {
+      const d = item.data;
+      const status = (d.status || 'pending').toLowerCase();
+      const statusLabel = status === 'verified' ? 'Verified' : 'Pending Verification';
+      const statusClass = status === 'verified' ? 'verified' : 'pending';
+      const when = d.createdAt && d.createdAt.toDate ? d.createdAt.toDate().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }) : '—';
+      const method = { airtel:'Airtel Money', mtn:'MTN MoMo', bank:'Bank / Visa', paypal:'PayPal', crypto:'Crypto' }[d.method] || d.method || '—';
+      return `
+        <div class="portal-item">
+          <div class="portal-item-head">
+            <h4 class="portal-item-title">${esc(item.id)}</h4>
+            <span class="portal-status ${statusClass}">${statusLabel}</span>
+          </div>
+          <div class="portal-item-meta">
+            <span><strong>Amount:</strong> ${esc(d.amount || '—')}</span>
+            <span><strong>Method:</strong> ${esc(method)}</span>
+          </div>
+          <div class="portal-item-foot">
+            <span>Paid ${when}</span>
+            <span>Ref: <strong>${esc(d.transactionRef || '—')}</strong></span>
+          </div>
+        </div>`;
+    }).join('');
+  } catch(err){
+    console.warn('[Nolan] Load receipts failed:', err);
+    listEl.innerHTML = '<div class="portal-empty"><i class="fas fa-exclamation-triangle"></i><h4>Could not load receipts</h4><p>Please check your connection and refresh.</p></div>';
+  }
+}
+
+/* Dashboard quick actions */
+document.getElementById('portalRefreshApps').addEventListener('click', () => {
+  if(portalCurrentUser && portalCurrentUser.email) loadApplications(portalCurrentUser.email.toLowerCase());
+});
+document.getElementById('portalRefreshReceipts').addEventListener('click', () => {
+  if(portalCurrentUser && portalCurrentUser.email) loadReceipts(portalCurrentUser.email.toLowerCase());
+});
+document.getElementById('portalGoCatalogue').addEventListener('click', () => {
+  closePortal();
+  setTimeout(() => { const el = document.getElementById('catalogue'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 200);
+});
+document.getElementById('portalAccountSettings').addEventListener('click', () => {
+  if(!portalCurrentUser) return;
+  document.getElementById('portalSettingsName').value = portalCurrentUser.displayName || '';
+  document.getElementById('portalSettingsEmail').value = portalCurrentUser.email || '';
+  showPortalView('settings');
+});
+document.getElementById('portalSettingsForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  if(!portalCurrentUser) return;
+  const name = document.getElementById('portalSettingsName').value.trim();
+  const btn = document.getElementById('portalSettingsBtn');
+  document.getElementById('portalSettingsError').classList.remove('show');
+  document.getElementById('portalSettingsSuccess').classList.remove('show');
+  if(!name){ setPortalMessage('portalSettingsError','Please enter your full name.'); return; }
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+  try {
+    if(FB.updateProfile){ await FB.updateProfile(portalCurrentUser, { displayName: name }); }
+    try { await FB.setDoc(FB.doc(fbDb, 'students', portalCurrentUser.uid), { name: name, updatedAt: FB.serverTimestamp() }, { merge: true }); } catch(e){}
+    setPortalMessage('portalSettingsSuccess','Your name has been updated.');
+    setPortalUser(portalCurrentUser);
+    showToast('Settings saved', 'success');
+  } catch(err){
+    console.warn('[Nolan] Settings save failed:', err);
+    setPortalMessage('portalSettingsError','Could not save your changes. Please try again.');
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-check"></i> Save Changes';
+  }
+});
+document.getElementById('portalBackToDashboard').addEventListener('click', () => {
+  setPortalUser(portalCurrentUser);
+  showPortalView('dashboard');
+  loadDashboardData();
+});
+
+document.getElementById('portalForgotLink').addEventListener('click', () => showPortalView('forgot'));
+document.getElementById('portalCreateLink').addEventListener('click', () => showPortalView('create'));
+document.getElementById('portalBack1').addEventListener('click', () => showPortalView('login'));
+document.getElementById('portalBack2').addEventListener('click', () => showPortalView('login'));
+
+document.querySelectorAll('.open-portal').forEach(el => el.addEventListener('click', e => { e.preventDefault(); openPortal(el.dataset.portal || 'login'); }));
 
 /* ============================================================
    BOOT
@@ -2952,87 +3373,6 @@ $$('#heroFormats .format-pill').forEach(p => p.addEventListener('click', () => a
 $$('#pathsGrid .path-card').forEach(p => p.addEventListener('click', () => applyFormatFilter(p.dataset.format)));
 $$('.format-card .btn[data-format]').forEach(b => b.addEventListener('click', () => applyFormatFilter(b.dataset.format)));
 
-document.querySelectorAll('.open-portal').forEach(el => el.addEventListener('click', e => { e.preventDefault(); openPortal(el.dataset.portal || 'login'); }));
-setupPwToggle('portalPwToggle','portalPassword');
-setupPwToggle('portalNewPwToggle','portalNewPassword');
-document.getElementById('portalLoginForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const errEl = document.getElementById('portalLoginError'); errEl.classList.remove('show');
-  const email = document.getElementById('portalEmail').value.trim();
-  const password = document.getElementById('portalPassword').value;
-  const remember = document.getElementById('portalRemember').checked;
-  const btn = document.getElementById('portalLoginBtn');
-  if(!email){ setPortalMessage('portalLoginError','Please enter your email address.'); return; }
-  if(!isValidEmail(email)){ setPortalMessage('portalLoginError','Please enter a valid email address.'); return; }
-  if(!password){ setPortalMessage('portalLoginError','Please enter your password.'); return; }
-  if(password.length < 6){ setPortalMessage('portalLoginError','Password must be at least 6 characters.'); return; }
-  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
-  setTimeout(() => {
-    const lowerEmail = email.toLowerCase();
-    const accounts = loadAccounts();
-    const localAccount = accounts.find(a => a.email.toLowerCase() === lowerEmail && a.password === password);
-    let name = 'Student';
-    if(lowerEmail === PORTAL_DEMO.email.toLowerCase() && password === PORTAL_DEMO.password){ name = PORTAL_DEMO.name; }
-    else if(localAccount){ name = localAccount.name; }
-    else { name = lowerEmail.split('@')[0].replace(/[._-]+/g,' ').replace(/\b\w/g, c => c.toUpperCase()); }
-    const session = { email: lowerEmail, name, signedInAt: Date.now() };
-    saveSession(session, remember);
-    btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
-    setDashboardUser(session); showPortalView('dashboard');
-    showToast('Welcome back, ' + name + '!', 'success');
-    document.getElementById('portalLoginForm').reset();
-  }, 900);
-});
-document.getElementById('portalForgotForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const email = document.getElementById('portalForgotEmail').value.trim();
-  const btn = document.getElementById('portalForgotBtn');
-  document.getElementById('portalForgotError').classList.remove('show');
-  document.getElementById('portalForgotSuccess').classList.remove('show');
-  if(!email){ setPortalMessage('portalForgotError','Please enter your email address.'); return; }
-  if(!isValidEmail(email)){ setPortalMessage('portalForgotError','Please enter a valid email address.'); return; }
-  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  setTimeout(() => {
-    btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Reset Link';
-    setPortalMessage('portalForgotSuccess', 'If an account exists for ' + email + ', a password reset link has been sent. Check your inbox and spam folder.');
-    showToast('Reset link sent to ' + email, 'success');
-    document.getElementById('portalForgotForm').reset();
-  }, 1000);
-});
-document.getElementById('portalCreateForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const name = document.getElementById('portalNewName').value.trim();
-  const email = document.getElementById('portalNewEmail').value.trim();
-  const password = document.getElementById('portalNewPassword').value;
-  const btn = document.getElementById('portalCreateBtn');
-  document.getElementById('portalCreateError').classList.remove('show');
-  document.getElementById('portalCreateSuccess').classList.remove('show');
-  if(!name){ setPortalMessage('portalCreateError','Please enter your full name.'); return; }
-  if(!email){ setPortalMessage('portalCreateError','Please enter your email address.'); return; }
-  if(!isValidEmail(email)){ setPortalMessage('portalCreateError','Please enter a valid email address.'); return; }
-  if(password.length < 6){ setPortalMessage('portalCreateError','Password must be at least 6 characters.'); return; }
-  const accounts = loadAccounts();
-  if(accounts.some(a => a.email.toLowerCase() === email.toLowerCase()) || email.toLowerCase() === PORTAL_DEMO.email.toLowerCase()){
-    setPortalMessage('portalCreateError','An account with that email already exists. Try signing in instead.'); return;
-  }
-  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
-  setTimeout(() => {
-    saveAccount({ name, email: email.toLowerCase(), password, createdAt: Date.now() });
-    btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
-    setPortalMessage('portalCreateSuccess','Account created! Signing you in...');
-    showToast('Account created successfully', 'success');
-    const session = { email: email.toLowerCase(), name, signedInAt: Date.now() };
-    saveSession(session, true);
-    setTimeout(() => { setDashboardUser(session); showPortalView('dashboard'); document.getElementById('portalCreateForm').reset(); }, 900);
-  }, 1100);
-});
-document.getElementById('portalSignOut').addEventListener('click', () => { clearSession(); showToast('Signed out successfully'); showPortalView('login'); });
-document.querySelectorAll('.portal-dash-card').forEach(card => { card.addEventListener('click', () => { const what = card.dataset.dash; const messages = { courses:'My Courses — you are not yet enrolled in any programme. Visit the catalogue to apply.', grades:'Grades — no assessment results available yet.', resources:'Resources — learning materials will appear here once enrolled.', timetable:'Timetable — your class schedule will appear here once enrolled.' }; showToast(messages[what] || 'Coming soon'); }); });
-document.getElementById('portalForgotLink').addEventListener('click', () => showPortalView('forgot'));
-document.getElementById('portalCreateLink').addEventListener('click', () => showPortalView('create'));
-document.getElementById('portalBack1').addEventListener('click', () => showPortalView('login'));
-document.getElementById('portalBack2').addEventListener('click', () => showPortalView('login'));
-
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){
     if($('#appOverlay').classList.contains('show')) closeApplication();
@@ -3046,7 +3386,7 @@ $('#programmeModal').addEventListener('click', e => { if(e.target.id === 'progra
 searchModal.addEventListener('click', e => { if(e.target.id === 'searchModal') closeSearch(); });
 portalModal.addEventListener('click', e => { if(e.target.id === 'portalModal') closePortal(); });
 
-console.log(`[Nolan] Marketplace ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · Application overlay active · Firebase: ${IS_FIREBASE_CONFIGURED ? 'configured' : 'NOT configured'} · EmailJS: ${IS_EMAILJS_CONFIGURED ? 'configured' : 'NOT configured'} · Cloudinary: ${IS_CLOUDINARY_CONFIGURED ? 'configured' : 'NOT configured'}`);
+console.log(`[Nolan] Marketplace ready — ${SUBJECTS.length} subjects · ${PROGRAMMES.length} programmes · Application overlay active · Firebase (Firestore + Auth): ${IS_FIREBASE_CONFIGURED ? 'configured' : 'NOT configured'} · EmailJS: ${IS_EMAILJS_CONFIGURED ? 'configured' : 'NOT configured'}`);
 </script>
 </body>
 </html>
